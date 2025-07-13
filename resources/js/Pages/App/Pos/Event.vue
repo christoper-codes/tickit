@@ -32,14 +32,6 @@ const tab = ref('seats');
 
 const { cashRegisterDataId, sellerUserId, ticketOfficeId } = useTicketOfficeState();
 const snackbar = ref(false);
-const { handleSubmit } = useForm({
-    validationSchema: saleTicketSchema,
-    initialValues: {
-        total: 0,
-        amount_received: 0,
-        amount_returned: 0,
-    }
-});
 
 const paymentFileds = {
     'total': useField('total'),
@@ -95,10 +87,8 @@ function loadSvg(id) {
 
             }
             if(window.innerWidth > 1024 && id == 'zones_hdx') {
-                panZoomInstance.smoothZoom(300, 360, 0.6);
+                panZoomInstance.smoothZoom(1600, 600, 0.9);
             }
-        }else {
-            alert('Zona no encontrada');
         }
     },300);
 }
