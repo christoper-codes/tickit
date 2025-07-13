@@ -1,0 +1,7 @@
+*
+!.gitignore
+/storage/*
+!/storage/public
+!/storage/public/**
+!/public/img
+!/public/img/**
