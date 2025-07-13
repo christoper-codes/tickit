@@ -92,27 +92,27 @@ const tab = ref('tab-0');
             </template>
         </BreadcrumbApp>
 
-        <div class="tw-mt-10">
+        <div class="mt-10">
             <template v-if="eventsWithTickets.some(event => event.tickets.length > 0)">
-                <div v-for="event in eventsWithTickets" :key="event.event.id" class="tw-mb-10 last:tw-mb-0">
+                <div v-for="event in eventsWithTickets" :key="event.event.id" class="mb-10 last:mb-0">
                     <div v-if="event.tickets.length > 0">
-                        <div class="tw-flex tw-flex-col lg:tw-flex-row tw-gap-10 lg:tw-overflow-y-auto tw-pb-5">
+                        <div class="flex flex-col lg:flex-row gap-10 lg:overflow-y-auto pb-5">
                             <SaleTicket v-for="ticket in event.tickets" :key="ticket.id" v-bind:ticket="ticket" />
                         </div>
                     </div>
                 </div>
             </template>
             <template v-else>
-                <div class="tw-flex tw-items-center tw-justify-center tw-flex-col tw-gap-5 tw-mt-10">
-                    <div class="tw-text-center tw-flex tw-items-center tw-justify-center tw-flex-col tw-gap-5">
-                        <img class="tw-w-40 lg:tw-w-72 tw-h-auto" src="/storage/public/empty-cart.webp" alt="Webiste image">
+                <div class="flex items-center justify-center flex-col gap-5 mt-10">
+                    <div class="text-center flex items-center justify-center flex-col gap-5">
+                        <img class="w-40 lg:w-72 h-auto" src="/storage/public/empty-cart.webp" alt="Webiste image">
                         <span>No cuentas con boletos disponibles. ¡Compra tus boletos para el próximo partido!</span>
                     </div>
                     <div>
                         <Link :href="route('events.index')">
                             <SecondaryButton
-                                heightbtn="!tw-h-[70px]"
-                                paddingbtn="!tw-px-14"
+                                heightbtn="!h-[70px]"
+                                paddingbtn="!px-14"
                             >
                                 Comprar boletos
                             </SecondaryButton>

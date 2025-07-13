@@ -28,11 +28,11 @@ function applyClassesAndEvents(){
         if (props.action === "status") {
 
             if (seat.seat_catalogue_status.name === 'disponible') {
-                elemento.classList.add('tw-fill-yellow-500');
+                elemento.classList.add('fill-yellow-500');
             } else if (seat.seat_catalogue_status.name === 'reservado') {
-                elemento.classList.add('tw-fill-pink-600');
+                elemento.classList.add('fill-pink-600');
             } else if (seat.seat_catalogue_status.name === 'inhabilitado') {
-                elemento.classList.add('tw-fill-gray-600');
+                elemento.classList.add('fill-gray-600');
             }
 
             const handleClick = () => {
@@ -40,21 +40,21 @@ function applyClassesAndEvents(){
                 const existSeat = props.seatsSelected.find(s => s.seat_catalogue.code === seat.seat_catalogue.code);
 
                 if (!existSeat) {
-                    elemento.classList.remove('tw-fill-yellow-500', 'tw-fill-pink-600', 'tw-fill-gray-600');
-                    elemento.classList.add('tw-fill-green-500');
+                    elemento.classList.remove('fill-yellow-500', 'fill-pink-600', 'fill-gray-600');
+                    elemento.classList.add('fill-green-500');
                 }
                 emit('add-seat', seat);
             };
 
-            elemento.classList.add('tw-cursor-pointer');
+            elemento.classList.add('cursor-pointer');
             elemento.addEventListener('click', handleClick);
 
         }else if (props.action === "promotion") {
 
             if (seat.promotions.length === 0) {
-                elemento.classList.add('tw-fill-yellow-500');
+                elemento.classList.add('fill-yellow-500');
             } else if (seat.promotions.length > 0) {
-                elemento.classList.add('tw-fill-purple-500');
+                elemento.classList.add('fill-purple-500');
             }
 
             const handleClick = () => {
@@ -62,55 +62,55 @@ function applyClassesAndEvents(){
                 const existSeat = props.seatsSelected.find(s => s.seat_catalogue.code === seat.seat_catalogue.code);
 
                 if (!existSeat) {
-                    elemento.classList.remove('tw-fill-yellow-500', 'tw-fill-purple-500');
-                    elemento.classList.add('tw-fill-green-500');
+                    elemento.classList.remove('fill-yellow-500', 'fill-purple-500');
+                    elemento.classList.add('fill-green-500');
                 }
                 emit('add-seat', seat);
             };
 
-            elemento.classList.add('tw-cursor-pointer');
+            elemento.classList.add('cursor-pointer');
             elemento.addEventListener('click', handleClick);
 
         }else{
             if (seat.seat_catalogue_status.name === 'disponible') {
-                elemento.classList.add('tw-cursor-pointer', 'tw-fill-yellow-500');
-                elemento.classList.remove('tw-cursor-not-allowed', 'tw-fill-purple-500', 'tw-fill-red-500');
+                elemento.classList.add('cursor-pointer', 'fill-yellow-500');
+                elemento.classList.remove('cursor-not-allowed', 'fill-purple-500', 'fill-red-500');
 
                 if(seat.promotions.length > 0){
                     const bbox = elemento.getBBox();
-                    const cx = bbox.x + bbox.width - 4; 
-                    const cy = bbox.y - 5; 
+                    const cx = bbox.x + bbox.width - 4;
+                    const cy = bbox.y - 5;
 
                     const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
                     circle.setAttribute("cx", cx);
                     circle.setAttribute("cy", cy);
                     circle.setAttribute("r", "1.5");
-                    circle.classList.add('tw-fill-purple-500');
+                    circle.classList.add('fill-purple-500');
                     elemento.parentNode.appendChild(circle);
                 }
-            
+
                 const handleClick = () => {
                 const existSeat = props.seatsSelected.find(s => s.seat_catalogue.code === seat.seat_catalogue.code);
                 if (existSeat) {
-                    elemento.classList.remove('tw-fill-green-500');
-                    elemento.classList.add('tw-fill-yellow-500');
+                    elemento.classList.remove('fill-green-500');
+                    elemento.classList.add('fill-yellow-500');
                     emit('add-seat', seat);
                 } else {
-                    elemento.classList.remove('tw-fill-yellow-500');
-                    elemento.classList.add('tw-fill-green-500');
+                    elemento.classList.remove('fill-yellow-500');
+                    elemento.classList.add('fill-green-500');
                     emit('add-seat', seat);
                 }
                 };
                 elemento.addEventListener('click', handleClick);
                 elemento.addEventListener('touchstart', handleClick);
             } else if (seat.seat_catalogue_status.name === 'vendido') {
-                elemento.classList.add('tw-cursor-not-allowed', 'tw-fill-purple-500');
+                elemento.classList.add('cursor-not-allowed', 'fill-purple-500');
             } else if (seat.seat_catalogue_status.name === 'reservado') {
-                elemento.classList.add('tw-cursor-not-allowed', 'tw-fill-pink-500');
+                elemento.classList.add('cursor-not-allowed', 'fill-pink-500');
             } else if (seat.seat_catalogue_status.name === 'inhabilitado') {
-                elemento.classList.add('tw-cursor-not-allowed', 'tw-fill-gray-600');
+                elemento.classList.add('cursor-not-allowed', 'fill-gray-600');
             } else if (seat.seat_catalogue_status.name === 'transito') {
-                elemento.classList.add('tw-cursor-not-allowed','tw-fill-cyan-500');
+                elemento.classList.add('cursor-not-allowed','fill-cyan-500');
             }
         }
     }
@@ -131,24 +131,24 @@ watch(() => props.seatsSelected, (newSeatsSelected, oldSeatsSelected) => {
         const elemento = document.getElementById(seat.seat_catalogue.code);
         if (elemento) {
             if (props.action === "status") {
-                elemento.classList.remove('tw-fill-green-500');
+                elemento.classList.remove('fill-green-500');
                 if (seat.seat_catalogue_status.name === 'disponible') {
-                    elemento.classList.add('tw-fill-yellow-500');
+                    elemento.classList.add('fill-yellow-500');
                 } else if (seat.seat_catalogue_status.name === 'reservado') {
-                    elemento.classList.add('tw-fill-pink-600');
+                    elemento.classList.add('fill-pink-600');
                 } else if (seat.seat_catalogue_status.name === 'inhabilitado') {
-                    elemento.classList.add('tw-fill-gray-600');
+                    elemento.classList.add('fill-gray-600');
                 }
             }else if (props.action === "promotion") {
-                elemento.classList.remove('tw-fill-green-500');
+                elemento.classList.remove('fill-green-500');
                 if (seat.promotions.length === 0) {
-                    elemento.classList.add('tw-fill-yellow-500');
+                    elemento.classList.add('fill-yellow-500');
                 } else if (seat.promotions.length > 0) {
-                    elemento.classList.add('tw-fill-purple-500');
+                    elemento.classList.add('fill-purple-500');
                 }
             }else{
-                elemento.classList.remove('tw-fill-green-500');
-                elemento.classList.add('tw-fill-yellow-500');
+                elemento.classList.remove('fill-green-500');
+                elemento.classList.add('fill-yellow-500');
             }
         }
     }
@@ -175,7 +175,7 @@ watch(() => props.seatsAutoClic, (newSeatsSelected = [], oldSeatsSelected = []) 
 </script>
 
 <template>
-    <svg class="tw-w-full tw-h-screen"  id="zonaA" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+    <svg class="w-full h-screen"  id="zonaA" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
     viewBox="0 0 1017 225">
     <defs>
         <linearGradient id="Degradado_sin_nombre_205" x1="4" y1="117.5" x2="1021" y2="117.5"

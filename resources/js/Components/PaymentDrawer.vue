@@ -240,35 +240,35 @@ const orderInformationAmountDetails = computed(() => ({
 
 </script>
 <template>
-  <div class="tw-z-50">
+  <div class="z-50">
     <v-layout >
       <v-navigation-drawer v-model="drawerPaymentState" temporary width="500">
         <div>
-            <div class="tw-relative tw-flex tw-flex-col tw-bg-white tw-pointer-events-auto">
-                <div class="tw-relative tw-overflow-hidden tw-min-h-32 tw-bg-gray-200 tw-text-center">
-                    <figure class="tw-absolute tw-inset-x-0 tw-bottom-0 -tw-mb-px">
+            <div class="relative flex flex-col bg-white pointer-events-auto">
+                <div class="relative overflow-hidden min-h-32 bg-gray-200 text-center">
+                    <figure class="absolute inset-x-0 bottom-0 -mb-px">
                         <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 1920 100.1">
-                            <path fill="currentColor" class="tw-fill-white" d="M0,0c0,0,934.4,93.4,1920,0v100.1H0L0,0z"></path>
+                            <path fill="currentColor" class="fill-white" d="M0,0c0,0,934.4,93.4,1920,0v100.1H0L0,0z"></path>
                         </svg>
                     </figure>
                 </div>
 
-                <div class="tw-relative tw-z-10 -tw-mt-12">
-                    <span class="tw-mx-auto tw-flex tw-justify-center tw-items-center tw-size-[62px] tw-rounded-full tw-border tw-border-gray-200 tw-bg-white tw-text-gray-700 tw-shadow-sm">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="tw-size-7 tw-stroke-slate-800" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V6l-3-4H6zM3.8 6h16.4M16 10a4 4 0 1 1-8 0"/></svg>
+                <div class="relative z-10 -mt-12">
+                    <span class="mx-auto flex justify-center items-center size-[62px] rounded-full border border-gray-200 bg-white text-gray-700 shadow-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="size-7 stroke-slate-800" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V6l-3-4H6zM3.8 6h16.4M16 10a4 4 0 1 1-8 0"/></svg>
                     </span>
                 </div>
             </div>
-            <div class="tw-p-4">
+            <div class="p-4">
                 <CountdownTimer :initialMinutes="10" />
 
                 <!-- <CyberSoruce  :seats='seats' :client-reference-information="clientReferenceInformation"
                 :order-information-amount-details="orderInformationAmountDetails" @response-payment="responseCyberSource" @cancel-payment="cancelPayment"/> -->
 
-                <div id="paypal-button-container" class="tw-mt-4"></div>
-                <div class="tw-mt-10">
-                    <div v-if="loading" class="tw-flex tw-flex-col tw-items-center tw-justify-center tw-mt-5 tw-animate-pulse">
-                        <p class="tw-font-bold tw-text-xs lg:tw-text-base">Completando compra en el sistema...</p>
+                <div id="paypal-button-container" class="mt-4"></div>
+                <div class="mt-10">
+                    <div v-if="loading" class="flex flex-col items-center justify-center mt-5 animate-pulse">
+                        <p class="font-bold text-xs lg:text-base">Completando compra en el sistema...</p>
                     </div>
                 </div>
             </div>

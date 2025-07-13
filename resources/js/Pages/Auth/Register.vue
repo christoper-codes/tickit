@@ -74,21 +74,21 @@ const props = defineProps({
 <template>
     <Head title="Log in" />
         <AuthenticationCard>
-            <div class="tw-w-full tw-px-5 lg:tw-px-0 lg:tw-w-[80%] tw-h-auto tw-mx-auto tw-py-10 lg:tw-py-0">
+            <div class="w-full px-5 lg:px-0 lg:w-[80%] h-auto mx-auto py-10 lg:py-0">
                 <div class="">
                     <ErrorSession />
                     <Link :href="route('events.index')">
-                        <div class="tw-size-10 tw-shadow-md tw-rounded-full tw-bg-primary tw-p-2 tw-flex tw-items-center tw-justify-center tw-mb-3">
-                            <span class="material-symbols-outlined tw-text-white">arrow_back</span>
+                        <div class="size-10 shadow-md rounded-full bg-primary p-2 flex items-center justify-center mb-3">
+                            <span class="material-symbols-outlined text-white">arrow_back</span>
                         </div>
                     </Link>
-                    <h2 class="tw-font-bebas tw-text-4xl tw-font-bold lg:tw-text-5xl">Registrarse</h2>
+                    <h2 class="font-bebas text-4xl font-bold lg:text-5xl">Registrarse</h2>
                 </div>
 
-                <div class="tw-mt-5 tw-flex tw-flex-col tw-gap-3">
-                    <v-form class="tw-mt-5 tw-flex tw-flex-col tw-gap-1">
-                        <div class="tw-flex tw-flex-col lg:tw-flex-row tw-items-center tw-justify-between lg:tw-gap-5">
-                            <div class="tw-w-full">
+                <div class="mt-5 flex flex-col gap-3">
+                    <v-form class="mt-5 flex flex-col gap-1">
+                        <div class="flex flex-col lg:flex-row items-center justify-between lg:gap-5">
+                            <div class="w-full">
                                 <v-text-field
                                     color="purple"
                                     label="Primer nombre"
@@ -100,7 +100,7 @@ const props = defineProps({
                                 ></v-text-field>
                                 <InputError :message="data.errors.first_name" />
                             </div>
-                            <div class="tw-w-full">
+                            <div class="w-full">
                                 <v-text-field
                                     color="purple"
                                     label="Apellido paterno"
@@ -113,8 +113,8 @@ const props = defineProps({
                                 <InputError :message="data.errors.last_name" />
                             </div>
                         </div>
-                        <div class="tw-flex tw-flex-col lg:tw-flex-row  tw-items-center tw-justify-between lg:tw-gap-5">
-                            <div class="tw-w-full">
+                        <div class="flex flex-col lg:flex-row  items-center justify-between lg:gap-5">
+                            <div class="w-full">
                                 <v-text-field
                                     color="purple"
                                     label="Apellido materno"
@@ -126,7 +126,7 @@ const props = defineProps({
                                 ></v-text-field>
                                 <InputError :message="data.errors.middle_name" />
                             </div>
-                            <div class="tw-w-full">
+                            <div class="w-full">
                                 <v-text-field
                                     color="purple"
                                     type="email"
@@ -140,8 +140,8 @@ const props = defineProps({
                                 <InputError class="" :message="data.errors.email" />
                             </div>
                         </div>
-                        <div class="tw-flex tw-flex-col lg:tw-flex-row  tw-items-center tw-justify-between lg:tw-gap-5">
-                            <div class="tw-w-full">
+                        <div class="flex flex-col lg:flex-row  items-center justify-between lg:gap-5">
+                            <div class="w-full">
                                 <v-select
                                     color="purple"
                                     clearable
@@ -154,7 +154,7 @@ const props = defineProps({
                                 ></v-select>
                                 <InputError :message="data.errors.user_gender" />
                             </div>
-                             <div class="tw-w-full">
+                             <div class="w-full">
                                 <v-text-field
                                     color="purple"
                                     label="Nickname"
@@ -166,7 +166,7 @@ const props = defineProps({
                                 <InputError :message="data.errors.username" />
                             </div>
                         </div>
-                        <div class="tw-w-full">
+                        <div class="w-full">
                             <v-date-input
                                 density="compact"
                                 color="purple"
@@ -178,8 +178,8 @@ const props = defineProps({
                             ></v-date-input>
                             <InputError :message="data.errors.birthdate" />
                         </div>
-                        <div class="tw-flex tw-flex-col lg:tw-flex-row  tw-items-center tw-justify-between lg:tw-gap-5">
-                            <div class="tw-w-full">
+                        <div class="flex flex-col lg:flex-row  items-center justify-between lg:gap-5">
+                            <div class="w-full">
                                 <v-file-upload
                                     v-model="global_image.value.value"
                                     :error-messages="global_image.errorMessage.value"
@@ -190,8 +190,8 @@ const props = defineProps({
                                 <InputError :message="global_image.errorMessage.value" />
                             </div>
                         </div>
-                        <div class="tw-flex tw-flex-col lg:tw-flex-row  tw-items-center tw-justify-between lg:tw-gap-5 tw-mt-6">
-                            <div class="tw-w-full">
+                        <div class="flex flex-col lg:flex-row  items-center justify-between lg:gap-5 mt-6">
+                            <div class="w-full">
                                 <v-text-field
                                     placeholder="Hdx-36109"
                                     color="purple"
@@ -207,7 +207,7 @@ const props = defineProps({
                                 ></v-text-field>
                                 <InputError class="" :message="data.errors.password" />
                             </div>
-                            <div class="tw-w-full">
+                            <div class="w-full">
                                 <v-text-field
                                     placeholder="Hdx-36109"
                                     color="purple"
@@ -225,17 +225,17 @@ const props = defineProps({
                             </div>
                         </div>
 
-                        <div class="tw-mt-5 lg:tw-mt-0 tw-w-full">
-                             <PrimaryButton @click="submit" :disabled="data.processing" heightbtn="!tw-h-[60px] !tw-text-base !tw-w-full" paddingbtn="!tw-px-10" :loading="loading">
-                                <span class="material-symbols-outlined tw-text-2xl !tw-w-1/2">fingerprint</span>Registrarse ahora
+                        <div class="mt-5 lg:mt-0 w-full">
+                             <PrimaryButton @click="submit" :disabled="data.processing" heightbtn="!h-[60px] !text-base !w-full" paddingbtn="!px-10" :loading="loading">
+                                <span class="material-symbols-outlined text-2xl !w-1/2">fingerprint</span>Registrarse ahora
                             </PrimaryButton>
                         </div>
-                         <div class="tw-mt-5">
-                            ¿Ya tienes una cuenta? <Link :href="route('login')"><span class="tw-text-purple-600 tw-underline">Iniciar sesión</span></Link>
+                         <div class="mt-5">
+                            ¿Ya tienes una cuenta? <Link :href="route('login')"><span class="text-purple-600 underline">Iniciar sesión</span></Link>
                         </div>
-                        <div v-if="slug && loading" class="tw-flex tw-flex-col tw-items-center tw-justify-center tw-mt-4 lg:tw-mt-5 tw-animate-pulse">
-                            <p class="tw-font-bold tw-text-xs">Preparando las zonas para el evento...</p>
-                            <iframe class="tw-size-20  tw-rotate-45" src="https://lottie.host/embed/bf6d5e1b-537a-436b-8464-3d074f070d76/SAdIq1oqT7.json"></iframe>
+                        <div v-if="slug && loading" class="flex flex-col items-center justify-center mt-4 lg:mt-5 animate-pulse">
+                            <p class="font-bold text-xs">Preparando las zonas para el evento...</p>
+                            <iframe class="size-20  rotate-45" src="https://lottie.host/embed/bf6d5e1b-537a-436b-8464-3d074f070d76/SAdIq1oqT7.json"></iframe>
                         </div>
                     </v-form>
 

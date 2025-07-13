@@ -623,99 +623,99 @@ const searchLocality = (value) => {
 
 <template>
     <button type="button" @click="openDialogCyberSource = true"
-        class="tw-w-full tw-font-bold tw-text-white tw-bg-gradient-to-r tw-from-cyan-500 tw-to-blue-500 hover:tw-bg-gradient-to-bl tw-focus:ring-4 tw-focus:outline-none tw-focus:ring-cyan-300 dark:tw-focus:ring-cyan-800 tw-rounded-lg tw-px-5 tw-py-2.5 tw-text-center tw-me-2 tw-mb-2">
+        class="w-full font-bold text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 rounded-lg px-5 py-2.5 text-center me-2 mb-2">
         Cybersource
     </button>
     <v-dialog v-model="openDialogCyberSource" min-width="400" max-width="800" persistent>
         <v-card>
             <template #title>
-                <div class="tw-text-center tw-w-full tw-text-3xl tw-font-semibold">
+                <div class="text-center w-full text-3xl font-semibold">
                     Cybersource Payment
                 </div>
             </template>
             <v-card-text>
-                <div v-if="isLoadingView" class="tw-absolute tw-inset-0 tw-bg-white/80 tw-backdrop-blur-sm tw-z-50 tw-flex tw-items-center tw-justify-center tw-flex-col">
+                <div v-if="isLoadingView" class="absolute inset-0 bg-white/80 backdrop-blur-sm z-50 flex items-center justify-center flex-col">
                     <v-progress-circular v-if="!isLoadingSuccess" indeterminate color="primary" size="50" />
                     <v-icon v-if="isLoadingSuccess" color="success" size="64">mdi-check-circle</v-icon>
-                    <span class="tw-mt-4">{{ messageLoading }}</span>
+                    <span class="mt-4">{{ messageLoading }}</span>
                 </div>
                 <v-stepper v-model="step" :items="itemsStep" hide-actions>
                     <template v-slot:item.1>
                         <v-form ref="formRef" @submit.prevent="onSubmit" lazy-validation>
-                            <div class="tw-grid tw-gap-4 tw-grid-cols-2">
+                            <div class="grid gap-4 grid-cols-2">
                                 <v-text-field label="Nombre" v-model="orderInformationBill.firstName"
                                     :rules="fieldRules.firstName" />
                                 <v-text-field label="Apellidos" v-model="orderInformationBill.lastName"
                                     :rules="fieldRules.lastName" />
                             </div>
-                            <div class="tw-grid tw-gap-4 tw-grid-cols-2">
+                            <div class="grid gap-4 grid-cols-2">
                                 <v-text-field label="Número de Teléfono" v-model="orderInformationBill.phoneNumber"
                                     :rules="fieldRules.phoneNumber" />
                                 <v-text-field label="Correo Electrónico" v-model="orderInformationBill.email"
                                     :rules="fieldRules.email" />
                             </div>
-                            <div class="tw-grid tw-gap-4 tw-grid-cols-2">
+                            <div class="grid gap-4 grid-cols-2">
                                 <v-select label="País" v-model="orderInformationBill.country" :items="countries" item-title="label" item-value="value"
                                     :rules="fieldRules.country"/>
 
                                 <v-text-field label="Código Postal" v-model="orderInformationBill.postalCode"
                                     :rules="fieldRules.postalCode" @update:model-value="searchLocality($event)"/>
                             </div>
-                            <div class="tw-grid tw-gap-4 tw-grid-cols-2">
+                            <div class="grid gap-4 grid-cols-2">
                                 <v-text-field label="Ciudad" v-model="orderInformationBill.locality"
                                     :rules="fieldRules.locality" />
                                 <v-select label="Colonia" v-model="orderInformationBill.address2" :items="colonies"
                                     :rules="fieldRules.address2"/>
                             </div>
-                            <div class="tw-grid tw-gap-4 tw-grid-cols-1">
+                            <div class="grid gap-4 grid-cols-1">
                                 <v-textarea label="Calle y Número" rows="2" variant="filled" auto-grow
                                     v-model="orderInformationBill.address1" :rules="fieldRules.address1" />
                             </div>
                         </v-form>
                     </template>
                     <template v-slot:item.2>
-                        <div class="tw-relative">
-                            <div class="tw-max-w-3xl tw-mx-auto tw-bg-white tw-p-6 tw-space-y-6 tw-font-sans">
-                                <h2 class="tw-text-2xl tw-font-bold tw-text-center tw-text-gray-800">🛒 Revisión de tu compra</h2>
+                        <div class="relative">
+                            <div class="max-w-3xl mx-auto bg-white p-6 space-y-6 font-sans">
+                                <h2 class="text-2xl font-bold text-center text-gray-800">🛒 Revisión de tu compra</h2>
 
-                                <div class="tw-overflow-x-auto">
-                                    <table class="tw-w-full tw-text-left tw-border tw-rounded-lg tw-text-sm">
-                                        <thead class="tw-bg-gray-100 tw-text-gray-700">
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-left border rounded-lg text-sm">
+                                        <thead class="bg-gray-100 text-gray-700">
                                         <tr>
-                                            <th class="tw-p-3">Asiento</th>
-                                            <th class="tw-p-3">Tipo</th>
-                                            <th class="tw-p-3">Precio</th>
+                                            <th class="p-3">Asiento</th>
+                                            <th class="p-3">Tipo</th>
+                                            <th class="p-3">Precio</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                            <tr v-for="seat in seats " class="tw-border-t">
-                                                <td class="tw-p-3">{{ seat.seat_catalogue.code }}</td>
-                                                <td class="tw-p-3">{{ formatFirstLetterUppercase(seat.seat_catalogue.seat_type.name) }}</td>
-                                                <td class="tw-p-3">{{ formatPrice(seat.price_types[0].pivot.price) }}</td>
+                                            <tr v-for="seat in seats " class="border-t">
+                                                <td class="p-3">{{ seat.seat_catalogue.code }}</td>
+                                                <td class="p-3">{{ formatFirstLetterUppercase(seat.seat_catalogue.seat_type.name) }}</td>
+                                                <td class="p-3">{{ formatPrice(seat.price_types[0].pivot.price) }}</td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
 
                                 <!-- Resumen de costos -->
-                                <div class="tw-text-right tw-text-sm tw-space-y-1">
-                                    <hr class="tw-my-2">
-                                    <p class="tw-text-lg tw-font-bold">Total a pagar: <span class="tw-text-blue-600">$ {{ orderInformationBill.totalAmount }} MXN</span></p>
+                                <div class="text-right text-sm space-y-1">
+                                    <hr class="my-2">
+                                    <p class="text-lg font-bold">Total a pagar: <span class="text-blue-600">$ {{ orderInformationBill.totalAmount }} MXN</span></p>
                                 </div>
 
                                 <!-- Formulario de pago -->
-                                <div class="tw-space-y-4">
-                                <h3 class="tw-text-lg tw-font-semibold tw-text-gray-800">Información de pago</h3>
-                                <div class="tw-text-right tw-text-sm tw-space-y-2">
-                                    <h3 class="tw-flex tw-items-center tw-justify-between tw-gap-3 tw-text-lg tw-font-semibold tw-text-gray-800">
+                                <div class="space-y-4">
+                                <h3 class="text-lg font-semibold text-gray-800">Información de pago</h3>
+                                <div class="text-right text-sm space-y-2">
+                                    <h3 class="flex items-center justify-between gap-3 text-lg font-semibold text-gray-800">
                                         Tarjetas de crédito
-                                        <span class="tw-flex tw-items-center tw-justify-between tw-gap-3">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="tw-w-10 tw-h-10" viewBox="0 0 48 48">
+                                        <span class="flex items-center justify-between gap-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" viewBox="0 0 48 48">
                                                 <path fill="#1565C0" d="M45,35c0,2.209-1.791,4-4,4H7c-2.209,0-4-1.791-4-4V13c0-2.209,1.791-4,4-4h34c2.209,0,4,1.791,4,4V35z"></path>
                                                 <path fill="#FFF" d="M15.186 19l-2.626 7.832c0 0-.667-3.313-.733-3.729-1.495-3.411-3.701-3.221-3.701-3.221L10.726 30v-.002h3.161L18.258 19H15.186zM17.689 30L20.56 30 22.296 19 19.389 19zM38.008 19h-3.021l-4.71 11h2.852l.588-1.571h3.596L37.619 30h2.613L38.008 19zM34.513 26.328l1.563-4.157.818 4.157H34.513zM26.369 22.206c0-.606.498-1.057 1.926-1.057.928 0 1.991.674 1.991.674l.466-2.309c0 0-1.358-.515-2.691-.515-3.019 0-4.576 1.444-4.576 3.272 0 3.306 3.979 2.853 3.979 4.551 0 .291-.231.964-1.888.964-1.662 0-2.759-.609-2.759-.609l-.495 2.216c0 0 1.063.606 3.117.606 2.059 0 4.915-1.54 4.915-3.752C30.354 23.586 26.369 23.394 26.369 22.206z"></path>
                                                 <path fill="#FFC107" d="M12.212,24.945l-0.966-4.748c0,0-0.437-1.029-1.573-1.029c-1.136,0-4.44,0-4.44,0S10.894,20.84,12.212,24.945z"></path>
                                             </svg>
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="tw-w-10 tw-h-10" viewBox="0 0 48 48">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" viewBox="0 0 48 48">
                                                 <path fill="#3F51B5" d="M45,35c0,2.209-1.791,4-4,4H7c-2.209,0-4-1.791-4-4V13c0-2.209,1.791-4,4-4h34c2.209,0,4,1.791,4,4V35z"></path>
                                                 <path fill="#FFC107" d="M30 14A10 10 0 1 0 30 34A10 10 0 1 0 30 14Z"></path>
                                                 <path fill="#FF3D00" d="M22.014,30c-0.464-0.617-0.863-1.284-1.176-2h5.325c0.278-0.636,0.496-1.304,0.637-2h-6.598C20.07,25.354,20,24.686,20,24h7c0-0.686-0.07-1.354-0.201-2h-6.598c0.142-0.696,0.359-1.364,0.637-2h5.325c-0.313-0.716-0.711-1.383-1.176-2h-2.973c0.437-0.58,0.93-1.122,1.481-1.595C21.747,14.909,19.481,14,17,14c-5.523,0-10,4.477-10,10s4.477,10,10,10c3.269,0,6.162-1.575,7.986-4H22.014z"></path>
@@ -728,23 +728,23 @@ const searchLocality = (value) => {
                                     {{ errorsOutMicroForm }}
                                 </v-alert>
 
-                                <div class="tw-mb-4">
-                                    <label for="cardNumber-label" class="tw-block tw-text-sm tw-font-medium tw-text-gray-700 mb-1">Número de tarjeta</label>
-                                    <div ref="numberContainerMicroForm" class="tw-border tw-border-gray-300 tw-rounded-lg tw-p-3 tw-bg-white tw-transition tw-duration-300 tw-h-10"></div>
+                                <div class="mb-4">
+                                    <label for="cardNumber-label" class="block text-sm font-medium text-gray-700 mb-1">Número de tarjeta</label>
+                                    <div ref="numberContainerMicroForm" class="border border-gray-300 rounded-lg p-3 bg-white transition duration-300 h-10"></div>
                                 </div>
 
-                                <div class="tw-mb-4">
-                                    <label for="securityCode-container" class="tw-block tw-text-sm tw-font-medium tw-text-gray-700 mb-1">CVV</label>
-                                    <div ref="securityCodeContainerMicroForm" class="tw-border tw-border-gray-300 tw-rounded-lg tw-p-3 tw-bg-white tw-transition tw-duration-300 tw-h-10"></div>
+                                <div class="mb-4">
+                                    <label for="securityCode-container" class="block text-sm font-medium text-gray-700 mb-1">CVV</label>
+                                    <div ref="securityCodeContainerMicroForm" class="border border-gray-300 rounded-lg p-3 bg-white transition duration-300 h-10"></div>
                                 </div>
                                 <br>
-                                <div class="tw-flex tw-gap-4 tw-mb-4">
-                                    <div class="tw-w-1/2 tw-relative">
-                                        <v-select v-model="expirationMicroForm.expirationMonth" :items="dataMonths" item-title="text" item-value="value" label="Mes de expiración" outlined dense class="tw-w-full" />
+                                <div class="flex gap-4 mb-4">
+                                    <div class="w-1/2 relative">
+                                        <v-select v-model="expirationMicroForm.expirationMonth" :items="dataMonths" item-title="text" item-value="value" label="Mes de expiración" outlined dense class="w-full" />
                                     </div>
 
-                                    <div class="tw-w-1/2 tw-relative">
-                                        <v-select v-model="expirationMicroForm.expirationYear" :items="dataYears" item-title="text" item-value="value" label="Año de expiración" outlined dense class="tw-w-full"/>
+                                    <div class="w-1/2 relative">
+                                        <v-select v-model="expirationMicroForm.expirationYear" :items="dataYears" item-title="text" item-value="value" label="Año de expiración" outlined dense class="w-full"/>
                                     </div>
                                 </div>
 
@@ -754,7 +754,7 @@ const searchLocality = (value) => {
                         </div>
                     </template>
                     <template v-slot:item.3>
-                        <div class="tw-relative" v-if="stepUpUrlChallenge && accessTokenChallenge">
+                        <div class="relative" v-if="stepUpUrlChallenge && accessTokenChallenge">
                             <iframe ref="stepUpIframeChallenge" style="border: none; margin-left: auto; margin-right: auto; display: block" :width="windowSizeChallenge.width" :height="windowSizeChallenge.height" name="stepUpIframe"></iframe>
                             <form ref="stepUpFormChallenge" method="POST" target="stepUpIframe" :action="stepUpUrlChallenge">
                                 <input type="hidden" name="JWT" :value="accessTokenChallenge"/>
@@ -770,8 +770,8 @@ const searchLocality = (value) => {
                         </template>
                     </v-stepper-actions>
 
-                    <div class="tw-text-center tw-mt-3 tw-mb-4">
-                        <span @click="cancelProcess" class="tw-cursor-pointer tw-text-red-600 hover:tw-text-red-800 tw-font-medium" style="text-decoration: underline;">
+                    <div class="text-center mt-3 mb-4">
+                        <span @click="cancelProcess" class="cursor-pointer text-red-600 hover:text-red-800 font-medium" style="text-decoration: underline;">
                         Cancelar Proceso
                         </span>
                     </div>

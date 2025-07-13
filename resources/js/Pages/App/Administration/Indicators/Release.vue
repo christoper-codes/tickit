@@ -72,28 +72,28 @@ const globalPayementTypeProps = (item) => {
             <span>Transito por evento</span>
         </BreadcrumbAppSecondary>
 
-        <div class="tw-relative tw-w-full tw-block tw-overflow-hidden tw-mt-10 tw-pb-10">
-            <div v-if="events.length > 0" class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-3 tw-gap-7">
-                <div v-for="event in events" :key="event.id" class="tw-shadow-xl tw-w-full tw-p-5 tw-rounded-3xl tw-bg-white">
-                    <div class="tw-h-48 tw-w-full tw-rounded-2xl tw-overflow-hidden tw-relative">
-                        <img :src="`/storage/${event.global_image.file_path}`" class="tw-w-full tw-h-full tw-object-cover" alt="Event Image">
+        <div class="relative w-full block overflow-hidden mt-10 pb-10">
+            <div v-if="events.length > 0" class="grid grid-cols-1 lg:grid-cols-3 gap-7">
+                <div v-for="event in events" :key="event.id" class="shadow-xl w-full p-5 rounded-3xl bg-white">
+                    <div class="h-48 w-full rounded-2xl overflow-hidden relative">
+                        <img :src="`/storage/${event.global_image.file_path}`" class="w-full h-full object-cover" alt="Event Image">
                     </div>
-                    <div class="tw-mt-3">
-                        <h3 class="tw-text-lg tw-font-bold tw-mt-3">{{ event.name }}</h3>
-                        <p class="tw-text-sm">{{ dateFormat(event.start_date) }}</p>
-                        <p class="tw-text-sm tw-font-bold tw-text-primary">{{ event.traffic_seats_count }} Asientos en tránsito</p>
+                    <div class="mt-3">
+                        <h3 class="text-lg font-bold mt-3">{{ event.name }}</h3>
+                        <p class="text-sm">{{ dateFormat(event.start_date) }}</p>
+                        <p class="text-sm font-bold text-primary">{{ event.traffic_seats_count }} Asientos en tránsito</p>
                     </div>
-                    <div @click="showEvent(event.id)" class="mt-3 tw-block">
-                        <SecondaryButton heightbtn="!tw-h-[60px]" paddingbtn="!tw-w-full !tw-block" :loading="loadingEventId === event.id">
+                    <div @click="showEvent(event.id)" class="mt-3 block">
+                        <SecondaryButton heightbtn="!h-[60px]" paddingbtn="!w-full !block" :loading="loadingEventId === event.id">
                             <span>Liberar</span>
                         </SecondaryButton>
                     </div>
-                    <p class="tw-text-xs tw-mt-3 tw-text-center tw-text-red-500">Seran liberados asientos reservados hace mas de 20 minutos</p>
+                    <p class="text-xs mt-3 text-center text-red-500">Seran liberados asientos reservados hace mas de 20 minutos</p>
                 </div>
             </div>
-            <div v-else class="tw-flex tw-items-center tw-justify-center tw-flex-col tw-gap-5 tw-mt-10">
-                <div class="tw-text-center tw-flex tw-items-center tw-justify-center tw-flex-col tw-gap-5">
-                    <img class="tw-w-40 lg:tw-w-72 tw-h-auto" src="/storage/public/empty-cart.webp" alt="Webiste image">
+            <div v-else class="flex items-center justify-center flex-col gap-5 mt-10">
+                <div class="text-center flex items-center justify-center flex-col gap-5">
+                    <img class="w-40 lg:w-72 h-auto" src="/storage/public/empty-cart.webp" alt="Webiste image">
                     <span>¡No hay eventos con asientos en transito!</span>
                 </div>
             </div>

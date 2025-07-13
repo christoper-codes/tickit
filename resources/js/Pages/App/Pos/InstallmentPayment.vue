@@ -45,7 +45,7 @@ const headers = [
 ];
 
 const headerProps = {
-    class: '!tw-font-bold'
+    class: '!font-bold'
 };
 
 const searchPending = ref('')
@@ -458,91 +458,91 @@ onMounted(() => {
             <v-tab value="pending">Pendientes</v-tab>
             <v-tab value="paid">Pagados</v-tab>
         </v-tabs>
-        <v-tabs-window v-model="tab" class="tw-my-10 tw-mx-10">
+        <v-tabs-window v-model="tab" class="my-10 mx-10">
             <v-tabs-window-item value="pending">
-                <div class="tw-flex tw-justify-between tw-items-center">
+                <div class="flex justify-between items-center">
                     <v-text-field v-model="searchPending" label="Buscar" prepend-inner-icon="mdi-magnify" variant="outlined" hide-details single-line></v-text-field>
-                    <v-btn size="x-large" color="success" class="tw-mx-2" @click="exportExcelPending" :loading="loadingDownload" :disabled="loadingDownload">
+                    <v-btn size="x-large" color="success" class="mx-2" @click="exportExcelPending" :loading="loadingDownload" :disabled="loadingDownload">
                         <span class="material-symbols-outlined">Download</span> Excel
                     </v-btn>
                 </div>
                 <v-data-table :items="pendingTickets" :headers="headers" :header-props="headerProps" :search="searchPending" :loading="loadingSaleTicketStatusPending">
                     <template v-slot:item.status="{ item }">
-                        <span class="tw-py-1 tw-px-4 tw-rounded-full" :class="item.status === 'pagado' ? '!tw-text-green-600 tw-bg-green-100' : '!tw-text-red-600 tw-bg-red-100'">
+                        <span class="py-1 px-4 rounded-full" :class="item.status === 'pagado' ? '!text-green-600 bg-green-100' : '!text-red-600 bg-red-100'">
                             {{ formatFirstLetterUppercase(item.status) }}
                         </span>
                     </template>
                     <template v-slot:item.actions="{ item }">
-                        <div class="tw-flex tw-items-center tw-gap-3 tw-justify-between !tw-my-3">
+                        <div class="flex items-center gap-3 justify-between !my-3">
                             <v-dialog  v-model="activeDialogs[item.folio]" max-width="1000" persistent>
                                 <template v-slot:activator="{ props: activatorProps }">
                                     <v-btn
                                         @click="addDataTicket(item.folio, item.total_amount_without_format )"
                                         v-bind="activatorProps"
-                                        density="default" class="!tw-text-blue-600 !tw-bg-blue-200">
-                                        <span class="material-symbols-outlined tw-text-lg">Payments</span>
+                                        density="default" class="!text-blue-600 !bg-blue-200">
+                                        <span class="material-symbols-outlined text-lg">Payments</span>
                                     </v-btn>
                                 </template>
-                                <v-card class="tw-font-bold" title="Realizar pago de deuda">
+                                <v-card class="font-bold" title="Realizar pago de deuda">
                                     <v-card-text>
-                                        <div class="tw-max-w-5xl tw-mx-auto tw-p-6 tw-bg-white tw-rounded-2xl tw-space-y-6 tw-text-gray-800">
+                                        <div class="max-w-5xl mx-auto p-6 bg-white rounded-2xl space-y-6 text-gray-800">
                                             <!-- Encabezado -->
-                                            <div class="tw-flex tw-justify-between tw-items-center tw-border-b tw-pb-4">
+                                            <div class="flex justify-between items-center border-b pb-4">
                                                 <span class="">Folio {{ item.folio }} </span>
                                                 <span class="">Reservado el {{  item.sale_date }}</span>
                                             </div>
 
                                             <div>
-                                                <h3 class="tw-text-lg tw-font-semibold tw-mb-2">
+                                                <h3 class="text-lg font-semibold mb-2">
                                                     <span class="material-symbols-outlined">person</span>
                                                     Deudor
                                                 </h3>
-                                                <div class="tw-grid tw-grid-cols-2 tw-gap-4 tw-text-sm">
-                                                    <p><span class="tw-font-semibold">Nombre: </span>{{ item.debtor }}</p>
-                                                    <p><span class="tw-font-semibold">Teléfono:</span> {{ item.debtor_phone_number}}</p>
-                                                    <p><span class="tw-font-semibold">Email:</span> <em>{{ item.debtor_email }}</em></p>
+                                                <div class="grid grid-cols-2 gap-4 text-sm">
+                                                    <p><span class="font-semibold">Nombre: </span>{{ item.debtor }}</p>
+                                                    <p><span class="font-semibold">Teléfono:</span> {{ item.debtor_phone_number}}</p>
+                                                    <p><span class="font-semibold">Email:</span> <em>{{ item.debtor_email }}</em></p>
                                                 </div>
                                             </div>
 
                                             <!-- Resumen de Pagos -->
                                             <div>
-                                                <h3 class="tw-text-lg tw-font-semibold tw-mb-2">
+                                                <h3 class="text-lg font-semibold mb-2">
                                                     <span class="material-symbols-outlined">payments</span>
                                                     Resumen de pago</h3>
-                                                <div class="tw-grid tw-grid-cols-2 tw-gap-4 tw-text-sm">
-                                                    <p><span class="tw-font-semibold">Total venta: </span>{{ item.total_amount }} MXN</p>
-                                                    <p><span class="tw-font-semibold">Pagado: </span>{{ item.amount_paid }} MXN</p>
-                                                    <p><span class="tw-font-semibold tw-text-red-600">Pendiente por pagar: </span>
-                                                    <span class="tw-text-red-600 tw-font-bold">{{ formatPrice(item.remaining_amount) }} MXN</span>
+                                                <div class="grid grid-cols-2 gap-4 text-sm">
+                                                    <p><span class="font-semibold">Total venta: </span>{{ item.total_amount }} MXN</p>
+                                                    <p><span class="font-semibold">Pagado: </span>{{ item.amount_paid }} MXN</p>
+                                                    <p><span class="font-semibold text-red-600">Pendiente por pagar: </span>
+                                                    <span class="text-red-600 font-bold">{{ formatPrice(item.remaining_amount) }} MXN</span>
                                                     </p>
                                                 </div>
                                             </div>
 
                                             <!-- Asientos -->
                                             <div>
-                                            <h3 class="tw-text-lg tw-font-semibold tw-mb-2">
+                                            <h3 class="text-lg font-semibold mb-2">
                                                 <span class="material-symbols-outlined">chair</span>
                                                 Asientos
                                             </h3>
-                                            <ul class="tw-space-y-2 tw-text-sm">
-                                                <li v-for="(seat, index) in item.seats" :key="index" class="tw-border tw-p-3 tw-rounded-lg tw-flex tw-justify-between tw-items-center tw-bg-gray-50">
+                                            <ul class="space-y-2 text-sm">
+                                                <li v-for="(seat, index) in item.seats" :key="index" class="border p-3 rounded-lg flex justify-between items-center bg-gray-50">
                                                     <div>
-                                                        <p><strong>Asiento:</strong> Zona {{ seat.seat_catalogue.zone }} - Fila {{ seat.seat_catalogue.row }} - Asiento {{ seat.seat_catalogue.seat }} <span class="tw-text-gray-500">({{ seat.seat_catalogue.code }})</span></p>
+                                                        <p><strong>Asiento:</strong> Zona {{ seat.seat_catalogue.zone }} - Fila {{ seat.seat_catalogue.row }} - Asiento {{ seat.seat_catalogue.seat }} <span class="text-gray-500">({{ seat.seat_catalogue.code }})</span></p>
                                                         <p><strong>Tipo:</strong> {{ formatFirstLetterUppercase(seat.purchase_type) }}</p>
                                                     </div>
-                                                    <p class="tw-font-semibold"> {{ formatPrice(seat.price) }} MXN</p>
+                                                    <p class="font-semibold"> {{ formatPrice(seat.price) }} MXN</p>
                                                 </li>
                                             </ul>
                                             </div>
 
                                             <!-- Historial de pagos -->
                                             <div>
-                                                <h3 class="tw-text-lg tw-font-semibold tw-mb-2">
+                                                <h3 class="text-lg font-semibold mb-2">
                                                     <span class="material-symbols-outlined">assignment</span>
                                                     Historial de pagos
                                                 </h3>
-                                                <ul class="tw-space-y-2 tw-text-sm">
-                                                    <li v-for="(payments, index) in item.payments_made" class="tw-border tw-p-3 tw-rounded-lg tw-flex tw-justify-between tw-bg-green-50">
+                                                <ul class="space-y-2 text-sm">
+                                                    <li v-for="(payments, index) in item.payments_made" class="border p-3 rounded-lg flex justify-between bg-green-50">
                                                     <div>
                                                         <p><strong>Fecha:</strong> {{ dateFormat(payments.created_at) }}</p>
                                                         <p><strong>Vendedor:</strong> {{
@@ -553,19 +553,19 @@ onMounted(() => {
                                                         )
                                                         }}</p>
                                                     </div>
-                                                    <p class="tw-font-semibold tw-text-green-700"> {{ formatPrice(payments.total_amount) }} MXN </p>
+                                                    <p class="font-semibold text-green-700"> {{ formatPrice(payments.total_amount) }} MXN </p>
                                                     </li>
                                                 </ul>
                                             </div>
                                         </div>
 
-                                        <div class="tw-max-w-5xl tw-mx-auto tw-p-6 tw-bg-white tw-rounded-2xl tw-space-y-6 tw-mb-4 shadow-lg tw-text-gray-800">
+                                        <div class="max-w-5xl mx-auto p-6 bg-white rounded-2xl space-y-6 mb-4 shadow-lg text-gray-800">
                                             <v-form>
                                                 <v-expansion-panels v-model="panel" variant="popout">
                                                     <v-expansion-panel title="Pagar">
                                                         <v-expansion-panel-text>
 
-                                                            <div :class="{ 'tw-grid tw-gap-4': true, 'tw-grid-cols-2': isPaymetCardType, 'tw-grid-cols-1': !isPaymetCardType}">
+                                                            <div :class="{ 'grid gap-4': true, 'grid-cols-2': isPaymetCardType, 'grid-cols-1': !isPaymetCardType}">
 
                                                                 <v-select color="purple" label="Selecciona el tipo de pago" hint="Selecciona el tipo de pago"
                                                                     chips multiple clearable
@@ -591,7 +591,7 @@ onMounted(() => {
                                                             </div>
 
                                                             <!-- pago con tarjeta -->
-                                                            <div v-if="isPaymetCardType" class="tw-grid tw-gap-4 tw-grid-cols-1">
+                                                            <div v-if="isPaymetCardType" class="grid gap-4 grid-cols-1">
                                                                 <v-text-field
                                                                     label="Monto a pagar con tarjeta" color="purple" hint="Monto recibido por el cliente"
                                                                     v-model="installmentPayment.amount_card_to_pay.value.value"
@@ -600,7 +600,7 @@ onMounted(() => {
                                                             </div>
 
                                                             <!-- pago en efectivo -->
-                                                            <div v-if="installmentPayment.payment_types.value.value.length && !isPaymetCardType" class="tw-grid tw-gap-4 tw-grid-cols-2">
+                                                            <div v-if="installmentPayment.payment_types.value.value.length && !isPaymetCardType" class="grid gap-4 grid-cols-2">
                                                                 <v-text-field
                                                                     label="Monto recibido para efectivo" color="purple" clearable hint="Monto recibido por el cliente"
                                                                     v-model="installmentPayment.amount_cash_received.value.value"
@@ -615,7 +615,7 @@ onMounted(() => {
                                                                     :rules="[rules.rule_amount_cash_to_pay]"
                                                                 ></v-text-field>
                                                             </div>
-                                                            <div v-if="installmentPayment.payment_types.value.value.length && !isPaymetCardType" class="tw-grid tw-gap-4 tw-grid-cols-1">
+                                                            <div v-if="installmentPayment.payment_types.value.value.length && !isPaymetCardType" class="grid gap-4 grid-cols-1">
                                                                 <v-text-field
                                                                     label="Cambio a devolver"
                                                                     color="purple"
@@ -632,18 +632,18 @@ onMounted(() => {
                                         </div>
 
                                     </v-card-text>
-                                    <v-card-actions class="tw-mb-4 tw-mr-4">
+                                    <v-card-actions class="mb-4 mr-4">
                                         <v-spacer></v-spacer>
-                                        <v-btn color="red" rounded="large" variant="tonal" class="text-none !tw-px-4" text="Cancelar" @click="closeDialogDebtor(item.folio)"></v-btn>
-                                        <v-btn @click="saveInstallmentPayment" rounded="large" variant="elevated" class="text-none !tw-bg-purple-600 !tw-text-white">
+                                        <v-btn color="red" rounded="large" variant="tonal" class="text-none !px-4" text="Cancelar" @click="closeDialogDebtor(item.folio)"></v-btn>
+                                        <v-btn @click="saveInstallmentPayment" rounded="large" variant="elevated" class="text-none !bg-purple-600 !text-white">
                                             Pagar
                                         </v-btn>
                                         <v-dialog v-model="activeDialogConfirmation[item.folio]" max-width="800">
                                                 <v-card>
                                                 <v-card-text>
-                                                    <p class="tw-font-bold tw-text-sm lg:tw-text-xl tw-text-gray-700">¿Estas seguro de realizar el abono a la deuda?</p>
-                                                    <v-card-title class="tw-mt-4">Resumen de pago</v-card-title>
-                                                    <v-card-subtitle class="tw-my-4">
+                                                    <p class="font-bold text-sm lg:text-xl text-gray-700">¿Estas seguro de realizar el abono a la deuda?</p>
+                                                    <v-card-title class="mt-4">Resumen de pago</v-card-title>
+                                                    <v-card-subtitle class="my-4">
                                                         <v-row>
                                                             <v-col cols="12" md="4">
                                                                 <strong>Metodos de Pago: </strong>{{  installmentPayment.payment_types.value.value.map(payment => formatFirstLetterUppercase(payment.name)).join(', ') }}
@@ -667,10 +667,10 @@ onMounted(() => {
                                                     </v-card-subtitle>
                                                 </v-card-text>
 
-                                                <v-card-actions class="tw-mb-2 tw-mr-2">
+                                                <v-card-actions class="mb-2 mr-2">
                                                     <v-spacer></v-spacer>
                                                     <v-btn color="red" variant="tonal" class="text-none" text="Cancelar" @click="closeConfirmationDialog(item.folio)"></v-btn>
-                                                    <v-btn :loading="loadingPayment" @click="saveInstallmentPayment" text="Aceptar" rounded="large" variant="elevated" class="text-none !tw-bg-purple-600 !tw-text-white"></v-btn>
+                                                    <v-btn :loading="loadingPayment" @click="saveInstallmentPayment" text="Aceptar" rounded="large" variant="elevated" class="text-none !bg-purple-600 !text-white"></v-btn>
                                                 </v-card-actions>
 
                                                 </v-card>
@@ -680,18 +680,18 @@ onMounted(() => {
                             </v-dialog>
                             <v-dialog max-width="600">
                                 <template v-slot:activator="{ props: activatorProps }">
-                                    <v-btn v-bind="activatorProps" density="default" icon="mdi-printer-settings" class="!tw-text-purple-600 !tw-bg-purple-300"></v-btn>
+                                    <v-btn v-bind="activatorProps" density="default" icon="mdi-printer-settings" class="!text-purple-600 !bg-purple-300"></v-btn>
                                 </template>
                                 <template v-slot:default="{ isActive }">
                                     <v-card title="¿Estas seguro de reimprimir el recibo?">
                                     <v-card-text>
-                                        <p class="tw-opacity-50 tw-mt-3 tw-text-center">Preciona 'Imprimir Recibo' para ejecutar la acción.</p>
+                                        <p class="opacity-50 mt-3 text-center">Preciona 'Imprimir Recibo' para ejecutar la acción.</p>
                                     </v-card-text>
 
-                                    <v-card-actions class="tw-mb-4 tw-mr-4">
+                                    <v-card-actions class="mb-4 mr-4">
                                         <v-spacer></v-spacer>
-                                        <v-btn color="red" rounded="large" variant="tonal" class="text-none !tw-px-4" text="Cancelar" @click="isActive.value = false"></v-btn>
-                                        <v-btn :loading="loadingPrint" @click="printSubscriberInstallmentReceipt(item.folio, isActive)" rounded="large" variant="elevated" class="text-none !tw-bg-purple-600 !tw-text-white">
+                                        <v-btn color="red" rounded="large" variant="tonal" class="text-none !px-4" text="Cancelar" @click="isActive.value = false"></v-btn>
+                                        <v-btn :loading="loadingPrint" @click="printSubscriberInstallmentReceipt(item.folio, isActive)" rounded="large" variant="elevated" class="text-none !bg-purple-600 !text-white">
                                             Imprimir Recibo
                                         </v-btn>
                                     </v-card-actions>
@@ -703,89 +703,89 @@ onMounted(() => {
                 </v-data-table>
             </v-tabs-window-item>
             <v-tabs-window-item value="paid">
-                <div class="tw-flex tw-justify-between tw-items-center">
+                <div class="flex justify-between items-center">
                     <v-text-field v-model="searchPaid" label="Buscar" prepend-inner-icon="mdi-magnify" variant="outlined" hide-details single-line></v-text-field>
-                    <v-btn size="x-large" color="success" class="tw-mx-2" @click="exportExcelPaid" :loading="loadingDownload" :disabled="loadingDownload">
+                    <v-btn size="x-large" color="success" class="mx-2" @click="exportExcelPaid" :loading="loadingDownload" :disabled="loadingDownload">
                         <span class="material-symbols-outlined">Download</span> Excel
                     </v-btn>
                 </div>
                 <v-data-table :items="paidTickets" :headers="headers" :header-props="headerProps" :search="searchPaid" :loading="loadingPaidTickets">
                     <template v-slot:item.status="{ item }">
-                        <span class="tw-py-1 tw-px-4 tw-rounded-full" :class="item.status === 'pagado' ? '!tw-text-green-600 tw-bg-green-100' : '!tw-text-red-600 tw-bg-red-100'">
+                        <span class="py-1 px-4 rounded-full" :class="item.status === 'pagado' ? '!text-green-600 bg-green-100' : '!text-red-600 bg-red-100'">
                             {{ formatFirstLetterUppercase(item.status) }}
                         </span>
                     </template>
                     <template v-slot:item.actions="{ item }">
-                        <div class="tw-flex tw-items-center tw-gap-3 tw-justify-between !tw-my-3">
+                        <div class="flex items-center gap-3 justify-between !my-3">
                             <v-dialog  v-model="activeDialogs[item.folio]" max-width="1000" persistent>
                                 <template v-slot:activator="{ props: activatorProps }">
                                     <v-btn
                                         @click="addDataTicket(item.folio, item.total_amount_without_format )"
                                         v-bind="activatorProps"
-                                        density="default" class="!tw-text-blue-600 !tw-bg-blue-200">
-                                        <span class="material-symbols-outlined tw-text-lg">Visibility</span>
+                                        density="default" class="!text-blue-600 !bg-blue-200">
+                                        <span class="material-symbols-outlined text-lg">Visibility</span>
                                     </v-btn>
                                 </template>
-                                <v-card class="tw-font-bold" title="Compra a plazos pagada">
+                                <v-card class="font-bold" title="Compra a plazos pagada">
                                     <v-card-text>
-                                        <div class="tw-max-w-5xl tw-mx-auto tw-p-6 tw-bg-white tw-rounded-2xl tw-space-y-6 tw-text-gray-800">
+                                        <div class="max-w-5xl mx-auto p-6 bg-white rounded-2xl space-y-6 text-gray-800">
                                             <!-- Encabezado -->
-                                            <div class="tw-flex tw-justify-between tw-items-center tw-border-b tw-pb-4">
+                                            <div class="flex justify-between items-center border-b pb-4">
                                                 <span class="">Folio {{ item.folio }} </span>
                                                 <span class="">Reservado el {{  item.sale_date }}</span>
                                             </div>
 
                                             <div>
-                                                <h3 class="tw-text-lg tw-font-semibold tw-mb-2">
+                                                <h3 class="text-lg font-semibold mb-2">
                                                     <span class="material-symbols-outlined">person</span>
                                                     Deudor
                                                 </h3>
-                                                <div class="tw-grid tw-grid-cols-2 tw-gap-4 tw-text-sm">
-                                                    <p><span class="tw-font-semibold">Nombre: </span>{{ item.debtor }}</p>
-                                                    <p><span class="tw-font-semibold">Teléfono:</span> {{ item.debtor_phone_number}}</p>
-                                                    <p><span class="tw-font-semibold">Email:</span> <em>{{ item.debtor_email }}</em></p>
+                                                <div class="grid grid-cols-2 gap-4 text-sm">
+                                                    <p><span class="font-semibold">Nombre: </span>{{ item.debtor }}</p>
+                                                    <p><span class="font-semibold">Teléfono:</span> {{ item.debtor_phone_number}}</p>
+                                                    <p><span class="font-semibold">Email:</span> <em>{{ item.debtor_email }}</em></p>
                                                 </div>
                                             </div>
 
                                             <!-- Resumen de Pagos -->
                                             <div>
-                                                <h3 class="tw-text-lg tw-font-semibold tw-mb-2">
+                                                <h3 class="text-lg font-semibold mb-2">
                                                     <span class="material-symbols-outlined">payments</span>
                                                     Resumen de pago</h3>
-                                                <div class="tw-grid tw-grid-cols-2 tw-gap-4 tw-text-sm">
-                                                    <p><span class="tw-font-semibold">Total venta: </span>{{ item.total_amount }} MXN</p>
-                                                    <p><span class="tw-font-semibold">Pagado: </span>{{ item.amount_paid }} MXN</p>
-                                                    <p><span class="tw-font-semibold tw-text-red-600">Pendiente por pagar: </span>
-                                                    <span class="tw-text-red-600 tw-font-bold">{{formatPrice(item.remaining_amount) }} MXN</span>
+                                                <div class="grid grid-cols-2 gap-4 text-sm">
+                                                    <p><span class="font-semibold">Total venta: </span>{{ item.total_amount }} MXN</p>
+                                                    <p><span class="font-semibold">Pagado: </span>{{ item.amount_paid }} MXN</p>
+                                                    <p><span class="font-semibold text-red-600">Pendiente por pagar: </span>
+                                                    <span class="text-red-600 font-bold">{{formatPrice(item.remaining_amount) }} MXN</span>
                                                     </p>
                                                 </div>
                                             </div>
 
                                             <!-- Asientos -->
                                             <div>
-                                            <h3 class="tw-text-lg tw-font-semibold tw-mb-2">
+                                            <h3 class="text-lg font-semibold mb-2">
                                                 <span class="material-symbols-outlined">chair</span>
                                                 Asientos
                                             </h3>
-                                            <ul class="tw-space-y-2 tw-text-sm">
-                                                <li v-for="(seat, index) in item.seats" :key="index" class="tw-border tw-p-3 tw-rounded-lg tw-flex tw-justify-between tw-items-center tw-bg-gray-50">
+                                            <ul class="space-y-2 text-sm">
+                                                <li v-for="(seat, index) in item.seats" :key="index" class="border p-3 rounded-lg flex justify-between items-center bg-gray-50">
                                                     <div>
-                                                        <p><strong>Asiento:</strong> Zona {{ seat.seat_catalogue.zone }} - Fila {{ seat.seat_catalogue.row }} - Asiento {{ seat.seat_catalogue.seat }} <span class="tw-text-gray-500">({{ seat.seat_catalogue.code }})</span></p>
+                                                        <p><strong>Asiento:</strong> Zona {{ seat.seat_catalogue.zone }} - Fila {{ seat.seat_catalogue.row }} - Asiento {{ seat.seat_catalogue.seat }} <span class="text-gray-500">({{ seat.seat_catalogue.code }})</span></p>
                                                         <p><strong>Tipo:</strong> {{ formatFirstLetterUppercase(seat.purchase_type) }}</p>
                                                     </div>
-                                                    <p class="tw-font-semibold"> {{ formatPrice(seat.price) }} MXN</p>
+                                                    <p class="font-semibold"> {{ formatPrice(seat.price) }} MXN</p>
                                                 </li>
                                             </ul>
                                             </div>
 
                                             <!-- Historial de pagos -->
                                             <div>
-                                                <h3 class="tw-text-lg tw-font-semibold tw-mb-2">
+                                                <h3 class="text-lg font-semibold mb-2">
                                                     <span class="material-symbols-outlined">assignment</span>
                                                     Historial de pagos
                                                 </h3>
-                                                <ul class="tw-space-y-2 tw-text-sm">
-                                                    <li v-for="(payments, index) in item.payments_made" class="tw-border tw-p-3 tw-rounded-lg tw-flex tw-justify-between tw-bg-green-50">
+                                                <ul class="space-y-2 text-sm">
+                                                    <li v-for="(payments, index) in item.payments_made" class="border p-3 rounded-lg flex justify-between bg-green-50">
                                                     <div>
                                                         <p><strong>Fecha:</strong> {{ dateFormat(payments.created_at) }}</p>
                                                         <p><strong>Vendedor:</strong> {{
@@ -796,32 +796,32 @@ onMounted(() => {
                                                         )
                                                         }}</p>
                                                     </div>
-                                                    <p class="tw-font-semibold tw-text-green-700"> {{ formatPrice(payments.total_amount) }} MXN </p>
+                                                    <p class="font-semibold text-green-700"> {{ formatPrice(payments.total_amount) }} MXN </p>
                                                     </li>
                                                 </ul>
                                             </div>
                                         </div>
                                     </v-card-text>
-                                    <v-card-actions class="tw-mb-4 tw-mr-4">
+                                    <v-card-actions class="mb-4 mr-4">
                                         <v-spacer></v-spacer>
-                                        <v-btn color="red" rounded="large" variant="tonal" class="text-none !tw-px-4" text="Cerrar" @click="closeDialogDebtor(item.folio)"></v-btn>
+                                        <v-btn color="red" rounded="large" variant="tonal" class="text-none !px-4" text="Cerrar" @click="closeDialogDebtor(item.folio)"></v-btn>
                                     </v-card-actions>
                                 </v-card>
                             </v-dialog>
                             <v-dialog max-width="600">
                                 <template v-slot:activator="{ props: activatorProps }">
-                                    <v-btn v-bind="activatorProps" density="default" icon="mdi-printer-settings" class="!tw-text-purple-600 !tw-bg-purple-300"></v-btn>
+                                    <v-btn v-bind="activatorProps" density="default" icon="mdi-printer-settings" class="!text-purple-600 !bg-purple-300"></v-btn>
                                 </template>
                                 <template v-slot:default="{ isActive }">
                                     <v-card title="¿Estas seguro de reimprimir el recibo?">
                                     <v-card-text>
-                                        <p class="tw-opacity-50 tw-mt-3 tw-text-center">Preciona 'Imprimir Recibo' para ejecutar la acción.</p>
+                                        <p class="opacity-50 mt-3 text-center">Preciona 'Imprimir Recibo' para ejecutar la acción.</p>
                                     </v-card-text>
 
-                                    <v-card-actions class="tw-mb-4 tw-mr-4">
+                                    <v-card-actions class="mb-4 mr-4">
                                         <v-spacer></v-spacer>
-                                        <v-btn color="red" rounded="large" variant="tonal" class="text-none !tw-px-4" text="Cancelar" @click="isActive.value = false"></v-btn>
-                                        <v-btn :loading="loadingPrint" @click="printSubscriberInstallmentReceipt(item.folio)" rounded="large" variant="elevated" class="text-none !tw-bg-purple-600 !tw-text-white">
+                                        <v-btn color="red" rounded="large" variant="tonal" class="text-none !px-4" text="Cancelar" @click="isActive.value = false"></v-btn>
+                                        <v-btn :loading="loadingPrint" @click="printSubscriberInstallmentReceipt(item.folio)" rounded="large" variant="elevated" class="text-none !bg-purple-600 !text-white">
                                             Imprimir Recibo
                                         </v-btn>
                                     </v-card-actions>
@@ -835,14 +835,14 @@ onMounted(() => {
         </v-tabs-window>
         <v-dialog max-width="800">
             <template v-slot:activator="{ props: activatorProps }">
-                <v-btn id="on-submit-confirm" v-bind="activatorProps" variant="elevated" class="!tw-hidden text-none !tw-text-white !tw-bg-gradient-to-r !tw-from-purple-600 !tw-to-pink-400" rounded="xl" size="large" block><span class="material-symbols-outlined tw-text-xl !tw-w-1/2">shopping_cart</span>Adquirir boletos</v-btn>
+                <v-btn id="on-submit-confirm" v-bind="activatorProps" variant="elevated" class="!hidden text-none !text-white !bg-gradient-to-r !from-purple-600 !to-pink-400" rounded="xl" size="large" block><span class="material-symbols-outlined text-xl !w-1/2">shopping_cart</span>Adquirir boletos</v-btn>
             </template>
         </v-dialog>
     </div>
-    <div v-else class="tw-flex tw-items-center tw-justify-center tw-mt-20 tw-flex-col tw-gap-10">
-        <div class="tw-font-bold tw-text-center">
+    <div v-else class="flex items-center justify-center mt-20 flex-col gap-10">
+        <div class="font-bold text-center">
             No hay cajas abiertas para este usuario en esta taquilla
         </div>
-        <img class="tw-w-40 lg:tw-w-72 tw-h-auto" src="/storage/public/empty-cart.webp" alt="Webiste image">
+        <img class="w-40 lg:w-72 h-auto" src="/storage/public/empty-cart.webp" alt="Webiste image">
     </div>
 </template>

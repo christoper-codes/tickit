@@ -34,45 +34,45 @@ if (props.user_roles && !viewVendorTopics(props.user_roles)) {
 <template>
   <div>
     <v-layout>
-      <v-navigation-drawer v-model="drawerNavState" temporary class="!tw-bg-white">
+      <v-navigation-drawer v-model="drawerNavState" temporary class="!bg-white">
         <div class="">
-            <Link @click="drawerNavState = !drawerNavState" :href="route('welcome')" class="tw-flex tw-items-end tw-gap-1 tw-shadow-md tw-p-4">
-                <ApplicationLogo class="tw-w-11 tw-h-auto tw-fill-current" />
-                <div class="tw-font-semibold tw-text-tw-text-primary-600 tw-text-xs">
-                    <span class="tw-block">victoria de</span>
-                    <span class="tw-block">xalapa</span>
+            <Link @click="drawerNavState = !drawerNavState" :href="route('welcome')" class="flex items-end gap-1 shadow-md p-4">
+                <ApplicationLogo class="w-11 h-auto fill-current" />
+                <div class="font-semibold text-text-primary-600 text-xs">
+                    <span class="block">victoria de</span>
+                    <span class="block">xalapa</span>
                 </div>
             </Link>
-            <div class="tw-flex tw-flex-col tw-items-center tw-justify-between tw-gap-10 tw-p-4">
-                    <div class="tw-flex tw-flex-col tw-items-center tw-gap-5 tw-w-full">
-                        <div class="tw-w-full ">
+            <div class="flex flex-col items-center justify-between gap-10 p-4">
+                    <div class="flex flex-col items-center gap-5 w-full">
+                        <div class="w-full ">
                             <GuestNavLink :href="route('welcome')" :active="route().current('welcome')">
-                                <span class="material-symbols-outlined tw-text-lg">home</span>Inicio
+                                <span class="material-symbols-outlined text-lg">home</span>Inicio
                             </GuestNavLink>
                         </div>
-                        <div v-if="isMember" class="tw-w-full ">
+                        <div v-if="isMember" class="w-full ">
                             <GuestNavLink :href="route('ticket-offices.index')" :active="route().current('ticket-offices.index')">
-                                <span class="material-symbols-outlined tw-text-lg">mp</span>Taquillas
+                                <span class="material-symbols-outlined text-lg">mp</span>Taquillas
                             </GuestNavLink>
                         </div>
-                        <div class="tw-w-full ">
+                        <div class="w-full ">
                             <GuestNavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                                <span class="material-symbols-outlined tw-text-lg">local_activity</span>Mis boletos
+                                <span class="material-symbols-outlined text-lg">local_activity</span>Mis boletos
                             </GuestNavLink>
                         </div>
-                        <div class="tw-w-full">
+                        <div class="w-full">
                             <GuestNavLink :href="route('events.index')" :active="route().current('events.index') || route().current('events.show')">
-                                <span class="material-symbols-outlined tw-text-lg">note_stack</span>Eventos
+                                <span class="material-symbols-outlined text-lg">note_stack</span>Eventos
                             </GuestNavLink>
                         </div>
-                        <div class="text-center tw-w-full left-zone">
+                        <div class="text-center w-full left-zone">
                             <v-menu
                             v-model="menu"
                             :close-on-content-click="false"
                             location="bottom start" origin="top center"
                             >
                             <!-- <template v-slot:activator="{ props }">
-                                <v-btn v-bind="props" variant="text" class="text-none !tw-h-[40px] lg:!tw-rounded-none !tw-rounded-full lg:!tw-h-[80px] !tw-w-full !tw-justify-start lg:!tw-justify-center lg:!tw-w-24 !tw-text-gray-600 !tw-bg-transparent"><span class="material-symbols-outlined tw-text-lg">settings</span>Servicios</v-btn>
+                                <v-btn v-bind="props" variant="text" class="text-none !h-[40px] lg:!rounded-none !rounded-full lg:!h-[80px] !w-full !justify-start lg:!justify-center lg:!w-24 !text-gray-600 !bg-transparent"><span class="material-symbols-outlined text-lg">settings</span>Servicios</v-btn>
                             </template> -->
 
                             <v-card min-width="300" rounded="lg" class="">
@@ -138,33 +138,33 @@ if (props.user_roles && !viewVendorTopics(props.user_roles)) {
                             </v-card>
                             </v-menu>
                         </div>
-                        <!-- <div class="tw-w-full">
+                        <!-- <div class="w-full">
                             <GuestNavLink :href="route('blogs.show', 1)" :active="route().current('blogs.show')">
-                                <span class="material-symbols-outlined tw-text-lg">bookmark</span>Blogs
+                                <span class="material-symbols-outlined text-lg">bookmark</span>Blogs
                             </GuestNavLink>
                         </div> -->
                     </div>
                     <Link
                         v-if="$page.props.auth.user"
                         :href="route('dashboard')"
-                        class="tw-w-full"
+                        class="w-full"
                     >
-                        <v-btn @click="drawerNavState = !drawerNavState" variant="tonal" class="text-none !tw-bg-tw-primary-100 !tw-text-tw-primary-600" block size="large" rounded="xl">Dashboard</v-btn>
+                        <v-btn @click="drawerNavState = !drawerNavState" variant="tonal" class="text-none !bg-primary-100 !text-primary-600" block size="large" rounded="xl">Dashboard</v-btn>
                     </Link>
-                    <div v-else class="tw-flex tw-flex-col tw-items-center tw-gap-3 tw-w-full">
+                    <div v-else class="flex flex-col items-center gap-3 w-full">
                         <Link
                             @click="drawerNavState = !drawerNavState"
-                            class="tw-w-full"
+                            class="w-full"
                             :href="route('register')"
                         >
-                            <v-btn variant="elevated" class="text-none !tw-bg-tw-primary-500 !tw-text-white" block size="large" rounded="xl">Registrarse</v-btn>
+                            <v-btn variant="elevated" class="text-none !bg-primary-500 !text-white" block size="large" rounded="xl">Registrarse</v-btn>
                         </Link>
                         <Link
                             @click="drawerNavState = !drawerNavState"
-                            class="tw-w-full"
+                            class="w-full"
                             :href="route('login')"
                         >
-                        <v-btn variant="tonal" class="text-none !tw-bg-tw-primary-100 !tw-text-tw-primary-600" block size="large" rounded="xl">Iniciar sesion</v-btn>
+                        <v-btn variant="tonal" class="text-none !bg-primary-100 !text-primary-600" block size="large" rounded="xl">Iniciar sesion</v-btn>
                         </Link>
                     </div>
                 </div>

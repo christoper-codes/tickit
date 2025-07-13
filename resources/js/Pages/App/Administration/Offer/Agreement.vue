@@ -166,17 +166,17 @@ const editAgreement = (selectedAgreement) => {
         <BreadcrumbAppSecondary>
             <span>Administración de Convenios</span>
         </BreadcrumbAppSecondary>
-        <div class="tw-px-4 tw-py-10 lg:tw-p-10">
+        <div class="px-4 py-10 lg:p-10">
             <v-data-table :group-by="agreementGroupBy" :headers="headersAgreement" :items="agreements"
                 item-value="name">
                 <template v-slot:top>
                     <v-toolbar flat>
-                        <v-toolbar-title class="tw-uppercase">Convenios</v-toolbar-title>
+                        <v-toolbar-title class="uppercase">Convenios</v-toolbar-title>
                         <v-divider class="mx-4" inset vertical></v-divider>
                         <v-spacer></v-spacer>
                         <v-dialog v-model="dialogFormAgreement" max-width="800px">
                             <template v-slot:activator="{ props }">
-                                <v-btn variant="tonal" class="mb-2 !tw-mr-5 text-none" color="purple" rounded="xl"
+                                <v-btn variant="tonal" class="mb-2 !mr-5 text-none" color="purple" rounded="xl"
                                     v-bind="props">
                                     Nuevo Convenio
                                 </v-btn>
@@ -189,15 +189,15 @@ const editAgreement = (selectedAgreement) => {
 
                                 <v-card-text>
                                     <v-container>
-                                        <div class="tw-mt-5 tw-flex tw-flex-col tw-gap-3">
-                                            <v-form class="tw-mt-5 tw-flex tw-flex-col tw-gap-1">
+                                        <div class="mt-5 flex flex-col gap-3">
+                                            <v-form class="mt-5 flex flex-col gap-1">
 
                                                 <div
-                                                    class="tw-flex tw-flex-col lg:tw-flex-row tw-items-center tw-justify-between tw-gap-5 tw-mb-2">
+                                                    class="flex flex-col lg:flex-row items-center justify-between gap-5 mb-2">
 
-                                                    <div class="tw-w-full">
-                                                        <p class="tw-font-medium tw-mb-1"><span
-                                                                class="tw-text-red-500">*</span>Institución</p>
+                                                    <div class="w-full">
+                                                        <p class="font-medium mb-1"><span
+                                                                class="text-red-500">*</span>Institución</p>
                                                         <v-select label="Institución" :items="institutions"
                                                             :item-title="(item) => formatFirstLetterUppercase(item.name)"
                                                             item-value="id"
@@ -207,9 +207,9 @@ const editAgreement = (selectedAgreement) => {
                                                             :message="dataFormAgreement.errors.institution_id" />
                                                     </div>
 
-                                                    <div class="tw-w-full">
-                                                        <p class="tw-font-medium tw-mb-1"><span
-                                                                class="tw-text-red-500">*</span>Temporada</p>
+                                                    <div class="w-full">
+                                                        <p class="font-medium mb-1"><span
+                                                                class="text-red-500">*</span>Temporada</p>
                                                         <v-select label="Temporada" :items="global_seasons"
                                                             :item-title="(item) => formatFirstLetterUppercase(item.name)"
                                                             item-value="id"
@@ -219,9 +219,9 @@ const editAgreement = (selectedAgreement) => {
                                                             :message="dataFormAgreement.errors.global_season_id" />
                                                     </div>
 
-                                                    <div class="tw-w-full">
-                                                        <p class="tw-font-medium tw-mb-1"><span
-                                                                class="tw-text-red-500">*</span>Nombre</p>
+                                                    <div class="w-full">
+                                                        <p class="font-medium mb-1"><span
+                                                                class="text-red-500">*</span>Nombre</p>
                                                         <v-text-field color="primary" label="Nombre"
                                                             placeholder="Convenio 1"
                                                             hint="Ingresa el nombre del convenio"
@@ -233,11 +233,11 @@ const editAgreement = (selectedAgreement) => {
                                                 </div>
 
                                                 <div
-                                                    class="tw-flex tw-flex-col lg:tw-flex-row tw-items-center tw-justify-between tw-gap-5 tw-my-2">
+                                                    class="flex flex-col lg:flex-row items-center justify-between gap-5 my-2">
 
-                                                    <div class="tw-w-full">
-                                                        <p class="tw-font-medium tw-mb-1"><span
-                                                                class="tw-text-red-500">*</span> Descripción</p>
+                                                    <div class="w-full">
+                                                        <p class="font-medium mb-1"><span
+                                                                class="text-red-500">*</span> Descripción</p>
                                                         <v-textarea color="primary" label="Descripción" rows="3"
                                                             variant="filled" auto-grow
                                                             v-model="agreement.description.value.value"
@@ -248,11 +248,11 @@ const editAgreement = (selectedAgreement) => {
                                                 </div>
 
                                                 <div
-                                                    class="tw-flex tw-flex-col lg:tw-flex-row tw-items-center tw-justify-between tw-gap-5 tw-my-2">
+                                                    class="flex flex-col lg:flex-row items-center justify-between gap-5 my-2">
 
-                                                    <div class="tw-w-full">
-                                                        <p class="tw-font-medium tw-mb-1"><span
-                                                                class="tw-text-red-500">*</span>Fecha de inicio
+                                                    <div class="w-full">
+                                                        <p class="font-medium mb-1"><span
+                                                                class="text-red-500">*</span>Fecha de inicio
                                                         </p>
                                                         <v-date-input density="compact" color="primary" clearable
                                                             label="Fecha de inicio" hint="Selecciona tu fecha de inicio"
@@ -261,9 +261,9 @@ const editAgreement = (selectedAgreement) => {
                                                         <InputError :message="dataFormAgreement.errors.start_date" />
                                                     </div>
 
-                                                    <div class="tw-w-full">
-                                                        <p class="tw-font-medium tw-mb-1"><span
-                                                                class="tw-text-red-500">*</span> Fecha de
+                                                    <div class="w-full">
+                                                        <p class="font-medium mb-1"><span
+                                                                class="text-red-500">*</span> Fecha de
                                                             terminación
                                                         </p>
                                                         <v-date-input density="compact" color="primary" clearable
@@ -277,7 +277,7 @@ const editAgreement = (selectedAgreement) => {
                                                 </div>
 
                                                 <div
-                                                    class="tw-flex tw-flex-col lg:tw-flex-row tw-items-center tw-justify-between tw-gap-5 tw-my-2">
+                                                    class="flex flex-col lg:flex-row items-center justify-between gap-5 my-2">
                                                     <v-select v-model="agreement.promotions.value.value"
                                                         :items="promotions"
                                                         :item-title="(item) => formatFirstLetterUppercase(item.name)"
@@ -286,10 +286,10 @@ const editAgreement = (selectedAgreement) => {
                                                     </v-select>
                                                 </div>
                                                 <div
-                                                    class="tw-flex tw-flex-col lg:tw-flex-row tw-items-center tw-justify-between tw-gap-5 tw-my-2">
-                                                    <div class="tw-w-full">
-                                                        <p class="tw-font-medium tw-mb-1">
-                                                            <span class="tw-text-red-500">*</span>Estatus
+                                                    class="flex flex-col lg:flex-row items-center justify-between gap-5 my-2">
+                                                    <div class="w-full">
+                                                        <p class="font-medium mb-1">
+                                                            <span class="text-red-500">*</span>Estatus
                                                         </p>
                                                         <v-switch
                                                             :label="`${agreement.is_active.value.value ? 'Activa' : 'Inactiva'}`"
@@ -301,13 +301,13 @@ const editAgreement = (selectedAgreement) => {
                                         </div>
                                     </v-container>
                                 </v-card-text>
-                                <v-card-actions class="!tw-mb-4">
+                                <v-card-actions class="!mb-4">
                                     <v-spacer></v-spacer>
-                                    <v-btn color="red" variant="tonal" rounded="xl" class="!tw-px-4 text-none"
+                                    <v-btn color="red" variant="tonal" rounded="xl" class="!px-4 text-none"
                                         @click="closeFormAgreement">
                                         Cancelar
                                     </v-btn>
-                                    <v-btn color="purple" rounded="xl" class="!tw-px-4 text-none" variant="elevated"
+                                    <v-btn color="purple" rounded="xl" class="!px-4 text-none" variant="elevated"
                                         @click="saveDataAgreement">
                                         Guardar
                                     </v-btn>
@@ -317,14 +317,14 @@ const editAgreement = (selectedAgreement) => {
                         <v-dialog v-model="dialogDeleteAgreement" max-width="500px">
                             <v-card>
                                 <v-card-title class="">¿Esta seguro de eliminar este convenio?</v-card-title>
-                                <v-card-actions class="!tw-my-2">
+                                <v-card-actions class="!my-2">
                                     <v-spacer></v-spacer>
                                     <v-btn @click="closeDeleteConfirmationSerie" color="red" rounded="xl"
-                                        class="!tw-px-4 text-none" variant="tonal">
+                                        class="!px-4 text-none" variant="tonal">
                                         Cancelar
                                     </v-btn>
                                     <v-btn @click="deleteAgreementConfirmation" color="purple" rounded="xl"
-                                        class="!tw-px-4 text-none" variant="elevated">
+                                        class="!px-4 text-none" variant="elevated">
                                         Eliminar
                                     </v-btn>
                                     <v-spacer></v-spacer>
@@ -356,10 +356,10 @@ const editAgreement = (selectedAgreement) => {
                     </v-chip>
                 </template>
                 <template v-slot:item.actions="{ item }">
-                    <v-icon class="me-2 !tw-text-purple-500" size="small" @click="editAgreement(item)">
+                    <v-icon class="me-2 !text-purple-500" size="small" @click="editAgreement(item)">
                         mdi-pencil
                     </v-icon>
-                    <v-icon class="!tw-text-red-600" size="small" @click="deleteAgreement(item)">
+                    <v-icon class="!text-red-600" size="small" @click="deleteAgreement(item)">
                         mdi-delete
                     </v-icon>
                 </template>

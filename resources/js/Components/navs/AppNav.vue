@@ -16,19 +16,19 @@ const isMember = ref(true)
       <div
         v-if="menuStateApp"
         @click="menuStateApp = !menuStateApp"
-        class="tw-fixed tw-inset-0 tw-bg-black/50 tw-z-20 tw-backdrop-blur-sm"
+        class="fixed inset-0 bg-black/50 z-20 backdrop-blur-sm"
       ></div>
     </transition>
     <transition name="slide" mode="out-in">
       <div
         v-if="menuStateApp"
-        class="tw-bg-white tw-fixed tw-top-0 tw-left-0 tw-h-screen tw-w-[100%] md:tw-w-[50%] lg:tw-w-[43%] xl:tw-w-[35%] tw-z-30 tw-overflow-hidden"
+        class="bg-white fixed top-0 left-0 h-screen w-[100%] md:w-[50%] lg:w-[43%] xl:w-[35%] z-30 overflow-hidden"
       >
         <div
-          class="tw-h-full tw-w-full tw-flex tw-flex-col tw-items-start tw-justify-between tw-py-7 tw-px-5 tw-relative tw-z-0"
+          class="h-full w-full flex flex-col items-start justify-between py-7 px-5 relative z-0"
         >
           <svg
-            class="tw-absolute tw-inset-0 tw-size-full tw-stroke-black/10 tw-[mask-image:radial-gradient(100%_50%_at_top_right,white,transparent)]"
+            class="absolute inset-0 size-full stroke-black/10 [mask-image:radial-gradient(100%_50%_at_top_right,white,transparent)]"
             aria-hidden="true"
           >
             <defs>
@@ -45,14 +45,14 @@ const isMember = ref(true)
             </defs>
             <rect width="100%" height="100%" stroke-width="0" fill="url(#about-svg)" />
           </svg>
-            <div class="tw-absolute -tw-bottom-60 tw-h-[680px] tw-w-[500px] tw-rounded-full tw-blur-[150px] tw-bg-white">
+            <div class="absolute -bottom-60 h-[680px] w-[500px] rounded-full blur-[150px] bg-white">
             </div>
           <div
             @click="menuStateApp = !menuStateApp"
-            class="tw-p-1 tw-border-2 tw-border-black/50 tw-rounded tw-cursor-pointer tw-z-10"
+            class="p-1 border-2 border-black/50 rounded cursor-pointer z-10"
           >
             <svg
-              class="tw-w-8 tw-h-auto tw-stroke-black"
+              class="w-8 h-auto stroke-black"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               stroke-width="2"
@@ -64,66 +64,66 @@ const isMember = ref(true)
             </svg>
           </div>
           <div
-            class="tw-w-full tw-text-center tw-inline-flex tw-flex-col tw-gap-9 2xl:tw-gap-9 tw-text-4xl tw-z-10 tw-text-neutral-800"
+            class="w-full text-center inline-flex flex-col gap-9 2xl:gap-9 text-4xl z-10 text-neutral-800"
           >
             <Link
                 :href="route('events.index')"
-                class="tw-w-full"
+                class="w-full"
                 @click="menuStateApp = !menuStateApp"
             >
-                <div class="tw-inline-block">
-                    <div class="tw-relative tw-inline-block tw-transition-colors tw-duration-300 after:tw-content-[''] after:tw-absolute after:tw-left-0 after:tw-bottom-0 after:tw-h-[2px] after:tw-w-0 after:tw-bg-current after:tw-transition-all after:tw-duration-500 hover:after:tw-w-full">Eventos</div>
+                <div class="inline-block">
+                    <div class="relative inline-block transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-500 hover:after:w-full">Eventos</div>
                 </div>
             </Link>
             <Link
                 v-if="$page.props.auth.user"
                 :href="route('dashboard')"
-                class="tw-w-full"
+                class="w-full"
                 @click="menuStateApp = !menuStateApp"
             >
-                <div class="tw-inline-block">
-                    <div class="tw-relative tw-inline-block tw-transition-colors tw-duration-300 after:tw-content-[''] after:tw-absolute after:tw-left-0 after:tw-bottom-0 after:tw-h-[2px] after:tw-w-0 after:tw-bg-current after:tw-transition-all after:tw-duration-500 hover:after:tw-w-full">Mis boletos</div>
+                <div class="inline-block">
+                    <div class="relative inline-block transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-500 hover:after:w-full">Mis boletos</div>
                 </div>
             </Link>
             <Link
                 v-if="$page.props.auth.user"
                 :href="route('dashboard')"
-                class="tw-w-full"
+                class="w-full"
                 @click="menuStateApp = !menuStateApp"
             >
-                <div class="tw-inline-block">
-                    <div class="tw-relative tw-inline-block tw-transition-colors tw-duration-300 after:tw-content-[''] after:tw-absolute after:tw-left-0 after:tw-bottom-0 after:tw-h-[2px] after:tw-w-0 after:tw-bg-current after:tw-transition-all after:tw-duration-500 hover:after:tw-w-full">Dashboard</div>
+                <div class="inline-block">
+                    <div class="relative inline-block transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-500 hover:after:w-full">Dashboard</div>
                 </div>
             </Link>
             <Link
                 v-if="!$page.props.auth.user"
                 :href="route('login')"
-                class="tw-w-full"
+                class="w-full"
                 @click="menuStateApp = !menuStateApp"
             >
-            <div class="tw-inline-block">
-                <div class="tw-relative tw-inline-block tw-transition-colors tw-duration-300 after:tw-content-[''] after:tw-absolute after:tw-left-0 after:tw-bottom-0 after:tw-h-[2px] after:tw-w-0 after:tw-bg-current after:tw-transition-all after:tw-duration-500 hover:after:tw-w-full">Iniciar sesión</div>
+            <div class="inline-block">
+                <div class="relative inline-block transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-500 hover:after:w-full">Iniciar sesión</div>
             </div>
             </Link>
             <Link
                 v-if="!$page.props.auth.user"
                 :href="route('register')"
-                class="tw-w-full"
+                class="w-full"
                 @click="menuStateApp = !menuStateApp"
             >
-                <div class="tw-inline-block">
-                    <div class="tw-relative tw-inline-block tw-transition-colors tw-duration-300 after:tw-content-[''] after:tw-absolute after:tw-left-0 after:tw-bottom-0 after:tw-h-[2px] after:tw-w-0 after:tw-bg-current after:tw-transition-all after:tw-duration-500 hover:after:tw-w-full">Registrarte</div>
+                <div class="inline-block">
+                    <div class="relative inline-block transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-500 hover:after:w-full">Registrarte</div>
                 </div>
             </Link>
           </div>
           <div
-            class="tw-flex tw-items-center tw-justify-center tw-gap-3 tw-flex-col tw-w-full tw-z-10"
+            class="flex items-center justify-center gap-3 flex-col w-full z-10"
           >
-            <div class="tw-flex tw-items-center  tw-relative tw-text-neutral-800">
-                <h2 class="tw-font-extrabold tw-font-bebas tw-text-4xl !tw-mt-1">victoria</h2>
-                <img class="tw-w-10 tw-h-auto tw-absolute -tw-top-5 -tw-left-7" src="/storage/public/hdx-logo.png" alt="hdx logo">
+            <div class="flex items-center  relative text-neutral-800">
+                <h2 class="font-extrabold font-bebas text-4xl !mt-1">victoria</h2>
+                <img class="w-10 h-auto absolute -top-5 -left-7" src="/storage/public/hdx-logo.png" alt="hdx logo">
             </div>
-            <div class="tw-text-center tw-w-full tw-text-xs 2xl:tw-text-sm tw-text-neutral-400">
+            <div class="text-center w-full text-xs 2xl:text-sm text-neutral-400">
               © {{ year }} Todos los derechos reservados.
             </div>
           </div>

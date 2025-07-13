@@ -49,9 +49,9 @@ watch(() => props.saleTicketsPerWeek, (newData) => {
 </script>
 
 <template>
-    <div class="tw-w-full tw-h-auto">
-        <div class="tw-w-full">
-            <Line :data="chartData" :options="chartOptions" class="!tw-w-full !tw-h-auto" />
+    <div class="w-full h-auto">
+        <div class="w-full">
+            <Line :data="chartData" :options="chartOptions" class="!w-full !h-auto" />
         </div>
     </div>
 </template>

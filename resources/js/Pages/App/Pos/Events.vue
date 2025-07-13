@@ -15,6 +15,7 @@ import { menuStateSocialMedia, menuStateApp } from '@/composables/nav/menu-state
 import AppNav from '@/Components/navs/AppNav.vue';
 import CashRegisterNav from '@/Components/navs/CashRegisterNav.vue';
 import Banner from '@/Components/Banner.vue';
+import MasterLayout from '@/Layouts/MasterLayout.vue';
 
 const { dateFormat } = useDateFormat();
 const loading = ref(false);
@@ -91,6 +92,7 @@ const closeImageModal = () => {
 </script>
 
 <template>
+    <MasterLayout>
     <Head title="Eventos" />
     <CashRegisterNav v-bind:user_roles="user_roles"/>
     <GuestNavSocial />
@@ -98,70 +100,70 @@ const closeImageModal = () => {
     <!--<Banner :banner="platform_settings[0].settings.banner"/>-->
     <transition name="fade">
         <div v-if="showImageModal"
-            class="tw-fixed tw-inset-0 !tw-z-50 tw-flex tw-items-center tw-justify-center tw-bg-black/50 tw-backdrop-blur-[7px] tw-transition-all tw-duration-500"
+            class="fixed inset-0 !z-50 flex items-center justify-center bg-black/50 backdrop-blur-[7px] transition-all duration-500"
             @click.self="closeImageModal"
         >
-            <div class="tw-bg-gradient-to-tr tw-from-white tw-to-primary tw-shadow-2xl tw-rounded tw-p-3 tw-relative tw-max-w-full tw-w-[90vw] md:tw-w-[520px] tw-flex tw-flex-col tw-items-center tw-transition-all tw-duration-500">
-                <img class="tw-w-full tw-h-auto" :src="modalImageSrc" alt="Imagen ampliada" />
+            <div class="bg-gradient-to-tr from-white to-primary shadow-2xl rounded p-3 relative max-w-full w-[90vw] md:w-[520px] flex flex-col items-center transition-all duration-500">
+                <img class="w-full h-auto" :src="modalImageSrc" alt="Imagen ampliada" />
             </div>
         </div>
     </transition>
-    <section class="lg:tw-h-screen !tw-p-4 sm:!tw-p-8 tw-flex tw-w-full tw-relative">
-        <div class="tw-rounded-3xl tw-w-full tw-overflow-hidden tw-relative tw-z-10 tw-shadow-xl tw-shadow-black/15">
-            <div class="tw-relative tw-h-full">
-                <div class="tw-relative tw-isolate tw-overflow-hidden tw-w-full tw-h-full">
-                    <div class="tw-block tw-absolute tw-left-[-40%] md:tw-left-[43%] tw-top-0 tw-right-0 tw-bottom-0 tw-bg-cover tw-z-0"
+    <section class="lg:h-screen !p-4 sm:!p-8 flex w-full relative">
+        <div class="rounded-3xl w-full overflow-hidden relative z-10 shadow-xl shadow-black/15">
+            <div class="relative h-full">
+                <div class="relative isolate overflow-hidden w-full h-full">
+                    <div class="block absolute left-[-40%] md:left-[43%] top-0 right-0 bottom-0 bg-cover z-0"
                         :style="{backgroundImage: `url('/storage/public/hero-img.jpg')`, transform: isLg ? `translateY(${parallaxY}px)` : 'none', willChange: 'transform',}">
                     </div>
-                    <div class="tw-absolute tw-left-[-40%] md:tw-left-[43%] tw-top-0 tw-right-0 tw-bottom-0 tw-bg-cover tw-bg-black/30 tw-z-10"></div>
-                    <div class="tw-absolute !tw-inset-y-0 !tw-right-1/2 tw-z-10 !tw-w-[200%] !tw-origin-top-right !tw-skew-x-[-30deg] tw-bg-white tw-ring-1 tw-shadow-xl !tw-shadow-purple-500 !tw-ring-purple-500/10 tw--mr-80 lg:!tw--mr-96" aria-hidden="true">
+                    <div class="absolute left-[-40%] md:left-[43%] top-0 right-0 bottom-0 bg-cover bg-black/30 z-10"></div>
+                    <div class="absolute !inset-y-0 !right-1/2 z-10 !w-[200%] !origin-top-right !skew-x-[-30deg] bg-white ring-1 shadow-xl !shadow-purple-500 !ring-purple-500/10 -mr-80 lg:!-mr-96" aria-hidden="true">
                     </div>
 
-                    <div class="tw-hidden lg:tw-block tw-pt-3">
+                    <div class="hidden lg:block pt-3">
                         <GuestNav/>
                     </div>
-                    <div class="tw-flex tw-items-center tw-justify-between lg:tw-hidden tw-relative tw-z-10 tw-px-5 tw-pt-7">
-                        <div class="tw-flex tw-items-center tw-relative">
-                            <h2 class="tw-font-extrabold tw-font-bebas tw-text-2xl !tw-mt-1">victoria</h2>
-                            <img class="tw-w-10 tw-h-auto tw-absolute -tw-top-5 -tw-left-3" src="/storage/public/hdx-logo.png" alt="hdx logo">
+                    <div class="flex items-center justify-between lg:hidden relative z-10 px-5 pt-7">
+                        <div class="flex items-center relative">
+                            <h2 class="font-extrabold font-bebas text-2xl !mt-1">victoria</h2>
+                            <img class="w-10 h-auto absolute -top-5 -left-3" src="/storage/public/hdx-logo.png" alt="hdx logo">
                         </div>
                         <div @click="menuStateApp = !menuStateApp">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" data-slot="icon" class="tw-size-8 tw-mb-1"><path fill-rule="evenodd" d="M3 9a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 9Zm0 6.75a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd"></path></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" data-slot="icon" class="size-8 mb-1"><path fill-rule="evenodd" d="M3 9a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 9Zm0 6.75a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd"></path></svg>
                         </div>
                     </div>
 
-                    <div class="tw-flex lg:tw-items-center tw-h-full !tw-mb-12 lg:!tw-mb-0 tw-z-20 tw-relative">
-                        <div class="!tw-mx-auto !tw-max-w-7xl !tw-px-6 lg:!tw-px-0 !tw-w-full !tw-py-32 lg:!tw-py-0 lg:!tw--mt-40">
+                    <div class="flex lg:items-center h-full !mb-12 lg:!mb-0 z-20 relative">
+                        <div class="!mx-auto !max-w-7xl !px-6 lg:!px-0 !w-full !py-32 lg:!py-0 lg:!-mt-40">
                             <div>
-                                <h2 data-aos="fade-down" data-aos-duration="1300" data-aos-once="true" class="tw-font-metal tw-pr-1 tw-italic tw-text-2xl tw-inline-block tw-bg-clip-text tw-bg-gradient-to-r tw-from-primary tw-to-secondary/60 tw-text-transparent">Próximo partido</h2>
-                                <h1 data-aos="fade-down" data-aos-duration="1300" data-aos-once="true" class="lg:tw-text-[70px] !tw-max-w-2xl tw-text-4xl md:tw-text-5xl tw-font-bold tw-font-bebas tw-mt-3">
+                                <h2 data-aos="fade-down" data-aos-duration="1300" data-aos-once="true" class="font-metal pr-1 italic text-2xl inline-block bg-clip-text bg-gradient-to-r from-primary to-secondary/60 text-transparent">Próximo partido</h2>
+                                <h1 data-aos="fade-down" data-aos-duration="1300" data-aos-once="true" class="lg:text-[70px] !max-w-2xl text-4xl md:text-5xl font-bold font-bebas mt-3">
                                     {{ filteredEvents[0]?.name || 'Nuevos partidos próximamente' }}
                                 </h1>
 
-                                <p data-aos="fade-down" data-aos-duration="1300" data-aos-once="true" class="tw-font-medium tw-text-balance sm:!tw-text-xl tw-max-w-[900px] !tw-mt-7">
+                                <p data-aos="fade-down" data-aos-duration="1300" data-aos-once="true" class="font-medium text-balance sm:!text-xl max-w-[900px] !mt-7">
                                     {{ filteredEvents[0]?.description || 'El nido del halcón' }} | {{ filteredEvents[0]?.start_date ? dateFormat(filteredEvents[0]?.start_date) : 'Nuevas fechas' }}.
                                     <br>
-                                    Vive la emoción del baloncesto con los <span class="tw-font-bold">victoria</span>.
+                                    Vive la emoción del baloncesto con los <span class="font-bold">victoria</span>.
                                 </p>
 
-                                <div data-aos="fade-left" data-aos-duration="1300" data-aos-once="true" class="tw-flex tw-flex-col md:tw-flex-row md:tw-items-center tw-gap-5 !tw-mt-10">
+                                <div data-aos="fade-left" data-aos-duration="1300" data-aos-once="true" class="flex flex-col md:flex-row md:items-center gap-5 !mt-10">
                                     <Link v-if="$page.props.auth.user" :href="route('events.show', { slug: filteredEvents[0]?.slug || '', id: filteredEvents[0]?.id || '' })">
-                                        <PrimaryButton @click="showEvent" heightbtn="!tw-h-[70px] !tw-text-base !tw-w-full md:!tw-w-auto" paddingbtn="!tw-px-14" :loading="loading">
-                                            <span class="material-symbols-outlined tw-text-lg">shopping_cart</span>Comprar boletos
+                                        <PrimaryButton @click="showEvent" heightbtn="!h-[70px] !text-base !w-full md:!w-auto" paddingbtn="!px-14" :loading="loading">
+                                            <span class="material-symbols-outlined text-lg">shopping_cart</span>Comprar boletos
                                         </PrimaryButton>
                                     </Link>
                                     <Link v-else :href="route('login', { slug: filteredEvents[0]?.slug || '', id: filteredEvents[0]?.id || '' })">
-                                        <PrimaryButton heightbtn="!tw-h-[70px] !tw-text-base !tw-w-full md:!tw-w-auto" paddingbtn="!tw-px-14">
-                                           <span class="material-symbols-outlined tw-text-lg">shopping_cart</span>Comprar boletos
+                                        <PrimaryButton heightbtn="!h-[70px] !text-base !w-full md:!w-auto" paddingbtn="!px-14">
+                                           <span class="material-symbols-outlined text-lg">shopping_cart</span>Comprar boletos
                                         </PrimaryButton>
                                     </Link>
 
                                     <SecondaryButton
-                                        heightbtn="!tw-h-[70px] !tw-text-base !tw-w-full md:!tw-w-auto"
-                                        paddingbtn="!tw-px-14"
+                                        heightbtn="!h-[70px] !text-base !w-full md:!w-auto"
+                                        paddingbtn="!px-14"
                                         @click="openImageModal('/storage/public/calendar-hdx-2025.jpg')"
                                     >
-                                        <div class="tw-flex tw-items-center tw-justify-center tw-gap-1">
+                                        <div class="flex items-center justify-center gap-1">
                                             <p>Ver calendario</p>
                                         </div>
                                     </SecondaryButton>
@@ -174,31 +176,31 @@ const closeImageModal = () => {
         </div>
     </section>
 
-    <main class="tw-max-w-7xl tw-mx-auto tw-px-4 lg:tw-px-0 tw-relative">
-        <div class="tw-absolute -tw-right-40 lg:-tw-right-96 -tw-top-52 lg:-tw-top-52 tw-h-[480px] tw-w-[300px] lg:tw-h-[680px] lg:tw-w-[500px] tw-rounded-full tw-blur-[120px] lg:tw-blur-[220px] tw-bg-primary">
+    <main class="max-w-7xl mx-auto px-4 lg:px-0 relative">
+        <div class="absolute -right-40 lg:-right-96 -top-52 lg:-top-52 h-[480px] w-[300px] lg:h-[680px] lg:w-[500px] rounded-full blur-[120px] lg:blur-[220px] bg-primary">
         </div>
-        <div class="tw-hidden lg:tw-block tw-absolute -tw-bottom-60 -tw-left-72 tw-h-[1300px] tw-w-[1500px] tw-rounded-full tw-blur-[100px] tw-bg-white">
+        <div class="hidden lg:block absolute -bottom-60 -left-72 h-[1300px] w-[1500px] rounded-full blur-[100px] bg-white">
         </div>
         <ErrorSession />
-        <div class="tw-max-w-7xl tw-min-h-screen tw-pt-0 tw-mx-auto tw-z-20 tw-relative">
-            <div class="lg:tw-grid lg:tw-grid-cols-3 tw-gap-y-8 lg:tw-gap-y-0 lg:tw-gap-x-6">
-                <div class="lg:tw-col-span-2">
-                    <div v-if="events.length > 0" class="tw-py-8 lg:tw-pe-8">
-                        <div v-for="event in filteredEvents" :key="event.id"  class="tw-space-y-5 lg:tw-space-y-8 tw-pb-10 tw-mt-16 tw-border-b-4 lg:tw-border-b-8 tw-border-neutral-300 tw-border-dashed">
+        <div class="max-w-7xl min-h-screen pt-0 mx-auto z-20 relative">
+            <div class="lg:grid lg:grid-cols-3 gap-y-8 lg:gap-y-0 lg:gap-x-6">
+                <div class="lg:col-span-2">
+                    <div v-if="events.length > 0" class="py-8 lg:pe-8">
+                        <div v-for="event in filteredEvents" :key="event.id"  class="space-y-5 lg:space-y-8 pb-10 mt-16 border-b-4 lg:border-b-8 border-neutral-300 border-dashed">
                             <div>
-                                <h2 class="tw-font-bebas tw-text-4xl tw-font-bold lg:tw-text-6xl">{{ event.name }}</h2>
-                                <h3 class="tw-mt-5 tw-inline-block tw-font-metal tw-pr-1 tw-italic tw-text-2xl tw-bg-clip-text tw-bg-gradient-to-r tw-from-primary tw-to-secondary/60 tw-text-transparent">{{ dateFormat(event.start_date) }}</h3>
-                                <p class="tw-mt-3">{{ event.description }}</p>
-                                <p class="tw-mt-3">Gimnasio Nido del Halcón UV | 91094 Xalapa-Enríquez, Ver.</p>
-                                <div class="tw-flex tw-flex-col md:tw-flex-row md:tw-items-center tw-gap-5 tw-mt-4">
+                                <h2 class="font-bebas text-4xl font-bold lg:text-6xl">{{ event.name }}</h2>
+                                <h3 class="mt-5 inline-block font-metal pr-1 italic text-2xl bg-clip-text bg-gradient-to-r from-primary to-secondary/60 text-transparent">{{ dateFormat(event.start_date) }}</h3>
+                                <p class="mt-3">{{ event.description }}</p>
+                                <p class="mt-3">Gimnasio Nido del Halcón UV | 91094 Xalapa-Enríquez, Ver.</p>
+                                <div class="flex flex-col md:flex-row md:items-center gap-5 mt-4">
                                     <Link v-if="$page.props.auth.user" :href="route('events.show', { slug: event.slug, id: event.id } )">
-                                        <PrimaryButton @click="showEvent" heightbtn="!tw-h-[65px] !tw-px-14 !tw-w-full md:!tw-w-auto" :loading="loading">
-                                            <span class="material-symbols-outlined tw-text-lg">shopping_cart</span>Comprar boletos
+                                        <PrimaryButton @click="showEvent" heightbtn="!h-[65px] !px-14 !w-full md:!w-auto" :loading="loading">
+                                            <span class="material-symbols-outlined text-lg">shopping_cart</span>Comprar boletos
                                         </PrimaryButton>
                                     </Link>
                                     <Link v-else :href="route('login', { slug: event.slug, id: event.id})">
-                                        <PrimaryButton  heightbtn="!tw-h-[65px] !tw-px-14">
-                                            <span class="material-symbols-outlined tw-text-lg">shopping_cart</span>Comprar boletos
+                                        <PrimaryButton  heightbtn="!h-[65px] !px-14">
+                                            <span class="material-symbols-outlined text-lg">shopping_cart</span>Comprar boletos
                                         </PrimaryButton>
                                     </Link>
                                 </div>
@@ -206,45 +208,45 @@ const closeImageModal = () => {
 
                             <div
                                 @click="openImageModal(`/storage/${event.global_image.file_path}`)"
-                                class="tw-group tw-flex tw-bg-cover tw-relative tw-h-[400px] tw-aspect-3/4 tw-object-cover tw-bg-center tw-w-full tw-p-4 lg:tw-p-7 tw-rounded-xl tw-border tw-shadow-xl tw-overflow-hidden tw-cursor-pointer tw-transition-all tw-duration-500"
+                                class="group flex bg-cover relative h-[400px] aspect-3/4 object-cover bg-center w-full p-4 lg:p-7 rounded-xl border shadow-xl overflow-hidden cursor-pointer transition-all duration-500"
                                 :style="`background-image: url(/storage/${event.global_image.file_path})`"
                                 >
-                                <div class="tw-absolute tw-inset-0 tw-bg-black/60 tw-opacity-0 group-hover:tw-opacity-100 tw-transition-all tw-duration-500 tw-z-40 tw-flex tw-items-center tw-justify-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="tw-w-10 tw-h-10 tw-text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2" fill="none"/><line x1="21" y1="21" x2="16.65" y2="16.65" stroke="currentColor" stroke-width="2"/><line x1="11" y1="8" x2="11" y2="14" stroke="currentColor" stroke-width="2"/><line x1="8" y1="11" x2="14" y2="11" stroke="currentColor" stroke-width="2"/></svg>
+                                <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-500 z-40 flex items-center justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2" fill="none"/><line x1="21" y1="21" x2="16.65" y2="16.65" stroke="currentColor" stroke-width="2"/><line x1="11" y1="8" x2="11" y2="14" stroke="currentColor" stroke-width="2"/><line x1="8" y1="11" x2="14" y2="11" stroke="currentColor" stroke-width="2"/></svg>
                                 </div>
 
-                                <div class="tw-z-50 tw-flex tw-flex-col tw-flex-1 tw-justify-end tw-text-white">
-                                    <div class="tw-flex-col tw-gap-4 tw-justify-end">
-                                    <h2 class="tw-inline-block tw-font-metal tw-pr-1 tw-italic tw-text-5xl tw-bg-clip-text tw-bg-gradient-to-r tw-from-primary tw-to-secondary tw-text-transparent !tw-underline">
+                                <div class="z-50 flex flex-col flex-1 justify-end text-white">
+                                    <div class="flex-col gap-4 justify-end">
+                                    <h2 class="inline-block font-metal pr-1 italic text-5xl bg-clip-text bg-gradient-to-r from-primary to-secondary text-transparent !underline">
                                         Ampliar imagen
                                     </h2>
                                     </div>
                                 </div>
-                                <div class="tw-z-0 tw-absolute tw-bottom-0 tw-left-0 tw-right-0 tw-h-[350px] lg:tw-h-[300px] !tw-bg-[linear-gradient(180deg,rgba(0,0,0,0)_0%,#000_90%)] tw-block"></div>
+                                <div class="z-0 absolute bottom-0 left-0 right-0 h-[350px] lg:h-[300px] !bg-[linear-gradient(180deg,rgba(0,0,0,0)_0%,#000_90%)] block"></div>
                             </div>
 
-                            <div class="tw-flex tw-items-center tw-justify-end tw-mt-5">
-                                <div class="tw-flex tw-items-center tw-gap-x-3">
-                                    <img class="tw-h-14 tw-w-14 tw-rounded-full" src="../../../../../public/img/user-img.svg" alt="Author Image">
+                            <div class="flex items-center justify-end mt-5">
+                                <div class="flex items-center gap-x-3">
+                                    <img class="h-14 w-14 rounded-full" src="../../../../../public/img/user-img.svg" alt="Author Image">
                                     <div>
-                                        <p class="tw-text-base tw-font-medium tw-text-gray-800">Directiva victoria</p>
-                                        <p class="tw-text-sm tw-text-gray-500">Autor</p>
+                                        <p class="text-base font-medium text-gray-800">Directiva victoria</p>
+                                        <p class="text-sm text-gray-500">Autor</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <aside :class="events.length > 0 ? 'lg:tw-col-span-1 tw-hidden lg:tw-block' : 'tw-col-span-1 lg:tw-col-span-3'">
-                    <div v-if="events.length > 0" :class="events.length > 0 ? 'tw-sticky tw-top-10 tw-mb-20' : 'tw-top-10 tw-mb-20'">
-                        <div class="tw-h-auto tw-w-full tw-rounded-lg tw-border-8 tw-border-neutral-200 tw-overflow-hidden tw-mt-10 tw-flex tw-items-center tw-justify-center">
-                            <iframe v-if="events.length > 0" class="tw-rounded-lg" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3760.653263134143!2d-96.91874712501097!3d19.51354808178317!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85db320be3350bd1%3A0xba83c38e6e168a4!2sGimnasio%20Nido%20del%20Halc%C3%B3n%20UV!5e0!3m2!1ses-419!2smx!4v1735482228924!5m2!1ses-419!2smx" width="400" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                            <iframe v-else class="tw-w-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3760.653263134143!2d-96.91874712501097!3d19.51354808178317!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85db320be3350bd1%3A0xba83c38e6e168a4!2sGimnasio%20Nido%20del%20Halc%C3%B3n%20UV!5e0!3m2!1ses-419!2smx!4v1735482228924!5m2!1ses-419!2smx" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <aside :class="events.length > 0 ? 'lg:col-span-1 hidden lg:block' : 'col-span-1 lg:col-span-3'">
+                    <div v-if="events.length > 0" :class="events.length > 0 ? 'sticky top-10 mb-20' : 'top-10 mb-20'">
+                        <div class="h-auto w-full rounded-lg border-8 border-neutral-200 overflow-hidden mt-10 flex items-center justify-center">
+                            <iframe v-if="events.length > 0" class="rounded-lg" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3760.653263134143!2d-96.91874712501097!3d19.51354808178317!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85db320be3350bd1%3A0xba83c38e6e168a4!2sGimnasio%20Nido%20del%20Halc%C3%B3n%20UV!5e0!3m2!1ses-419!2smx!4v1735482228924!5m2!1ses-419!2smx" width="400" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <iframe v-else class="w-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3760.653263134143!2d-96.91874712501097!3d19.51354808178317!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85db320be3350bd1%3A0xba83c38e6e168a4!2sGimnasio%20Nido%20del%20Halc%C3%B3n%20UV!5e0!3m2!1ses-419!2smx!4v1735482228924!5m2!1ses-419!2smx" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
-                    <div v-else class="tw-flex tw-items-center tw-justify-center tw-flex-col tw-gap-5 tw-pt-60">
-                        <div class="tw-text-center tw-flex tw-items-center tw-justify-center tw-flex-col tw-gap-5">
-                            <img class="tw-w-40 lg:tw-w-72 tw-h-auto" src="/storage/public/empty-cart.webp" alt="Webiste image">
+                    <div v-else class="flex items-center justify-center flex-col gap-5 pt-60">
+                        <div class="text-center flex items-center justify-center flex-col gap-5">
+                            <img class="w-40 lg:w-72 h-auto" src="/storage/public/empty-cart.webp" alt="Webiste image">
                             <span>Nuevos partidos próximamente</span>
                         </div>
                     </div>
@@ -253,4 +255,5 @@ const closeImageModal = () => {
         </div>
     </main>
     <Footer />
+    </MasterLayout>
 </template>

@@ -44,20 +44,20 @@ const submit = () => {
 <template>
     <Head title="Recuperar contraseña"/>
     <AuthenticationCard>
-        <div class="tw-w-full lg:tw-w-[70%] tw-h-auto tw-mx-auto tw-px-5 lg:tw-px-0 tw-py-10 lg:tw-py-0">
+        <div class="w-full lg:w-[70%] h-auto mx-auto px-5 lg:px-0 py-10 lg:py-0">
             <div class="">
                 <ErrorSession />
-                <Link :href="route('events.index')" class="tw-inline-block">
-                    <div class="tw-size-10 tw-shadow-md tw-rounded-full tw-bg-primary tw-p-2 tw-flex tw-items-center tw-justify-center tw-mb-3">
-                        <span class="material-symbols-outlined tw-text-white">arrow_back</span>
+                <Link :href="route('events.index')" class="inline-block">
+                    <div class="size-10 shadow-md rounded-full bg-primary p-2 flex items-center justify-center mb-3">
+                        <span class="material-symbols-outlined text-white">arrow_back</span>
                     </div>
                 </Link>
-                <h2 class="tw-font-bebas tw-text-4xl tw-font-bold lg:tw-text-5xl">Recuperar contraseña</h2>
-                <p class="tw-text-gray-600 tw-text-base tw-mt-2">Ingresa tu correo electronico para recibir un enlace de restablecimiento de contraseña.</p>
+                <h2 class="font-bebas text-4xl font-bold lg:text-5xl">Recuperar contraseña</h2>
+                <p class="text-gray-600 text-base mt-2">Ingresa tu correo electronico para recibir un enlace de restablecimiento de contraseña.</p>
             </div>
 
-            <div class="tw-mt-5 tw-flex tw-flex-col tw-gap-3">
-                <v-form class="tw-mt-5 tw-flex tw-flex-col tw-gap-1">
+            <div class="mt-5 flex flex-col gap-3">
+                <v-form class="mt-5 flex flex-col gap-1">
                     <div>
                         <v-text-field
                             type="email"
@@ -67,13 +67,13 @@ const submit = () => {
                             autocomplete="email"
                             v-model="form.email"
                             variant="outlined"
-                            class="!tw-rounded-2xl"
+                            class="!rounded-2xl"
                             :error-messages="form.errors.email"
                         ></v-text-field>
                     </div>
-                    <div class="tw-flex lg:tw-flex-col tw-flex-col tw-justify-between">
-                        <PrimaryButton @click="submit" heightbtn="!tw-h-[60px] !tw-text-base !tw-w-full md:!tw-w-auto" paddingbtn="!tw-px-10" :loading="loading">
-                            <span class="material-symbols-outlined tw-text-2xl !tw-w-1/2">fingerprint</span>Enviar enlace de restablecimiento
+                    <div class="flex lg:flex-col flex-col justify-between">
+                        <PrimaryButton @click="submit" heightbtn="!h-[60px] !text-base !w-full md:!w-auto" paddingbtn="!px-10" :loading="loading">
+                            <span class="material-symbols-outlined text-2xl !w-1/2">fingerprint</span>Enviar enlace de restablecimiento
                         </PrimaryButton>
                     </div>
                 </v-form>

@@ -3,8 +3,8 @@
 </script>
 
 <template>
-    <section class="tw-mt-10">
-       <h2 class="tw-font-bold tw-font-bebas tw-text-4xl lg:tw-text-5xl tw-text-left tw-w-full">
+    <section class="mt-10">
+       <h2 class="font-bold font-bebas text-4xl lg:text-5xl text-left w-full">
             <slot />
         </h2>
     </section>

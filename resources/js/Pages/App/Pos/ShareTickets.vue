@@ -132,14 +132,14 @@ props.users.forEach(element => {
             <v-card
             >
 
-                <div class="tw-p-5">
+                <div class="p-5">
                     <h1 style="color: black; font-weight: bold;">Términos y condiciones</h1>
                     <br/>
                     <p>
                         <b style="color: red;">SOLO SE PUEDEN TRANSFERIR BOLETOS ENTRE USUARIOS DE OTRA APLICACIÓN (este boleto no llega al correo).</b>
                     </p>
                     <br/>
-                    <p class="tw-text-red-500 tw-lowercase">
+                    <p class="text-red-500 lowercase">
                      EL BOLETO NO ESTÁ SUJETO A REEMBOLSO, CAMBIO O REPOSICIÓN. EL BOLETO TE DA DERECHO A UN ACCESO AL INMUEBLE. El boleto te da derecho a un lugar específico dentro del inmueble. No está permitido el reingreso. Este boleto es válido solo para el evento y asiento descrito en pantalla. Queda prohibido mostrar capturas de pantalla del boleto en la entrada. El poseedor del boleto asume cualquier riesgo o peligro accidental proveniente del evento. La admisión está sujeta a que el espectador permita que se practique la revisión correspondiente para evitar el acceso a alimentos y bebidas alcohólicas, drogas, armas, mochilas, maletas, productos de tabaco, vapeadores, grabadoras, cámaras de cualquier tipo o cualquier otro artículo o sustancia no autorizada. El titular del inmueble del evento o sus representantes se reservan el derecho de admisión o, en su caso, se retirará del inmueble a cualquier persona cuya conducta se considere ofensiva, que induzca al desorden, y en general aquellas conductas que pudieran constituir una infracción o delito, no estando obligado a reembolsar cantidad alguna. El espectador se obliga a cumplir con las reglas del inmueble.
                     </p>
                 </div>
@@ -157,10 +157,10 @@ props.users.forEach(element => {
         </v-dialog>
 
 
-        <div class="tw-pt-5 lg:tw-pt-10">
-            <div class="tw-flex tw-flex-col tw-w-full tw-justify-between">
+        <div class="pt-5 lg:pt-10">
+            <div class="flex flex-col w-full justify-between">
                 <v-autocomplete
-                    class="!tw-w-full"
+                    class="!w-full"
                     v-model="selected_value"
                     clearable
                     chips
@@ -172,12 +172,12 @@ props.users.forEach(element => {
                 ></v-autocomplete>
                 <div>
                     <v-btn
-                        class="!tw-rounded-2xl !tw-h-[70px] !tw-px-6 !tw-shadow-none !tw-text-white !tw-bg-green-500"
+                        class="!rounded-2xl !h-[70px] !px-6 !shadow-none !text-white !bg-green-500"
                         @click="alert"
                     >
                         Compartir boletos
                     </v-btn>
-                    <div v-if="dialog === true" class="tw-mt-2">
+                    <div v-if="dialog === true" class="mt-2">
                         <InputError class="" :message="messageErrorreceiverUserName" />
                     </div>
                 </div>
@@ -186,14 +186,14 @@ props.users.forEach(element => {
 
             <div>
                 <template v-if="eventsWithTickets.some(event => event.tickets.length > 0)">
-                    <div v-for="event in eventsWithTickets" :key="event.event.id" class="tw-mb-10 last:tw-mb-0">
+                    <div v-for="event in eventsWithTickets" :key="event.event.id" class="mb-10 last:mb-0">
                         <div v-if="event.tickets.length > 0">
-                            <div class="tw-flex tw-flex-col lg:tw-flex-row tw-gap-10 lg:tw-overflow-y-auto tw-pb-5">
-                                <div v-for="ticket in event.tickets" :key="ticket.id" class="tw-flex tw-flex-col tw-items-center">
+                            <div class="flex flex-col lg:flex-row gap-10 lg:overflow-y-auto pb-5">
+                                <div v-for="ticket in event.tickets" :key="ticket.id" class="flex flex-col items-center">
                                     <div v-if="ticket.purchase_type != 'abonado' && !ticket.is_verified">
                                         <SaleTicket :ticket="ticket" />
                                         <v-btn
-                                            :class="tickets_list_v.some(t => t.id === ticket.id) ? '!tw-bg-red-500' : '!tw-bg-primary'" class="!tw-mt-3 !tw-rounded-2xl !tw-h-[60px] !tw-px-6 !tw-shadow-none !tw-text-white"
+                                            :class="tickets_list_v.some(t => t.id === ticket.id) ? '!bg-red-500' : '!bg-primary'" class="!mt-3 !rounded-2xl !h-[60px] !px-6 !shadow-none !text-white"
                                             block
                                             @click="tickets_select(ticket)"
                                         >
@@ -206,16 +206,16 @@ props.users.forEach(element => {
                     </div>
                 </template>
                 <template v-else>
-                    <div class="tw-flex tw-items-center tw-justify-center tw-flex-col tw-gap-5 tw-mt-10">
-                        <div class="tw-text-center tw-flex tw-items-center tw-justify-center tw-flex-col tw-gap-5">
-                            <img class="tw-w-40 lg:tw-w-72 tw-h-auto" src="/storage/public/empty-cart.webp" alt="Webiste image">
+                    <div class="flex items-center justify-center flex-col gap-5 mt-10">
+                        <div class="text-center flex items-center justify-center flex-col gap-5">
+                            <img class="w-40 lg:w-72 h-auto" src="/storage/public/empty-cart.webp" alt="Webiste image">
                             <span>No cuentas con boletos disponibles. ¡Compra tus boletos para el próximo partido!</span>
                         </div>
                         <div>
                             <Link :href="route('events.index')">
                                 <SecondaryButton
-                                    heightbtn="!tw-h-[70px]"
-                                    paddingbtn="!tw-px-14"
+                                    heightbtn="!h-[70px]"
+                                    paddingbtn="!px-14"
                                 >
                                     Comprar boletos
                                 </SecondaryButton>

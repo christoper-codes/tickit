@@ -177,43 +177,43 @@ const handleSectionClick = (section) => {
             loadSvg: 'zonaC',
             viewSelectedSection: 'Zona C',
             rows: dataEvent.value.c_rows,
-            classListRemove: 'tw-rotate-0',
-            classListAdd: 'tw-rotate-90',
+            classListRemove: 'rotate-0',
+            classListAdd: 'rotate-90',
         },
         zonaA: {
             loadSvg: 'zonaA',
             viewSelectedSection: 'Zona A',
             rows: dataEvent.value.a_rows,
-            classListRemove: 'tw-rotate-0',
-            classListAdd: 'tw-rotate-90',
+            classListRemove: 'rotate-0',
+            classListAdd: 'rotate-90',
         },
         zonaB: {
             loadSvg: 'zonaB',
             viewSelectedSection: 'Zona B',
             rows: dataEvent.value.b_rows,
-            classListRemove: 'tw-rotate-0',
-            classListAdd: 'tw-rotate-90',
+            classListRemove: 'rotate-0',
+            classListAdd: 'rotate-90',
         },
         zonaE: {
             loadSvg: 'zonaE',
             viewSelectedSection: 'Zona E',
             rows: dataEvent.value.e_rows,
-            classListRemove: 'tw-rotate-0',
-            classListAdd: 'tw-rotate-90',
+            classListRemove: 'rotate-0',
+            classListAdd: 'rotate-90',
         },
         zonaF: {
             loadSvg: 'zonaF',
             viewSelectedSection: 'Zona F',
             rows: dataEvent.value.f_rows,
-            classListRemove: 'tw-rotate-0',
-            classListAdd: 'tw-rotate-90',
+            classListRemove: 'rotate-0',
+            classListAdd: 'rotate-90',
         },
         zonaH: {
             loadSvg: 'zonaH',
             viewSelectedSection: 'Zona H',
             rows: dataEvent.value.h_rows,
-            classListRemove: 'tw-rotate-0',
-            classListAdd: 'tw-rotate-90',
+            classListRemove: 'rotate-0',
+            classListAdd: 'rotate-90',
         },
     }
 
@@ -233,8 +233,8 @@ const selectZones = () => {
     viewSelectedSection.value = 'Zonas HDX';
     seatsSelected.value = [];
     const stadiumHdxImg = document.querySelector('#stadium-hdx-img');
-    stadiumHdxImg.classList.remove('tw-rotate-90');
-    stadiumHdxImg.classList.add('tw-rotate-0');
+    stadiumHdxImg.classList.remove('rotate-90');
+    stadiumHdxImg.classList.add('rotate-0');
 };
 
 const loadSeat = ref(false);
@@ -415,94 +415,94 @@ const getStatus = (status) => {
     <SuccessSession />
     <ErrorSession />
 
-    <section class="tw-max-w-full tw-h-full tw-bg-white">
-        <div class="tw-flex tw-w-full tw-h-full tw-min-h-screen tw-flex-col sm:tw-flex-row">
-            <div class="tw-flex tw-justify-start tw-items-start 2xl:tw-w-[70%] lg:tw-w-[70%] md:tw-w-full">
-                <div class="tw-grid tw-gap-10 md:tw-gap-8 lg:tw-gap-5 tw-w-full tw-p-4">
-                    <div class="tw-h-[2vh] tw-flex tw-justify-start tw-items-center">
-                        <p class="tw-font-bold tw-text-xl">Mapa de asignación de status</p>
+    <section class="max-w-full h-full bg-white">
+        <div class="flex w-full h-full min-h-screen flex-col sm:flex-row">
+            <div class="flex justify-start items-start 2xl:w-[70%] lg:w-[70%] md:w-full">
+                <div class="grid gap-10 md:gap-8 lg:gap-5 w-full p-4">
+                    <div class="h-[2vh] flex justify-start items-center">
+                        <p class="font-bold text-xl">Mapa de asignación de status</p>
                     </div>
-                    <div class="tw-h-[10vh] tw-flex tw-justify-start tw-items-center">
+                    <div class="h-[10vh] flex justify-start items-center">
                         <div
-                            class="tw-grid tw-grid-cols-2 lg:tw-grid-cols-6 tw-items-center tw-w-full tw-gap-2 tw-mt-7">
-                            <div class="tw-flex tw-items-center tw-flex-col tw-gap-2">
+                            class="grid grid-cols-2 lg:grid-cols-6 items-center w-full gap-2 mt-7">
+                            <div class="flex items-center flex-col gap-2">
                                 <div
-                                    class="tw-h-7 lg:tw-h-9 tw-w-full tw-bg-yellow-500 tw-flex tw-items-center tw-justify-center tw-rounded-md">
-                                    <span class="material-symbols-outlined tw-text-sm tw-text-white">done_outline</span>
+                                    class="h-7 lg:h-9 w-full bg-yellow-500 flex items-center justify-center rounded-md">
+                                    <span class="material-symbols-outlined text-sm text-white">done_outline</span>
                                 </div>
-                                <p class="tw-text-xs lg:tw-text-base">Disponible</p>
+                                <p class="text-xs lg:text-base">Disponible</p>
                             </div>
-                            <div class="tw-flex tw-items-center tw-flex-col tw-gap-2">
-                                <div class="tw-h-7 lg:tw-h-9 tw-w-full tw-bg-pink-600 tw-flex tw-items-center tw-justify-center tw-rounded-md">
-                                    <span class="material-symbols-outlined tw-text-sm tw-text-white">block</span>
+                            <div class="flex items-center flex-col gap-2">
+                                <div class="h-7 lg:h-9 w-full bg-pink-600 flex items-center justify-center rounded-md">
+                                    <span class="material-symbols-outlined text-sm text-white">block</span>
                                 </div>
-                                <p class="tw-text-xs lg:tw-text-base">Reservado</p>
+                                <p class="text-xs lg:text-base">Reservado</p>
                             </div>
-                            <div class="tw-flex tw-items-center tw-flex-col tw-gap-2">
-                                <div class="tw-h-7 lg:tw-h-9 tw-w-full tw-bg-gray-600 tw-flex tw-items-center tw-justify-center tw-rounded-md">
-                                    <span class="material-symbols-outlined tw-text-sm tw-text-white">block</span>
+                            <div class="flex items-center flex-col gap-2">
+                                <div class="h-7 lg:h-9 w-full bg-gray-600 flex items-center justify-center rounded-md">
+                                    <span class="material-symbols-outlined text-sm text-white">block</span>
                                 </div>
-                                <p class="tw-text-xs lg:tw-text-base">Inhabilitado</p>
+                                <p class="text-xs lg:text-base">Inhabilitado</p>
                             </div>
                         </div>
                     </div>
 
                     <div
-                        class="tw-flex tw-flex-col lg:tw-flex-row tw-items-center tw-justify-between tw-w-full tw-gap-3 tw-my-3">
-                        <div class="tw-flex tw-items-center tw-gap-3 tw-flex-col md:tw-flex-row">
-                            <div class="tw-flex tw-items-center tw-gap-3">
+                        class="flex flex-col lg:flex-row items-center justify-between w-full gap-3 my-3">
+                        <div class="flex items-center gap-3 flex-col md:flex-row">
+                            <div class="flex items-center gap-3">
                                 <v-btn @click="zoomIn" color="purple" variant="tonal" class="text-none" rounded="xl"
                                     size="large"><span
-                                        class="material-symbols-outlined tw-text-2xl">add</span>zoom</v-btn>
+                                        class="material-symbols-outlined text-2xl">add</span>zoom</v-btn>
                                 <v-btn @click="zoomOut" color="purple" variant="tonal" class="text-none" rounded="xl"
                                     size="large"><span
-                                        class="material-symbols-outlined tw-text-2xl">remove</span>zoom</v-btn>
+                                        class="material-symbols-outlined text-2xl">remove</span>zoom</v-btn>
                             </div>
                         </div>
-                        <div class="tw-items-center tw-gap-2 tw-hidden lg:tw-flex tw-relative">
-                            <div class="tw-font-bold tw-text-3xl tw-text-center">
+                        <div class="items-center gap-2 hidden lg:flex relative">
+                            <div class="font-bold text-3xl text-center">
                                 {{ viewSelectedSection }}
                             </div>
                             <v-dialog max-width="800">
                                 <template v-slot:activator="{ props: activatorProps }">
-                                    <div v-bind="activatorProps" class="!tw-absolute -tw-top-4 -tw-right-6 ">
+                                    <div v-bind="activatorProps" class="!absolute -top-4 -right-6 ">
                                         <span
-                                            class="material-symbols-outlined tw-text-2xl tw-text-purple-600 tw-animate-bounce tw-cursor-pointer">photo_library</span>
+                                            class="material-symbols-outlined text-2xl text-purple-600 animate-bounce cursor-pointer">photo_library</span>
                                     </div>
                                 </template>
                                 <template v-slot:default="{ isActive }">
                                     <v-card :title="'Imagen de referencia para la ' + viewSelectedSection">
                                         <v-card-text>
-                                            <img class="tw-w-full tw-h-auto tw-rounded-xl"
+                                            <img class="w-full h-auto rounded-xl"
                                                 src="../../../../../../public/img/zonashdx/zona-a-img.jpg"
                                                 alt="zona hdx">
                                         </v-card-text>
                                         <v-card-actions>
                                             <v-spacer></v-spacer>
                                             <v-btn color="purple" rounded="xl" variant="tonal"
-                                                class="text-none !tw-px-6" text="Cerrar"
+                                                class="text-none !px-6" text="Cerrar"
                                                 @click="isActive.value = false"></v-btn>
                                         </v-card-actions>
                                     </v-card>
                                 </template>
                             </v-dialog>
                         </div>
-                        <div class="tw-flex tw-items-center tw-gap-3">
+                        <div class="flex items-center gap-3">
                             <v-btn @click="resetZoom" color="purple" variant="tonal" class="text-none" rounded="xl"
                                 size="large"><span
-                                    class="material-symbols-outlined tw-text-2xl">my_location</span>reset</v-btn>
+                                    class="material-symbols-outlined text-2xl">my_location</span>reset</v-btn>
 
                             <v-btn @click="selectZones" color="purple" variant="tonal" class="text-none" rounded="xl"
                                 size="large"><span
-                                    class="material-symbols-outlined tw-text-2xl">location_on</span>zonas</v-btn>
+                                    class="material-symbols-outlined text-2xl">location_on</span>zonas</v-btn>
                         </div>
                     </div>
                     <div
-                        class="tw-h-[60vh] tw-flex tw-justify-center tw-items-start tw-cursor-grab tw-overflow-hidden tw-relative">
+                        class="h-[60vh] flex justify-center items-start cursor-grab overflow-hidden relative">
                         <div
-                            class="tw-size-[100px] lg:tw-size-36 tw-border tw-border-gray-300 tw-absolute tw-top-0 tw-left-0 tw-z-20 tw-bg-white tw-rounded-lg tw-flex tw-items-center tw-justify-center">
+                            class="size-[100px] lg:size-36 border border-gray-300 absolute top-0 left-0 z-20 bg-white rounded-lg flex items-center justify-center">
                             <img id="stadium-hdx-img"
-                                class="tw-size-20 lg:tw-size-32 tw-rotate-0 tw-transition-all tw-duration-1000"
+                                class="size-20 lg:size-32 rotate-0 transition-all duration-1000"
                                 src="../../../../../../public/img/stadium-hdx-img.svg" alt="Webiste image">
                         </div>
                         <div v-if="isSvgVisible">
@@ -535,48 +535,48 @@ const getStatus = (status) => {
                     </div>
                 </div>
             </div>
-            <div class="tw-flex tw-justify-start tw-items-start tw-shadow-lg 2xl:tw-w-[30%] lg:tw-w-[30%] md:tw-w-full">
-                <div class="tw-grid tw-gap-1 tw-w-full tw-py-10 tw-px-3">
+            <div class="flex justify-start items-start shadow-lg 2xl:w-[30%] lg:w-[30%] md:w-full">
+                <div class="grid gap-1 w-full py-10 px-3">
                     <div class="">
-                        <div class="tw-py-2">
-                            <h2 class="tw-text-2xl tw-font-bold lg:tw-block">{{
+                        <div class="py-2">
+                            <h2 class="text-2xl font-bold lg:block">{{
                                 formatFirstLetterUppercase(event.name) }}
                             </h2>
                         </div>
                         <div
-                            class="tw-flex tw-flex-col lg:tw-flex-row tw-items-start lg:tw-items-center tw-gap-2 tw-py-6">
+                            class="flex flex-col lg:flex-row items-start lg:items-center gap-2 py-6">
                             <div
-                                class="tw-inline-flex tw-items-center tw-gap-1.5 tw-py-1 tw-px-3 sm:tw-py-2 sm:tw-px-4 tw-rounded-full tw-text-xs tw-bg-gray-100 tw-text-gray-800 hover:tw-bg-gray-200 focus:tw-outline-none focus:tw-bg-gray-200">
-                                <span class="material-symbols-outlined tw-text-xl">location_on</span>
+                                class="inline-flex items-center gap-1.5 py-1 px-3 sm:py-2 sm:px-4 rounded-full text-xs bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200">
+                                <span class="material-symbols-outlined text-xl">location_on</span>
                                 {{ formatFirstLetterUppercase(event.serie.global_season.stadium.club_name) }}
                             </div>
                             <p
-                                class="tw-inline-flex tw-items-center tw-gap-1.5 tw-py-1 tw-px-3 sm:tw-py-2 sm:tw-px-4 tw-rounded-full tw-text-xs tw-text-gray-800 tw-bg-gray-100 hover:tw-bg-gray-200">
+                                class="inline-flex items-center gap-1.5 py-1 px-3 sm:py-2 sm:px-4 rounded-full text-xs text-gray-800 bg-gray-100 hover:bg-gray-200">
                                 📅 | {{ dateFormat(event.start_date) }}
                             </p>
                         </div>
                     </div>
-                    <div class="tw-h-full tw-flex tw-justify-start tw-items-start">
-                        <div class="tw-grid tw-gap-2 tw-w-full tw-p-1">
+                    <div class="h-full flex justify-start items-start">
+                        <div class="grid gap-2 w-full p-1">
                             <div
-                                class="tw-relative tw-overflow-hidden tw-min-h-28 tw-bg-gray-800 tw-text-center tw-rounded-xl lg:tw-rounded-tr-none">
-                                <div class="tw-mt-10 tw-text-white tw-text-xl">
+                                class="relative overflow-hidden min-h-28 bg-gray-800 text-center rounded-xl lg:rounded-tr-none">
+                                <div class="mt-10 text-white text-xl">
                                     Asientos seleccionados
                                 </div>
 
-                                <figure class="tw-absolute tw-inset-x-0 tw-bottom-0 -tw-mb-px">
+                                <figure class="absolute inset-x-0 bottom-0 -mb-px">
                                     <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                                         viewBox="0 0 1920 100.1">
-                                        <path fill="currentColor" class="tw-fill-white"
+                                        <path fill="currentColor" class="fill-white"
                                             d="M0,0c0,0,934.4,93.4,1920,0v100.1H0L0,0z">
                                         </path>
                                     </svg>
                                 </figure>
                             </div>
-                            <div class="tw-relative tw-z-10 -tw-mt-12">
+                            <div class="relative z-10 -mt-12">
                                 <span
-                                    class="tw-mx-auto tw-flex tw-justify-center tw-items-center tw-size-[62px] tw-rounded-full tw-border tw-border-gray-200 tw-bg-white tw-text-gray-700 tw-shadow-sm">
-                                    <svg class="tw-shrink-0 tw-size-6" xmlns="http://www.w3.org/2000/svg" width="16"
+                                    class="mx-auto flex justify-center items-center size-[62px] rounded-full border border-gray-200 bg-white text-gray-700 shadow-sm">
+                                    <svg class="shrink-0 size-6" xmlns="http://www.w3.org/2000/svg" width="16"
                                         height="16" fill="currentColor" viewBox="0 0 16 16">
                                         <path
                                             d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z">
@@ -588,23 +588,23 @@ const getStatus = (status) => {
                                 </span>
                             </div>
 
-                            <div v-if="!isSvgVisible" class="tw-w-full">
+                            <div v-if="!isSvgVisible" class="w-full">
                                 <v-select v-model="selectedRows" item-value="id" :items="rows" density="compact"
                                     :item-title="(item) => formatFirstLetterUppercase(item)"
                                     label="Selecciona las filas" chips multiple></v-select>
                             </div>
 
                             <div v-if="seatsSelected.length == 0"
-                                class="tw-flex tw-items-center tw-justify-center tw-flex-col tw-gap-7">
+                                class="flex items-center justify-center flex-col gap-7">
                                 <p
-                                    class="tw-w-full tw-text-center tw-text-xs tw-p-3 tw-rounded-full tw-bg-gray-100 tw-mt-5">
+                                    class="w-full text-center text-xs p-3 rounded-full bg-gray-100 mt-5">
                                     No se han seleccionado asientos</p>
-                                <img class="tw-w-40 tw-h-auto"
+                                <img class="w-40 h-auto"
                                     src="../../../../../../public/img/seats-no-selected-img.svg" alt="Webiste image">
                             </div>
 
                             <div v-if="seatsSelected.length > 0"
-                                class="tw-flex tw-items-center tw-justify-center tw-flex-col tw-gap-7 tw-my-4">
+                                class="flex items-center justify-center flex-col gap-7 my-4">
                                 <div class="text-center">
                                     <v-btn @click="savePromotionSeat" :loading="loadingSavePromotion">
                                         Guardar Status
@@ -613,7 +613,7 @@ const getStatus = (status) => {
                             </div>
 
                             <div v-if="seatsSelected.length > 0" class="">
-                                <div class="tw-w-full ">
+                                <div class="w-full ">
 
                                     <v-select v-model="statusForSelectedSeats" item-value="id" :items="statuses"
                                         density="compact" :item-title="(item) => formatFirstLetterUppercase(item.name)"
@@ -625,72 +625,72 @@ const getStatus = (status) => {
                                                 Asientos seleccionados #{{ seatsSelected.length }}
                                             </v-expansion-panel-title>
                                             <v-expansion-panel-text>
-                                                <v-table class="tw-min-w-full tw-divide-y tw-divide-gray-200"
+                                                <v-table class="min-w-full divide-y divide-gray-200"
                                                     height="400px" fixed-header>
-                                                    <thead class="tw-bg-gray-100">
+                                                    <thead class="bg-gray-100">
                                                         <tr>
                                                             <th scope="col"
-                                                                class=" tw-p-2 tw-text-start tw-whitespace-nowrap">
+                                                                class=" p-2 text-start whitespace-nowrap">
                                                                 <span
-                                                                    class="tw-text-xs tw-font-semibold tw-uppercase tw-tracking-wide tw-text-gray-800">
+                                                                    class="text-xs font-semibold uppercase tracking-wide text-gray-800">
                                                                     Z.
                                                                 </span>
                                                             </th>
                                                             <th scope="col"
-                                                                class=" tw-p-2 tw-text-start tw-whitespace-nowrap">
+                                                                class=" p-2 text-start whitespace-nowrap">
                                                                 <span
-                                                                    class="tw-text-xs tw-font-semibold tw-uppercase tw-tracking-wide tw-text-gray-800">
+                                                                    class="text-xs font-semibold uppercase tracking-wide text-gray-800">
                                                                     F.
                                                                 </span>
                                                             </th>
                                                             <th scope="col"
-                                                                class=" tw-p-2 tw-text-start tw-whitespace-nowrap">
+                                                                class=" p-2 text-start whitespace-nowrap">
                                                                 <span
-                                                                    class="tw-text-xs tw-font-semibold tw-uppercase tw-tracking-wide tw-text-gray-800">
+                                                                    class="text-xs font-semibold uppercase tracking-wide text-gray-800">
                                                                     A.
                                                                 </span>
                                                             </th>
                                                             <th scope="col"
-                                                                class=" tw-p-2 tw-text-start tw-whitespace-nowrap">
+                                                                class=" p-2 text-start whitespace-nowrap">
                                                                 <span
-                                                                    class="tw-text-xs tw-font-semibold tw-uppercase tw-tracking-wide tw-text-gray-800">
+                                                                    class="text-xs font-semibold uppercase tracking-wide text-gray-800">
                                                                     Estatus
                                                                 </span>
                                                             </th>
                                                             <th scope="col"
-                                                                class=" tw-p-2 tw-text-start tw-whitespace-nowrap">
+                                                                class=" p-2 text-start whitespace-nowrap">
                                                                 <span
-                                                                    class="tw-text-xs tw-font-semibold tw-uppercase tw-tracking-wide tw-text-gray-800">
+                                                                    class="text-xs font-semibold uppercase tracking-wide text-gray-800">
                                                                     Acc.
                                                                 </span>
                                                             </th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody class="tw-divide-y tw-divide-gray-200">
+                                                    <tbody class="divide-y divide-gray-200">
                                                         <tr v-for="seat in seatsSelected"
                                                             :key="seat.seat_catalogue.code">
-                                                            <td class="tw-size-px tw-whitespace-nowrap tw-p-2">
-                                                                <span class="tw-text-sm tw-text-gray-800">{{
+                                                            <td class="size-px whitespace-nowrap p-2">
+                                                                <span class="text-sm text-gray-800">{{
                                                                     seat.seat_catalogue.zone }}</span>
                                                             </td>
-                                                            <td class="tw-size-px tw-whitespace-nowrap  tw-p-2">
-                                                                <span class="tw-text-sm tw-text-gray-800">{{
+                                                            <td class="size-px whitespace-nowrap  p-2">
+                                                                <span class="text-sm text-gray-800">{{
                                                                     seat.seat_catalogue.row
                                                                     }}</span>
                                                             </td>
-                                                            <td class="tw-size-px tw-whitespace-nowrap  tw-p-2">
-                                                                <span class="tw-text-sm tw-text-gray-800">{{
+                                                            <td class="size-px whitespace-nowrap  p-2">
+                                                                <span class="text-sm text-gray-800">{{
                                                                     seat.seat_catalogue.seat }}</span>
                                                             </td>
 
-                                                            <td class="tw-size-px tw-whitespace-nowrap">
+                                                            <td class="size-px whitespace-nowrap">
                                                                     <v-chip :color="getStatus(seat.seat_catalogue_status.name)" variant="flat">
                                                                         {{ formatFirstLetterUppercase(seat.seat_catalogue_status.name) }}
                                                                     </v-chip>
                                                             </td>
-                                                            <td class="tw-size-px tw-whitespace-nowrap  tw-p-2">
+                                                            <td class="size-px whitespace-nowrap  p-2">
                                                                 <span @click="addSeat(seat)"
-                                                                    class="material-symbols-outlined tw-text-xl tw-text-red-500 tw-cursor-pointer">delete</span>
+                                                                    class="material-symbols-outlined text-xl text-red-500 cursor-pointer">delete</span>
                                                             </td>
 
                                                         </tr>

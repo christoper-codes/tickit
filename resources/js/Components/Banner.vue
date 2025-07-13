@@ -36,8 +36,8 @@ onMounted(() => {
 </script>
 
 <template>
-    <div v-if="banner.is_active" class="h-screen tw-w-full tw-p-5 lg:tw-p-7 tw-bg-gradient-to-br tw-from-primary tw-to-secondary tw-fixed tw-inset-0 tw-z-50 tw-flex tw-items-center tw-justify-center">
-        <img ref="imageRef" class="tw-h-full tw-w-auto tw-rounded-2xl tw-transition-transform tw-duration-100 tw-ease-out"
+    <div v-if="banner.is_active" class="h-screen w-full p-5 lg:p-7 bg-gradient-to-br from-primary to-secondary fixed inset-0 z-50 flex items-center justify-center">
+        <img ref="imageRef" class="h-full w-auto rounded-2xl transition-transform duration-100 ease-out"
             :style="isDesktop ? {
                 transform: `perspective(1000px) rotateX(${mouseY * -7}deg) rotateY(${mouseX * 7}deg) translateZ(20px)`,
                 transformStyle: 'preserve-3d'

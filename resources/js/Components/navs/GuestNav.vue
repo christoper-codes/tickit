@@ -8,45 +8,45 @@ const user = usePage().props.auth.user;
 </script>
 
 <template>
-    <div class="tw-w-full">
-        <div class="lg:tw-hidden">
-            <div class="tw-flex tw-items-center tw-w-full tw-pr-8 tw-justify-between tw-relative tw-z-10">
+    <div class="w-full">
+        <div class="lg:hidden">
+            <div class="flex items-center w-full pr-8 justify-between relative z-10">
                 <Link :href="route('welcome')">
-                    <div class="tw-flex tw-items-center tw-relative">
-                        <h2 class="tw-font-extrabold tw-font-bebas tw-text-2xl !tw-mt-1">victoria</h2>
-                        <img class="tw-w-10 tw-h-auto tw-absolute -tw-top-5 -tw-left-3" src="/storage/public/hdx-logo.png" alt="hdx logo">
+                    <div class="flex items-center relative">
+                        <h2 class="font-extrabold font-bebas text-2xl !mt-1">victoria</h2>
+                        <img class="w-10 h-auto absolute -top-5 -left-3" src="/storage/public/hdx-logo.png" alt="hdx logo">
                     </div>
                 </Link>
                 <div @click="menuStateApp = !menuStateApp">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" data-slot="icon" class="tw-size-8 tw-mb-1"><path fill-rule="evenodd" d="M3 9a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 9Zm0 6.75a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" data-slot="icon" class="size-8 mb-1"><path fill-rule="evenodd" d="M3 9a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 9Zm0 6.75a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd"></path></svg>
                 </div>
             </div>
         </div>
-        <div class="tw-w-full tw-hidden lg:tw-flex tw-items-center tw-justify-between !tw-mx-auto !tw-max-w-7xl tw-p-5 tw-z-20 tw-relative">
+        <div class="w-full hidden lg:flex items-center justify-between !mx-auto !max-w-7xl p-5 z-20 relative">
             <Link :href="route('welcome')">
-                <div class="tw-flex tw-items-center  tw-relative">
-                    <h2 class="tw-font-extrabold tw-font-bebas tw-text-4xl !tw-mt-1">victoria</h2>
-                    <img class="tw-w-10 tw-h-auto tw-absolute -tw-top-5 -tw-left-7" src="/storage/public/hdx-logo.png" alt="hdx logo">
+                <div class="flex items-center  relative">
+                    <h2 class="font-extrabold font-bebas text-4xl !mt-1">victoria</h2>
+                    <img class="w-10 h-auto absolute -top-5 -left-7" src="/storage/public/hdx-logo.png" alt="hdx logo">
                 </div>
             </Link>
 
-            <div class="tw-flex tw-items-center tw-gap-5">
+            <div class="flex items-center gap-5">
                 <GuestNavSocial />
-                <div @click="menuStateSocialMedia = !menuStateSocialMedia" class="tw-items-center tw-gap-1 tw-cursor-pointer tw-relative tw-inline-flex tw-transition-colors tw-duration-300 after:tw-content-[''] after:tw-absolute after:tw-left-0 after:tw-bottom-0 after:tw-h-[2px] after:tw-w-0 after:tw-bg-current after:tw-transition-all after:tw-duration-500 hover:after:tw-w-full">
+                <div @click="menuStateSocialMedia = !menuStateSocialMedia" class="items-center gap-1 cursor-pointer relative inline-flex transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-500 hover:after:w-full">
                     <span class="block">Redes sociales</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="tw-w-5 tw-fill-current" viewBox="0 0 24 24"><path d="M16.293 9.293 12 13.586 7.707 9.293l-1.414 1.414L12 16.414l5.707-5.707z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 fill-current" viewBox="0 0 24 24"><path d="M16.293 9.293 12 13.586 7.707 9.293l-1.414 1.414L12 16.414l5.707-5.707z"></path></svg>
                 </div>
-                <div v-if="!user" class="tw-inline-block">
-                    <Link :href="route('register')" class="tw-relative tw-inline-block tw-transition-colors tw-duration-300 after:tw-content-[''] after:tw-absolute after:tw-left-0 after:tw-bottom-0 after:tw-h-[2px] after:tw-w-0 after:tw-bg-current after:tw-transition-all after:tw-duration-500 hover:after:tw-w-full">Registrarse</Link>
+                <div v-if="!user" class="inline-block">
+                    <Link :href="route('register')" class="relative inline-block transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-500 hover:after:w-full">Registrarse</Link>
                 </div>
-                <div v-if="!user" class="tw-inline-block">
-                    <Link :href="route('login')" class="tw-relative tw-inline-block tw-transition-colors tw-duration-300 after:tw-content-[''] after:tw-absolute after:tw-left-0 after:tw-bottom-0 after:tw-h-[2px] after:tw-w-0 after:tw-bg-current after:tw-transition-all after:tw-duration-500 hover:after:tw-w-full">Iniciar sesión</Link>
+                <div v-if="!user" class="inline-block">
+                    <Link :href="route('login')" class="relative inline-block transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-500 hover:after:w-full">Iniciar sesión</Link>
                 </div>
-                <div v-if="user" class="tw-inline-block">
-                    <Link :href="route('events.index')" class="tw-relative tw-inline-block tw-transition-colors tw-duration-300 after:tw-content-[''] after:tw-absolute after:tw-left-0 after:tw-bottom-0 after:tw-h-[2px] after:tw-w-0 after:tw-bg-current after:tw-transition-all after:tw-duration-500 hover:after:tw-w-full">Partidos</Link>
+                <div v-if="user" class="inline-block">
+                    <Link :href="route('events.index')" class="relative inline-block transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-500 hover:after:w-full">Partidos</Link>
                 </div>
-                <div v-if="user" class="tw-inline-block">
-                    <Link :href="route('dashboard')" class="tw-relative tw-inline-block tw-transition-colors tw-duration-300 after:tw-content-[''] after:tw-absolute after:tw-left-0 after:tw-bottom-0 after:tw-h-[2px] after:tw-w-0 after:tw-bg-current after:tw-transition-all after:tw-duration-500 hover:after:tw-w-full">Dashboard</Link>
+                <div v-if="user" class="inline-block">
+                    <Link :href="route('dashboard')" class="relative inline-block transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-500 hover:after:w-full">Dashboard</Link>
                 </div>
             </div>
             <Link :href="route('dashboard')" >

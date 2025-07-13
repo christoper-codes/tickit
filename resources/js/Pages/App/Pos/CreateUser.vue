@@ -269,7 +269,7 @@ props.users.forEach(element => {
 
         <v-dialog v-model="loading" max-width="800px" persistent>
             <v-card title="Nuevo Usuario">
-                <div class="tw-mt-5 tw-flex tw-flex-col tw-gap-3 tw-mx-5">
+                <div class="mt-5 flex flex-col gap-3 mx-5">
                     <p>Email: {{emailNewUser}}</p>
                     <p>Username: {{userNameNewUser}}</p>
                     <p>Contraseña: {{passwordNewUser}}</p>
@@ -278,7 +278,7 @@ props.users.forEach(element => {
                     <v-btn
                         color="purple"
                         rounded="xl"
-                        class="!tw-px-4 text-none"
+                        class="!px-4 text-none"
                         variant="elevated"
                         @click="acept">
                         Aceptar
@@ -293,7 +293,7 @@ props.users.forEach(element => {
                     <v-btn
                         color="purple"
                         rounded="xl"
-                        class="!tw-px-4 text-none"
+                        class="!px-4 text-none"
                         variant="elevated"
                         @click="aceptUpdate">
                         Aceptar
@@ -311,9 +311,9 @@ props.users.forEach(element => {
         <v-card
             title="Actualizar Usuario"
         >
-            <div class="tw-mt-5 tw-flex tw-flex-col tw-gap-3 tw-mx-5">
-                <v-form class="tw-mt-5 tw-flex tw-flex-col tw-gap-1">
-                    <div class="tw-w-full">
+            <div class="mt-5 flex flex-col gap-3 mx-5">
+                <v-form class="mt-5 flex flex-col gap-1">
+                    <div class="w-full">
                         <v-select
                             v-model="rolesField.value.value"
                             :items="roles"
@@ -330,7 +330,7 @@ props.users.forEach(element => {
                 <v-btn
                     color="red"
                     rounded="xl"
-                    class="!tw-px-4 text-none"
+                    class="!px-4 text-none"
                     variant="elevated"
                     @click="cancelForm"
                 >
@@ -339,7 +339,7 @@ props.users.forEach(element => {
                 <v-btn
                     color="purple"
                     rounded="xl"
-                    class="!tw-px-4 text-none"
+                    class="!px-4 text-none"
                     variant="elevated"
                     @click="submit">
                     Crear
@@ -360,11 +360,11 @@ props.users.forEach(element => {
             <v-card
                 title="Crear Usuario"
             >
-            <div class="tw-mt-5 tw-flex tw-flex-col tw-gap-3 tw-mx-5">
-                <v-form class="tw-mt-5 tw-flex tw-flex-col tw-gap-1">
-                    <div class="tw-flex tw-flex-col lg:tw-flex-row tw-items-center tw-justify-between tw-gap-5">
-                        <div class="tw-w-full">
-                            <p class="tw-font-medium tw-mb-1"><span class="tw-text-red-500">*</span> Primer nombre</p>
+            <div class="mt-5 flex flex-col gap-3 mx-5">
+                <v-form class="mt-5 flex flex-col gap-1">
+                    <div class="flex flex-col lg:flex-row items-center justify-between gap-5">
+                        <div class="w-full">
+                            <p class="font-medium mb-1"><span class="text-red-500">*</span> Primer nombre</p>
                             <v-text-field
                                 color="primary"
                                 label="Primer nombre"
@@ -375,8 +375,8 @@ props.users.forEach(element => {
                                 ></v-text-field>
                                 <InputError :message="data.errors.first_name" />
                         </div>
-                        <div class="tw-w-full">
-                            <p class="tw-font-medium tw-mb-1"><span class="tw-text-red-500">*</span> Apellido paterno</p>
+                        <div class="w-full">
+                            <p class="font-medium mb-1"><span class="text-red-500">*</span> Apellido paterno</p>
                             <v-text-field
                                 color="primary"
                                 label="Apellido paterno"
@@ -388,9 +388,9 @@ props.users.forEach(element => {
                                 <InputError :message="data.errors.last_name" />
                         </div>
                     </div>
-                    <div class="tw-flex tw-flex-col lg:tw-flex-row  tw-items-center tw-justify-between tw-gap-5">
-                        <div class="tw-w-full">
-                            <p class="tw-font-medium tw-mb-1"><span class="tw-text-red-500">*</span> Apellido materno</p>
+                    <div class="flex flex-col lg:flex-row  items-center justify-between gap-5">
+                        <div class="w-full">
+                            <p class="font-medium mb-1"><span class="text-red-500">*</span> Apellido materno</p>
                             <v-text-field
                                 color="primary"
                                 label="Apellido materno"
@@ -401,8 +401,8 @@ props.users.forEach(element => {
                                 ></v-text-field>
                                 <InputError :message="data.errors.middle_name" />
                         </div>
-                        <div class="tw-w-full">
-                            <p class="tw-font-medium tw-mb-1"><span class="tw-text-red-500">*</span> E-mail</p>
+                        <div class="w-full">
+                            <p class="font-medium mb-1"><span class="text-red-500">*</span> E-mail</p>
                             <v-text-field
                                 color="primary"
                                 label="E-mail"
@@ -414,9 +414,9 @@ props.users.forEach(element => {
                                 <InputError class="" :message="data.errors.email" />
                         </div>
                     </div>
-                    <div class="tw-flex tw-flex-col lg:tw-flex-row  tw-items-center tw-justify-between tw-gap-5">
-                        <div class="tw-w-full">
-                            <p class="tw-font-medium tw-mb-1"><span class="tw-text-red-500">*</span> Genero identificado</p>
+                    <div class="flex flex-col lg:flex-row  items-center justify-between gap-5">
+                        <div class="w-full">
+                            <p class="font-medium mb-1"><span class="text-red-500">*</span> Genero identificado</p>
                             <v-select
                                 color="primary"
                                 clearable
@@ -428,8 +428,8 @@ props.users.forEach(element => {
                             ></v-select>
                             <InputError :message="data.errors.user_gender" />
                         </div>
-                        <div class="tw-w-full">
-                            <p class="tw-font-medium tw-mb-1"><span class="tw-text-red-500">*</span> Fecha de nacimiento</p>
+                        <div class="w-full">
+                            <p class="font-medium mb-1"><span class="text-red-500">*</span> Fecha de nacimiento</p>
                             <v-date-input
                                 density="compact"
                                 color="primary"
@@ -442,7 +442,7 @@ props.users.forEach(element => {
                             <InputError :message="data.errors.birthdate" />
                         </div>
                     </div>
-                    <div class="tw-w-full">
+                    <div class="w-full">
                         <v-select
                             v-model="rolesField.value.value"
                             :items="roles"
@@ -461,7 +461,7 @@ props.users.forEach(element => {
                     <v-btn
                         color="red"
                         rounded="xl"
-                        class="!tw-px-4 text-none"
+                        class="!px-4 text-none"
                         variant="elevated"
                         @click="cancelForm"
                     >
@@ -470,7 +470,7 @@ props.users.forEach(element => {
                     <v-btn
                         color="purple"
                         rounded="xl"
-                        class="!tw-px-4 text-none"
+                        class="!px-4 text-none"
                         variant="elevated"
                         @click="submit">
                         Crear
@@ -481,7 +481,7 @@ props.users.forEach(element => {
         </v-dialog>
 
 
-        <div class="tw-w-full tw-px-4 lg:tw-p-10 tw-h-auto tw-mx-auto tw-py-10">
+        <div class="w-full px-4 lg:p-10 h-auto mx-auto py-10">
             <v-card
                 title=""
                 flat
@@ -503,7 +503,7 @@ props.users.forEach(element => {
                         <div v-if="userSelect == ''">
                             <v-btn
                                 variant="tonal"
-                                class="mb-2 !tw-mr-5 text-none tw-my-3 tw-mx-3"
+                                class="mb-2 !mr-5 text-none my-3 mx-3"
                                 color="purple"
                                 rounded="xl"
                                 @click="userCreateRol"
@@ -514,7 +514,7 @@ props.users.forEach(element => {
                         <div v-else>
                             <v-btn
                                 variant="tonal"
-                                class="mb-2 !tw-mr-5 text-none tw-my-3 tw-mx-3"
+                                class="mb-2 !mr-5 text-none my-3 mx-3"
                                 color="purple"
                                 rounded="xl"
                                 @click="userChangeRol"

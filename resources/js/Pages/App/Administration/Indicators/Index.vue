@@ -47,18 +47,18 @@ const globalPayementTypeProps = (item) => {
             <span>Resumen por partido</span>
         </BreadcrumbAppSecondary>
 
-        <div class="tw-relative tw-w-full tw-block tw-overflow-hidden tw-mt-10">
-            <div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-3 tw-gap-7">
-                <div v-for="event in sortedEvents" :key="event.id" class="tw-shadow-xl tw-w-full tw-p-5 tw-rounded-3xl tw-bg-white">
-                    <div class="tw-h-48 tw-w-full tw-rounded-2xl tw-overflow-hidden tw-relative">
-                        <img :src="`/storage/${event.global_image.file_path}`" class="tw-w-full tw-h-full tw-object-cover" alt="Event Image">
+        <div class="relative w-full block overflow-hidden mt-10">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-7">
+                <div v-for="event in sortedEvents" :key="event.id" class="shadow-xl w-full p-5 rounded-3xl bg-white">
+                    <div class="h-48 w-full rounded-2xl overflow-hidden relative">
+                        <img :src="`/storage/${event.global_image.file_path}`" class="w-full h-full object-cover" alt="Event Image">
                     </div>
-                    <div class="tw-mt-3">
-                        <h3 class="tw-text-lg tw-font-bold tw-mt-3">{{ event.name }}</h3>
-                        <p class="tw-text-sm">{{ dateFormat(event.start_date) }}</p>
+                    <div class="mt-3">
+                        <h3 class="text-lg font-bold mt-3">{{ event.name }}</h3>
+                        <p class="text-sm">{{ dateFormat(event.start_date) }}</p>
                     </div>
-                    <Link :href="route('indicators.show', { slug: event.slug, id: event.id } )" @click="showEvent(event.id)" class="mt-3 tw-block">
-                        <PrimaryButton heightbtn="!tw-h-[60px]" paddingbtn="!tw-w-full !tw-block" :loading="loadingEventId === event.id">
+                    <Link :href="route('indicators.show', { slug: event.slug, id: event.id } )" @click="showEvent(event.id)" class="mt-3 block">
+                        <PrimaryButton heightbtn="!h-[60px]" paddingbtn="!w-full !block" :loading="loadingEventId === event.id">
                             <span>Ver indicadores</span>
                         </PrimaryButton>
                     </Link>

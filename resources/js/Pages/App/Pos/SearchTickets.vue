@@ -228,10 +228,10 @@ function printInKioskMode(url) {
     <GuestLayout />
     <NavigationDrawer />
 
-    <div class="tw-w-full tw-px-4 lg:tw-px-0 lg:tw-w-[75%] tw-h-auto tw-mx-auto tw-py-10 lg:tw-py-5 tw-font-extrabold tw-text-2xl">
+    <div class="w-full px-4 lg:px-0 lg:w-[75%] h-auto mx-auto py-10 lg:py-5 font-extrabold text-2xl">
         <h1>Buscar Asientos</h1>
         <v-select
-            class="tw-my-3"
+            class="my-3"
             v-model="partido"
             chips
             label="Selecciona el partido"
@@ -242,7 +242,7 @@ function printInKioskMode(url) {
             @update:model-value="usersOfEvent"
         ></v-select>
 
-        <div v-if="seats.length > 0" class="tw-w-full tw-px-4 lg:tw-px-0 lg:tw-w-[75%] tw-h-auto tw-mx-auto tw-py-10 lg:tw-py-0">
+        <div v-if="seats.length > 0" class="w-full px-4 lg:px-0 lg:w-[75%] h-auto mx-auto py-10 lg:py-0">
             <v-card
                 title=""
                 flat
@@ -272,21 +272,21 @@ function printInKioskMode(url) {
                     <template v-slot:item.actions="{ item }">
                         <v-dialog max-width="600">
                             <template v-slot:activator="{ props: activatorProps }">
-                                <v-btn @click="updateSaleTicketsSelected(item)" v-bind="activatorProps" density="default" icon="mdi-printer" class="!tw-text-blue-600 !tw-bg-blue-200"></v-btn>
+                                <v-btn @click="updateSaleTicketsSelected(item)" v-bind="activatorProps" density="default" icon="mdi-printer" class="!text-blue-600 !bg-blue-200"></v-btn>
                             </template>
                             <template v-slot:default="{ isActive }">
                                 <v-card title="¿Estas seguro de reimprimir el ticket?">
                                 <v-card-text>
-                                    <p class="tw-opacity-50 tw-mt-3 tw-text-center">Preciona 'Imprimir ticket' para ejecutar la acción.</p>
-                                    <div class="tw-flex tw-items-center tw-justify-center tw-gap-3 mt-5">
-                                        <p v-for="code in saleTicketsSelected" :key="code" class="tw-py-2 tw-px-7 tw-bg-purple-200 tw-text-purple-700 tw-rounded-md tw-text-xl">{{ code }}</p>
+                                    <p class="opacity-50 mt-3 text-center">Preciona 'Imprimir ticket' para ejecutar la acción.</p>
+                                    <div class="flex items-center justify-center gap-3 mt-5">
+                                        <p v-for="code in saleTicketsSelected" :key="code" class="py-2 px-7 bg-purple-200 text-purple-700 rounded-md text-xl">{{ code }}</p>
                                     </div>
                                 </v-card-text>
 
-                                <v-card-actions class="tw-mb-4 tw-mr-4">
+                                <v-card-actions class="mb-4 mr-4">
                                     <v-spacer></v-spacer>
-                                    <v-btn color="red" rounded="large" variant="tonal" class="text-none !tw-px-4" text="Cancelar" @click="isActive.value = false"></v-btn>
-                                    <v-btn :loading="loadingPrint" @click="printTicket(item, isActive)" rounded="large" variant="elevated" class="text-none !tw-bg-purple-600 !tw-text-white">
+                                    <v-btn color="red" rounded="large" variant="tonal" class="text-none !px-4" text="Cancelar" @click="isActive.value = false"></v-btn>
+                                    <v-btn :loading="loadingPrint" @click="printTicket(item, isActive)" rounded="large" variant="elevated" class="text-none !bg-purple-600 !text-white">
                                         Imprimir ticket
                                     </v-btn>
                                 </v-card-actions>
@@ -296,25 +296,25 @@ function printInKioskMode(url) {
 
                     <v-dialog max-width="800">
                         <template v-slot:activator="{ props: activatorProps }">
-                            <v-btn @click="updateSaleTicketsSelected(item)" v-bind="activatorProps" density="default" icon="mdi-delete" class="!tw-text-red-600 !tw-bg-red-200"></v-btn>
+                            <v-btn @click="updateSaleTicketsSelected(item)" v-bind="activatorProps" density="default" icon="mdi-delete" class="!text-red-600 !bg-red-200"></v-btn>
                         </template>
                         <template v-slot:default="{ isActive }">
                             <v-card title="¿Estas seguro de cancelar el ticket?">
                             <v-card-text>
-                                <div class="tw-flex tw-flex-col tw-items-center tw-justify-center">
-                                    <p class="tw-inline tw-mt-3 tw-text-center tw-text-xs py-1 px-5 tw-bg-red-100 tw-text-red-500 tw-rounded-full">Ingresa el codigo de cancelacion y preciona 'Ejecutar Cancelaciòn' para confirmar.</p>
+                                <div class="flex flex-col items-center justify-center">
+                                    <p class="inline mt-3 text-center text-xs py-1 px-5 bg-red-100 text-red-500 rounded-full">Ingresa el codigo de cancelacion y preciona 'Ejecutar Cancelaciòn' para confirmar.</p>
                                     <v-otp-input v-model="cencellationPasswordEntered"></v-otp-input>
                                 </div>
-                                <div class="tw-flex tw-flex-col tw-items-center tw-justify-center">
-                                    <p class="tw-text-xs py-1 px-5 tw-bg-red-100 tw-text-red-500 tw-rounded-full">Selecciona el tipo de pago y orden en el que descontara la venta</p>
-                                    <div v-if="paymentTypesSelected.length > 0" class="tw-mt-3 tw-text-purple-600 tw-font-bold tw-flex tw-items-center tw-justify-center tw-gap-3">
+                                <div class="flex flex-col items-center justify-center">
+                                    <p class="text-xs py-1 px-5 bg-red-100 text-red-500 rounded-full">Selecciona el tipo de pago y orden en el que descontara la venta</p>
+                                    <div v-if="paymentTypesSelected.length > 0" class="mt-3 text-purple-600 font-bold flex items-center justify-center gap-3">
                                         <div v-for="(type, index) in paymentTypesSelected" :key="index">
-                                          <p class="tw-py-1 tw-px-3 tw-bg-purple-100 tw-rounded-md"> {{ index + 1 }} - {{ type }} </p>
+                                          <p class="py-1 px-3 bg-purple-100 rounded-md"> {{ index + 1 }} - {{ type }} </p>
                                         </div>
                                     </div>
-                                    <div class="tw-flex tw-items-center tw-gap-2">
+                                    <div class="flex items-center gap-2">
                                         <v-checkbox
-                                        class="!tw-flex !tw-items-center"
+                                        class="!flex !items-center"
                                         v-for="(type, index) in paymentTypes" :key="index"
                                         v-model="paymentTypesSelected"
                                         :label="type"
@@ -323,7 +323,7 @@ function printInKioskMode(url) {
                                         ></v-checkbox>
                                     </div>
                                 </div>
-                                <div class="!w-full tw-mt-0">
+                                <div class="!w-full mt-0">
                                     <v-tabs
                                         v-model="tabs"
                                         color="purple"
@@ -342,9 +342,9 @@ function printInKioskMode(url) {
                                     <v-tabs-window v-model="tabs">
                                     <v-tabs-window-item :value="1">
                                         <v-card>
-                                        <v-card-text class="!tw-mt-5">
-                                            <div class="tw-flex tw-items-center tw-justify-center tw-gap-3">
-                                                <p v-for="code in saleTicketsSelected" :key="code" class="tw-py-2 tw-px-7 tw-bg-purple-200 tw-text-purple-700 tw-rounded-md tw-text-xl">{{ code }}</p>
+                                        <v-card-text class="!mt-5">
+                                            <div class="flex items-center justify-center gap-3">
+                                                <p v-for="code in saleTicketsSelected" :key="code" class="py-2 px-7 bg-purple-200 text-purple-700 rounded-md text-xl">{{ code }}</p>
                                             </div>
                                         </v-card-text>
                                         </v-card>
@@ -360,7 +360,7 @@ function printInKioskMode(url) {
                                                 label="Selecciona los asientos a cancelar"
                                                 color="purple"
                                                 clearable
-                                                class="tw-w-full"
+                                                class="w-full"
                                                 hint="Opcion multiple"
                                                 persistent-hint=""
                                             ></v-select>
@@ -371,10 +371,10 @@ function printInKioskMode(url) {
                                 </div>
                             </v-card-text>
 
-                            <v-card-actions class="tw-mb-4 tw-mr-4">
+                            <v-card-actions class="mb-4 mr-4">
                                 <v-spacer></v-spacer>
-                                <v-btn color="red" rounded="large" variant="tonal" class="text-none !tw-px-4" text="Cancelar" @click="isActive.value = false"></v-btn>
-                                <v-btn :loading="loadingCancel" @click="cancelTicket(item, isActive)" rounded="large" variant="elevated" class="text-none !tw-bg-red-600 !tw-text-white">
+                                <v-btn color="red" rounded="large" variant="tonal" class="text-none !px-4" text="Cancelar" @click="isActive.value = false"></v-btn>
+                                <v-btn :loading="loadingCancel" @click="cancelTicket(item, isActive)" rounded="large" variant="elevated" class="text-none !bg-red-600 !text-white">
                                     Ejecutar Cancelaciòn
                                 </v-btn>
                             </v-card-actions>

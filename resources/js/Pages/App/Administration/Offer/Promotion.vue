@@ -222,16 +222,16 @@ watch(promotion.promotion_type_id.value, (id) => {
         <BreadcrumbAppSecondary>
             <span>Administración de promociones</span>
         </BreadcrumbAppSecondary>
-        <div class="tw-px-4 tw-py-10 lg:tw-p-10">
+        <div class="px-4 py-10 lg:p-10">
             <v-data-table :headers="headersPromotions" :items="promotions">
                 <template v-slot:top>
                     <v-toolbar flat>
-                        <v-toolbar-title class="tw-uppercase">Promociones</v-toolbar-title>
+                        <v-toolbar-title class="uppercase">Promociones</v-toolbar-title>
                         <v-divider class="mx-4" inset vertical></v-divider>
                         <v-spacer></v-spacer>
                         <v-dialog v-model="dialogFormPromotion" max-width="800px">
                             <template v-slot:activator="{ props }">
-                                <v-btn variant="tonal" class="mb-2 !tw-mr-5 text-none" color="purple" rounded="xl"
+                                <v-btn variant="tonal" class="mb-2 !mr-5 text-none" color="purple" rounded="xl"
                                     v-bind="props">
                                     Nueva promoción
                                 </v-btn>
@@ -242,23 +242,23 @@ watch(promotion.promotion_type_id.value, (id) => {
                                 </v-card-title>
                                 <v-card-text>
                                     <v-container>
-                                        <div class="tw-mt-5 tw-flex tw-flex-col tw-gap-3">
-                                            <v-form class="tw-mt-5 tw-flex tw-flex-col tw-gap-1">
+                                        <div class="mt-5 flex flex-col gap-3">
+                                            <v-form class="mt-5 flex flex-col gap-1">
                                                 <div
-                                                    class="tw-flex tw-flex-col lg:tw-flex-row tw-items-center tw-justify-between tw-gap-5 tw-mb-2">
+                                                    class="flex flex-col lg:flex-row items-center justify-between gap-5 mb-2">
 
-                                                    <div class="tw-w-full">
-                                                        <p class="tw-font-medium tw-mb-1"><span
-                                                                class="tw-text-red-500">*</span> Estadio</p>
+                                                    <div class="w-full">
+                                                        <p class="font-medium mb-1"><span
+                                                                class="text-red-500">*</span> Estadio</p>
                                                         <v-select label="Estadio" :items="stadiums"
                                                             :item-title="(item) => formatFirstLetterUppercase(item.name)"
                                                             item-value="id" v-model="promotion.stadium_id.value.value"
                                                             :error-messages="promotion.stadium_id.errorMessage.value"></v-select>
                                                         <InputError :message="dataFormPromotion.errors.stadium_id" />
                                                     </div>
-                                                    <div class="tw-w-full">
-                                                        <p class="tw-font-medium tw-mb-1"><span
-                                                                class="tw-text-red-500">*</span> Tipo de promoción
+                                                    <div class="w-full">
+                                                        <p class="font-medium mb-1"><span
+                                                                class="text-red-500">*</span> Tipo de promoción
                                                         </p>
                                                         <v-select label="Tipo de promoción" :items="promotion_types"
                                                             :item-title="(item) => formatFirstLetterUppercase(item.name)"
@@ -268,9 +268,9 @@ watch(promotion.promotion_type_id.value, (id) => {
                                                         <InputError
                                                             :message="dataFormPromotion.errors.promotion_type_id" />
                                                     </div>
-                                                    <div class="tw-w-full">
-                                                        <p class="tw-font-medium tw-mb-1"><span
-                                                                class="tw-text-red-500">*</span> Nombre</p>
+                                                    <div class="w-full">
+                                                        <p class="font-medium mb-1"><span
+                                                                class="text-red-500">*</span> Nombre</p>
                                                         <v-text-field color="primary" label="Nombre"
                                                             placeholder=" 2 por 1"
                                                             hint="ingresa el nombre de la promotion"
@@ -280,10 +280,10 @@ watch(promotion.promotion_type_id.value, (id) => {
                                                     </div>
                                                 </div>
                                                 <div
-                                                    class="tw-flex tw-flex-col lg:tw-flex-row tw-items-center tw-justify-between tw-gap-5 tw-my-2">
-                                                    <div class="tw-w-full">
-                                                        <p class="tw-font-medium tw-mb-1"><span
-                                                                class="tw-text-red-500">*</span> Descripción</p>
+                                                    class="flex flex-col lg:flex-row items-center justify-between gap-5 my-2">
+                                                    <div class="w-full">
+                                                        <p class="font-medium mb-1"><span
+                                                                class="text-red-500">*</span> Descripción</p>
                                                         <v-textarea color="primary" label="Descripción" rows="3"
                                                             variant="filled" auto-grow
                                                             v-model="promotion.description.value.value"
@@ -292,10 +292,10 @@ watch(promotion.promotion_type_id.value, (id) => {
                                                     </div>
                                                 </div>
                                                 <div v-if="optionPromotionTypes.multiple_purchases"
-                                                    class="tw-flex tw-flex-col lg:tw-flex-row tw-items-center tw-justify-between tw-gap-5 tw-mb-2">
-                                                    <div class="tw-w-full">
-                                                        <p class="tw-font-medium tw-mb-1"><span
-                                                                class="tw-text-red-500">*</span> Asientos Nec.</p>
+                                                    class="flex flex-col lg:flex-row items-center justify-between gap-5 mb-2">
+                                                    <div class="w-full">
+                                                        <p class="font-medium mb-1"><span
+                                                                class="text-red-500">*</span> Asientos Nec.</p>
                                                         <v-text-field color="primary" label="Asientos Nec."
                                                             placeholder="1" hint="Asientos necesarios "
                                                             v-model="promotion.generic_seats_allowed.value.value"
@@ -303,9 +303,9 @@ watch(promotion.promotion_type_id.value, (id) => {
                                                         <InputError
                                                             :message="dataFormPromotion.errors.generic_seats_allowed" />
                                                     </div>
-                                                    <div class="tw-w-full">
-                                                        <p class="tw-font-medium tw-mb-1"><span
-                                                                class="tw-text-red-500">*</span> Asientos Reg.</p>
+                                                    <div class="w-full">
+                                                        <p class="font-medium mb-1"><span
+                                                                class="text-red-500">*</span> Asientos Reg.</p>
                                                         <v-text-field color="primary" label="Asientos Reg"
                                                             placeholder="1" hint="Asientos regalados "
                                                             v-model="promotion.promotional_seats_allowed.value.value"
@@ -313,9 +313,9 @@ watch(promotion.promotion_type_id.value, (id) => {
                                                         <InputError
                                                             :message="dataFormPromotion.errors.promotional_seats_allowed" />
                                                     </div>
-                                                    <div class="tw-w-full">
-                                                        <p class="tw-font-medium tw-mb-1"><span
-                                                                class="tw-text-red-500">*</span> Promociones permit.
+                                                    <div class="w-full">
+                                                        <p class="font-medium mb-1"><span
+                                                                class="text-red-500">*</span> Promociones permit.
                                                         </p>
                                                         <v-text-field color="primary" label="Promociones permit."
                                                             placeholder="1" hint="Promociones permitidas"
@@ -326,10 +326,10 @@ watch(promotion.promotion_type_id.value, (id) => {
                                                     </div>
                                                 </div>
                                                 <div v-if="optionPromotionTypes.percentage_discount"
-                                                    class="tw-flex tw-flex-col lg:tw-flex-row tw-items-center tw-justify-between tw-gap-5 tw-mb-2">
-                                                    <div class="tw-w-full">
-                                                        <p class="tw-font-medium tw-mb-1"><span
-                                                                class="tw-text-red-500">*</span> % Desc.</p>
+                                                    class="flex flex-col lg:flex-row items-center justify-between gap-5 mb-2">
+                                                    <div class="w-full">
+                                                        <p class="font-medium mb-1"><span
+                                                                class="text-red-500">*</span> % Desc.</p>
                                                         <v-text-field color="primary" label="% Desc." placeholder="1"
                                                             hint="Porcentaje de descuento" suffix="%"
                                                             v-model="promotion.percent_allow.value.value"
@@ -338,10 +338,10 @@ watch(promotion.promotion_type_id.value, (id) => {
                                                     </div>
                                                 </div>
                                                 <div
-                                                    class="tw-flex tw-flex-col lg:tw-flex-row tw-items-center tw-justify-between tw-gap-5 tw-my-2">
-                                                    <div class="tw-w-full">
-                                                        <p class="tw-font-medium tw-mb-1"><span
-                                                                class="tw-text-red-500">*</span> Aplica
+                                                    class="flex flex-col lg:flex-row items-center justify-between gap-5 my-2">
+                                                    <div class="w-full">
+                                                        <p class="font-medium mb-1"><span
+                                                                class="text-red-500">*</span> Aplica
                                                         </p>
                                                         <v-radio-group v-model="promotion.is_active_online.value.value"
                                                             inline>
@@ -351,9 +351,9 @@ watch(promotion.promotion_type_id.value, (id) => {
                                                         </v-radio-group>
 
                                                     </div>
-                                                    <div class="tw-w-full">
-                                                        <p class="tw-font-medium tw-mb-1"><span
-                                                                class="tw-text-red-500">*</span> Para
+                                                    <div class="w-full">
+                                                        <p class="font-medium mb-1"><span
+                                                                class="text-red-500">*</span> Para
                                                         </p>
                                                         <v-radio-group v-model="promotion.availability_sale.value.value"
                                                             inline>
@@ -363,9 +363,9 @@ watch(promotion.promotion_type_id.value, (id) => {
                                                         </v-radio-group>
 
                                                     </div>
-                                                    <div class="tw-w-full">
-                                                        <p class="tw-font-medium tw-mb-1"><span
-                                                                class="tw-text-red-500">*</span> Estatus
+                                                    <div class="w-full">
+                                                        <p class="font-medium mb-1"><span
+                                                                class="text-red-500">*</span> Estatus
                                                         </p>
                                                         <v-switch
                                                             :label="`${promotion.is_active.value.value ? 'Activa' : 'Inactiva'}`"
@@ -377,13 +377,13 @@ watch(promotion.promotion_type_id.value, (id) => {
                                         </div>
                                     </v-container>
                                 </v-card-text>
-                                <v-card-actions class="!tw-mb-4">
+                                <v-card-actions class="!mb-4">
                                     <v-spacer></v-spacer>
-                                    <v-btn color="red" variant="tonal" rounded="xl" class="!tw-px-4 text-none"
+                                    <v-btn color="red" variant="tonal" rounded="xl" class="!px-4 text-none"
                                         @click="closeFormPromotion">
                                         Cancelar
                                     </v-btn>
-                                    <v-btn color="purple" rounded="xl" class="!tw-px-4 text-none" variant="elevated"
+                                    <v-btn color="purple" rounded="xl" class="!px-4 text-none" variant="elevated"
                                         @click="saveDataPromotion">
                                         Guardar
                                     </v-btn>
@@ -393,14 +393,14 @@ watch(promotion.promotion_type_id.value, (id) => {
                         <v-dialog v-model="dialogDeletePromotion" max-width="500px">
                             <v-card>
                                 <v-card-title class="">¿Esta seguro de eliminar esta promoción?</v-card-title>
-                                <v-card-actions class="!tw-my-2">
+                                <v-card-actions class="!my-2">
                                     <v-spacer></v-spacer>
                                     <v-btn @click="closeDeleteConfirmationPromotion" color="red" rounded="xl"
-                                        class="!tw-px-4 text-none" variant="tonal">
+                                        class="!px-4 text-none" variant="tonal">
                                         Cancelar
                                     </v-btn>
                                     <v-btn @click="deletePromotionConfirmation" color="purple" rounded="xl"
-                                        class="!tw-px-4 text-none" variant="elevated">
+                                        class="!px-4 text-none" variant="elevated">
                                         Eliminar
                                     </v-btn>
                                     <v-spacer></v-spacer>
@@ -437,10 +437,10 @@ watch(promotion.promotion_type_id.value, (id) => {
                     </v-chip>
                 </template>
                 <template v-slot:item.actions="{ item }">
-                    <v-icon class="me-2 !tw-text-purple-500" size="small" @click="editPromotion(item)">
+                    <v-icon class="me-2 !text-purple-500" size="small" @click="editPromotion(item)">
                         mdi-pencil
                     </v-icon>
-                    <v-icon class="!tw-text-red-600" size="small" @click="deletePromotion(item)">
+                    <v-icon class="!text-red-600" size="small" @click="deletePromotion(item)">
                         mdi-delete
                     </v-icon>
                 </template>

@@ -48,11 +48,11 @@ const props = defineProps({
   <div class="">
     <v-layout>
       <v-navigation-drawer v-model="draweAppNavState" temporary class="">
-        <div class="tw-bg-white tw-min-h-screen tw-relative tw-overflow-hidden tw-border-r-2">
-            <div class="tw-w-full tw-relative">
-                <div class="w-full tw-py-3 lg:tw-py-4 tw-px-4">
+        <div class="bg-white min-h-screen relative overflow-hidden border-r-2">
+            <div class="w-full relative">
+                <div class="w-full py-3 lg:py-4 px-4">
 
-                    <div class="text-center profile-btn tw-cursor-pointer">
+                    <div class="text-center profile-btn cursor-pointer">
                         <v-menu
                         v-model="menu"
                         :close-on-content-click="false"
@@ -60,31 +60,31 @@ const props = defineProps({
                         >
                             <template v-slot:activator="{ props }">
                                 <v-btn
-                                    class="!tw-rounded-full !tw-size-40 bg-profile !tw-bg-slate-300 !tw-shadow-none"
+                                    class="!rounded-full !size-40 bg-profile !bg-slate-300 !shadow-none"
                                     v-bind="props"
                                     @click="fav = !fav"
                                     >
                                     <div
-                                        class="tw-size-36 tw-overflow-hidden tw-flex tw-items-center tw-justify-center bg-profile"
+                                        class="size-36 overflow-hidden flex items-center justify-center bg-profile"
                                         v-if="user.global_images.length > 0"
                                         :style="{ backgroundImage: `url(/storage/${user.global_images[0].file_path})`, backgroundSize: 'cover', backgroundPosition: 'center' }"
                                         >
                                     </div>
                                     <div
                                         v-else
-                                        class="tw-size-36 tw-overflow-hidden tw-flex tw-items-center tw-justify-center bg-profile"
+                                        class="size-36 overflow-hidden flex items-center justify-center bg-profile"
                                         :style="{ backgroundImage: `url('https://images.pexels.com/photos/2847648/pexels-photo-2847648.jpeg')`, backgroundSize: 'cover', backgroundPosition: 'center' }"
                                         >
                                     </div>
                                 </v-btn>
-                                <div class="tw-flex tw-flex-col tw-items-center tw-mt-4">
-                                    <p class="tw-text-center tw-font-bebas tw-text-2xl tw-font-bold">{{ user.first_name + ' ' + user.last_name }}</p>
-                                    <p class="tw-text-center tw-text-xs">@{{ user.username }}</p>
+                                <div class="flex flex-col items-center mt-4">
+                                    <p class="text-center font-bebas text-2xl font-bold">{{ user.first_name + ' ' + user.last_name }}</p>
+                                    <p class="text-center text-xs">@{{ user.username }}</p>
                                 </div>
                             </template>
 
-                            <v-card min-width="350" rounded="lg" class="!tw-bg-white tw-backdrop-blur-sm">
-                                <v-list class="!tw-bg-transparent">
+                            <v-card min-width="350" rounded="lg" class="!bg-white backdrop-blur-sm">
+                                <v-list class="!bg-transparent">
                                 <v-list-item
                                     :prepend-avatar="`/storage/public/user-img.svg`"
                                     :title="user.first_name"
@@ -105,17 +105,17 @@ const props = defineProps({
 
                                 <v-card-actions>
                                 <v-spacer></v-spacer>
-                                <div class="tw-w-full tw-flex tw-items-center tw-justify-between tw-rounded-xl tw-overflow-hidden tw-shadow-lg tw-relative tw-mb-3">
-                                    <div class="tw-w-[55%] tw-p-3 tw-pr-0 tw-text-sm tw-font-semibold tw-text-gray-700">
+                                <div class="w-full flex items-center justify-between rounded-xl overflow-hidden shadow-lg relative mb-3">
+                                    <div class="w-[55%] p-3 pr-0 text-sm font-semibold text-gray-700">
                                         <p class="">{{ user.first_name + ' ' + user.last_name }}</p>
-                                        <p class="tw-text-xs tw-font-normal tw-mb-1">@{{ user.username }}</p>
+                                        <p class="text-xs font-normal mb-1">@{{ user.username }}</p>
                                         <Link :href="route('logout')" method="post" as="button">
                                             <v-btn  color="red" variant="tonal" block class="text-none" rounded="lg">
                                                 Cerrar sesión
                                         </v-btn>
                                         </Link>
                                     </div>
-                                    <img class="tw-w-[35%] tw-absolute tw-top-0 -tw-right-5" src="https://modernize-nuxt3-main.netlify.app/images/backgrounds/unlimited-bg.png" alt="Webiste image">
+                                    <img class="w-[35%] absolute top-0 -right-5" src="https://modernize-nuxt3-main.netlify.app/images/backgrounds/unlimited-bg.png" alt="Webiste image">
                                 </div>
                                 </v-card-actions>
                             </v-card>
@@ -125,44 +125,44 @@ const props = defineProps({
                 </div>
             </div>
 
-            <div class="tw-flex tw-flex-col tw-items-center tw-justify-between tw-gap-10 tw-p-4">
-                    <div class="tw-flex tw-flex-col tw-w-full">
-                        <h2 class="tw-font-semibold tw-text-2xl tw-mb-3 tw-font-bebas">Dashboard</h2>
-                        <div class="tw-flex tw-flex-col tw-items-center tw-gap-4 tw-w-full">
-                            <div class="tw-w-full ">
+            <div class="flex flex-col items-center justify-between gap-10 p-4">
+                    <div class="flex flex-col w-full">
+                        <h2 class="font-semibold text-2xl mb-3 font-bebas">Dashboard</h2>
+                        <div class="flex flex-col items-center gap-4 w-full">
+                            <div class="w-full ">
                                 <AppNavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                                    <span class="material-symbols-outlined tw-text-xl">home</span>Mis boletos
+                                    <span class="material-symbols-outlined text-xl">home</span>Mis boletos
                                 </AppNavLink>
                             </div>
-                            <div class="tw-w-full " v-if="viewVendorTopics(user.user_roles)">
+                            <div class="w-full " v-if="viewVendorTopics(user.user_roles)">
                                 <AppNavLink :href="route('ticket-offices.index')" :active="route().current('ticket-offices.index')">
-                                    <span class="material-symbols-outlined tw-text-xl">confirmation_number</span>Taquillas
+                                    <span class="material-symbols-outlined text-xl">confirmation_number</span>Taquillas
                                 </AppNavLink>
                             </div>
-                            <div class="tw-w-full ">
+                            <div class="w-full ">
                                 <AppNavLink :href="route('events.index')" :active="route().current('events.index')">
-                                    <span class="material-symbols-outlined tw-text-xl">note_stack</span>Partidos
+                                    <span class="material-symbols-outlined text-xl">note_stack</span>Partidos
                                 </AppNavLink>
                             </div>
 
-                            <div class=" tw-w-full">
+                            <div class=" w-full">
                                 <AppNavLink :href="route('ticket-offices.share')" :active="route().current('ticket-offices.share')">
-                                    <span class="material-symbols-outlined tw-text-xl">share</span>Compartir boletos
+                                    <span class="material-symbols-outlined text-xl">share</span>Compartir boletos
                                 </AppNavLink>
                             </div>
-                            <div class=" tw-w-full">
+                            <div class=" w-full">
                                 <AppNavLink :href="route('wallet-account.index')" :active="route().current('wallet-account.index')">
-                                    <span class="material-symbols-outlined tw-text-xl">credit_card</span>Mis tarjetas
+                                    <span class="material-symbols-outlined text-xl">credit_card</span>Mis tarjetas
                                 </AppNavLink>
                             </div>
                         </div>
                     </div>
 
-                    <div v-if="viewAdminTopics(user.user_roles)" class="tw-flex tw-flex-col tw-w-full">
-                        <h2 class="tw-font-semibold tw-text-2xl tw-mb-3 tw-font-bebas">Accesos administrativos</h2>
-                        <div class="tw-flex tw-flex-col tw-items-center tw-gap-0 tw-w-full">
+                    <div v-if="viewAdminTopics(user.user_roles)" class="flex flex-col w-full">
+                        <h2 class="font-semibold text-2xl mb-3 font-bebas">Accesos administrativos</h2>
+                        <div class="flex flex-col items-center gap-0 w-full">
 
-                            <v-card class="mx-auto !tw-bg-transparent !tw-shadow-none" width="100%">
+                            <v-card class="mx-auto !bg-transparent !shadow-none" width="100%">
                                 <v-list v-model:opened="open">
                                     <v-list-group value="super_admin" >
                                         <template v-slot:activator="{ props }">
@@ -173,25 +173,25 @@ const props = defineProps({
                                         ></v-list-item>
                                         </template>
 
-                                        <div class="tw-mt-3 tw-w-full">
+                                        <div class="mt-3 w-full">
                                             <AppNavLink :href="route('create.users')" :active="route().current('create.users')">
-                                                <span class="material-symbols-outlined tw-text-lg">person</span>Usuarios
+                                                <span class="material-symbols-outlined text-lg">person</span>Usuarios
                                             </AppNavLink>
                                         </div>
-                                        <div class="tw-mt-3 tw-w-full">
+                                        <div class="mt-3 w-full">
                                             <AppNavLink :href="route('indicators.index')" :active="route().current('indicators.index') || route().current('indicators.show')">
-                                                <span class="material-symbols-outlined tw-text-lg">monitoring</span>Indicadores
+                                                <span class="material-symbols-outlined text-lg">monitoring</span>Indicadores
                                             </AppNavLink>
                                         </div>
-                                        <div class="tw-mt-3 tw-w-full">
+                                        <div class="mt-3 w-full">
                                             <AppNavLink :href="route('events.with.traffic')" :active="route().current('events.with.traffic')">
-                                                <span class="material-symbols-outlined tw-text-lg">block</span>Tránsito
+                                                <span class="material-symbols-outlined text-lg">block</span>Tránsito
                                             </AppNavLink>
                                         </div>
                                     </v-list-group>
                                 </v-list>
                             </v-card>
-                            <v-card class="mx-auto !tw-bg-transparent !tw-shadow-none" width="100%">
+                            <v-card class="mx-auto !bg-transparent !shadow-none" width="100%">
                                 <v-list v-model:opened="open">
                                     <v-list-group value="admin" >
                                         <template v-slot:activator="{ props }">
@@ -202,48 +202,48 @@ const props = defineProps({
                                         ></v-list-item>
                                         </template>
 
-                                        <div class="tw-mt-3 tw-w-full">
+                                        <div class="mt-3 w-full">
                                             <AppNavLink :href="route('series.index')" :active="route().current('series.index')">
-                                                <span class="material-symbols-outlined tw-text-lg">note_stack</span>Series
+                                                <span class="material-symbols-outlined text-lg">note_stack</span>Series
                                             </AppNavLink>
                                         </div>
-                                        <div class="tw-mt-3 tw-w-full">
+                                        <div class="mt-3 w-full">
                                             <AppNavLink :href="route('event.management.indexManagement')" :active="route().current('event.management.indexManagement')">
-                                                <span class="material-symbols-outlined tw-text-lg">confirmation_number</span>Eventos
+                                                <span class="material-symbols-outlined text-lg">confirmation_number</span>Eventos
                                             </AppNavLink>
                                         </div>
-                                        <div class="tw-mt-3 tw-w-full">
+                                        <div class="mt-3 w-full">
                                             <AppNavLink :href="route('institutions.index')" :active="route().current('institutions.index')">
-                                                <span class="material-symbols-outlined tw-text-lg">home_work</span>Instituciones
+                                                <span class="material-symbols-outlined text-lg">home_work</span>Instituciones
                                             </AppNavLink>
                                         </div>
-                                        <div class="tw-mt-3 tw-w-full">
+                                        <div class="mt-3 w-full">
                                             <AppNavLink :href="route('promotions.index')" :active="route().current('promotions.index')">
-                                                <span class="material-symbols-outlined tw-text-lg">Loyalty</span>Promociones
+                                                <span class="material-symbols-outlined text-lg">Loyalty</span>Promociones
                                             </AppNavLink>
                                         </div>
-                                        <div class="tw-mt-3 tw-w-full">
+                                        <div class="mt-3 w-full">
                                             <AppNavLink :href="route('agreements.index')" :active="route().current('agreements.index')">
-                                                <span class="material-symbols-outlined tw-text-lg">Handshake</span>Convenios
+                                                <span class="material-symbols-outlined text-lg">Handshake</span>Convenios
                                             </AppNavLink>
                                         </div>
-                                        <div class=" tw-w-full">
+                                        <div class=" w-full">
                                             <AppNavLink :href="route('wallet.index')" :active="route().current('wallet.index')">
-                                                <span class="material-symbols-outlined tw-text-lg">account_balance_wallet</span>Monederos
+                                                <span class="material-symbols-outlined text-lg">account_balance_wallet</span>Monederos
                                             </AppNavLink>
                                         </div>
                                     </v-list-group>
                                 </v-list>
                             </v-card>
 
-                           <!--  <div class="text-center tw-w-full ">
+                           <!--  <div class="text-center w-full ">
                                 <v-menu
                                 v-model="menu2"
                                 :close-on-content-click="false"
                                 location="bottom start" origin="top center"
                                 >
                                 <template v-slot:activator="{ props }">
-                                    <v-btn v-bind="props" variant="text" class="text-none !tw-h-[40px] !tw-w-full !tw-text-gray-300 !tw-bg-transparent !tw-justify-start" rounded="xl" block><span class="material-symbols-outlined tw-text-xl">keyboard_arrow_down</span>Servicios</v-btn>
+                                    <v-btn v-bind="props" variant="text" class="text-none !h-[40px] !w-full !text-gray-300 !bg-transparent !justify-start" rounded="xl" block><span class="material-symbols-outlined text-xl">keyboard_arrow_down</span>Servicios</v-btn>
                                 </template>
 
                                 <v-card min-width="300" rounded="lg" class="">
@@ -273,24 +273,24 @@ const props = defineProps({
                         </div>
                     </div>
 
-                    <div class="tw-w-full tw-p-5 tw-flex tw-items-center tw-justify-between tw-rounded-xl tw-overflow-hidden tw-shadow-xl tw-border tw-relative tw-bg-white/10">
-                        <div class="tw-w-full">
+                    <div class="w-full p-5 flex items-center justify-between rounded-xl overflow-hidden shadow-xl border relative bg-white/10">
+                        <div class="w-full">
 
                             <v-dialog max-width="500">
                                     <template v-slot:activator="{ props: activatorProps }">
-                                        <v-btn  v-bind="activatorProps" color="red" variant="tonal" block class="text-none !tw-h-[50px] !tw-rounded-2xl">
+                                        <v-btn  v-bind="activatorProps" color="red" variant="tonal" block class="text-none !h-[50px] !rounded-2xl">
                                             Cerrar sesión
                                         </v-btn>
                                     </template>
                                     <template v-slot:default="{ isActive }">
                                         <v-card title="¿Estás seguro de finalizar tu sesión?">
 
-                                        <v-card-actions class="!tw-my-4 !tw-px-4">
+                                        <v-card-actions class="!my-4 !px-4">
                                             <v-spacer></v-spacer>
-                                            <v-btn color="red" variant="tonal" rounded="lg" class="text-none !tw-h-[50px] !tw-px-4" text="Cancelar" @click="isActive.value = false"></v-btn>
+                                            <v-btn color="red" variant="tonal" rounded="lg" class="text-none !h-[50px] !px-4" text="Cancelar" @click="isActive.value = false"></v-btn>
                                             <Link :href="route('logout')" method="post" as="button">
-                                                <v-btn variant="elevated" rounded="lg" class="text-none !tw-h-[50px] !tw-bg-purple-500 !tw-text-white !tw-px-4" @click="isActive.value = false">
-                                                    <span class="material-symbols-outlined tw-text-xl !tw-w-1/2">person</span> Cerrar sesión
+                                                <v-btn variant="elevated" rounded="lg" class="text-none !h-[50px] !bg-purple-500 !text-white !px-4" @click="isActive.value = false">
+                                                    <span class="material-symbols-outlined text-xl !w-1/2">person</span> Cerrar sesión
                                                 </v-btn>
                                             </Link>
                                         </v-card-actions>

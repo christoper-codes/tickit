@@ -25,7 +25,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <svg version="1.1" class="tw-w-full tw-h-screen" id="zones_hdx" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+    <svg version="1.1" class="w-full h-screen" id="zones_hdx" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 1776 1928" style="enable-background:new 0 0 1776 1928;" xml:space="preserve">
 <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="39" y1="965" x2="1733" y2="965">
 	<stop  offset="0" style="stop-color:#FFCAE2"/>
@@ -34,7 +34,7 @@ onMounted(() => {
 </linearGradient>
 <path class="st0" d="M1554.63,1530H217.37C118.86,1530,39,1450.14,39,1351.63V578.37C39,479.86,118.86,400,217.37,400h1337.26
 	c98.51,0,178.37,79.86,178.37,178.37v773.26C1733,1450.14,1653.14,1530,1554.63,1530z"/>
-<g id="fzone" class="hover:tw-translate-y-[-10px] tw-transition-transform tw-duration-500 tw-cursor-pointer">
+<g id="fzone" class="hover:translate-y-[-10px] transition-transform duration-500 cursor-pointer">
 
 		<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="370" y1="1801.5217" x2="1521" y2="1801.5217" gradientTransform="matrix(1 0 0 -1 0 3573.0435)">
 		<stop  offset="2.115363e-03" style="stop-color:#C8EDDC"/>

@@ -15,8 +15,8 @@ const props = defineProps({
 
 const classes = computed(() =>
     props.active
-        ? 'text-none !tw-h-[40px] lg:!tw-rounded-none !tw-rounded-full lg:!tw-h-[80px] !tw-w-full !tw-justify-start lg:!tw-justify-center lg:!tw-w-24 !tw-text-white !tw-bg-gradient-to-r !tw-from-purple-600 !tw-to-purple-400'
-        : 'text-none !tw-h-[40px] lg:!tw-rounded-none !tw-rounded-full lg:!tw-h-[80px] !tw-w-full !tw-justify-start lg:!tw-justify-center lg:!tw-w-24 !tw-text-gray-600 !tw-bg-transparent'
+        ? 'text-none !h-[40px] lg:!rounded-none !rounded-full lg:!h-[80px] !w-full !justify-start lg:!justify-center lg:!w-24 !text-white !bg-gradient-to-r !from-purple-600 !to-purple-400'
+        : 'text-none !h-[40px] lg:!rounded-none !rounded-full lg:!h-[80px] !w-full !justify-start lg:!justify-center lg:!w-24 !text-gray-600 !bg-transparent'
 );
 
 const toggloeDrawerNavState = () => {

@@ -301,7 +301,7 @@ const headers = [
     {title: 'Acciones', key: 'Acciones', sortable:false}
 ];
 const headerProps = {
-    class: '!tw-font-bold'
+    class: '!font-bold'
 };
 if (props.cash_register_general_history && props.cash_register_general_history.cash_register) {
     props.cash_register_general_history.sale_tickets.forEach((saleTicket) => {
@@ -506,37 +506,37 @@ const pdf = () => {
     <Head title="Taquillas" />
     <AppNav/>
     <SuccessSession />
-    <main class="tw-relative tw-overflow-hidden tw-w-full">
-        <div class="tw-text-white tw-bg-cover tw-relative tw-min-h-screen tw-aspect-3/4 tw-object-cover tw-bg-center tw-w-full tw-p-4 lg:tw-p-7 tw-shadow-xl tw-overflow-hidden tw-transition-all tw-duration-500" :style="`background-image: url('https://images.pexels.com/photos/4921264/pexels-photo-4921264.jpeg')`">
+    <main class="relative overflow-hidden w-full">
+        <div class="text-white bg-cover relative min-h-screen aspect-3/4 object-cover bg-center w-full p-4 lg:p-7 shadow-xl overflow-hidden transition-all duration-500" :style="`background-image: url('https://images.pexels.com/photos/4921264/pexels-photo-4921264.jpeg')`">
             <GuestNav/>
-           <div class="tw-z-10 tw-relative tw-max-w-7xl tw-pt-20 tw-mx-auto tw-px-4 lg:tw-px-0 tw-mb-10">
-                <div class="tw-flex tw-flex-col tw-gap-3">
+           <div class="z-10 relative max-w-7xl pt-20 mx-auto px-4 lg:px-0 mb-10">
+                <div class="flex flex-col gap-3">
                     <Link :href="route('welcome')">
-                        <div class="tw-inline-flex tw-cursor-pointer tw-items-center tw-gap-x-1.5 tw-text-sm tw-decoration-2 hover:tw-underline focus:tw-outline-none focus:tw-underline">
-                            <svg class="tw-shrink-0 tw-size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                        <div class="inline-flex cursor-pointer items-center gap-x-1.5 text-sm decoration-2 hover:underline focus:outline-none focus:underline">
+                            <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
                             Regresar al inicio
                         </div>
                     </Link >
-                    <h2 class="tw-text-6xl tw-font-bold tw-font-bebas">{{ ticket_office.name }}</h2>
+                    <h2 class="text-6xl font-bold font-bebas">{{ ticket_office.name }}</h2>
                     <p>{{ formatFirstLetterUppercase(ticket_office.description) }}</p>
-                    <div class="tw-flex tw-flex-col lg:tw-flex-row tw-items-center tw-gap-5">
+                    <div class="flex flex-col lg:flex-row items-center gap-5">
                         <v-dialog max-width="800">
                                 <template v-slot:activator="{ props: activatorProps }">
-                                    <v-btn v-bind="activatorProps" variant="elevated" class="text-none !tw-h-[70px] !tw-rounded-2xl !tw-px-12 !tw-bg-gradient-to-r tw-from-primary tw-to-secondary !tw-text-white">Cerrar cajas por lote</v-btn>
+                                    <v-btn v-bind="activatorProps" variant="elevated" class="text-none !h-[70px] !rounded-2xl !px-12 !bg-gradient-to-r from-primary to-secondary !text-white">Cerrar cajas por lote</v-btn>
                                 </template>
                                 <template v-slot:default="{ isActive }">
                                     <v-card>
                                     <v-card-text>
-                                        <div class="tw-flex tw-flex-col tw-items-center tw-justify-center tw-mt-5">
-                                            <p class="tw-inline tw-mt-3 tw-text-center tw-text-xs py-3 px-5 tw-bg-blue-100 tw-text-blue-500 tw-rounded-xl tw-border-l-4 tw-border-l-blue-500">Ingresa el codigo de cancelación y preciona 'Cerrar cajas' para confirmar.</p>
+                                        <div class="flex flex-col items-center justify-center mt-5">
+                                            <p class="inline mt-3 text-center text-xs py-3 px-5 bg-blue-100 text-blue-500 rounded-xl border-l-4 border-l-blue-500">Ingresa el codigo de cancelación y preciona 'Cerrar cajas' para confirmar.</p>
                                             <v-otp-input v-model="cencellationPasswordEntered"></v-otp-input>
                                         </div>
                                     </v-card-text>
 
-                                    <v-card-actions class="tw-mb-4 tw-mr-4">
+                                    <v-card-actions class="mb-4 mr-4">
                                         <v-spacer></v-spacer>
-                                        <v-btn color="red" rounded="lg" variant="tonal" size="large" class="text-none !tw-px-4" text="Cancelar" @click="isActive.value = false"></v-btn>
-                                        <v-btn :loading="loadingCancel" @click="closeTicketOfficeCashRegisters(isActive)" rounded="lg" size="large"  variant="elevated" class="text-none !tw-bg-red-600 !tw-text-white">
+                                        <v-btn color="red" rounded="lg" variant="tonal" size="large" class="text-none !px-4" text="Cancelar" @click="isActive.value = false"></v-btn>
+                                        <v-btn :loading="loadingCancel" @click="closeTicketOfficeCashRegisters(isActive)" rounded="lg" size="large"  variant="elevated" class="text-none !bg-red-600 !text-white">
                                             Cerrar cajas
                                         </v-btn>
                                     </v-card-actions>
@@ -546,15 +546,15 @@ const pdf = () => {
                         <div v-if="active_cash_register">
                             <v-dialog max-width="500">
                                 <template v-slot:activator="{ props: activatorProps }">
-                                    <v-btn v-bind="activatorProps" variant="elevated" class="text-none !tw-h-[70px] !tw-rounded-2xl !tw-px-12 !tw-bg-gradient-to-r tw-from-red-500 tw-to-pink-500 !tw-text-white">Cerrar caja actual</v-btn>
+                                    <v-btn v-bind="activatorProps" variant="elevated" class="text-none !h-[70px] !rounded-2xl !px-12 !bg-gradient-to-r from-red-500 to-pink-500 !text-white">Cerrar caja actual</v-btn>
                                 </template>
                                 <template v-slot:default="{ isActive }">
-                                    <v-card class="!tw-p-5">
-                                        <v-card-title class="!tw-text-lg">¿Estás seguro de cerrar la caja registradora #{{ active_cash_register.cash_register_type_id }}? </v-card-title>
+                                    <v-card class="!p-5">
+                                        <v-card-title class="!text-lg">¿Estás seguro de cerrar la caja registradora #{{ active_cash_register.cash_register_type_id }}? </v-card-title>
                                         <v-card-actions>
-                                            <div class="tw-flex tw-items-center tw-gap-3 tw-mt-5">
-                                                    <v-btn variant="tonal" color="red" class="text-none !tw-px-7" rounded="lg" size="large" @click="isActive.value = false">Cancelar</v-btn>
-                                                    <v-btn @click="closeCashRegister(isActive)" :loading="loading" rounded="lg" size="large" variant="elevated" class="text-none !tw-bg-red-500 !tw-text-white !tw-px-7">Cerrar ahora</v-btn>
+                                            <div class="flex items-center gap-3 mt-5">
+                                                    <v-btn variant="tonal" color="red" class="text-none !px-7" rounded="lg" size="large" @click="isActive.value = false">Cancelar</v-btn>
+                                                    <v-btn @click="closeCashRegister(isActive)" :loading="loading" rounded="lg" size="large" variant="elevated" class="text-none !bg-red-500 !text-white !px-7">Cerrar ahora</v-btn>
                                             </div>
                                         </v-card-actions>
                                     </v-card>
@@ -563,12 +563,12 @@ const pdf = () => {
                         </div>
                     </div>
                 </div>
-                <div class="tw-mt-16 tw-grid tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-3 tw-w-full tw-gap-7">
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-7">
                     <div>
                          <v-dialog max-width="700">
                             <template v-slot:activator="{ props: activatorProps }">
-                                <div v-bind="activatorProps" class="hover:tw-scale-105 tw-transition-all tw-duration-500 tw-full tw-h-48 tw-bg-white/20 tw-backdrop-blur-lg tw-flex tw-items-center tw-justify-center tw-cursor-pointer tw-rounded-md">
-                                    <span class="tw-font-bold tw-uppercase tw-text-lg">Abrir caja registradora</span>
+                                <div v-bind="activatorProps" class="hover:scale-105 transition-all duration-500 full h-48 bg-white/20 backdrop-blur-lg flex items-center justify-center cursor-pointer rounded-md">
+                                    <span class="font-bold uppercase text-lg">Abrir caja registradora</span>
                                 </div>
                             </template>
                             <template v-slot:default="{ isActive }">
@@ -601,14 +601,14 @@ const pdf = () => {
 
                                 <v-card-actions>
                                     <v-spacer></v-spacer>
-                                    <div class="tw-flex tw-items-center tw-gap-3 tw-mb-3">
+                                    <div class="flex items-center gap-3 mb-3">
                                         <div>
-                                            <SecondaryButton heightbtn="!tw-h-[60px]" paddingbtn="!tw-px-10">
+                                            <SecondaryButton heightbtn="!h-[60px]" paddingbtn="!px-10">
                                                 <span @click="isActive.value = false">Cancelar</span>
                                             </SecondaryButton>
                                         </div>
                                         <div @click="cashRegisterSubmit(isActive)">
-                                            <PrimaryButton heightbtn="!tw-h-[60px]" paddingbtn="!tw-px-10" :loading="loading">
+                                            <PrimaryButton heightbtn="!h-[60px]" paddingbtn="!px-10" :loading="loading">
                                                 <span>Abrir caja</span>
                                             </PrimaryButton>
                                         </div>
@@ -626,24 +626,24 @@ const pdf = () => {
                                 fullscreen
                             >
                                 <template v-slot:activator="{ props: activatorProps }">
-                                     <div v-bind="activatorProps" class="hover:tw-scale-105 tw-transition-all tw-duration-500 tw-full tw-h-48 tw-bg-white/20 tw-backdrop-blur-lg tw-flex tw-items-center tw-justify-center tw-cursor-pointer tw-rounded-md">
-                                        <span class="tw-font-bold tw-uppercase tw-text-lg">Resumen de caja</span>
+                                     <div v-bind="activatorProps" class="hover:scale-105 transition-all duration-500 full h-48 bg-white/20 backdrop-blur-lg flex items-center justify-center cursor-pointer rounded-md">
+                                        <span class="font-bold uppercase text-lg">Resumen de caja</span>
                                     </div>
                                     <div v-if="active_cash_register">
-                                        <div class="tw-h-3 tw-w-full tw-bg-gradient-to-r tw-from-green-400 tw-to-cyan-400 tw-rounded"></div>
+                                        <div class="h-3 w-full bg-gradient-to-r from-green-400 to-cyan-400 rounded"></div>
                                     </div>
                                 </template>
 
                                 <v-card>
-                                <v-toolbar class="!tw-bg-gradient-to-r !tw-from-slate-950 !tw-via-purple-950 !tw-to-slate-950">
+                                <v-toolbar class="!bg-gradient-to-r !from-slate-950 !via-purple-950 !to-slate-950">
                                     <v-btn
-                                    class="!tw-text-white"
+                                    class="!text-white"
                                     icon="mdi-close"
                                     @click="dialog = false"
                                     ></v-btn>
 
                                     <v-toolbar-title>
-                                        <div class="tw-font-bold tw-text-white">Resumen de caja</div>
+                                        <div class="font-bold text-white">Resumen de caja</div>
                                     </v-toolbar-title>
 
                                     <v-spacer></v-spacer>
@@ -657,57 +657,57 @@ const pdf = () => {
                                     ></v-btn>
                                     </v-toolbar-items>
                                 </v-toolbar>
-                                <div v-if="active_cash_register" class="tw-w-full tw-max-w-[90%] tw-mx-auto tw-mt-10">
+                                <div v-if="active_cash_register" class="w-full max-w-[90%] mx-auto mt-10">
 
-                                    <div class="tw-grid tw-grid-cols-2 tw-gap-10">
-                                        <div class="tw-p-5 tw-flex tw-items-start tw-justify-center tw-flex-col tw-gap-3">
-                                            <div class="tw-text-4xl tw-font-bold"> <span class="tw-text-purple-600">Apertura:</span> {{ dateFormat(active_cash_register.created_at) }}</div>
+                                    <div class="grid grid-cols-2 gap-10">
+                                        <div class="p-5 flex items-start justify-center flex-col gap-3">
+                                            <div class="text-4xl font-bold"> <span class="text-purple-600">Apertura:</span> {{ dateFormat(active_cash_register.created_at) }}</div>
                                         </div>
-                                        <div class="tw-p-5 tw-flex tw-items-end tw-justify-center tw-flex-col tw-gap-3">
-                                            <v-btn @click="getCashRegisterSummary()" :loading="loading" variant="elevated" class="text-none !tw-bg-gradient-to-r !tw-from-purple-500 !tw-to-pink-500 !tw-text-white !tw-px-10 !tw-h-[60px] !tw-rounded-2xl">Imprimir Corte</v-btn>
+                                        <div class="p-5 flex items-end justify-center flex-col gap-3">
+                                            <v-btn @click="getCashRegisterSummary()" :loading="loading" variant="elevated" class="text-none !bg-gradient-to-r !from-purple-500 !to-pink-500 !text-white !px-10 !h-[60px] !rounded-2xl">Imprimir Corte</v-btn>
                                         </div>
                                     </div>
 
-                                    <div class="tw-grid tw-grid-cols-4 tw-gap-10  tw-mt-10">
-                                        <div class="tw-p-5 tw-rounded-xl tw-shadow-xl tw-flex tw-items-center tw-justify-center tw-flex-col tw-gap-3">
-                                            <div class="tw-bg-gray-100 tw-py-2 tw-px-4 tw-rounded-full tw-text-sm">Usuario vendedor</div>
-                                            <div class="tw-text-4xl tw-font-bold">{{ auth_user.first_name }}</div>
+                                    <div class="grid grid-cols-4 gap-10  mt-10">
+                                        <div class="p-5 rounded-xl shadow-xl flex items-center justify-center flex-col gap-3">
+                                            <div class="bg-gray-100 py-2 px-4 rounded-full text-sm">Usuario vendedor</div>
+                                            <div class="text-4xl font-bold">{{ auth_user.first_name }}</div>
                                         </div>
-                                        <div class="tw-p-5 tw-rounded-xl tw-shadow-xl tw-flex tw-items-center tw-justify-center tw-flex-col tw-gap-3">
-                                            <div class="tw-bg-gray-100 tw-py-2 tw-px-4 tw-rounded-full tw-text-sm">Caja registradora</div>
-                                            <div class="tw-text-4xl tw-font-bold">{{ active_cash_register.cash_register_type_id }}</div>
+                                        <div class="p-5 rounded-xl shadow-xl flex items-center justify-center flex-col gap-3">
+                                            <div class="bg-gray-100 py-2 px-4 rounded-full text-sm">Caja registradora</div>
+                                            <div class="text-4xl font-bold">{{ active_cash_register.cash_register_type_id }}</div>
                                         </div>
-                                        <div class="tw-p-5 tw-rounded-xl tw-shadow-xl tw-flex tw-items-center tw-justify-center tw-flex-col tw-gap-3">
-                                            <div class="tw-bg-gray-100 tw-py-2 tw-px-4 tw-rounded-full tw-text-sm">Saldo de apertura</div>
-                                            <div class="tw-text-4xl tw-font-bold">{{ formatPrice(active_cash_register.opening_balance) }}</div>
+                                        <div class="p-5 rounded-xl shadow-xl flex items-center justify-center flex-col gap-3">
+                                            <div class="bg-gray-100 py-2 px-4 rounded-full text-sm">Saldo de apertura</div>
+                                            <div class="text-4xl font-bold">{{ formatPrice(active_cash_register.opening_balance) }}</div>
                                         </div>
-                                        <div class="tw-p-5 tw-rounded-xl tw-bg-green-100 tw-shadow-xl tw-flex tw-items-center tw-justify-center tw-flex-col tw-gap-3">
-                                            <div class="tw-bg-green-200 tw-text-green-600 tw-py-2 tw-px-4 tw-rounded-full tw-text-sm">Saldo actual (Efectivo + Tarjeta)</div>
-                                            <div class="tw-text-4xl tw-font-bold tw-text-green-600">{{ formatPrice(active_cash_register.current_balance) }}</div>
+                                        <div class="p-5 rounded-xl bg-green-100 shadow-xl flex items-center justify-center flex-col gap-3">
+                                            <div class="bg-green-200 text-green-600 py-2 px-4 rounded-full text-sm">Saldo actual (Efectivo + Tarjeta)</div>
+                                            <div class="text-4xl font-bold text-green-600">{{ formatPrice(active_cash_register.current_balance) }}</div>
                                         </div>
                                         <div v-for="(amount, type) in cash_register_general_history.type_payments" :key="type">
-                                            <div :class="{'tw-p-5 tw-rounded-xl tw-shadow-xl tw-flex tw-items-center tw-justify-center tw-flex-col tw-gap-3':true, 'tw-bg-green-100 ':['efectivo - Total','tarjeta - Total'].includes(type)}">
-                                                <div :class="{ 'tw-bg-gray-100':!['efectivo - Total','tarjeta - Total'].includes(type), 'tw-py-2 tw-px-4 tw-rounded-full tw-text-sm':true, 'tw-text-green-600':['efectivo - Total','tarjeta - Total'].includes(type)}">
+                                            <div :class="{'p-5 rounded-xl shadow-xl flex items-center justify-center flex-col gap-3':true, 'bg-green-100 ':['efectivo - Total','tarjeta - Total'].includes(type)}">
+                                                <div :class="{ 'bg-gray-100':!['efectivo - Total','tarjeta - Total'].includes(type), 'py-2 px-4 rounded-full text-sm':true, 'text-green-600':['efectivo - Total','tarjeta - Total'].includes(type)}">
                                                     Ventas con
-                                                <span :class="{'tw-text-purple-600 tw-font-bold':!['efectivo - Total','tarjeta - Total'].includes(type), 'tw-text-green-600':['efectivo - Total','tarjeta - Total'].includes(type)}">{{ formatFirstLetterUppercase(type) }}</span> </div>
-                                                <div :class="{'tw-text-4xl tw-font-bold':true, 'tw-text-green-600':['efectivo - Total','tarjeta - Total'].includes(type)}">{{ formatPrice(amount.amount) }}</div>
+                                                <span :class="{'text-purple-600 font-bold':!['efectivo - Total','tarjeta - Total'].includes(type), 'text-green-600':['efectivo - Total','tarjeta - Total'].includes(type)}">{{ formatFirstLetterUppercase(type) }}</span> </div>
+                                                <div :class="{'text-4xl font-bold':true, 'text-green-600':['efectivo - Total','tarjeta - Total'].includes(type)}">{{ formatPrice(amount.amount) }}</div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="tw-font-bold tw-text-4xl tw-text-center tw-inline-flex tw-pt-10 tw-pb-5">
+                                    <div class="font-bold text-4xl text-center inline-flex pt-10 pb-5">
                                         Historial de transacciones de caja
                                     </div>
 
                                     <div class="mb-10 cash-register-history">
                                         <v-data-table :items="items" :headers="headers" :header-props="headerProps">
                                             <template v-slot:item.Estatus="{ item }">
-                                                <span class="tw-py-1 tw-px-4 tw-rounded-full"
+                                                <span class="py-1 px-4 rounded-full"
                                                 :class="{
-                                                    '!tw-text-green-600 tw-bg-green-100': item.Estatus === 'pagado',
-                                                    '!tw-text-red-600 tw-bg-red-100': item.Estatus === 'cancelado',
-                                                    '!tw-text-orange-600 tw-bg-orange-100': item.Estatus === 'parcialmente cancelado',
-                                                    '!tw-text-yellow-600 tw-bg-yellow-100': item.Estatus === 'pendiente'
+                                                    '!text-green-600 bg-green-100': item.Estatus === 'pagado',
+                                                    '!text-red-600 bg-red-100': item.Estatus === 'cancelado',
+                                                    '!text-orange-600 bg-orange-100': item.Estatus === 'parcialmente cancelado',
+                                                    '!text-yellow-600 bg-yellow-100': item.Estatus === 'pendiente'
                                                 }">
                                                     {{ formatFirstLetterUppercase(item.Estatus) }}
                                                 </span>
@@ -716,24 +716,24 @@ const pdf = () => {
                                                 {{ item.Promotion ? `${item.Promotion.name} (${ formatFirstLetterUppercase(item.Promotion.promotion_type.name) })` : '' }}
                                             </template>
                                             <template v-slot:item.Acciones="{ item }">
-                                                <div class="tw-flex tw-items-center tw-gap-3 tw-justify-between !tw-my-3">
+                                                <div class="flex items-center gap-3 justify-between !my-3">
                                                         <v-dialog max-width="600">
                                                             <template v-slot:activator="{ props: activatorProps }">
-                                                                <v-btn @click="updateSaleTicketsSelected(item)" v-bind="activatorProps" density="default" icon="mdi-printer-settings" class="!tw-text-purple-600 !tw-bg-purple-300"></v-btn>
+                                                                <v-btn @click="updateSaleTicketsSelected(item)" v-bind="activatorProps" density="default" icon="mdi-printer-settings" class="!text-purple-600 !bg-purple-300"></v-btn>
                                                             </template>
                                                             <template v-slot:default="{ isActive }">
                                                                 <v-card title="¿Estas seguro de reimprimir el abono?">
                                                                 <v-card-text>
-                                                                    <p class="tw-opacity-50 tw-mt-3 tw-text-center">Preciona 'Imprimir abono' para ejecutar la acción.</p>
-                                                                    <div class="tw-flex tw-items-center tw-justify-center tw-gap-3 mt-5">
-                                                                        <p v-for="code in saleTicketsSelected" :key="code" class="tw-py-2 tw-px-7 tw-bg-purple-200 tw-text-purple-700 tw-rounded-md tw-text-xl">{{ code }}</p>
+                                                                    <p class="opacity-50 mt-3 text-center">Preciona 'Imprimir abono' para ejecutar la acción.</p>
+                                                                    <div class="flex items-center justify-center gap-3 mt-5">
+                                                                        <p v-for="code in saleTicketsSelected" :key="code" class="py-2 px-7 bg-purple-200 text-purple-700 rounded-md text-xl">{{ code }}</p>
                                                                     </div>
                                                                 </v-card-text>
 
-                                                                <v-card-actions class="tw-mb-4 tw-mr-4">
+                                                                <v-card-actions class="mb-4 mr-4">
                                                                     <v-spacer></v-spacer>
-                                                                    <v-btn color="red" rounded="large" variant="tonal" class="text-none !tw-px-4" text="Cancelar" @click="isActive.value = false"></v-btn>
-                                                                    <v-btn :loading="loadingPrint" @click="printTicketAbonado(item, isActive)" rounded="large" variant="elevated" class="text-none !tw-bg-purple-600 !tw-text-white">
+                                                                    <v-btn color="red" rounded="large" variant="tonal" class="text-none !px-4" text="Cancelar" @click="isActive.value = false"></v-btn>
+                                                                    <v-btn :loading="loadingPrint" @click="printTicketAbonado(item, isActive)" rounded="large" variant="elevated" class="text-none !bg-purple-600 !text-white">
                                                                         Imprimir abono
                                                                     </v-btn>
                                                                 </v-card-actions>
@@ -742,25 +742,25 @@ const pdf = () => {
                                                     </v-dialog>
                                                     <v-dialog max-width="800">
                                                             <template v-slot:activator="{ props: activatorProps }">
-                                                                <v-btn @click="updateSaleTicketsSelected(item)" v-bind="activatorProps" density="default" icon="mdi-delete" class="!tw-text-red-600 !tw-bg-red-200"></v-btn>
+                                                                <v-btn @click="updateSaleTicketsSelected(item)" v-bind="activatorProps" density="default" icon="mdi-delete" class="!text-red-600 !bg-red-200"></v-btn>
                                                             </template>
                                                             <template v-slot:default="{ isActive }">
                                                                 <v-card title="¿Estas seguro de cancelar el ticket?">
                                                                 <v-card-text>
-                                                                    <div class="tw-flex tw-flex-col tw-items-center tw-justify-center">
-                                                                        <p class="tw-inline tw-mt-3 tw-text-center tw-text-xs py-1 px-5 tw-bg-red-100 tw-text-red-500 tw-rounded-full">Ingresa el codigo de cancelacion y preciona 'Ejecutar Cancelaciòn' para confirmar.</p>
+                                                                    <div class="flex flex-col items-center justify-center">
+                                                                        <p class="inline mt-3 text-center text-xs py-1 px-5 bg-red-100 text-red-500 rounded-full">Ingresa el codigo de cancelacion y preciona 'Ejecutar Cancelaciòn' para confirmar.</p>
                                                                         <v-otp-input v-model="cencellationPasswordEntered"></v-otp-input>
                                                                     </div>
-                                                                    <div class="tw-flex tw-flex-col tw-items-center tw-justify-center">
-                                                                        <p class="tw-text-xs py-1 px-5 tw-bg-red-100 tw-text-red-500 tw-rounded-full">Selecciona el tipo de pago y orden en el que descontara la venta</p>
-                                                                        <div v-if="paymentTypesSelected.length > 0" class="tw-mt-3 tw-text-purple-600 tw-font-bold tw-flex tw-items-center tw-justify-center tw-gap-3">
+                                                                    <div class="flex flex-col items-center justify-center">
+                                                                        <p class="text-xs py-1 px-5 bg-red-100 text-red-500 rounded-full">Selecciona el tipo de pago y orden en el que descontara la venta</p>
+                                                                        <div v-if="paymentTypesSelected.length > 0" class="mt-3 text-purple-600 font-bold flex items-center justify-center gap-3">
                                                                             <div v-for="(type, index) in paymentTypesSelected" :key="index">
-                                                                            <p class="tw-py-1 tw-px-3 tw-bg-purple-100 tw-rounded-md"> {{ index + 1 }} - {{ type }} </p>
+                                                                            <p class="py-1 px-3 bg-purple-100 rounded-md"> {{ index + 1 }} - {{ type }} </p>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="tw-flex tw-items-center tw-gap-2">
+                                                                        <div class="flex items-center gap-2">
                                                                             <v-checkbox
-                                                                            class="!tw-flex !tw-items-center"
+                                                                            class="!flex !items-center"
                                                                             v-for="(type, index) in paymentTypes" :key="index"
                                                                             v-model="paymentTypesSelected"
                                                                             :label="type"
@@ -769,7 +769,7 @@ const pdf = () => {
                                                                             ></v-checkbox>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="!w-full tw-mt-0">
+                                                                    <div class="!w-full mt-0">
                                                                         <v-tabs
                                                                             v-model="tabs"
                                                                             color="purple"
@@ -788,9 +788,9 @@ const pdf = () => {
                                                                         <v-tabs-window v-model="tabs">
                                                                         <v-tabs-window-item :value="1">
                                                                             <v-card>
-                                                                            <v-card-text class="!tw-mt-5">
-                                                                                <div class="tw-flex tw-items-center tw-justify-center tw-gap-3">
-                                                                                    <p v-for="code in saleTicketsSelected" :key="code" class="tw-py-2 tw-px-7 tw-bg-purple-200 tw-text-purple-700 tw-rounded-md tw-text-xl">{{ code }}</p>
+                                                                            <v-card-text class="!mt-5">
+                                                                                <div class="flex items-center justify-center gap-3">
+                                                                                    <p v-for="code in saleTicketsSelected" :key="code" class="py-2 px-7 bg-purple-200 text-purple-700 rounded-md text-xl">{{ code }}</p>
                                                                                 </div>
                                                                             </v-card-text>
                                                                             </v-card>
@@ -806,7 +806,7 @@ const pdf = () => {
                                                                                     label="Selecciona los asientos a cancelar"
                                                                                     color="purple"
                                                                                     clearable
-                                                                                    class="tw-w-full"
+                                                                                    class="w-full"
                                                                                     hint="Opcion multiple"
                                                                                     persistent-hint=""
                                                                                 ></v-select>
@@ -817,10 +817,10 @@ const pdf = () => {
                                                                     </div>
                                                                 </v-card-text>
 
-                                                                <v-card-actions class="tw-mb-4 tw-mr-4">
+                                                                <v-card-actions class="mb-4 mr-4">
                                                                     <v-spacer></v-spacer>
-                                                                    <v-btn color="red" rounded="large" variant="tonal" class="text-none !tw-px-4" text="Cancelar" @click="isActive.value = false"></v-btn>
-                                                                    <v-btn :loading="loadingCancel" @click="cancelTicket(item, isActive)" rounded="large" variant="elevated" class="text-none !tw-bg-red-600 !tw-text-white">
+                                                                    <v-btn color="red" rounded="large" variant="tonal" class="text-none !px-4" text="Cancelar" @click="isActive.value = false"></v-btn>
+                                                                    <v-btn :loading="loadingCancel" @click="cancelTicket(item, isActive)" rounded="large" variant="elevated" class="text-none !bg-red-600 !text-white">
                                                                         Ejecutar Cancelaciòn
                                                                     </v-btn>
                                                                 </v-card-actions>
@@ -832,32 +832,32 @@ const pdf = () => {
                                         </v-data-table>
                                     </div>
                                 </div>
-                                <div v-else class="tw-flex tw-items-center tw-justify-center tw-mt-20 tw-flex-col tw-gap-10">
-                                    <div class="tw-font-bold tw-text-center">
+                                <div v-else class="flex items-center justify-center mt-20 flex-col gap-10">
+                                    <div class="font-bold text-center">
                                         No hay cajas abiertas para este usuario en esta taquilla
                                     </div>
-                                    <img class="tw-w-40 lg:tw-w-72 tw-h-auto" src="/storage/public/empty-cart.webp" alt="Webiste image">
+                                    <img class="w-40 lg:w-72 h-auto" src="/storage/public/empty-cart.webp" alt="Webiste image">
                                 </div>
                             </v-card>
                         </v-dialog>
                     </div>
                     <Link :href="route('welcome')">
-                        <div class="hover:tw-scale-105 tw-transition-all tw-duration-500 tw-full tw-h-48 tw-bg-white/20 tw-backdrop-blur-lg tw-flex tw-items-center tw-justify-center tw-cursor-pointer tw-rounded-md">
-                            <span class="tw-font-bold tw-uppercase tw-text-lg">Vender boletos</span>
+                        <div class="hover:scale-105 transition-all duration-500 full h-48 bg-white/20 backdrop-blur-lg flex items-center justify-center cursor-pointer rounded-md">
+                            <span class="font-bold uppercase text-lg">Vender boletos</span>
                         </div>
                     </Link>
                     <div>
                          <v-dialog v-model="dialogPayInstallment" transition="dialog-bottom-transition" fullscreen>
                             <template v-slot:activator="{ props: activatorProps }">
-                                <div v-bind="activatorProps" class="hover:tw-scale-105 tw-transition-all tw-duration-500 tw-full tw-h-48 tw-bg-white/20 tw-backdrop-blur-lg tw-flex tw-items-center tw-justify-center tw-cursor-pointer tw-rounded-md">
-                                    <span class="tw-font-bold tw-uppercase tw-text-lg">Liquidar ventas pendientes</span>
+                                <div v-bind="activatorProps" class="hover:scale-105 transition-all duration-500 full h-48 bg-white/20 backdrop-blur-lg flex items-center justify-center cursor-pointer rounded-md">
+                                    <span class="font-bold uppercase text-lg">Liquidar ventas pendientes</span>
                                 </div>
                             </template>
                             <v-card>
-                                <v-toolbar class="!tw-bg-gradient-to-r !tw-from-slate-950 !tw-via-purple-950 !tw-to-slate-950">
-                                    <v-btn class="!tw-text-white" icon="mdi-close" @click="dialogPayInstallment = false"></v-btn>
+                                <v-toolbar class="!bg-gradient-to-r !from-slate-950 !via-purple-950 !to-slate-950">
+                                    <v-btn class="!text-white" icon="mdi-close" @click="dialogPayInstallment = false"></v-btn>
                                     <v-toolbar-title>
-                                        <div class="tw-font-bold tw-text-white">Liquidar ventas pendientes</div>
+                                        <div class="font-bold text-white">Liquidar ventas pendientes</div>
                                     </v-toolbar-title>
                                     <v-spacer></v-spacer>
                                     <v-toolbar-items>
@@ -871,7 +871,7 @@ const pdf = () => {
                 </div>
            </div>
 
-            <div class="tw-z-0 tw-absolute tw-backdrop-blur-md tw-bg-black/60 tw-bottom-0 tw-left-0 tw-right-0 tw-h-full tw-block"></div>
+            <div class="z-0 absolute backdrop-blur-md bg-black/60 bottom-0 left-0 right-0 h-full block"></div>
         </div>
     </main>
 </template>

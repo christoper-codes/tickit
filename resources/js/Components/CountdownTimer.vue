@@ -43,7 +43,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <p class="tw-text-sm lg:tw-text-lg tw-text-center tw-mb-5">Tiempo de reservacion: <br> <span class="tw-font-bold"> {{ minutes }}:{{ seconds < 10 ? '0' : '' }}{{ seconds }}</span></p>
+    <p class="text-sm lg:text-lg text-center mb-5">Tiempo de reservacion: <br> <span class="font-bold"> {{ minutes }}:{{ seconds < 10 ? '0' : '' }}{{ seconds }}</span></p>
 </template>
 
 <style scoped>

@@ -1,8 +1,8 @@
 <script setup>
 defineProps({
-  heightbtn: { type: String, required: false, default: '!tw-h-[50px]' },
+  heightbtn: { type: String, required: false, default: '!h-[50px]' },
   loading: { type: Boolean, required: false, default: false},
-  paddingbtn: { type: String, required: false, default: '!tw-px-7' },
+  paddingbtn: { type: String, required: false, default: '!px-7' },
 })
 </script>
 
@@ -10,7 +10,7 @@ defineProps({
   <v-btn
     variant="tonal"
     :loading="loading"
-    :class="`${heightbtn} ${paddingbtn} !tw-bg-primary !tw-text-white !tw-rounded-2xl`"
+    :class="`${heightbtn} ${paddingbtn} !bg-primary !text-white !rounded-2xl`"
   >
     <slot></slot>
   </v-btn>

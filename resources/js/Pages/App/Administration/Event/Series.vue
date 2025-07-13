@@ -152,17 +152,17 @@ const editSerie = (selectedSerie) => {
         <BreadcrumbAppSecondary>
             <span>Administración de series</span>
         </BreadcrumbAppSecondary>
-        <div class="tw-px-4 tw-py-10 lg:tw-p-10">
+        <div class="px-4 py-10 lg:p-10">
             <v-data-table :headers="headersSerie" :items="series">
                 <template v-slot:top>
                     <v-toolbar flat>
 
-                        <v-toolbar-title class="tw-uppercase">Series</v-toolbar-title>
+                        <v-toolbar-title class="uppercase">Series</v-toolbar-title>
                         <v-divider class="mx-4" inset vertical></v-divider>
                         <v-spacer></v-spacer>
                         <v-dialog v-model="dialogFormSerie" max-width="800px">
                             <template v-slot:activator="{ props }">
-                                <v-btn variant="tonal" class="mb-2 !tw-mr-5 text-none" color="purple" rounded="xl"
+                                <v-btn variant="tonal" class="mb-2 !mr-5 text-none" color="purple" rounded="xl"
                                     v-bind="props">
                                     Nueva serie
                                 </v-btn>
@@ -175,15 +175,15 @@ const editSerie = (selectedSerie) => {
 
                                 <v-card-text>
                                     <v-container>
-                                        <div class="tw-mt-5 tw-flex tw-flex-col tw-gap-3">
-                                            <v-form class="tw-mt-5 tw-flex tw-flex-col tw-gap-1">
+                                        <div class="mt-5 flex flex-col gap-3">
+                                            <v-form class="mt-5 flex flex-col gap-1">
 
                                                 <div
-                                                    class="tw-flex tw-flex-col lg:tw-flex-row tw-items-center tw-justify-between tw-gap-5 tw-mb-2">
+                                                    class="flex flex-col lg:flex-row items-center justify-between gap-5 mb-2">
 
-                                                    <div class="tw-w-full">
-                                                        <p class="tw-font-medium tw-mb-1"><span
-                                                                class="tw-text-red-500">*</span> Temporada</p>
+                                                    <div class="w-full">
+                                                        <p class="font-medium mb-1"><span
+                                                                class="text-red-500">*</span> Temporada</p>
                                                         <v-select label="Temporada" :items="global_seasons"
                                                             item-title="name" item-value="id"
                                                             v-model="serie.global_season_id.value.value"
@@ -191,9 +191,9 @@ const editSerie = (selectedSerie) => {
                                                         <InputError :message="dataFormSerie.errors.global_season_id" />
                                                     </div>
 
-                                                    <div class="tw-w-full">
-                                                        <p class="tw-font-medium tw-mb-1"><span
-                                                                class="tw-text-red-500">*</span> Nombre</p>
+                                                    <div class="w-full">
+                                                        <p class="font-medium mb-1"><span
+                                                                class="text-red-500">*</span> Nombre</p>
                                                         <v-text-field color="primary" label="Nombre"
                                                             placeholder="serie 1" hint="Ingresa el nombre de la serie"
                                                             v-model="serie.name.value.value"
@@ -204,10 +204,10 @@ const editSerie = (selectedSerie) => {
                                                 </div>
 
                                                 <div
-                                                    class="tw-flex tw-flex-col lg:tw-flex-row tw-items-center tw-justify-between tw-gap-5 tw-my-2">
-                                                    <div class="tw-w-full">
-                                                        <p class="tw-font-medium tw-mb-1"><span
-                                                                class="tw-text-red-500">*</span> Descripción</p>
+                                                    class="flex flex-col lg:flex-row items-center justify-between gap-5 my-2">
+                                                    <div class="w-full">
+                                                        <p class="font-medium mb-1"><span
+                                                                class="text-red-500">*</span> Descripción</p>
                                                         <v-textarea color="primary" label="Descripción" rows="3"
                                                             variant="filled" auto-grow
                                                             v-model="serie.description.value.value"
@@ -216,10 +216,10 @@ const editSerie = (selectedSerie) => {
                                                     </div>
                                                 </div>
 
-                                                <div class="tw-flex tw-flex-col lg:tw-flex-row tw-items-center tw-justify-between tw-gap-5 tw-mb-2">
-                                                    <div class="tw-w-full">
-                                                        <p class="tw-font-medium tw-mb-1">
-                                                            <span class="tw-text-red-500">*</span> Fecha de
+                                                <div class="flex flex-col lg:flex-row items-center justify-between gap-5 mb-2">
+                                                    <div class="w-full">
+                                                        <p class="font-medium mb-1">
+                                                            <span class="text-red-500">*</span> Fecha de
                                                             inicio
                                                         </p>
                                                         <v-date-input density="compact" color="primary" clearable
@@ -228,9 +228,9 @@ const editSerie = (selectedSerie) => {
                                                             :error-messages="serie.start_date.errorMessage.value"></v-date-input>
                                                         <InputError :message="dataFormSerie.errors.start_date" />
                                                     </div>
-                                                    <div class="tw-w-full">
-                                                        <p class="tw-font-medium tw-mb-1">
-                                                            <span class="tw-text-red-500">*</span> Fecha de
+                                                    <div class="w-full">
+                                                        <p class="font-medium mb-1">
+                                                            <span class="text-red-500">*</span> Fecha de
                                                             finalización
                                                         </p>
                                                         <v-date-input density="compact" color="primary" clearable
@@ -241,10 +241,10 @@ const editSerie = (selectedSerie) => {
                                                     </div>
                                                 </div>
                                                 <div v-if="editedSerieIndex !== -1"
-                                                    class="tw-flex tw-flex-col lg:tw-flex-row tw-items-center tw-justify-between tw-gap-5 tw-my-2">
-                                                    <div class="tw-w-full">
-                                                        <p class="tw-font-medium tw-mb-1"><span
-                                                                class="tw-text-red-500">*</span> Estatus </p>
+                                                    class="flex flex-col lg:flex-row items-center justify-between gap-5 my-2">
+                                                    <div class="w-full">
+                                                        <p class="font-medium mb-1"><span
+                                                                class="text-red-500">*</span> Estatus </p>
                                                         <v-switch
                                                             :label="`${serie.is_active.value.value ? 'Activa' : 'Inactiva'}`"
                                                             color="indigo" inset
@@ -256,13 +256,13 @@ const editSerie = (selectedSerie) => {
                                         </div>
                                     </v-container>
                                 </v-card-text>
-                                <v-card-actions class="!tw-mb-4">
+                                <v-card-actions class="!mb-4">
                                     <v-spacer></v-spacer>
-                                    <v-btn color="red" variant="tonal" rounded="xl" class="!tw-px-4 text-none"
+                                    <v-btn color="red" variant="tonal" rounded="xl" class="!px-4 text-none"
                                         @click="closeFormSerie">
                                         Cancelar
                                     </v-btn>
-                                    <v-btn color="purple" rounded="xl" class="!tw-px-4 text-none" variant="elevated"
+                                    <v-btn color="purple" rounded="xl" class="!px-4 text-none" variant="elevated"
                                         @click="saveDataSerie">
                                         Guardar
                                     </v-btn>
@@ -272,12 +272,12 @@ const editSerie = (selectedSerie) => {
                         <v-dialog v-model="dialogDeleteSerie" max-width="500px">
                             <v-card>
                                 <v-card-title>
-                                    <div class="tw-grid tw-justify-items-center tw-gap-y-6">
-                                        <div class="tw-pt-6">
+                                    <div class="grid justify-items-center gap-y-6">
+                                        <div class="pt-6">
                                             ¿Esta seguro de eliminar la serie?
                                         </div>
                                         <div>
-                                            <div class="tw-grid tw-justify-items-center tw-gap-y-2">
+                                            <div class="grid justify-items-center gap-y-2">
                                                 <div>
                                                     {{ formatFirstLetterUppercase(serie.name.value.value) }}
                                                 </div>
@@ -289,14 +289,14 @@ const editSerie = (selectedSerie) => {
                                     </div>
 
                                 </v-card-title>
-                                <v-card-actions class="tw-my-4">
+                                <v-card-actions class="my-4">
                                     <v-spacer></v-spacer>
                                     <v-btn @click="closeDeleteConfirmationSerie" color="red" rounded="xl"
-                                        class="!tw-px-4 text-none" variant="tonal">
+                                        class="!px-4 text-none" variant="tonal">
                                         Cancelar
                                     </v-btn>
                                     <v-btn @click="deleteSerieConfirmation" color="purple" rounded="xl"
-                                        class="!tw-px-4 text-none" variant="elevated">
+                                        class="!px-4 text-none" variant="elevated">
                                         Eliminar
                                     </v-btn>
                                     <v-spacer></v-spacer>
@@ -311,10 +311,10 @@ const editSerie = (selectedSerie) => {
                     </v-chip>
                 </template>
                 <template v-slot:item.actions="{ item }">
-                    <v-icon class="me-2 !tw-text-purple-500" size="small" @click="editSerie(item)">
+                    <v-icon class="me-2 !text-purple-500" size="small" @click="editSerie(item)">
                         mdi-pencil
                     </v-icon>
-                    <v-icon class="!tw-text-red-600" size="small" @click="deleteSerie(item)">
+                    <v-icon class="!text-red-600" size="small" @click="deleteSerie(item)">
                         mdi-delete
                     </v-icon>
                 </template>

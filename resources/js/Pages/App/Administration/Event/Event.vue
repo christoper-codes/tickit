@@ -236,7 +236,7 @@ const openDialogBlockAndReserve = (event, open) => {
         <BreadcrumbAppSecondary>
             <span>Administración de eventos</span>
         </BreadcrumbAppSecondary>
-        <div class="tw-px-4 tw-py-10 lg:tw-p-10">
+        <div class="px-4 py-10 lg:p-10">
             <v-tabs v-model="tabEvent" align-tabs="center" color="deep-purple-accent-4">
                 <v-tab v-for="event_for_type in events_for_type" :key="event_for_type.event_type_id"
                     :value="event_for_type.event_type_id"> {{ event_for_type.event_type }}</v-tab>
@@ -244,23 +244,23 @@ const openDialogBlockAndReserve = (event, open) => {
             <v-tabs-window v-model="tabEvent">
                 <v-tabs-window-item v-for="event_for_type in events_for_type" :key="event_for_type.event_type_id"
                     :value="event_for_type.event_type_id">
-                    <v-data-table :headers="headersEvent" :items="event_for_type.events" class="!tw-rounded-xl">
+                    <v-data-table :headers="headersEvent" :items="event_for_type.events" class="!rounded-xl">
                         <template v-slot:top>
-                            <v-toolbar flat class="!tw-p-5 !tw-rounded-xl !tw-shadow-lg !tw-mb-7">
+                            <v-toolbar flat class="!p-5 !rounded-xl !shadow-lg !mb-7">
                                 <v-toolbar-title>Eventos</v-toolbar-title>
                                 <v-dialog v-model="dialogFormEvent" max-width="800px">
                                     <template v-slot:activator="{ props }">
-                                        <PrimaryButton v-bind="props" heightbtn="!tw-h-[60px]">
+                                        <PrimaryButton v-bind="props" heightbtn="!h-[60px]">
                                             <span>Nuevo evento</span>
                                         </PrimaryButton>
                                     </template>
                                     <v-card>
                                         <v-card-text>
                                             <v-container>
-                                                <div class="tw-flex tw-flex-col tw-gap-3">
-                                                    <v-form class="tw-flex tw-flex-col tw-gap-1">
-                                                        <div class="tw-flex tw-flex-col lg:tw-flex-row  tw-items-center tw-justify-between tw-gap-5">
-                                                            <div class="tw-w-full tw-mb-7">
+                                                <div class="flex flex-col gap-3">
+                                                    <v-form class="flex flex-col gap-1">
+                                                        <div class="flex flex-col lg:flex-row  items-center justify-between gap-5">
+                                                            <div class="w-full mb-7">
 <!--                                                                 <v-file-input accept="image/*" color="primary" clearable
                                                                     label="Imagen de portada"
                                                                     hint="Selecciona la imagen de portada"
@@ -275,15 +275,15 @@ const openDialogBlockAndReserve = (event, open) => {
                                                                         density="compact" variant="compact"
                                                                         title="" @change="onFileChangeEvent">
                                                                     </v-file-upload>
-                                                                    <!-- <div class="tw-mx-auto tw-flex tw-items-center tw-justify-center">
+                                                                    <!-- <div class="mx-auto flex items-center justify-center">
                                                                         <v-img v-if="imageUrlEvent" :src="imageUrlEvent" alt="Preview" max-width="100" rounded="lg"></v-img>
                                                                     </div> -->
                                                                 <InputError :message="event.global_image.errorMessage.value" />
                                                             </div>
                                                         </div>
 
-                                                        <div class="tw-flex tw-flex-col lg:tw-flex-row tw-items-center tw-justify-between tw-gap-5 tw-mb-2">
-                                                            <div class="tw-w-full">
+                                                        <div class="flex flex-col lg:flex-row items-center justify-between gap-5 mb-2">
+                                                            <div class="w-full">
                                                                 <v-select label="Serie" :items="series" variant="outlined"
                                                                     item-title="name" item-value="id"
                                                                     v-model="event.serie_id.value.value"
@@ -291,7 +291,7 @@ const openDialogBlockAndReserve = (event, open) => {
                                                                 <InputError :message="dataEvent.errors.serie_id" />
                                                             </div>
 
-                                                            <div class="tw-w-full">
+                                                            <div class="w-full">
                                                                 <v-select label="Temporada" :items="global_seasons" variant="outlined"
                                                                     item-title="name" item-value="id"
                                                                     v-model="event.global_season_id.value.value"
@@ -300,8 +300,8 @@ const openDialogBlockAndReserve = (event, open) => {
                                                             </div>
 
                                                         </div>
-                                                        <div class="tw-flex tw-flex-col lg:tw-flex-row tw-items-center tw-justify-between tw-gap-5 tw-mb-2">
-                                                            <div class="tw-w-full">
+                                                        <div class="flex flex-col lg:flex-row items-center justify-between gap-5 mb-2">
+                                                            <div class="w-full">
                                                                 <v-text-field color="primary" label="Nombre" variant="outlined"
                                                                     placeholder="Evento 1"
                                                                     hint="Ingresa el nombre del evento"
@@ -309,7 +309,7 @@ const openDialogBlockAndReserve = (event, open) => {
                                                                     :error-messages="event.name.errorMessage.value"></v-text-field>
                                                                 <InputError :message="dataEvent.errors.name" />
                                                             </div>
-                                                            <div class="tw-w-full">
+                                                            <div class="w-full">
                                                                 <v-select
                                                                     color="purple"
                                                                     label="Visivilidad de evento"
@@ -321,8 +321,8 @@ const openDialogBlockAndReserve = (event, open) => {
                                                                 <InputError :message="dataEvent.errors.event_visibility_type_id" />
                                                             </div>
                                                         </div>
-                                                        <div class="tw-flex tw-flex-col lg:tw-flex-row tw-items-center tw-justify-between tw-gap-5 tw-my-2">
-                                                            <div class="tw-w-full">
+                                                        <div class="flex flex-col lg:flex-row items-center justify-between gap-5 my-2">
+                                                            <div class="w-full">
                                                                 <v-textarea color="primary" label="Descripción" rows="3"
                                                                     variant="outlined" auto-grow
                                                                     v-model="event.description.value.value"
@@ -330,15 +330,15 @@ const openDialogBlockAndReserve = (event, open) => {
                                                                 <InputError :message="dataEvent.errors.description" />
                                                             </div>
                                                         </div>
-                                                        <div class="tw-flex tw-flex-col lg:tw-flex-row tw-items-center tw-justify-between tw-gap-5 tw-mb-2">
-                                                            <div class="tw-w-full">
+                                                        <div class="flex flex-col lg:flex-row items-center justify-between gap-5 mb-2">
+                                                            <div class="w-full">
                                                                 <v-date-input density="compact" color="primary" clearable variant="outlined"
                                                                     label="Fecha de inicio"
                                                                     v-model="event.start_date.value.value"
                                                                     :error-messages="event.start_date.errorMessage.value"></v-date-input>
                                                                 <InputError :message="dataEvent.errors.start_date" />
                                                             </div>
-                                                            <div class="tw-w-full">
+                                                            <div class="w-full">
                                                                 <v-text-field v-model="event.start_time.value.value" variant="outlined"
                                                                     :active="event.start_time_picker.value"
                                                                     label="Hora de inicio"
@@ -360,15 +360,15 @@ const openDialogBlockAndReserve = (event, open) => {
                                                             </div>
                                                         </div>
                                                         <div
-                                                            class="tw-flex tw-flex-col lg:tw-flex-row tw-items-center tw-justify-between tw-gap-5 tw-mb-2">
-                                                            <div class="tw-w-full">
+                                                            class="flex flex-col lg:flex-row items-center justify-between gap-5 mb-2">
+                                                            <div class="w-full">
                                                                 <v-date-input density="compact" color="primary" clearable variant="outlined"
                                                                     label="Fecha de finalización"
                                                                     v-model="event.end_date.value.value"
                                                                     :error-messages="event.end_date.errorMessage.value"></v-date-input>
                                                                 <InputError :message="dataEvent.errors.end_date" />
                                                             </div>
-                                                            <div class="tw-w-full">
+                                                            <div class="w-full">
                                                                 <v-text-field v-model="event.end_time.value.value" variant="outlined"
                                                                     :active="event.end_time_picker.value"
                                                                     label="Hora de finalización"
@@ -389,10 +389,10 @@ const openDialogBlockAndReserve = (event, open) => {
                                                             </div>
                                                         </div>
                                                         <div v-if="editedIndexEvent != -1"
-                                                            class="tw-flex tw-flex-col lg:tw-flex-row tw-items-center tw-justify-between tw-gap-5 tw-my-2">
-                                                            <div class="tw-w-full">
-                                                                <p class="tw-font-medium tw-mb-1"><span
-                                                                        class="tw-text-red-500">*</span> Estatus
+                                                            class="flex flex-col lg:flex-row items-center justify-between gap-5 my-2">
+                                                            <div class="w-full">
+                                                                <p class="font-medium mb-1"><span
+                                                                        class="text-red-500">*</span> Estatus
                                                                 </p>
                                                                 <v-switch
                                                                     :label="`${event.is_active.value.value ? 'Activo' : 'Inactivo'}`"
@@ -404,12 +404,12 @@ const openDialogBlockAndReserve = (event, open) => {
                                                 </div>
                                             </v-container>
                                         </v-card-text>
-                                        <v-card-actions class="!tw-mb-4">
+                                        <v-card-actions class="!mb-4">
                                             <v-spacer></v-spacer>
-                                            <SecondaryButton @click="closeFormEvent" heightbtn="!tw-h-[60px]">
+                                            <SecondaryButton @click="closeFormEvent" heightbtn="!h-[60px]">
                                                 <span>Cancelar</span>
                                             </SecondaryButton>
-                                            <PrimaryButton @click="saveDataEvent" :loading="isLoading" heightbtn="!tw-h-[60px]">
+                                            <PrimaryButton @click="saveDataEvent" :loading="isLoading" heightbtn="!h-[60px]">
                                                 <span>Guardar</span>
                                             </PrimaryButton>
                                         </v-card-actions>
@@ -418,12 +418,12 @@ const openDialogBlockAndReserve = (event, open) => {
                                 <v-dialog v-model="dialogDeleteEvent" max-width="500px">
                                     <v-card>
                                         <v-card-title class="">
-                                            <div class="tw-grid tw-justify-items-center tw-gap-y-6">
-                                                <div class="tw-pt-6">
+                                            <div class="grid justify-items-center gap-y-6">
+                                                <div class="pt-6">
                                                     ¿Estas seguro de eliminar este evento?
                                                 </div>
                                                 <div>
-                                                    <div class="tw-grid tw-justify-items-center tw-gap-y-2">
+                                                    <div class="grid justify-items-center gap-y-2">
                                                         <div>
                                                             {{ formatFirstLetterUppercase(event.name.value.value) }}
                                                         </div>
@@ -434,14 +434,14 @@ const openDialogBlockAndReserve = (event, open) => {
                                                 </div>
                                             </div>
                                         </v-card-title>
-                                        <v-card-actions class="!tw-my-2">
+                                        <v-card-actions class="!my-2">
                                             <v-spacer></v-spacer>
                                             <v-btn @click="closeDeleteConfirmationEvent" color="red" rounded="xl"
-                                                class="!tw-px-4 text-none" variant="tonal">
+                                                class="!px-4 text-none" variant="tonal">
                                                 Cancelar
                                             </v-btn>
                                             <v-btn @click="deleteEventConfirmation" color="purple" rounded="xl"
-                                                class="!tw-px-4 text-none" variant="elevated">
+                                                class="!px-4 text-none" variant="elevated">
                                                 Eliminar
                                             </v-btn>
                                             <v-spacer></v-spacer>
@@ -460,24 +460,24 @@ const openDialogBlockAndReserve = (event, open) => {
                         </template>
                         <template v-slot:item.seatPrices="{ item }">
                             <v-btn @click="openDialogSeatPrices(item, true)">
-                                <span class="material-symbols-outlined tw-text-lg">finance_chip</span>
+                                <span class="material-symbols-outlined text-lg">finance_chip</span>
                             </v-btn>
                         </template>
                         <template v-slot:item.promotion="{ item }">
                             <v-btn @click="openDialogPromotion(item, true)">
-                                <span class="material-symbols-outlined tw-text-lg">featured_seasonal_and_gifts</span>
+                                <span class="material-symbols-outlined text-lg">featured_seasonal_and_gifts</span>
                             </v-btn>
                         </template>
                         <template v-slot:item.block_reserve="{ item }">
                             <v-btn @click="openDialogBlockAndReserve(item, true)">
-                                <span class="material-symbols-outlined tw-text-lg">detector_status</span>
+                                <span class="material-symbols-outlined text-lg">detector_status</span>
                             </v-btn>
                         </template>
                         <template v-slot:item.actions="{ item }">
-                            <v-icon class="me-2 !tw-text-purple-500" size="small" @click="editEvent(item)">
+                            <v-icon class="me-2 !text-purple-500" size="small" @click="editEvent(item)">
                                 mdi-pencil
                             </v-icon>
-                            <v-icon class="!tw-text-red-600" size="small" @click="deleteEvent(item)">
+                            <v-icon class="!text-red-600" size="small" @click="deleteEvent(item)">
                                 mdi-delete
                             </v-icon>
                         </template>
@@ -490,7 +490,7 @@ const openDialogBlockAndReserve = (event, open) => {
             <v-card>
 
                 <v-toolbar>
-                    <v-toolbar-title class="tw-w-full">Asignación de Precios</v-toolbar-title>
+                    <v-toolbar-title class="w-full">Asignación de Precios</v-toolbar-title>
                     <v-spacer></v-spacer>
                     <v-toolbar-items>
                         <v-btn icon="mdi-close" @click="openDialogSeatPrices(eventSelected, false)">
@@ -498,7 +498,7 @@ const openDialogBlockAndReserve = (event, open) => {
                     </v-toolbar-items>
                 </v-toolbar>
 
-                <div class="tw-overflow-y-auto tw-w-full tw-h-full">
+                <div class="overflow-y-auto w-full h-full">
                     <EventSeatCatalogPrices :event="eventSelected" />
                 </div>
 
@@ -509,7 +509,7 @@ const openDialogBlockAndReserve = (event, open) => {
             <v-card>
 
                 <v-toolbar>
-                    <v-toolbar-title class="tw-w-full">Asignación de Promociones</v-toolbar-title>
+                    <v-toolbar-title class="w-full">Asignación de Promociones</v-toolbar-title>
                     <v-spacer></v-spacer>
                     <v-toolbar-items>
                         <v-btn icon="mdi-close" @click="openDialogPromotion(eventSelected, false)">
@@ -517,7 +517,7 @@ const openDialogBlockAndReserve = (event, open) => {
                     </v-toolbar-items>
                 </v-toolbar>
 
-                <div class="tw-overflow-y-auto tw-w-full tw-h-full">
+                <div class="overflow-y-auto w-full h-full">
                     <EventSeatCatalogPromotion :event="eventSelected" />
                 </div>
 
@@ -527,14 +527,14 @@ const openDialogBlockAndReserve = (event, open) => {
         <v-dialog v-model="dialogBlockAndReserve" transition="dialog-bottom-transition" fullscreen>
             <v-card>
                 <v-toolbar>
-                    <v-toolbar-title class="tw-w-full">Asignación de Estus de Asientos</v-toolbar-title>
+                    <v-toolbar-title class="w-full">Asignación de Estus de Asientos</v-toolbar-title>
                     <v-spacer></v-spacer>
                     <v-toolbar-items>
                         <v-btn icon="mdi-close" @click="openDialogBlockAndReserve(eventSelected, false)">
                         </v-btn>
                     </v-toolbar-items>
                 </v-toolbar>
-                <div class="tw-overflow-y-auto tw-w-full tw-h-full">
+                <div class="overflow-y-auto w-full h-full">
                     <EventSeatCatalogStatus :event="eventSelected" />
                 </div>
             </v-card>

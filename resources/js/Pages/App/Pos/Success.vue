@@ -62,18 +62,18 @@ onMounted(() => {
 
     <div>
         <!-- Hero -->
-        <div class="tw-relative tw-h-screen tw-overflow-hidden tw-flex tw-items-center tw-flex-col tw-justify-center tw-gap-10">
-            <div class="tw-absolute -tw-right-40 lg:-tw-right-96 -tw-top-52 lg:-tw-top-52 tw-h-[480px] tw-w-[300px] lg:tw-h-[680px] lg:tw-w-[500px] tw-rounded-full tw-blur-[120px] lg:tw-blur-[220px] tw-bg-primary">
+        <div class="relative h-screen overflow-hidden flex items-center flex-col justify-center gap-10">
+            <div class="absolute -right-40 lg:-right-96 -top-52 lg:-top-52 h-[480px] w-[300px] lg:h-[680px] lg:w-[500px] rounded-full blur-[120px] lg:blur-[220px] bg-primary">
             </div>
-            <div class="tw-text-center tw-z-20 tw-relative">
-                <h1 class="tw-font-bold tw-text-4xl md:tw-text-5xl lg:tw-text-7xl tw-font-bebas">
+            <div class="text-center z-20 relative">
+                <h1 class="font-bold text-4xl md:text-5xl lg:text-7xl font-bebas">
                     ¡Boletos adquiridos con éxito!
                 </h1>
                 <p>¡Gracias por su compra! Puede ver sus boletos adquiridos en la seccion 'dashboard'.</p>
             </div>
             <Link :href="route('dashboard')">
-                <PrimaryButton heightbtn="!tw-h-[70px] !tw-text-base !tw-w-full md:!tw-w-auto" paddingbtn="!tw-px-14">
-                    <span class="material-symbols-outlined tw-text-2xl tw-mr-2">confirmation_number</span>Ver mis boletos
+                <PrimaryButton heightbtn="!h-[70px] !text-base !w-full md:!w-auto" paddingbtn="!px-14">
+                    <span class="material-symbols-outlined text-2xl mr-2">confirmation_number</span>Ver mis boletos
                 </PrimaryButton>
             </Link>
         </div>

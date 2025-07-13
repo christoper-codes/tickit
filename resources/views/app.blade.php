@@ -3,9 +3,6 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <!--<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-        <meta name="csrf-token" content="{{ csrf_token() }}">-->
-
         <title inertia>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
@@ -21,15 +18,8 @@
         @vite(['resources/js/app.js', "resources/js/Pages/{$page['component']}.vue"])
         @inertiaHead
     </head>
-    <body class="tw-text-gray-700 tw-overflow-hidden lg:tw-overflow-visible ">
-        <v-app theme="light"
-            <main class="tw-relative tw-overflow-hidden lg:tw-overflow-visible">
-                <svg class="tw-absolute !tw-inset-0 tw-size-full tw-stroke-black/10 tw-[mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]" aria-hidden="true"><defs><pattern id="about-svg" width="100" height="100" x="50%" y="-1" patternUnits="userSpaceOnUse"><path d="M.5 200V.5H200" fill="none" /></pattern></defs><rect width="100%" height="100%" stroke-width="" fill="url(#about-svg)" /></svg>
-                <div class="tw-relative tw-z-10">
-                    @inertia
-                </div>
-            </main>
-        </v-app>
+    <body class="overflow-hidden">
+        @inertia
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     </body>

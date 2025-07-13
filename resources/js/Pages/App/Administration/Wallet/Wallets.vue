@@ -366,16 +366,16 @@ const { findPropertyInObject, cloneObject } = useObjectsFormat();
             <span>Administración de Monederos</span>
         </BreadcrumbAppSecondary>
 
-        <div class="tw-px-4 tw-py-10 lg:tw-p-10">
+        <div class="px-4 py-10 lg:p-10">
             <v-data-table v-model:expanded="expanded" :headers="headerAccount" :items="wallet_accounts" item-value="id" show-expand>
                 <template v-slot:top>
                     <v-toolbar flat>
-                        <v-toolbar-title class="tw-uppercase">Monedero</v-toolbar-title>
+                        <v-toolbar-title class="uppercase">Monedero</v-toolbar-title>
                         <v-divider class="mx-4" inset vertical></v-divider>
                         <v-spacer></v-spacer>
                         <v-dialog v-model="dialogFormWalletIsOpen" max-width="900px" persistent>
                             <template v-slot:activator="{ props }">
-                                <v-btn variant="tonal" class="mb-2 !tw-mr-5 text-none" color="purple" rounded="xl"
+                                <v-btn variant="tonal" class="mb-2 !mr-5 text-none" color="purple" rounded="xl"
                                     v-bind="props">
                                     Nuevo Monedero
                                 </v-btn>
@@ -386,7 +386,7 @@ const { findPropertyInObject, cloneObject } = useObjectsFormat();
                                 </v-card-title>
                                 <v-card-text>
                                     <v-container>
-                                        <div class="tw-mt-5 tw-flex tw-flex-col tw-gap-3">
+                                        <div class="mt-5 flex flex-col gap-3">
                                             <v-tabs bg-color="" fixed-tabs v-model="tabDialogForm" :disabled="!isCreating">
                                                 <v-tab :value="valuesTabDialog.subscribe">
                                                     {{ valuesTabDialog.subscribe }}
@@ -399,11 +399,11 @@ const { findPropertyInObject, cloneObject } = useObjectsFormat();
                                                 </v-tab>
                                             </v-tabs>
                                             <v-tabs-window>
-                                                <v-form  class="tw-mt-5 tw-flex tw-flex-col tw-gap-1">
-                                                    <div v-if="tabDialogForm == valuesTabDialog.subscribe" class="tw-flex tw-flex-col lg:tw-flex-row tw-items-center tw-justify-between tw-gap-5 tw-mb-2">
-                                                        <div class="tw-w-full">
-                                                            <p class="tw-font-medium tw-mb-1">
-                                                                <span class="tw-text-red-500">*</span>Temporada
+                                                <v-form  class="mt-5 flex flex-col gap-1">
+                                                    <div v-if="tabDialogForm == valuesTabDialog.subscribe" class="flex flex-col lg:flex-row items-center justify-between gap-5 mb-2">
+                                                        <div class="w-full">
+                                                            <p class="font-medium mb-1">
+                                                                <span class="text-red-500">*</span>Temporada
                                                             </p>
                                                             <v-select
                                                                 label="Temporada"
@@ -415,9 +415,9 @@ const { findPropertyInObject, cloneObject } = useObjectsFormat();
                                                                 :disabled="!isCreating">
                                                             </v-select>
                                                         </div>
-                                                        <div class="tw-w-full">
-                                                            <p class="tw-font-medium tw-mb-1">
-                                                                <span class="tw-text-red-500">*</span>Abono
+                                                        <div class="w-full">
+                                                            <p class="font-medium mb-1">
+                                                                <span class="text-red-500">*</span>Abono
                                                             </p>
                                                             <v-autocomplete
                                                                 :items="ticketsBySeasonList"
@@ -441,10 +441,10 @@ const { findPropertyInObject, cloneObject } = useObjectsFormat();
                                                         </v-autocomplete>
                                                         </div>
                                                     </div>
-                                                    <div v-if="tabDialogForm === valuesTabDialog.user" class="tw-flex tw-flex-col lg:tw-flex-row tw-items-center tw-justify-between tw-gap-5 tw-mb-2">
-                                                        <div class="tw-w-full">
-                                                            <p class="tw-font-medium tw-mb-1">
-                                                                <span class="tw-text-red-500">*</span>Usuario
+                                                    <div v-if="tabDialogForm === valuesTabDialog.user" class="flex flex-col lg:flex-row items-center justify-between gap-5 mb-2">
+                                                        <div class="w-full">
+                                                            <p class="font-medium mb-1">
+                                                                <span class="text-red-500">*</span>Usuario
                                                             </p>
                                                             <v-autocomplete
                                                                 :items="users.map((value) => { value.full_name = formatTitleCase(value.full_name); return value; })"
@@ -468,10 +468,10 @@ const { findPropertyInObject, cloneObject } = useObjectsFormat();
                                                             </v-autocomplete>
                                                         </div>
                                                     </div>
-                                                    <div class="tw-flex tw-flex-col lg:tw-flex-row tw-items-center tw-justify-between tw-gap-5 tw-mb-2">
-                                                        <div class="tw-w-full">
-                                                            <p class="tw-font-medium tw-mb-1">
-                                                                <span class="tw-text-red-500">*</span>Rol de cuenta
+                                                    <div class="flex flex-col lg:flex-row items-center justify-between gap-5 mb-2">
+                                                        <div class="w-full">
+                                                            <p class="font-medium mb-1">
+                                                                <span class="text-red-500">*</span>Rol de cuenta
                                                             </p>
                                                             <v-select
                                                                 label="Rol de cuenta"
@@ -486,9 +486,9 @@ const { findPropertyInObject, cloneObject } = useObjectsFormat();
                                                             </v-select>
                                                             <InputError :message="dataFormWallet.errors.role_type_id" />
                                                         </div>
-                                                        <div class="tw-w-full">
-                                                            <p class="tw-font-medium tw-mb-1">
-                                                                <span class="tw-text-red-500">*</span>Tipo de Cuenta
+                                                        <div class="w-full">
+                                                            <p class="font-medium mb-1">
+                                                                <span class="text-red-500">*</span>Tipo de Cuenta
                                                             </p>
                                                             <v-select
                                                                 label="Tipo de Cuenta"
@@ -503,9 +503,9 @@ const { findPropertyInObject, cloneObject } = useObjectsFormat();
                                                             </v-select>
                                                             <InputError :message="dataFormWallet.errors.wallet_account_type_id" />
                                                         </div>
-                                                        <div class="tw-w-full">
-                                                            <p class="tw-font-medium tw-mb-1">
-                                                                <span class="tw-text-red-500"></span>Tipo de Moneda
+                                                        <div class="w-full">
+                                                            <p class="font-medium mb-1">
+                                                                <span class="text-red-500"></span>Tipo de Moneda
                                                             </p>
                                                             <v-text-field
                                                                 label="Moneda"
@@ -516,10 +516,10 @@ const { findPropertyInObject, cloneObject } = useObjectsFormat();
                                                         </div>
                                                     </div>
 
-                                                    <div v-if="isCashless" class="tw-flex tw-flex-col lg:tw-flex-row tw-items-center tw-justify-between tw-gap-5 tw-mb-2">
-                                                        <div class="tw-w-full">
-                                                            <p class="tw-font-medium tw-mb-1">
-                                                                <span class="tw-text-red-500"></span>Nombre del Beneficio
+                                                    <div v-if="isCashless" class="flex flex-col lg:flex-row items-center justify-between gap-5 mb-2">
+                                                        <div class="w-full">
+                                                            <p class="font-medium mb-1">
+                                                                <span class="text-red-500"></span>Nombre del Beneficio
                                                             </p>
                                                             <v-text-field
                                                                 color="primary"
@@ -532,9 +532,9 @@ const { findPropertyInObject, cloneObject } = useObjectsFormat();
                                                             </v-text-field>
                                                             <InputError :message="dataFormWallet.errors.name" />
                                                         </div>
-                                                        <div class="tw-w-full">
-                                                            <p class="tw-font-medium tw-mb-1">
-                                                                <span class="tw-text-red-500"></span>Código del Beneficio
+                                                        <div class="w-full">
+                                                            <p class="font-medium mb-1">
+                                                                <span class="text-red-500"></span>Código del Beneficio
                                                             </p>
                                                             <v-text-field
                                                                 color="primary"
@@ -546,9 +546,9 @@ const { findPropertyInObject, cloneObject } = useObjectsFormat();
                                                             >
                                                             </v-text-field>
                                                         </div>
-                                                        <div class="tw-w-full">
-                                                            <p class="tw-font-medium tw-mb-1">
-                                                                <span class="tw-text-red-500"></span>Porcentaje de Cashback (%)
+                                                        <div class="w-full">
+                                                            <p class="font-medium mb-1">
+                                                                <span class="text-red-500"></span>Porcentaje de Cashback (%)
                                                             </p>
                                                             <v-text-field
                                                                 color="primary"
@@ -561,20 +561,20 @@ const { findPropertyInObject, cloneObject } = useObjectsFormat();
                                                             </v-text-field>
                                                         </div>
                                                     </div>
-                                                    <div v-if="isCashless" class="tw-flex tw-flex-col lg:tw-flex-row tw-items-center tw-justify-between tw-gap-5 tw-my-2">
-                                                            <div class="tw-w-full">
-                                                                <p class="tw-font-medium tw-mb-1">Descripción del beneficio</p>
+                                                    <div v-if="isCashless" class="flex flex-col lg:flex-row items-center justify-between gap-5 my-2">
+                                                            <div class="w-full">
+                                                                <p class="font-medium mb-1">Descripción del beneficio</p>
                                                                 <v-textarea color="primary" label="Descripción del beneficio" rows="2"
                                                                     variant="filled" auto-grow
                                                                     v-model="wallet.description.value.value"></v-textarea>
                                                             </div>
                                                     </div>
-                                                    <div class="tw-flex tw-flex-col lg:tw-flex-row tw-items-center tw-justify-between tw-gap-5 tw-mb-2">
-                                                        <div class="tw-w-full">
-                                                            <p class="tw-font-medium tw-mb-1">
-                                                                <span class="tw-text-red-500"></span>
+                                                    <div class="flex flex-col lg:flex-row items-center justify-between gap-5 mb-2">
+                                                        <div class="w-full">
+                                                            <p class="font-medium mb-1">
+                                                                <span class="text-red-500"></span>
                                                                 <v-badge content="?" @click="tooltip.account_number = !tooltip.account_number">
-                                                                    <span class="tw-pe-3">
+                                                                    <span class="pe-3">
                                                                         Número de Cuenta
                                                                     </span>
                                                                     <v-tooltip activator="parent" location="end">
@@ -594,9 +594,9 @@ const { findPropertyInObject, cloneObject } = useObjectsFormat();
                                                             </v-text-field>
                                                             <InputError :message="dataFormWallet.errors.account_number" />
                                                         </div>
-                                                        <div class="tw-w-full">
-                                                            <p class="tw-font-medium tw-mb-1">
-                                                                <span class="tw-text-red-500"></span>Saldo Inicial
+                                                        <div class="w-full">
+                                                            <p class="font-medium mb-1">
+                                                                <span class="text-red-500"></span>Saldo Inicial
                                                             </p>
                                                             <v-text-field
                                                                 color="primary"
@@ -611,10 +611,10 @@ const { findPropertyInObject, cloneObject } = useObjectsFormat();
                                                             <InputError :message="dataFormWallet.errors.current_balance" />
                                                         </div>
                                                     </div>
-                                                    <div class="tw-flex tw-flex-col lg:tw-flex-row tw-items-center tw-justify-between tw-gap-5 tw-my-2">
-                                                        <div class="tw-w-full">
-                                                            <p class="tw-font-medium tw-mb-1">
-                                                                <span class="tw-text-red-500"></span> Fecha de expiración
+                                                    <div class="flex flex-col lg:flex-row items-center justify-between gap-5 my-2">
+                                                        <div class="w-full">
+                                                            <p class="font-medium mb-1">
+                                                                <span class="text-red-500"></span> Fecha de expiración
                                                             </p>
                                                             <v-date-input
                                                                 density="compact"
@@ -629,10 +629,10 @@ const { findPropertyInObject, cloneObject } = useObjectsFormat();
                                                         </div>
 
                                                     </div>
-                                                    <div v-if="!isCreating" class="tw-flex tw-flex-col lg:tw-flex-row tw-items-center tw-justify-between tw-gap-5 tw-my-2">
-                                                        <div class="tw-w-full">
-                                                            <p class="tw-font-medium tw-mb-1">
-                                                                <span class="tw-text-red-500">*</span>Estatus
+                                                    <div v-if="!isCreating" class="flex flex-col lg:flex-row items-center justify-between gap-5 my-2">
+                                                        <div class="w-full">
+                                                            <p class="font-medium mb-1">
+                                                                <span class="text-red-500">*</span>Estatus
                                                             </p>
                                                             <v-switch
                                                                 :label="`${wallet.is_active.value.value ? 'Activa' : 'Inactiva'}`"
@@ -646,12 +646,12 @@ const { findPropertyInObject, cloneObject } = useObjectsFormat();
                                         </div>
                                     </v-container>
                                 </v-card-text>
-                                <v-card-actions class="!tw-mb-4">
+                                <v-card-actions class="!mb-4">
                                     <v-spacer></v-spacer>
-                                    <v-btn color="red" variant="tonal" rounded="xl" class="!tw-px-4 text-none" @click="closeFormWallet">
+                                    <v-btn color="red" variant="tonal" rounded="xl" class="!px-4 text-none" @click="closeFormWallet">
                                         Cancelar
                                     </v-btn>
-                                    <v-btn color="purple" rounded="xl" class="!tw-px-4 text-none" variant="elevated" @click="saveDataWallet">
+                                    <v-btn color="purple" rounded="xl" class="!px-4 text-none" variant="elevated" @click="saveDataWallet">
                                         Guardar
                                     </v-btn>
                                 </v-card-actions>
@@ -675,7 +675,7 @@ const { findPropertyInObject, cloneObject } = useObjectsFormat();
                     {{ formatDateForDisplay(item.created_at) }}
                 </template>
                 <template v-slot:expanded-row="{ columns, item }">
-                    <td :colspan="headerWallet.length" class="tw-px-14">
+                    <td :colspan="headerWallet.length" class="px-14">
                         <v-data-table :headers="headerWallet" :items="item.wallet_account_types" item-value="id" hide-default-footer items-per-page="-1">
                             <template v-slot:item.name="{ item: subItem  }">
                                 {{ formatTitleCase(subItem.name )}}
@@ -692,7 +692,7 @@ const { findPropertyInObject, cloneObject } = useObjectsFormat();
                                 </v-chip>
                             </template>
                             <template v-slot:item.actions="{ item: subItem }">
-                                <v-icon class="me-2 !tw-text-purple-500" size="small" @click="editWallet(item,subItem)">
+                                <v-icon class="me-2 !text-purple-500" size="small" @click="editWallet(item,subItem)">
                                     mdi-pencil
                                 </v-icon>
                             </template>

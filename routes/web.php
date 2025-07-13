@@ -7,18 +7,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', function () {
-    return redirect()->route('events.index');
-    $user_roles = null;
-    if(Auth::user()){
-        $user_roles = Auth::user()->userRoles;
-    }
-    return Inertia::render('Guest/Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-        'user_roles' => $user_roles
-    ]);
+    return Inertia::render('Guest/Welcome');
 })->name('welcome');
 
 Route::middleware('auth')->group(function () {

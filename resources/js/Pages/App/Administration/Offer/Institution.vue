@@ -171,7 +171,7 @@ const editInstitution = (selectedInstitution) => {
         <BreadcrumbAppSecondary>
             <span>Administración de Instituciones</span>
         </BreadcrumbAppSecondary>
-        <div class="tw-px-4 tw-py-10 lg:tw-p-10">
+        <div class="px-4 py-10 lg:p-10">
             <v-data-table :headers="headersInstitutions" :items="institutions">
                 <template v-slot:top>
                     <v-toolbar flat>
@@ -180,7 +180,7 @@ const editInstitution = (selectedInstitution) => {
                         <v-spacer></v-spacer>
                         <v-dialog v-model="dialogFormInstitution" max-width="800px">
                             <template v-slot:activator="{ props }">
-                                <v-btn variant="tonal" class="mb-2 !tw-mr-5 text-none" color="purple" rounded="xl"
+                                <v-btn variant="tonal" class="mb-2 !mr-5 text-none" color="purple" rounded="xl"
                                     v-bind="props">
                                     Nueva Institución
                                 </v-btn>
@@ -193,19 +193,19 @@ const editInstitution = (selectedInstitution) => {
 
                                 <v-card-text>
                                     <v-container>
-                                        <div class="tw-mt-5 tw-flex tw-flex-col tw-gap-3">
-                                            <v-form class="tw-mt-5 tw-flex tw-flex-col tw-gap-1">
+                                        <div class="mt-5 flex flex-col gap-3">
+                                            <v-form class="mt-5 flex flex-col gap-1">
 
                                                 <div
-                                                    class="tw-flex tw-flex-col lg:tw-flex-row  tw-items-center tw-justify-between tw-gap-5">
-                                                    <div class="tw-w-full">
+                                                    class="flex flex-col lg:flex-row  items-center justify-between gap-5">
+                                                    <div class="w-full">
                                                         <div
-                                                            class="tw-mx-auto tw-flex tw-items-center tw-justify-center">
+                                                            class="mx-auto flex items-center justify-center">
                                                             <v-img v-if="imageUrlInstitution" :src="imageUrlInstitution"
                                                                 alt="Preview" max-width="100" rounded="lg"></v-img>
                                                         </div>
-                                                        <p class="tw-font-medium tw-mb-1"><span
-                                                                class="tw-text-red-500">*</span> imagen de
+                                                        <p class="font-medium mb-1"><span
+                                                                class="text-red-500">*</span> imagen de
                                                             portada
                                                         </p>
                                                         <v-file-input accept="image/*" color="primary" clearable
@@ -220,10 +220,10 @@ const editInstitution = (selectedInstitution) => {
                                                 </div>
 
                                                 <div
-                                                    class="tw-flex tw-flex-col lg:tw-flex-row tw-items-center tw-justify-between tw-gap-5 tw-mb-2">
-                                                    <div class="tw-w-full">
-                                                        <p class="tw-font-medium tw-mb-1"><span
-                                                                class="tw-text-red-500">*</span> Estadio</p>
+                                                    class="flex flex-col lg:flex-row items-center justify-between gap-5 mb-2">
+                                                    <div class="w-full">
+                                                        <p class="font-medium mb-1"><span
+                                                                class="text-red-500">*</span> Estadio</p>
                                                         <v-select label="Estadio" :items="stadiums"
                                                             :item-title="(item) => formatFirstLetterUppercase(item.name)"
                                                             item-value="id" v-model="institution.stadium_id.value.value"
@@ -231,9 +231,9 @@ const editInstitution = (selectedInstitution) => {
                                                         <InputError :message="dataFormInstitution.errors.stadium_id" />
                                                     </div>
 
-                                                    <div class="tw-w-full">
-                                                        <p class="tw-font-medium tw-mb-1"><span
-                                                                class="tw-text-red-500">*</span> Nombre</p>
+                                                    <div class="w-full">
+                                                        <p class="font-medium mb-1"><span
+                                                                class="text-red-500">*</span> Nombre</p>
                                                         <v-text-field color="primary" label="Nombre"
                                                             placeholder="Institución 1"
                                                             hint="Ingresa el nombre de la institución"
@@ -245,11 +245,11 @@ const editInstitution = (selectedInstitution) => {
                                                 </div>
 
                                                 <div
-                                                    class="tw-flex tw-flex-col lg:tw-flex-row tw-items-center tw-justify-between tw-gap-5 tw-my-2">
+                                                    class="flex flex-col lg:flex-row items-center justify-between gap-5 my-2">
 
-                                                    <div class="tw-w-full">
-                                                        <p class="tw-font-medium tw-mb-1"><span
-                                                                class="tw-text-red-500">*</span> Descripción</p>
+                                                    <div class="w-full">
+                                                        <p class="font-medium mb-1"><span
+                                                                class="text-red-500">*</span> Descripción</p>
                                                         <v-textarea color="primary" label="Descripción" rows="3"
                                                             variant="filled" auto-grow
                                                             v-model="institution.description.value.value"
@@ -260,11 +260,11 @@ const editInstitution = (selectedInstitution) => {
                                                 </div>
 
                                                 <div
-                                                    class="tw-flex tw-flex-col lg:tw-flex-row tw-items-center tw-justify-between tw-gap-5 tw-my-2">
+                                                    class="flex flex-col lg:flex-row items-center justify-between gap-5 my-2">
 
-                                                    <div class="tw-w-full">
-                                                        <p class="tw-font-medium tw-mb-1"><span
-                                                                class="tw-text-red-500">*</span> Estatus
+                                                    <div class="w-full">
+                                                        <p class="font-medium mb-1"><span
+                                                                class="text-red-500">*</span> Estatus
                                                         </p>
                                                         <v-switch
                                                             :label="`${institution.is_active.value.value ? 'Activa' : 'Inactiva'}`"
@@ -278,13 +278,13 @@ const editInstitution = (selectedInstitution) => {
                                         </div>
                                     </v-container>
                                 </v-card-text>
-                                <v-card-actions class="!tw-mb-4">
+                                <v-card-actions class="!mb-4">
                                     <v-spacer></v-spacer>
-                                    <v-btn color="red" variant="tonal" rounded="xl" class="!tw-px-4 text-none"
+                                    <v-btn color="red" variant="tonal" rounded="xl" class="!px-4 text-none"
                                         @click="closeFormInstitution">
                                         Cancelar
                                     </v-btn>
-                                    <v-btn color="purple" rounded="xl" class="!tw-px-4 text-none" variant="elevated"
+                                    <v-btn color="purple" rounded="xl" class="!px-4 text-none" variant="elevated"
                                         @click="saveDataInstitution">
                                         Guardar
                                     </v-btn>
@@ -294,14 +294,14 @@ const editInstitution = (selectedInstitution) => {
                         <v-dialog v-model="dialogDeleteInstitution" max-width="500px">
                             <v-card>
                                 <v-card-title class="">¿Esta seguro de eliminar esta institución?</v-card-title>
-                                <v-card-actions class="!tw-my-2">
+                                <v-card-actions class="!my-2">
                                     <v-spacer></v-spacer>
                                     <v-btn @click="closeDeleteConfirmationInstitution" color="red" rounded="xl"
-                                        class="!tw-px-4 text-none" variant="tonal">
+                                        class="!px-4 text-none" variant="tonal">
                                         Cancelar
                                     </v-btn>
                                     <v-btn @click="deleteInstitutionConfirmation" color="purple" rounded="xl"
-                                        class="!tw-px-4 text-none" variant="elevated">
+                                        class="!px-4 text-none" variant="elevated">
                                         Eliminar
                                     </v-btn>
                                     <v-spacer></v-spacer>
@@ -325,10 +325,10 @@ const editInstitution = (selectedInstitution) => {
                     </v-chip>
                 </template>
                 <template v-slot:item.actions="{ item }">
-                    <v-icon class="me-2 !tw-text-purple-500" size="small" @click="editInstitution(item)">
+                    <v-icon class="me-2 !text-purple-500" size="small" @click="editInstitution(item)">
                         mdi-pencil
                     </v-icon>
-                    <v-icon class="!tw-text-red-600" size="small" @click="deleteInstitution(item)">
+                    <v-icon class="!text-red-600" size="small" @click="deleteInstitution(item)">
                         mdi-delete
                     </v-icon>
                 </template>

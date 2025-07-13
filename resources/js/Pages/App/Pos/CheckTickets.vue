@@ -53,21 +53,21 @@ const preferredCamera = {
     <GuestLayout />
     <NavigationDrawer />
 
-    <div class="tw-items-center">
-        <div class="tw-py-9">
-            <h3 class="tw-text-3xl tw-font-bold tw-text-center lg:tw-text-[40px]">Verificar boletos</h3>
+    <div class="items-center">
+        <div class="py-9">
+            <h3 class="text-3xl font-bold text-center lg:text-[40px]">Verificar boletos</h3>
         </div>
        <div class="center-container">
-            <v-btn @click="scanner" variant="elevated" class="text-none !tw-bg-tw-primary-500 !tw-text-white !tw-px-7" size="large" rounded="xl">
-                <span class="material-symbols-outlined tw-text-xl">scanner</span>{{showCamara ? 'Desactivar':'Escanear'}}
+            <v-btn @click="scanner" variant="elevated" class="text-none !bg-primary-500 !text-white !px-7" size="large" rounded="xl">
+                <span class="material-symbols-outlined text-xl">scanner</span>{{showCamara ? 'Desactivar':'Escanear'}}
             </v-btn>
         </div>
-        <div class="center-container tw-my-5">
-            <v-btn @click="switchCamera" variant="tonal" color="red" rounded="xl"  class="tw-py-2 text-none" >Cambiar Cámara</v-btn>
+        <div class="center-container my-5">
+            <v-btn @click="switchCamera" variant="tonal" color="red" rounded="xl"  class="py-2 text-none" >Cambiar Cámara</v-btn>
         </div>
-        <div class="center-container tw-my-5">
-            <div class="tw-py-2" v-if="showCamara">
-                <qrcode-stream class="tw-border-[10px] tw-rounded-2xl" @decode="onDecode" @init="onInit" :paused="activar" :camera="selectCamara" @unrecoverable-error="handleError"/>
+        <div class="center-container my-5">
+            <div class="py-2" v-if="showCamara">
+                <qrcode-stream class="border-[10px] rounded-2xl" @decode="onDecode" @init="onInit" :paused="activar" :camera="selectCamara" @unrecoverable-error="handleError"/>
             </div>
             <p>{{ decodedContent }}</p>
         </div>

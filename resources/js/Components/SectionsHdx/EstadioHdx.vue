@@ -25,7 +25,7 @@ onMounted(() => {
 
 <template>
 
-<svg id="zones_hdx" class="tw-w-full tw-h-screen" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 650 500" validated="validated" x="0" y="0">
+<svg id="zones_hdx" class="w-full h-screen" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 650 500" validated="validated" x="0" y="0">
   <defs>
     <clipPath id="clippath">
       <rect x="192.2" y="342.1" width="17.6" height="12.5" fill="none" pointer-events="visiblePainted"></rect>
