@@ -85,7 +85,7 @@ function scrollRight() {
     <MasterLayout>
         <section class="min-h-screen !p-4 sm:!p-8 flex w-full relative">
             <div class="rounded-3xl w-full overflow-hidden relative z-10 bg-cover object-cover bg-center" :style="`background-image: url('https://images.pexels.com/photos/167491/pexels-photo-167491.jpeg')`">
-               <div class="absolute top-0 w-full mt-5">
+               <div class="absolute top-0 w-full mt-5 !text-white !stroke-white">
                  <GuestNav/>
                </div>
                 <div class="absolute inset-0 bg-gradient-to-l from-transparent via-black/60 to-black/95"></div>

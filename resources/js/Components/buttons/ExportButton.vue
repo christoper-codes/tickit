@@ -3,7 +3,7 @@
         heightbtn: { type: String, required: false, default: '!h-[50px]' },
         loading: { type: Boolean, required: false, default: false},
         paddingbtn: { type: String, required: false, default: '!px-7' },
-        bgbtn: { type: String, required: false, default: '!bg-primary' },
+        bgbtn: { type: String, required: false, default: '!bg-tw-primary' },
     })
 </script>
 

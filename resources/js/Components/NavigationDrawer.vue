@@ -38,7 +38,7 @@ if (props.user_roles && !viewVendorTopics(props.user_roles)) {
         <div class="">
             <Link @click="drawerNavState = !drawerNavState" :href="route('welcome')" class="flex items-end gap-1 shadow-md p-4">
                 <ApplicationLogo class="w-11 h-auto fill-current" />
-                <div class="font-semibold text-text-primary-600 text-xs">
+                <div class="font-semibold text-text-tw-primary-600 text-xs">
                     <span class="block">victoria de</span>
                     <span class="block">xalapa</span>
                 </div>
@@ -149,7 +149,7 @@ if (props.user_roles && !viewVendorTopics(props.user_roles)) {
                         :href="route('dashboard')"
                         class="w-full"
                     >
-                        <v-btn @click="drawerNavState = !drawerNavState" variant="tonal" class="text-none !bg-primary-100 !text-primary-600" block size="large" rounded="xl">Dashboard</v-btn>
+                        <v-btn @click="drawerNavState = !drawerNavState" variant="tonal" class="text-none !bg-tw-primary-100 !text-tw-primary-600" block size="large" rounded="xl">Dashboard</v-btn>
                     </Link>
                     <div v-else class="flex flex-col items-center gap-3 w-full">
                         <Link
@@ -157,14 +157,14 @@ if (props.user_roles && !viewVendorTopics(props.user_roles)) {
                             class="w-full"
                             :href="route('register')"
                         >
-                            <v-btn variant="elevated" class="text-none !bg-primary-500 !text-white" block size="large" rounded="xl">Registrarse</v-btn>
+                            <v-btn variant="elevated" class="text-none !bg-tw-primary-500 !text-white" block size="large" rounded="xl">Registrarse</v-btn>
                         </Link>
                         <Link
                             @click="drawerNavState = !drawerNavState"
                             class="w-full"
                             :href="route('login')"
                         >
-                        <v-btn variant="tonal" class="text-none !bg-primary-100 !text-primary-600" block size="large" rounded="xl">Iniciar sesion</v-btn>
+                        <v-btn variant="tonal" class="text-none !bg-tw-primary-100 !text-tw-primary-600" block size="large" rounded="xl">Iniciar sesion</v-btn>
                         </Link>
                     </div>
                 </div>

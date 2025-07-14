@@ -185,11 +185,11 @@ if (props.user_roles && !viewVendorTopics(props.user_roles)) {
                         <Link
                             :href="route('dashboard')"
                             >
-                            <v-btn variant="elevated" class="text-none !bg-primary-500 !text-white !px-7" size="large" rounded="xl">Dashboard</v-btn>
+                            <v-btn variant="elevated" class="text-none !bg-tw-primary-500 !text-white !px-7" size="large" rounded="xl">Dashboard</v-btn>
                         </Link>
                         <div v-if="isMember">
                             <Link :href="route('ticket-offices.index')">
-                                <v-btn variant="tonal" class="text-none !bg-primary-100 !text-primary-600 !px-7" size="large" rounded="xl">Taquillas</v-btn>
+                                <v-btn variant="tonal" class="text-none !bg-tw-primary-100 !text-tw-primary-600 !px-7" size="large" rounded="xl">Taquillas</v-btn>
                             </Link>
                         </div>
                     </div>
@@ -197,12 +197,12 @@ if (props.user_roles && !viewVendorTopics(props.user_roles)) {
                         <Link
                             :href="route('register')"
                         >
-                            <v-btn variant="elevated" class="text-none !bg-primary-500 !text-white !px-7" size="large" rounded="xl">Registrarse</v-btn>
+                            <v-btn variant="elevated" class="text-none !bg-tw-primary-500 !text-white !px-7" size="large" rounded="xl">Registrarse</v-btn>
                         </Link>
                         <Link
                             :href="route('login')"
                         >
-                        <v-btn variant="tonal" class="text-none !bg-primary-100 !text-primary-600 !px-7" size="large" rounded="xl">Iniciar sesion</v-btn>
+                        <v-btn variant="tonal" class="text-none !bg-tw-primary-100 !text-tw-primary-600 !px-7" size="large" rounded="xl">Iniciar sesion</v-btn>
                         </Link>
                     </div>
                 </div>

@@ -177,7 +177,7 @@ const closeImageModal = () => {
     </section>
 
     <main class="max-w-7xl mx-auto px-4 lg:px-0 relative">
-        <div class="absolute -right-40 lg:-right-96 -top-52 lg:-top-52 h-[480px] w-[300px] lg:h-[680px] lg:w-[500px] rounded-full blur-[120px] lg:blur-[220px] bg-primary">
+        <div class="absolute -right-40 lg:-right-96 -top-52 lg:-top-52 h-[480px] w-[300px] lg:h-[680px] lg:w-[500px] rounded-full blur-[120px] lg:blur-[220px] bg-tw-primary">
         </div>
         <div class="hidden lg:block absolute -bottom-60 -left-72 h-[1300px] w-[1500px] rounded-full blur-[100px] bg-white">
         </div>

@@ -193,7 +193,7 @@ props.users.forEach(element => {
                                     <div v-if="ticket.purchase_type != 'abonado' && !ticket.is_verified">
                                         <SaleTicket :ticket="ticket" />
                                         <v-btn
-                                            :class="tickets_list_v.some(t => t.id === ticket.id) ? '!bg-red-500' : '!bg-primary'" class="!mt-3 !rounded-2xl !h-[60px] !px-6 !shadow-none !text-white"
+                                            :class="tickets_list_v.some(t => t.id === ticket.id) ? '!bg-red-500' : '!bg-tw-primary'" class="!mt-3 !rounded-2xl !h-[60px] !px-6 !shadow-none !text-white"
                                             block
                                             @click="tickets_select(ticket)"
                                         >

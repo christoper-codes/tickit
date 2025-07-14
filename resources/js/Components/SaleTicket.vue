@@ -46,7 +46,7 @@ const qrValue = computed(() => {
                         </div>
                         <div
                         :class="[
-                            ticket.purchase_type == 'abonado' ? 'text-yellow-500' : 'text-primary',
+                            ticket.purchase_type == 'abonado' ? 'text-yellow-500' : 'text-tw-primary',
                             ticket.is_verified ? '!text-red-500' : '',
                             'my-1 w-full flex-none text-lg font-bold leading-none'
                         ]"
@@ -77,7 +77,7 @@ const qrValue = computed(() => {
                         </div>
                         <div
                             :class="[
-                                ticket.purchase_type == 'abonado' ? 'text-yellow-500' : 'text-primary',
+                                ticket.purchase_type == 'abonado' ? 'text-yellow-500' : 'text-tw-primary',
                                 ticket.is_verified ? '!text-red-500' : '',
                                 'my-1 w-full flex-none text-lg font-bold leading-none'
                             ]"
@@ -88,7 +88,7 @@ const qrValue = computed(() => {
                         </div>
                     </div>
                     <div class="border-dashed border-b-[6px] my-1 pt-5">
-                        <div :class="ticket.purchase_type == 'abonado' ? 'bg-yellow-500' : 'bg-primary'" class="absolute rounded-full w-5 h-5 -mt-2 -left-2"></div>
+                        <div :class="ticket.purchase_type == 'abonado' ? 'bg-yellow-500' : 'bg-tw-primary'" class="absolute rounded-full w-5 h-5 -mt-2 -left-2"></div>
                         <div :class="ticket.purchase_type == 'abonado' ? 'bg-pink-400' : 'bg-blue-500'" class="absolute rounded-full w-5 h-5 -mt-2 -right-2"></div>
                     </div>
                     <div class="mt-5 text-sm h-[130px] overflow-y-auto">
@@ -115,7 +115,7 @@ const qrValue = computed(() => {
                         </div>
                     </div>
                     <div class="border-dashed border-b-[6px] my-1 pt-5">
-                        <div :class="ticket.purchase_type == 'abonado' ? 'bg-yellow-500' : 'bg-primary'" class="absolute rounded-full w-5 h-5 -mt-2 -left-2"></div>
+                        <div :class="ticket.purchase_type == 'abonado' ? 'bg-yellow-500' : 'bg-tw-primary'" class="absolute rounded-full w-5 h-5 -mt-2 -left-2"></div>
                         <div :class="ticket.purchase_type == 'abonado' ? 'bg-pink-400' : 'bg-blue-500'" class="absolute rounded-full w-5 h-5 -mt-2 -right-2"></div>
                     </div>
                     <div class="flex items-center px-5 pt-3 text-sm justify-between flex-col gap-2">

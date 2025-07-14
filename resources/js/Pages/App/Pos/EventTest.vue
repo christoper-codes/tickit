@@ -826,7 +826,7 @@ const seasonTicktesDataConfirm = () => {
                 <Link
                     :href="route('ticket-offices.index')"
                     >
-                    <v-btn variant="tonal" class="text-none !bg-primary-100 !text-primary-600 !px-7 mb-2 mr-2" size="large" rounded="xl" @click="isActive.value = false">Abrir caja</v-btn>
+                    <v-btn variant="tonal" class="text-none !bg-tw-primary-100 !text-tw-primary-600 !px-7 mb-2 mr-2" size="large" rounded="xl" @click="isActive.value = false">Abrir caja</v-btn>
                 </Link>
             </v-card-actions>
             </v-card>

@@ -44,16 +44,16 @@ const submit = () => {
 <template>
     <Head title="Recuperar contraseña"/>
     <AuthenticationCard>
-        <div class="w-full lg:w-[70%] h-auto mx-auto px-5 lg:px-0 py-10 lg:py-0">
+        <div class="w-full lg:w-[70%] h-auto mx-auto px-5 lg:px-0 py-10 lg:py-0 max-w-2xl">
             <div class="">
                 <ErrorSession />
-                <Link :href="route('events.index')" class="inline-block">
-                    <div class="size-10 shadow-md rounded-full bg-primary p-2 flex items-center justify-center mb-3">
+                <Link :href="route('welcome')" class="inline-block">
+                    <div class="size-10 shadow-md rounded-full bg-tw-primary p-2 flex items-center justify-center mb-3">
                         <span class="material-symbols-outlined text-white">arrow_back</span>
                     </div>
                 </Link>
                 <h2 class="font-bebas text-4xl font-bold lg:text-5xl">Recuperar contraseña</h2>
-                <p class="text-gray-600 text-base mt-2">Ingresa tu correo electronico para recibir un enlace de restablecimiento de contraseña.</p>
+                <p class="opacity-50 text-base mt-2">Ingresa tu correo electronico para recibir un enlace de restablecimiento de contraseña.</p>
             </div>
 
             <div class="mt-5 flex flex-col gap-3">

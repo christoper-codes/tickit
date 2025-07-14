@@ -58,7 +58,7 @@ const preferredCamera = {
             <h3 class="text-3xl font-bold text-center lg:text-[40px]">Verificar boletos</h3>
         </div>
        <div class="center-container">
-            <v-btn @click="scanner" variant="elevated" class="text-none !bg-primary-500 !text-white !px-7" size="large" rounded="xl">
+            <v-btn @click="scanner" variant="elevated" class="text-none !bg-tw-primary-500 !text-white !px-7" size="large" rounded="xl">
                 <span class="material-symbols-outlined text-xl">scanner</span>{{showCamara ? 'Desactivar':'Escanear'}}
             </v-btn>
         </div>

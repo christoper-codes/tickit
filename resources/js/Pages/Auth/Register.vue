@@ -74,11 +74,11 @@ const props = defineProps({
 <template>
     <Head title="Log in" />
         <AuthenticationCard>
-            <div class="w-full px-5 lg:px-0 lg:w-[80%] h-auto mx-auto py-10 lg:py-0">
+            <div class="w-full px-5 lg:px-0 lg:w-[80%] h-auto mx-auto py-10 lg:py-0 max-w-3xl">
                 <div class="">
                     <ErrorSession />
-                    <Link :href="route('events.index')">
-                        <div class="size-10 shadow-md rounded-full bg-primary p-2 flex items-center justify-center mb-3">
+                    <Link :href="route('welcome')">
+                        <div class="size-10 shadow-md rounded-full bg-tw-primary p-2 flex items-center justify-center mb-3">
                             <span class="material-symbols-outlined text-white">arrow_back</span>
                         </div>
                     </Link>
@@ -231,7 +231,7 @@ const props = defineProps({
                             </PrimaryButton>
                         </div>
                          <div class="mt-5">
-                            ¿Ya tienes una cuenta? <Link :href="route('login')"><span class="text-purple-600 underline">Iniciar sesión</span></Link>
+                            ¿Ya tienes una cuenta? <Link :href="route('login')"><span class="text-tw-primary underline">Iniciar sesión</span></Link>
                         </div>
                         <div v-if="slug && loading" class="flex flex-col items-center justify-center mt-4 lg:mt-5 animate-pulse">
                             <p class="font-bold text-xs">Preparando las zonas para el evento...</p>

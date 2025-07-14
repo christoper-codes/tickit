@@ -255,7 +255,7 @@ function printInKioskMode(url, close = true) {
         <GuestNav/>
     </div>
     <main class="relative overflow-hidden">
-        <div class="absolute -right-40 lg:-right-96 bottom-40 h-[480px] w-[300px] lg:h-[680px] lg:w-[600px] rounded-full blur-[120px] lg:blur-[220px] bg-primary">
+        <div class="absolute -right-40 lg:-right-96 bottom-40 h-[480px] w-[300px] lg:h-[680px] lg:w-[600px] rounded-full blur-[120px] lg:blur-[220px] bg-tw-primary">
         </div>
         <section class="max-w-7xl min-h-screen pt-28 lg:pt-10 mb-20 mx-auto px-4 lg:px-0 ">
             <div class="w-full">

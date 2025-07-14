@@ -1628,7 +1628,7 @@ watch(() => paymentInstallmentSelected.value, () => {
                 <div data-aos="fade-left" data-aos-duration="1300" data-aos-once="true" class="flex lg:items-center flex-col lg:flex-row justify-between gap-5 lg:gap-10">
                     <div>
                         <Link :href="route('events.index')">
-                            <div class="size-10 inline-flex shadow-md rounded-full bg-primary p-2 items-center justify-center mb-3">
+                            <div class="size-10 inline-flex shadow-md rounded-full bg-tw-primary p-2 items-center justify-center mb-3">
                                 <span class="material-symbols-outlined text-white">arrow_back</span>
                             </div>
                         </Link>
@@ -1674,7 +1674,7 @@ watch(() => paymentInstallmentSelected.value, () => {
 
     <div class="bg-white w-full overflow-hidden">
         <main  class="min-h-screen max-w-7xl mx-auto pt-20 relative">
-            <div class="absolute -right-40 lg:-right-96 -top-52 lg:-top-52 h-[480px] w-[300px] lg:h-[680px] lg:w-[500px] rounded-full blur-[120px] lg:blur-[220px] bg-primary">
+            <div class="absolute -right-40 lg:-right-96 -top-52 lg:-top-52 h-[480px] w-[300px] lg:h-[680px] lg:w-[500px] rounded-full blur-[120px] lg:blur-[220px] bg-tw-primary">
             </div>
             <v-tabs
                 class="!bg-white"
@@ -1723,7 +1723,7 @@ watch(() => paymentInstallmentSelected.value, () => {
                                             <p class="text-[10px] lg:text-xs">{{ availability.available_seats }} <br> asientos libres</p>
                                         </div>
                                     </div>
-                                    <div v-if="viewVendorTopics(props.user_roles)" @click="getSeatAvailability()" class="p-3 border-2 rounded-lg bg-primary/30 text-center">
+                                    <div v-if="viewVendorTopics(props.user_roles)" @click="getSeatAvailability()" class="p-3 border-2 rounded-lg bg-tw-primary/30 text-center">
                                         <p class="text-[10px] lg:text-xs font-bold">Refrescar</p>
                                     </div>
                                 </div>

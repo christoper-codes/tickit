@@ -47,7 +47,7 @@ const isMobile = ref(window.innerWidth < 1024);
    <div class="lg:ml-[270px] mt-[65px] lg:mt-[100px] bg-white">
         <main class="px-5 lg:px-0 lg:pr-5 space-y-4 sm:space-y-6 min-h-screen overflow-hidden relative">
            <div class="z-20 relative !m-0  min-h-screen" data-aos="fade-right" data-aos-duration="1500">
-            <div class="absolute -right-40 lg:-right-96 -top-52 lg:-top-52 h-[480px] w-[300px] lg:h-[680px] lg:w-[500px] rounded-full blur-[120px] lg:blur-[220px] bg-primary">
+            <div class="absolute -right-40 lg:-right-96 -top-52 lg:-top-52 h-[480px] w-[300px] lg:h-[680px] lg:w-[500px] rounded-full blur-[120px] lg:blur-[220px] bg-tw-primary">
             </div>
             <div class="absolute -bottom-60 -left-72 h-[700px] w-[1500px] rounded-full blur-[100px] bg-white">
             </div>

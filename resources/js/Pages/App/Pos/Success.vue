@@ -63,7 +63,7 @@ onMounted(() => {
     <div>
         <!-- Hero -->
         <div class="relative h-screen overflow-hidden flex items-center flex-col justify-center gap-10">
-            <div class="absolute -right-40 lg:-right-96 -top-52 lg:-top-52 h-[480px] w-[300px] lg:h-[680px] lg:w-[500px] rounded-full blur-[120px] lg:blur-[220px] bg-primary">
+            <div class="absolute -right-40 lg:-right-96 -top-52 lg:-top-52 h-[480px] w-[300px] lg:h-[680px] lg:w-[500px] rounded-full blur-[120px] lg:blur-[220px] bg-tw-primary">
             </div>
             <div class="text-center z-20 relative">
                 <h1 class="font-bold text-4xl md:text-5xl lg:text-7xl font-bebas">
