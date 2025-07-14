@@ -13,7 +13,6 @@ import panzoom from 'panzoom';
 import { drawerPaymentState } from '@/composables/drawersStates';
 import useDateFormat from '@/composables/dateFormat';
 import useTicketOfficeState from '@/composables/TicketOfficeState';
-import { saleTicketSchema } from '@/validation/pos/sale-ticket-schema';
 import { useField, useForm } from 'vee-validate';
 import axios from 'axios';
 import { toast } from 'vue3-toastify'

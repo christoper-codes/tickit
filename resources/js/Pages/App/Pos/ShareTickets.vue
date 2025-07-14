@@ -3,13 +3,13 @@ import AppLayout from '@/Layouts/AppLayout.vue';
 import SuccessSession from '@/Components/SuccessSession.vue';
 import ErrorSession from '@/Components/ErrorSession.vue';
 import BreadcrumbAppSecondary from '@/Components/BreadcrumbAppSecondary.vue';
-import { Head, usePage, useForm as useFormInertia } from '@inertiajs/vue3';
+import { Head, Link, usePage, useForm as useFormInertia } from '@inertiajs/vue3';
 import { useForm, useField } from 'vee-validate';
 import { ref } from 'vue';
 import SaleTicket from '@/Components/SaleTicket.vue';
 import { shareTicketSchema } from '@/validation/Administration/share-tickets-schema';
-import InputError from '@/Components/InputError.vue';
-import SecondaryButton from '@/Components/SecondaryButton.vue';
+import SecondaryButton from '@/Components/buttons/SecondaryButton.vue';
+import { toast } from 'vue3-toastify'
 
 const { handleSubmit } = useForm({validationSchema : shareTicketSchema});
 
@@ -39,31 +39,28 @@ const tab = ref('tab-0');
 
 const users_list = [];
 const tickets_list_v = ref([]);
-
-let dialog = ref(false);
-
 let alertDialong = ref(false);
 
 const user = usePage().props.auth.user;
 const selected_value = ref(null);
 
 const alert = ()=> {
-
     data.receiverUserName = selected_value.value;
-
     if (!data.receiverUserName) {
-        dialog.value = true
-    }else{
-        dialog.value = false
-        alertDialong.value = true
+         toast('Debe seleccionar a un usuario', {
+            "theme": "auto",
+            "type": "error",
+            "autoClose": 10000,
+            "dangerouslyHTMLString": true
+        })
+        return
     }
+
+    alertDialong.value = true
 }
 
 const selection = ref([])
-const messageErrorreceiverUserName = ref('Debes seleccionar a un amigo');
-
 const send_tickets = (values)=>{
-
     data.senderUserName = props.user['id'];
     data.receiverUserName = selected_value.value['id'];
 
@@ -171,15 +168,9 @@ props.users.forEach(element => {
                     item-value="value"
                 ></v-autocomplete>
                 <div>
-                    <v-btn
-                        class="!rounded-2xl !h-[70px] !px-6 !shadow-none !text-white !bg-green-500"
-                        @click="alert"
-                    >
+                    <v-btn class="!rounded-2xl !h-[70px] !px-6 !shadow-none !text-white !bg-green-500 !border-b-4 !border-b-green-700" @click="alert">
                         Compartir boletos
                     </v-btn>
-                    <div v-if="dialog === true" class="mt-2">
-                        <InputError class="" :message="messageErrorreceiverUserName" />
-                    </div>
                 </div>
             </div>
 
@@ -210,12 +201,9 @@ props.users.forEach(element => {
                         <div class="text-center flex items-center justify-center flex-col gap-5">
                             <span>No cuentas con boletos disponibles. ¡Compra tus boletos para el próximo evento!</span>
                         </div>
-                        <div>
+                         <div>
                             <Link :href="route('events.index')">
-                                <SecondaryButton
-                                    heightbtn="!h-[70px]"
-                                    paddingbtn="!px-14"
-                                >
+                                <SecondaryButton heightbtn="!h-[70px]" paddingbtn="!px-14">
                                     Comprar boletos
                                 </SecondaryButton>
                             </Link>

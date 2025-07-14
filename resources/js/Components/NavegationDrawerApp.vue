@@ -69,11 +69,7 @@ const props = defineProps({
                                         :style="{ backgroundImage: `url(/storage/${user.global_images[0].file_path})`, backgroundSize: 'cover', backgroundPosition: 'center' }"
                                         >
                                     </div>
-                                    <div
-                                        v-else
-                                        class="size-36 overflow-hidden flex items-center justify-center bg-profile"
-                                        :style="{ backgroundImage: `url('https://images.pexels.com/photos/2847648/pexels-photo-2847648.jpeg')`, backgroundSize: 'cover', backgroundPosition: 'center' }"
-                                        >
+                                    <div v-else class="size-36 overflow-hidden flex items-center justify-center bg-profile bg-neutral-100 dark:bg-neutral-900">
                                     </div>
                                 </v-btn>
                                 <div class="flex flex-col items-center mt-4">
