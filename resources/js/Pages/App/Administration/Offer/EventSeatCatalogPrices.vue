@@ -645,10 +645,10 @@ const resetSelectedSeats = () => {
                         class="flex flex-col lg:flex-row items-center justify-between w-full gap-3 my-3">
                         <div class="flex items-center gap-3 flex-col md:flex-row">
                             <div class="flex items-center gap-3">
-                                <v-btn @click="zoomIn" color="purple" variant="tonal" class="text-none" rounded="xl"
+                                <v-btn @click="zoomIn" color="cyan" variant="tonal" class="text-none" rounded="xl"
                                     size="large"><span
                                         class="material-symbols-outlined text-2xl">add</span>zoom</v-btn>
-                                <v-btn @click="zoomOut" color="purple" variant="tonal" class="text-none" rounded="xl"
+                                <v-btn @click="zoomOut" color="cyan" variant="tonal" class="text-none" rounded="xl"
                                     size="large"><span
                                         class="material-symbols-outlined text-2xl">remove</span>zoom</v-btn>
                             </div>
@@ -673,7 +673,7 @@ const resetSelectedSeats = () => {
                                         </v-card-text>
                                         <v-card-actions>
                                             <v-spacer></v-spacer>
-                                            <v-btn color="purple" rounded="xl" variant="tonal"
+                                            <v-btn color="cyan" rounded="xl" variant="tonal"
                                                 class="text-none !px-6" text="Cerrar"
                                                 @click="isActive.value = false"></v-btn>
                                         </v-card-actions>
@@ -682,11 +682,11 @@ const resetSelectedSeats = () => {
                             </v-dialog>
                         </div>
                         <div class="flex items-center gap-3">
-                            <v-btn @click="resetZoom" color="purple" variant="tonal" class="text-none" rounded="xl"
+                            <v-btn @click="resetZoom" color="cyan" variant="tonal" class="text-none" rounded="xl"
                                 size="large"><span
                                     class="material-symbols-outlined text-2xl">my_location</span>reset</v-btn>
 
-                            <v-btn @click="selectZones" color="purple" variant="tonal" class="text-none" rounded="xl"
+                            <v-btn @click="selectZones" color="cyan" variant="tonal" class="text-none" rounded="xl"
                                 size="large"><span
                                     class="material-symbols-outlined text-2xl">location_on</span>zonas</v-btn>
                         </div>

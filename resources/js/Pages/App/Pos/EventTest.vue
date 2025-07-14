@@ -942,8 +942,8 @@ const seasonTicktesDataConfirm = () => {
                                 <div class="flex flex-col lg:flex-row items-center justify-between w-full gap-3 my-3">
                                     <div class="flex items-center gap-3 flex-col md:flex-row">
                                         <div class="flex items-center gap-3">
-                                            <v-btn @click="zoomIn" color="purple" variant="tonal" class="text-none" rounded="xl" size="large"><span class="material-symbols-outlined text-2xl">add</span>zoom</v-btn>
-                                            <v-btn @click="zoomOut" color="purple" variant="tonal" class="text-none" rounded="xl" size="large"><span class="material-symbols-outlined text-2xl">remove</span>zoom</v-btn>
+                                            <v-btn @click="zoomIn" color="cyan" variant="tonal" class="text-none" rounded="xl" size="large"><span class="material-symbols-outlined text-2xl">add</span>zoom</v-btn>
+                                            <v-btn @click="zoomOut" color="cyan" variant="tonal" class="text-none" rounded="xl" size="large"><span class="material-symbols-outlined text-2xl">remove</span>zoom</v-btn>
                                         </div>
                                     </div>
                                     <div class="items-center gap-2 hidden lg:flex relative">
@@ -965,16 +965,16 @@ const seasonTicktesDataConfirm = () => {
 
                                                 <v-card-actions>
                                                     <v-spacer></v-spacer>
-                                                    <v-btn color="purple" rounded="xl" variant="tonal" class="text-none !px-6" text="Cerrar" @click="isActive.value = false"></v-btn>
+                                                    <v-btn color="cyan" rounded="xl" variant="tonal" class="text-none !px-6" text="Cerrar" @click="isActive.value = false"></v-btn>
                                                 </v-card-actions>
                                                 </v-card>
                                             </template>
                                         </v-dialog>
                                     </div>
                                     <div class="flex items-center gap-3">
-                                        <v-btn @click="resetZoom" color="purple" variant="tonal" class="text-none" rounded="xl" size="large"><span class="material-symbols-outlined text-2xl">my_location</span>reset</v-btn>
+                                        <v-btn @click="resetZoom" color="cyan" variant="tonal" class="text-none" rounded="xl" size="large"><span class="material-symbols-outlined text-2xl">my_location</span>reset</v-btn>
 
-                                        <v-btn @click="selectZones" color="purple" variant="tonal" class="text-none" rounded="xl" size="large"><span class="material-symbols-outlined text-2xl">location_on</span>zonas</v-btn>
+                                        <v-btn @click="selectZones" color="cyan" variant="tonal" class="text-none" rounded="xl" size="large"><span class="material-symbols-outlined text-2xl">location_on</span>zonas</v-btn>
                                     </div>
                                 </div>
 
@@ -995,7 +995,7 @@ const seasonTicktesDataConfirm = () => {
 
                                             <v-card-actions>
                                                 <v-spacer></v-spacer>
-                                                <v-btn color="purple" rounded="xl" variant="tonal" class="text-none !px-6" text="Cerrar" @click="isActive.value = false"></v-btn>
+                                                <v-btn color="cyan" rounded="xl" variant="tonal" class="text-none !px-6" text="Cerrar" @click="isActive.value = false"></v-btn>
                                             </v-card-actions>
                                             </v-card>
                                         </template>
@@ -1149,7 +1149,7 @@ const seasonTicktesDataConfirm = () => {
                                                     <v-expansion-panel-text>
                                                     <v-select
                                                         v-if="viewVendorTopics(user_roles)"
-                                                        color="purple"
+                                                        color="cyan"
                                                         label="selecciona el tipo de pago"
                                                         hint="Selecciona el tipo de pago"
                                                         :item-props="globalPayementTypeProps"
@@ -1165,7 +1165,7 @@ const seasonTicktesDataConfirm = () => {
                                                         Complemento para pago con tarjeta
                                                         </h4>
                                                         <v-select
-                                                        color="purple"
+                                                        color="cyan"
                                                         clearable
                                                         label="seleciona el tipo de tarjeta"
                                                         hint="Selecciona el tipo de tarjeta"
@@ -1177,7 +1177,7 @@ const seasonTicktesDataConfirm = () => {
                                                         <v-text-field
                                                             v-if="viewVendorTopics(user_roles)"
                                                             label="Monto a pagar para tarjeta"
-                                                            color="purple"
+                                                            color="cyan"
                                                             clearable
                                                             hint="Monto recibido por el cliente"
                                                             v-model="amountToPayCard"
@@ -1186,7 +1186,7 @@ const seasonTicktesDataConfirm = () => {
                                                         <v-text-field
                                                             v-else
                                                             label="Monto a pagar para tarjeta"
-                                                            color="purple"
+                                                            color="cyan"
                                                             hint="Monto recibido por el cliente"
                                                             readonly
                                                             v-model="amountToPayCard"
@@ -1200,7 +1200,7 @@ const seasonTicktesDataConfirm = () => {
                                                         </h4>
                                                         <v-text-field
                                                         label="Monto recibido para efectivo"
-                                                        color="purple"
+                                                        color="cyan"
                                                         clearable
                                                         hint="Monto recibido por el cliente"
                                                         v-model="amountReceivedCash"
@@ -1209,7 +1209,7 @@ const seasonTicktesDataConfirm = () => {
 
                                                         <v-text-field
                                                         label="Monto a pagar para efectivo"
-                                                        color="purple"
+                                                        color="cyan"
                                                         clearable
                                                         hint="Monto a pagar por el cliente"
                                                         v-model="amountToPayCash"
@@ -1381,7 +1381,7 @@ const seasonTicktesDataConfirm = () => {
                                                                                                         class="w-full"
                                                                                                         append-inner-icon="mdi-account"
                                                                                                         label="Nombre"
-                                                                                                        color="purple"
+                                                                                                        color="cyan"
                                                                                                         clearable
                                                                                                         hint="Nombre de para el abonado"
                                                                                                         :rules="[rules.required]"
@@ -1391,7 +1391,7 @@ const seasonTicktesDataConfirm = () => {
                                                                                                         class="w-full"
                                                                                                         append-inner-icon="mdi-account"
                                                                                                         label="Apellido paterno"
-                                                                                                        color="purple"
+                                                                                                        color="cyan"
                                                                                                         clearable
                                                                                                         hint="Apellido paterno de para el abonado"
                                                                                                         :rules="[rules.required]"
@@ -1403,7 +1403,7 @@ const seasonTicktesDataConfirm = () => {
                                                                                                         class="w-full"
                                                                                                         append-inner-icon="mdi-account"
                                                                                                         label="Apellido materno"
-                                                                                                        color="purple"
+                                                                                                        color="cyan"
                                                                                                         clearable
                                                                                                         hint="Apellido materno de para el abonado"
                                                                                                         :rules="[rules.required]"
@@ -1412,7 +1412,7 @@ const seasonTicktesDataConfirm = () => {
                                                                                                     <v-select
                                                                                                         class="w-full"
                                                                                                         append-inner-icon="mdi-file-document-check-outline"
-                                                                                                        color="purple"
+                                                                                                        color="cyan"
                                                                                                         label="¿Es titular?"
                                                                                                         hint="Titular de la compra"
                                                                                                         clearable
@@ -1426,7 +1426,7 @@ const seasonTicktesDataConfirm = () => {
                                                                                                     append-inner-icon="mdi-file-document"
                                                                                                     label="Descripcion adicional"
                                                                                                     row-height="30"
-                                                                                                    color="purple"
+                                                                                                    color="cyan"
                                                                                                     clearable
                                                                                                     rows="3"
                                                                                                     auto-grow
@@ -1438,7 +1438,7 @@ const seasonTicktesDataConfirm = () => {
                                                                                                             class="w-full"
                                                                                                             append-inner-icon="mdi-qrcode"
                                                                                                             label="Codigo postal"
-                                                                                                            color="purple"
+                                                                                                            color="cyan"
                                                                                                             clearable
                                                                                                             hint="Ingresa el codigo postal del titular"
                                                                                                             :rules="[rules.required, rules.isNumber]"
@@ -1448,7 +1448,7 @@ const seasonTicktesDataConfirm = () => {
                                                                                                             class="w-full"
                                                                                                             append-inner-icon="mdi-phone"
                                                                                                             label="Numero de telefono"
-                                                                                                            color="purple"
+                                                                                                            color="cyan"
                                                                                                             clearable
                                                                                                             hint="Ingresa el numero de telefono del titular"
                                                                                                             :rules="[rules.required, rules.isNumber]"
@@ -1459,7 +1459,7 @@ const seasonTicktesDataConfirm = () => {
                                                                                                         <v-select
                                                                                                             class="w-full"
                                                                                                             append-inner-icon="mdi-cash"
-                                                                                                            color="purple"
+                                                                                                            color="cyan"
                                                                                                             label="¿Pago en cuotas a meses?"
                                                                                                             hint="Meses a intereses"
                                                                                                             clearable
@@ -1470,7 +1470,7 @@ const seasonTicktesDataConfirm = () => {
                                                                                                                 class="w-full"
                                                                                                                 append-inner-icon="mdi-email"
                                                                                                                 label="Email"
-                                                                                                                color="purple"
+                                                                                                                color="cyan"
                                                                                                                 autocomplete="email"
                                                                                                                 clearable
                                                                                                                 hint="Ingresa el email del titular"
@@ -1508,7 +1508,7 @@ const seasonTicktesDataConfirm = () => {
                                                                                 <v-autocomplete
                                                                                     v-model="userToTransfer"
                                                                                     clearable
-                                                                                    color="purple"
+                                                                                    color="cyan"
                                                                                     chips
                                                                                     label="Buscar usuario para asignar la compra"
                                                                                     hint="El usuario que se seleccione tendra sus boletos en su applicacion."
@@ -1560,8 +1560,8 @@ const seasonTicktesDataConfirm = () => {
                                                 <div class="flex items-center justify-center gap-5 max-w-5xl w-full h-full mx-auto">
                                                     <v-text-field
                                                         label="Monto total"
-                                                        variant="outlined"
-                                                        color="purple"
+                                                        variant="solo"
+                                                        color="cyan"
                                                         clearable
                                                         hint="Monto total a pagar"
                                                         persistent-hint=""
@@ -1572,8 +1572,8 @@ const seasonTicktesDataConfirm = () => {
                                                     ></v-text-field>
                                                     <v-text-field
                                                         label="Monto recibido"
-                                                        variant="outlined"
-                                                        color="purple"
+                                                        variant="solo"
+                                                        color="cyan"
                                                         clearable
                                                         hint="Monto recibido por el cliente"
                                                         persistent-hint=""
@@ -1584,8 +1584,8 @@ const seasonTicktesDataConfirm = () => {
                                                     ></v-text-field>
                                                     <v-text-field
                                                         label="Cambio"
-                                                        variant="outlined"
-                                                        color="purple"
+                                                        variant="solo"
+                                                        color="cyan"
                                                         clearable
                                                         hint="Cambio a devolver al cliente"
                                                         persistent-hint=""

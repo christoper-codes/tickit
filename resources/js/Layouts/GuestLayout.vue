@@ -134,7 +134,7 @@ if (props.user_roles && !viewVendorTopics(props.user_roles)) {
                                 <v-list-item>
                                     <v-switch
                                     v-model="message"
-                                    color="purple"
+                                    color="cyan"
                                     label="Ver boeltos solo en web"
                                     hide-details
                                     ></v-switch>
@@ -143,7 +143,7 @@ if (props.user_roles && !viewVendorTopics(props.user_roles)) {
                                 <v-list-item>
                                     <v-switch
                                     v-model="hints"
-                                    color="purple"
+                                    color="cyan"
                                     label="Ver boletos en la app y web"
                                     hide-details
                                     ></v-switch>

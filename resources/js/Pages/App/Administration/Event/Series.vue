@@ -162,7 +162,7 @@ const editSerie = (selectedSerie) => {
                         <v-spacer></v-spacer>
                         <v-dialog v-model="dialogFormSerie" max-width="800px">
                             <template v-slot:activator="{ props }">
-                                <v-btn variant="tonal" class="mb-2 !mr-5 text-none" color="purple" rounded="xl"
+                                <v-btn variant="tonal" class="mb-2 !mr-5 text-none" color="cyan" rounded="xl"
                                     v-bind="props">
                                     Nueva serie
                                 </v-btn>
@@ -262,7 +262,7 @@ const editSerie = (selectedSerie) => {
                                         @click="closeFormSerie">
                                         Cancelar
                                     </v-btn>
-                                    <v-btn color="purple" rounded="xl" class="!px-4 text-none" variant="elevated"
+                                    <v-btn color="cyan" rounded="xl" class="!px-4 text-none" variant="elevated"
                                         @click="saveDataSerie">
                                         Guardar
                                     </v-btn>
@@ -295,7 +295,7 @@ const editSerie = (selectedSerie) => {
                                         class="!px-4 text-none" variant="tonal">
                                         Cancelar
                                     </v-btn>
-                                    <v-btn @click="deleteSerieConfirmation" color="purple" rounded="xl"
+                                    <v-btn @click="deleteSerieConfirmation" color="cyan" rounded="xl"
                                         class="!px-4 text-none" variant="elevated">
                                         Eliminar
                                     </v-btn>

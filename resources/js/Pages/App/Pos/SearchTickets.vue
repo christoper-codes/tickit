@@ -253,7 +253,7 @@ function printInKioskMode(url) {
                         v-model="searchTab"
                         label="Buscar correo o asientos..."
                         prepend-inner-icon="mdi-magnify"
-                        variant="outlined"
+                        variant="solo"
                         color="orange-darken-2"
                         hide-details
                         single-line
@@ -319,14 +319,14 @@ function printInKioskMode(url) {
                                         v-model="paymentTypesSelected"
                                         :label="type"
                                         :value="type"
-                                        color="purple"
+                                        color="cyan"
                                         ></v-checkbox>
                                     </div>
                                 </div>
                                 <div class="!w-full mt-0">
                                     <v-tabs
                                         v-model="tabs"
-                                        color="purple"
+                                        color="cyan"
                                         grow
                                         >
                                         <v-tab :value="1">
@@ -358,7 +358,7 @@ function printInKioskMode(url) {
                                                 v-model="cancelSeatCodes"
                                                 multiple
                                                 label="Selecciona los asientos a cancelar"
-                                                color="purple"
+                                                color="cyan"
                                                 clearable
                                                 class="w-full"
                                                 hint="Opcion multiple"

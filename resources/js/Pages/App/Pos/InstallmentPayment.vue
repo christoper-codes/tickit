@@ -461,7 +461,7 @@ onMounted(() => {
         <v-tabs-window v-model="tab" class="my-10 mx-10">
             <v-tabs-window-item value="pending">
                 <div class="flex justify-between items-center">
-                    <v-text-field v-model="searchPending" label="Buscar" prepend-inner-icon="mdi-magnify" variant="outlined" hide-details single-line></v-text-field>
+                    <v-text-field v-model="searchPending" label="Buscar" prepend-inner-icon="mdi-magnify" variant="solo" hide-details single-line></v-text-field>
                     <v-btn size="x-large" color="success" class="mx-2" @click="exportExcelPending" :loading="loadingDownload" :disabled="loadingDownload">
                         <span class="material-symbols-outlined">Download</span> Excel
                     </v-btn>
@@ -567,7 +567,7 @@ onMounted(() => {
 
                                                             <div :class="{ 'grid gap-4': true, 'grid-cols-2': isPaymetCardType, 'grid-cols-1': !isPaymetCardType}">
 
-                                                                <v-select color="purple" label="Selecciona el tipo de pago" hint="Selecciona el tipo de pago"
+                                                                <v-select color="cyan" label="Selecciona el tipo de pago" hint="Selecciona el tipo de pago"
                                                                     chips multiple clearable
                                                                     :items="global_payment_types"
                                                                     :item-title="(item) => formatFirstLetterUppercase(item.name)"
@@ -579,7 +579,7 @@ onMounted(() => {
 
                                                                 <v-select
                                                                     v-if="isPaymetCardType"
-                                                                    color="purple" label="Selecciona el tipo de pago" hint="Selecciona el tipo de pago"
+                                                                    color="cyan" label="Selecciona el tipo de pago" hint="Selecciona el tipo de pago"
                                                                     chips multiple clearable
                                                                     :items="global_card_payment_types"
                                                                     :item-title="(item) => formatFirstLetterUppercase(item.name)"
@@ -593,7 +593,7 @@ onMounted(() => {
                                                             <!-- pago con tarjeta -->
                                                             <div v-if="isPaymetCardType" class="grid gap-4 grid-cols-1">
                                                                 <v-text-field
-                                                                    label="Monto a pagar con tarjeta" color="purple" hint="Monto recibido por el cliente"
+                                                                    label="Monto a pagar con tarjeta" color="cyan" hint="Monto recibido por el cliente"
                                                                     v-model="installmentPayment.amount_card_to_pay.value.value"
                                                                     :rules="[rules.rule_amount_card_to_pay]"
                                                                 ></v-text-field>
@@ -602,13 +602,13 @@ onMounted(() => {
                                                             <!-- pago en efectivo -->
                                                             <div v-if="installmentPayment.payment_types.value.value.length && !isPaymetCardType" class="grid gap-4 grid-cols-2">
                                                                 <v-text-field
-                                                                    label="Monto recibido para efectivo" color="purple" clearable hint="Monto recibido por el cliente"
+                                                                    label="Monto recibido para efectivo" color="cyan" clearable hint="Monto recibido por el cliente"
                                                                     v-model="installmentPayment.amount_cash_received.value.value"
                                                                     :rules="[rules.rule_amount_cash_received]"
                                                                 ></v-text-field>
                                                                 <v-text-field
                                                                     label="Monto a pagar para efectivo"
-                                                                    color="purple"
+                                                                    color="cyan"
                                                                     clearable
                                                                     hint="Monto a pagar por el cliente"
                                                                     v-model="installmentPayment.amount_cash_to_pay.value.value"
@@ -618,7 +618,7 @@ onMounted(() => {
                                                             <div v-if="installmentPayment.payment_types.value.value.length && !isPaymetCardType" class="grid gap-4 grid-cols-1">
                                                                 <v-text-field
                                                                     label="Cambio a devolver"
-                                                                    color="purple"
+                                                                    color="cyan"
                                                                     readonly
                                                                     v-model="installmentPayment.amount_cash_returned.value.value"
                                                                     :rules="[rules.rule_amount_cash_returned]"
@@ -704,7 +704,7 @@ onMounted(() => {
             </v-tabs-window-item>
             <v-tabs-window-item value="paid">
                 <div class="flex justify-between items-center">
-                    <v-text-field v-model="searchPaid" label="Buscar" prepend-inner-icon="mdi-magnify" variant="outlined" hide-details single-line></v-text-field>
+                    <v-text-field v-model="searchPaid" label="Buscar" prepend-inner-icon="mdi-magnify" variant="solo" hide-details single-line></v-text-field>
                     <v-btn size="x-large" color="success" class="mx-2" @click="exportExcelPaid" :loading="loadingDownload" :disabled="loadingDownload">
                         <span class="material-symbols-outlined">Download</span> Excel
                     </v-btn>

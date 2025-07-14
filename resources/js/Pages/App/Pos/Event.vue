@@ -1602,7 +1602,7 @@ watch(() => paymentInstallmentSelected.value, () => {
                                 </div>
                                 <div v-else-if="promotion.quantity > promotion.generic_seats_allowed">
                                     <div class="border-4 border-purple-500 rounded-xl bg-white p-2 m-3">
-                                        <v-radio color="purple" :key="index" :value="promotion">
+                                        <v-radio color="cyan" :key="index" :value="promotion">
                                             <template v-slot:label>
                                                 <div>{{ promotion.description }}<strong class="text-purple-700">. Para asientos con precio de {{ formatPrice(promotion.final_price) }}</strong></div>
                                             </template>
@@ -1918,32 +1918,32 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                             <v-expansion-panel-text>
                                                             <div v-if="viewVendorTopics(user_roles) && purchaseType != 'abonado'">
                                                                <div>
-                                                                    <v-switch inset  label="¿Se requiere venta a cuotas?" color="purple" class="!inline-flex !mb-4" @click="paymentInInstallments"></v-switch>
+                                                                    <v-switch inset  label="¿Se requiere venta a cuotas?" color="cyan" class="!inline-flex !mb-4" @click="paymentInInstallments"></v-switch>
                                                                 </div>
                                                             </div>
 
                                                             <v-select
                                                                 v-if="viewVendorTopics(user_roles) && !paymentInstallmentSelected"
-                                                                color="purple"
+                                                                color="cyan"
                                                                 label="selecciona el tipo de pago"
                                                                 :item-props="globalPayementTypeProps"
                                                                 :items="global_payment_types.filter(type => type.name !== 'plazos')"
                                                                 chips
                                                                 multiple
                                                                 clearable
-                                                                variant="outlined"
+                                                                variant="solo"
                                                                 v-model="paymentTypesSelected"
                                                                 :rules="[rules.required]"
                                                             ></v-select>
                                                             <v-select
                                                                 v-if="viewVendorTopics(user_roles) && paymentInstallmentSelected"
-                                                                color="purple"
+                                                                color="cyan"
                                                                 label="selecciona el tipo de pago"
                                                                 :item-props="globalPayementTypeProps"
                                                                 :items="globalPaymentTypesOnlyCard"
                                                                 chips
                                                                 multiple
-                                                                variant="outlined"
+                                                                variant="solo"
                                                                 clearable
                                                                 v-model="paymentTypesSelected"
                                                                 :rules="[rules.required]"
@@ -1954,8 +1954,8 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                                     Complemento para pago con tarjeta
                                                                 </h4>
                                                                 <v-select
-                                                                    color="purple"
-                                                                    variant="outlined"
+                                                                    color="cyan"
+                                                                    variant="solo"
                                                                     clearable
                                                                     label="Selecciona el tipo de tarjeta"
                                                                     :item-props="globalCardPayementTypeProps"
@@ -1969,8 +1969,8 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                                     <v-text-field
                                                                         label="Monto a pagar con tarjeta"
                                                                         class="!mt-2"
-                                                                        variant="outlined"
-                                                                        color="purple"
+                                                                        variant="solo"
+                                                                        color="cyan"
                                                                         clearable
                                                                         v-model="amountToPayCard"
                                                                         :rules="[rules.required, rules.isNumber, rules.isAmountToPay]"
@@ -1980,8 +1980,8 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                                     <v-text-field
                                                                         label="Monto a pagar con tarjeta"
                                                                         class="!mt-2"
-                                                                        variant="outlined"
-                                                                        color="purple"
+                                                                        variant="solo"
+                                                                        color="cyan"
                                                                         clearable
                                                                         v-model="amountToPayCard"
                                                                         :rules="[rules.required, rules.isNumber]"
@@ -1991,8 +1991,8 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                                     v-else
                                                                     label="Monto a pagar con tarjeta"
                                                                     class="!mt-2"
-                                                                    color="purple"
-                                                                    variant="outlined"
+                                                                    color="cyan"
+                                                                    variant="solo"
                                                                     readonly
                                                                     v-model="amountToPayCard"
                                                                     :rules="[rules.required, rules.isNumber, rules.isAmountToPay]"
@@ -2006,9 +2006,9 @@ watch(() => paymentInstallmentSelected.value, () => {
 
                                                                 <v-text-field
                                                                     label="Monto recibido para efectivo"
-                                                                    color="purple"
+                                                                    color="cyan"
                                                                     clearable
-                                                                    variant="outlined"
+                                                                    variant="solo"
                                                                     hint="Monto recibido por el cliente"
                                                                     v-model="amountReceivedCash"
                                                                     :rules="[rules.required, rules.isNumber]"
@@ -2017,9 +2017,9 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                                 <div v-if="!installmentSale && viewVendorTopics(user_roles)">
                                                                     <v-text-field
                                                                         label="Monto a pagar para efectivo"
-                                                                        color="purple"
+                                                                        color="cyan"
                                                                         clearable
-                                                                        variant="outlined"
+                                                                        variant="solo"
                                                                         hint="Monto a pagar por el cliente"
                                                                         v-model="amountToPayCash"
                                                                         :rules="[rules.required, rules.isNumber, rules.isAmountToPay]"
@@ -2028,9 +2028,9 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                                 <div v-else-if="installmentSale && viewVendorTopics(user_roles)">
                                                                     <v-text-field
                                                                         label="Monto a pagar para efectivo"
-                                                                        color="purple"
+                                                                        color="cyan"
                                                                         clearable
-                                                                        variant="outlined"
+                                                                        variant="solo"
                                                                         hint="Monto a pagar por el cliente"
                                                                         v-model="amountToPayCash"
                                                                         :rules="[rules.required, rules.isNumber]"
@@ -2044,13 +2044,13 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                                 </h4>
                                                                 <v-select
                                                                     v-if="viewVendorTopics(user_roles)"
-                                                                    color="purple"
+                                                                    color="cyan"
                                                                     label="selecciona el complemento a cortesía"
                                                                     hint="Rason de la cortesía"
                                                                     :item-props="reasonAgreementsProps"
                                                                     :items="reason_agreements"
                                                                     v-model="reasonAgreementSelected"
-                                                                    variant="outlined"
+                                                                    variant="solo"
                                                                     chips
                                                                     :rules="[rules.required]"
                                                                 ></v-select>
@@ -2060,8 +2060,8 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                                         append-inner-icon="mdi-file-document"
                                                                         label="Rason especial de la cortesía"
                                                                         row-height="10"
-                                                                        color="purple"
-                                                                        variant="outlined"
+                                                                        color="cyan"
+                                                                        variant="solo"
                                                                         clearable
                                                                         rows="3"
                                                                         auto-grow
@@ -2075,26 +2075,26 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                                     Complemento para convenios
                                                                 </h4>
                                                                 <v-select
-                                                                    color="purple"
+                                                                    color="cyan"
                                                                     label="selecciona una institución"
                                                                     :item-props="institutionsProps"
                                                                     :items="institutions"
                                                                     v-model="institutionSelected"
-                                                                    variant="outlined"
+                                                                    variant="solo"
                                                                     clearable
                                                                     chips
                                                                 ></v-select>
                                                                 <div v-if="institutionSelected">
                                                                     <v-select
                                                                         v-if="viewVendorTopics(user_roles)"
-                                                                        color="purple"
+                                                                        color="cyan"
                                                                         label="selecciona un convenio"
                                                                         :item-props="institutionAgreementsProps"
                                                                         :items="agreementsByInstitutionSelected"
                                                                         chips
                                                                         v-model="agreementSelected"
                                                                         clearable
-                                                                        variant="outlined"
+                                                                        variant="solo"
                                                                         :rules="[rules.required]"
                                                                     ></v-select>
                                                                 </div>
@@ -2121,7 +2121,7 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                                             </div>
                                                                             <div v-if="promotion.percent_allow > 0 && promotion.promotion_type.name == 'descuento_por_porcentaje_por_boleto'">
                                                                                 <div class="border-4 border-purple-500 rounded-xl bg-white p-2 m-3">
-                                                                                    <v-radio color="purple" :key="index" :value="promotion">
+                                                                                    <v-radio color="cyan" :key="index" :value="promotion">
                                                                                         <template v-slot:label>
                                                                                             <div>{{ promotion.name }}<strong class="text-purple-700">. Descuento por porcentaje por boleto</strong></div>
                                                                                         </template>
@@ -2148,7 +2148,7 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                                             :value="option"
                                                                         ></v-radio>
                                                                     </v-radio-group>
-                                                                    <v-btn v-if="purchaseType == 'abonado'" @click="seasonTicketsDialogOpen" class="!mt-2 !px-8 !h-[50px] !rounded-xl" color="purple" variant="tonal">Tomar datos</v-btn>
+                                                                    <v-btn v-if="purchaseType == 'abonado'" @click="seasonTicketsDialogOpen" class="!mt-2 !px-8 !h-[50px] !rounded-xl" color="cyan" variant="tonal">Tomar datos</v-btn>
                                                                 </div>
                                                                 <div v-if="viewVendorTopics(user_roles)" class="flex items-center justify-between">
                                                                     <v-radio-group inline label="Tipo de compra a realizar" v-model="purchaseType">
@@ -2158,11 +2158,11 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                                             :value="purchaseType"
                                                                         ></v-radio>
                                                                     </v-radio-group>
-                                                                    <v-btn v-if="purchaseType == 'abonado'" @click="seasonTicketsDialogOpen" class="!mt-2 !px-8 !h-[50px] !rounded-xl" color="purple" variant="tonal">Tomar datos</v-btn>
+                                                                    <v-btn v-if="purchaseType == 'abonado'" @click="seasonTicketsDialogOpen" class="!mt-2 !px-8 !h-[50px] !rounded-xl" color="cyan" variant="tonal">Tomar datos</v-btn>
                                                                 </div>
                                                                 <div v-if="viewVendorTopics(user_roles)">
                                                                     <div v-if="seatsSelected.filter(seat => seat.is_owner == 'Si').length > 0">
-                                                                        <v-switch inset v-if="!paymentInstallmentSelected" label="¿Se requiere venta a plazos?" color="purple" value="1" v-model="installmentSale"></v-switch>
+                                                                        <v-switch inset v-if="!paymentInstallmentSelected" label="¿Se requiere venta a plazos?" color="cyan" value="1" v-model="installmentSale"></v-switch>
                                                                     </div>
 
                                                                     <div v-if="installmentSale">
@@ -2173,7 +2173,7 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                                         <!-- <v-autocomplete
                                                                             v-model="saleDeptorSelected"
                                                                             clearable
-                                                                            color="purple"
+                                                                            color="cyan"
                                                                             chips
                                                                             label="Buscar usuario para asignar la compra"
                                                                             hint="El usuario que se seleccione sera el responsable de la compra"
@@ -2190,31 +2190,31 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                                                 class="w-full"
                                                                                 append-inner-icon="mdi-account"
                                                                                 label="Nombre"
-                                                                                color="purple"
+                                                                                color="cyan"
                                                                                 v-model="firstNameSaleDeptor"
                                                                                 hint="Nombre de para el abonado"
                                                                                 :rules="[rules.required]"
-                                                                                variant="outlined"
+                                                                                variant="solo"
                                                                             ></v-text-field>
                                                                             <v-text-field
                                                                                 class="w-full"
                                                                                 append-inner-icon="mdi-account"
                                                                                 label="Apellido paterno"
-                                                                                color="purple"
+                                                                                color="cyan"
                                                                                 v-model="lastNameSaleDeptor"
                                                                                 hint="Apellido paterno de para el abonado"
                                                                                 :rules="[rules.required]"
-                                                                                variant="outlined"
+                                                                                variant="solo"
                                                                             ></v-text-field>
                                                                             <v-text-field
                                                                                 class="w-full"
                                                                                 append-inner-icon="mdi-phone"
                                                                                 label="Numero de teléfono"
-                                                                                color="purple"
+                                                                                color="cyan"
                                                                                 v-model="phoneSaleDeptor"
                                                                                 hint="Numero de teléfono para el pago a plazos"
                                                                                 :rules="[rules.required, rules.isNumber, rules.phoneNumber]"
-                                                                                variant="outlined"
+                                                                                variant="solo"
                                                                             ></v-text-field>
 
                                                                         </div>
@@ -2370,23 +2370,23 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                                                                                 class="w-full"
                                                                                                                 append-inner-icon="mdi-account"
                                                                                                                 label="Nombre"
-                                                                                                                color="purple"
+                                                                                                                color="cyan"
                                                                                                                 clearable
                                                                                                                 hint="Nombre de para el abonado"
                                                                                                                 :rules="[rules.required]"
                                                                                                                 v-model="seatsSelected[index].holder_name"
-                                                                                                                variant="outlined"
+                                                                                                                variant="solo"
                                                                                                             ></v-text-field>
                                                                                                             <v-text-field
                                                                                                                 class="w-full"
                                                                                                                 append-inner-icon="mdi-account"
                                                                                                                 label="Apellido paterno"
-                                                                                                                color="purple"
+                                                                                                                color="cyan"
                                                                                                                 clearable
                                                                                                                 hint="Apellido paterno de para el abonado"
                                                                                                                 :rules="[rules.required]"
                                                                                                                 v-model="seatsSelected[index].holder_last_name"
-                                                                                                                variant="outlined"
+                                                                                                                variant="solo"
                                                                                                             ></v-text-field>
                                                                                                         </div>
                                                                                                         <div class="flex flex-col lg:flex-row items-center justify-between lg:gap-10">
@@ -2394,50 +2394,50 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                                                                                 class="w-full"
                                                                                                                 append-inner-icon="mdi-account"
                                                                                                                 label="Apellido materno"
-                                                                                                                color="purple"
+                                                                                                                color="cyan"
                                                                                                                 clearable
                                                                                                                 hint="Apellido materno de para el abonado"
                                                                                                                 :rules="[rules.required]"
-                                                                                                                variant="outlined"
+                                                                                                                variant="solo"
                                                                                                                 v-model="seatsSelected[index].holder_middle_name"
                                                                                                             ></v-text-field>
                                                                                                             <v-select
                                                                                                                 class="w-full"
                                                                                                                 append-inner-icon="mdi-file-document-check-outline"
-                                                                                                                color="purple"
+                                                                                                                color="cyan"
                                                                                                                 label="¿Es titular?"
                                                                                                                 hint="Titular de la compra"
                                                                                                                 clearable
                                                                                                                 :items="['No', 'Si']"
                                                                                                                 :rules="[rules.required]"
                                                                                                                 v-model="seatsSelected[index].is_owner"
-                                                                                                                variant="outlined"
+                                                                                                                variant="solo"
                                                                                                             ></v-select>
                                                                                                         </div>
                                                                                                         <div class="flex flex-col lg:flex-row items-center justify-between lg:gap-10">
                                                                                                             <v-select
                                                                                                                 class="w-full"
                                                                                                                 append-inner-icon="mdi-file-document-check-outline"
-                                                                                                                color="purple"
+                                                                                                                color="cyan"
                                                                                                                 label="Tipo de jersey"
                                                                                                                 hint="Tipo de jersey del abonado"
                                                                                                                 clearable
                                                                                                                 :items="['Femenino', 'Masculino', 'Unisex']"
                                                                                                                 :rules="[rules.required]"
                                                                                                                 v-model="seatsSelected[index].holder_jersey_type"
-                                                                                                                variant="outlined"
+                                                                                                                variant="solo"
                                                                                                             ></v-select>
                                                                                                             <v-select
                                                                                                                 class="w-full"
                                                                                                                 append-inner-icon="mdi-file-document-check-outline"
-                                                                                                                color="purple"
+                                                                                                                color="cyan"
                                                                                                                 label="Talla de jersey"
                                                                                                                 hint="Talla de jersey del abonado"
                                                                                                                 clearable
                                                                                                                 :items="['S', 'M', 'L', 'XL', 'XXL']"
                                                                                                                 :rules="[rules.required]"
                                                                                                                 v-model="seatsSelected[index].holder_jersey_size"
-                                                                                                                variant="outlined"
+                                                                                                                variant="solo"
                                                                                                             ></v-select>
                                                                                                         </div>
                                                                                                         <v-textarea
@@ -2445,12 +2445,12 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                                                                             append-inner-icon="mdi-file-document"
                                                                                                             label="Descripción adicional"
                                                                                                             row-height="30"
-                                                                                                            color="purple"
+                                                                                                            color="cyan"
                                                                                                             clearable
                                                                                                             rows="3"
                                                                                                             auto-grow
                                                                                                             v-model="seatsSelected[index].description"
-                                                                                                            variant="outlined"
+                                                                                                            variant="solo"
                                                                                                         ></v-textarea>
                                                                                                         <div v-if="seatsSelected[index].is_owner == 'Si'">
                                                                                                             <div class="flex flex-col lg:flex-row items-center justify-between lg:gap-10">
@@ -2458,47 +2458,47 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                                                                                     class="w-full"
                                                                                                                     append-inner-icon="mdi-qrcode"
                                                                                                                     label="Código postal"
-                                                                                                                    color="purple"
+                                                                                                                    color="cyan"
                                                                                                                     clearable
                                                                                                                     hint="Ingresa el codigo postal del titular"
                                                                                                                     :rules="[rules.required, rules.isNumber]"
                                                                                                                     v-model="seatsSelected[index].holder_zip_code"
-                                                                                                                    variant="outlined"
+                                                                                                                    variant="solo"
                                                                                                                     ></v-text-field>
                                                                                                                 <v-text-field
                                                                                                                     class="w-full"
                                                                                                                     append-inner-icon="mdi-phone"
                                                                                                                     label="Numero de teléfono"
-                                                                                                                    color="purple"
+                                                                                                                    color="cyan"
                                                                                                                     clearable
                                                                                                                     hint="Ingresa el numero de teléfono del titular"
                                                                                                                     :rules="[rules.required, rules.isNumber]"
                                                                                                                     v-model="seatsSelected[index].holder_phone"
-                                                                                                                    variant="outlined"
+                                                                                                                    variant="solo"
                                                                                                                 ></v-text-field>
                                                                                                             </div>
                                                                                                             <div class="flex items-start justify-between gap-5">
                                                                                                                 <v-select
                                                                                                                     v-if="viewVendorTopics(user_roles)"
                                                                                                                     append-inner-icon="mdi-cash"
-                                                                                                                    color="purple"
+                                                                                                                    color="cyan"
                                                                                                                     label="¿Pago a meses?"
                                                                                                                     hint="Meses a intereses"
                                                                                                                     clearable
-                                                                                                                    variant="outlined"
+                                                                                                                    variant="solo"
                                                                                                                     :items="payment_installments"
                                                                                                                     v-model="paymentInstallmentSelected"
                                                                                                                 ></v-select>
                                                                                                                 <v-text-field
                                                                                                                     append-inner-icon="mdi-email"
                                                                                                                     label="Correo electrónico del titular"
-                                                                                                                    color="purple"
+                                                                                                                    color="cyan"
                                                                                                                     autocomplete="email"
                                                                                                                     clearable
                                                                                                                     hint="Ingresa el correo electrónico del titular"
                                                                                                                     :rules="[rules.required, rules.isEmail]"
                                                                                                                     v-model="seatsSelected[index].holder_email"
-                                                                                                                    variant="outlined"
+                                                                                                                    variant="solo"
                                                                                                                 ></v-text-field>
                                                                                                             </div>
                                                                                                         </div>
@@ -2533,7 +2533,7 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                                                     <v-autocomplete
                                                                                         v-model="userToTransfer"
                                                                                         clearable
-                                                                                        color="purple"
+                                                                                        color="cyan"
                                                                                         chips
                                                                                         label="Buscar usuario para asignar la compra"
                                                                                         hint="El usuario que se seleccione tendra sus boletos en su applicacion."
@@ -2551,7 +2551,7 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                                                 <h2 class="font-bebas font-bold text-3xl">Resumen de compra</h2>
                                                                                 <h2 class="font-bebas font-bold text-2xl mt-5">Total: {{ formatPrice(totalAmount) }}</h2>
                                                                                 <div class="flex flex-col lg:flex-row gap-3">
-                                                                                    <v-switch inset color="purple" label="Acepto terminos y condiciones" v-model="acceptTerms"></v-switch>
+                                                                                    <v-switch inset color="cyan" label="Acepto terminos y condiciones" v-model="acceptTerms"></v-switch>
                                                                                 </div>
                                                                                 <!-- Tabla de asientos seleccionados -->
                                                                                 <v-data-table :items="seatsSelected" class="" hide-default-footer items-per-page="-1">
@@ -2628,8 +2628,8 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                         <div class="flex items-center justify-center gap-5 max-w-5xl w-full h-full mx-auto">
                                                             <v-text-field
                                                                 label="Monto total"
-                                                                variant="outlined"
-                                                                color="purple"
+                                                                variant="solo"
+                                                                color="cyan"
                                                                 clearable
                                                                 hint="Monto total a pagar"
                                                                 persistent-hint=""
@@ -2640,8 +2640,8 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                             ></v-text-field>
                                                             <v-text-field
                                                                 label="Monto recibido"
-                                                                variant="outlined"
-                                                                color="purple"
+                                                                variant="solo"
+                                                                color="cyan"
                                                                 clearable
                                                                 hint="Monto recibido por el cliente"
                                                                 persistent-hint=""
@@ -2652,8 +2652,8 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                             ></v-text-field>
                                                             <v-text-field
                                                                 label="Cambio"
-                                                                variant="outlined"
-                                                                color="purple"
+                                                                variant="solo"
+                                                                color="cyan"
                                                                 clearable
                                                                 hint="Cambio a devolver al cliente"
                                                                 persistent-hint=""

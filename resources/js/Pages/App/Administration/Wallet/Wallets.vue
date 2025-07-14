@@ -375,7 +375,7 @@ const { findPropertyInObject, cloneObject } = useObjectsFormat();
                         <v-spacer></v-spacer>
                         <v-dialog v-model="dialogFormWalletIsOpen" max-width="900px" persistent>
                             <template v-slot:activator="{ props }">
-                                <v-btn variant="tonal" class="mb-2 !mr-5 text-none" color="purple" rounded="xl"
+                                <v-btn variant="tonal" class="mb-2 !mr-5 text-none" color="cyan" rounded="xl"
                                     v-bind="props">
                                     Nuevo Monedero
                                 </v-btn>
@@ -651,7 +651,7 @@ const { findPropertyInObject, cloneObject } = useObjectsFormat();
                                     <v-btn color="red" variant="tonal" rounded="xl" class="!px-4 text-none" @click="closeFormWallet">
                                         Cancelar
                                     </v-btn>
-                                    <v-btn color="purple" rounded="xl" class="!px-4 text-none" variant="elevated" @click="saveDataWallet">
+                                    <v-btn color="cyan" rounded="xl" class="!px-4 text-none" variant="elevated" @click="saveDataWallet">
                                         Guardar
                                     </v-btn>
                                 </v-card-actions>

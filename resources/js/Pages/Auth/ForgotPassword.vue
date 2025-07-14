@@ -61,12 +61,12 @@ const submit = () => {
                     <div>
                         <v-text-field
                             type="email"
-                            color="purple"
+                            color="cyan"
                             placeholder="user@gmail.com"
                             label="Correo electronico"
                             autocomplete="email"
                             v-model="form.email"
-                            variant="outlined"
+                            variant="solo"
                             class="!rounded-2xl"
                             :error-messages="form.errors.email"
                         ></v-text-field>

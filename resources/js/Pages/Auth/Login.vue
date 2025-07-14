@@ -73,14 +73,14 @@ const props = defineProps({
                 <v-form class="mt-5 flex flex-col gap-1">
                     <div>
                         <v-text-field
-                            color="purple"
+                            color="cyan"
                             type="email"
                             placeholder="user@gmail.com"
                             label="Correo electrónico"
                             autocomplete="email"
                             hint="Ingresa tu correo electrónico"
                             v-model="email.value.value"
-                            variant="outlined"
+                            variant="solo"
                             :error-messages="email.errorMessage.value"
                             class="!rounded-2xl"
                         ></v-text-field>
@@ -90,12 +90,12 @@ const props = defineProps({
                         <v-text-field
                         placeholder="●●●●●●●●"
                         label="Contraseña"
-                        color="purple"
+                        color="cyan"
                         :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
                         :type="show ? 'text' : 'password'"
                         hint="Almenos 8 caracteres"
                         name="input-10-1"
-                        variant="outlined"
+                        variant="solo"
                         counter
                         @click:append="show = !show"
                         v-model="password.value.value"
@@ -106,7 +106,7 @@ const props = defineProps({
 
                     <div class="flex lg:flex-col flex-col justify-between">
                         <div class="flex items-center justify-between">
-                            <v-switch label="Recordar sesión" v-model="remember.value.value" color="purple"></v-switch>
+                            <v-switch label="Recordar sesión" v-model="remember.value.value" color="cyan"></v-switch>
                             <Link :href="route('password.request')" class="text-primary underline mb-7">¿Olvidaste tu contraseña?</Link>
                         </div>
                         <PrimaryButton @click="submit" :disabled="data.processing" heightbtn="!h-[60px] !text-base !w-full md:!w-auto" paddingbtn="!px-10" :loading="loading">

@@ -286,12 +286,12 @@ function printInKioskMode(url, close = true) {
                             <div class="w-full max-w-[90%] mx-auto mt-10">
                                 <div class="flex items-center justify-center gap-1 flex-col w-full">
                                     <v-text-field
-                                        color="purple"
+                                        color="cyan"
                                         label="Folio o ID del ticket"
                                         placeholder="123"
                                         hint="Ingresa el folio o id del ticket"
                                         v-model="sale_ticket_id"
-                                        variant="outlined"
+                                        variant="solo"
                                         class="!w-full"
                                     ></v-text-field>
                                     <PrimaryButton @click="searchSaleTicket" heightbtn="!h-[70px]" paddingbtn="!px-12" :loading="loadingSearch">
@@ -361,14 +361,14 @@ function printInKioskMode(url, close = true) {
                                                                         v-model="paymentTypesSelected"
                                                                         :label="type"
                                                                         :value="type"
-                                                                        color="purple"
+                                                                        color="cyan"
                                                                         ></v-checkbox>
                                                                     </div>
                                                                 </div>
                                                                 <div class="!w-full mt-0">
                                                                     <v-tabs
                                                                         v-model="tabs"
-                                                                        color="purple"
+                                                                        color="cyan"
                                                                         grow
                                                                         >
                                                                         <v-tab :value="1">
@@ -400,7 +400,7 @@ function printInKioskMode(url, close = true) {
                                                                                 v-model="cancelSeatCodes"
                                                                                 multiple
                                                                                 label="Selecciona los asientos a cancelar"
-                                                                                color="purple"
+                                                                                color="cyan"
                                                                                 clearable
                                                                                 class="w-full"
                                                                                 hint="Opcion multiple"

@@ -36,7 +36,7 @@ const clubSelected = ref(true);
                 <v-switch
                     v-model="clubSelected"
                     @click="clubSelected = !clubSelected"
-                    color="purple"
+                    color="cyan"
                     label="victoria"
                     hide-details
                     ></v-switch>

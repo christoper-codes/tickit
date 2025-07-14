@@ -284,7 +284,7 @@ const openDialogBlockAndReserve = (event, open) => {
 
                                                         <div class="flex flex-col lg:flex-row items-center justify-between gap-5 mb-2">
                                                             <div class="w-full">
-                                                                <v-select label="Serie" :items="series" variant="outlined"
+                                                                <v-select label="Serie" :items="series" variant="solo"
                                                                     item-title="name" item-value="id"
                                                                     v-model="event.serie_id.value.value"
                                                                     :error-messages="event.serie_id.errorMessage.value"></v-select>
@@ -292,7 +292,7 @@ const openDialogBlockAndReserve = (event, open) => {
                                                             </div>
 
                                                             <div class="w-full">
-                                                                <v-select label="Temporada" :items="global_seasons" variant="outlined"
+                                                                <v-select label="Temporada" :items="global_seasons" variant="solo"
                                                                     item-title="name" item-value="id"
                                                                     v-model="event.global_season_id.value.value"
                                                                     :error-messages="event.global_season_id.errorMessage.value"></v-select>
@@ -302,7 +302,7 @@ const openDialogBlockAndReserve = (event, open) => {
                                                         </div>
                                                         <div class="flex flex-col lg:flex-row items-center justify-between gap-5 mb-2">
                                                             <div class="w-full">
-                                                                <v-text-field color="primary" label="Nombre" variant="outlined"
+                                                                <v-text-field color="primary" label="Nombre" variant="solo"
                                                                     placeholder="Evento 1"
                                                                     hint="Ingresa el nombre del evento"
                                                                     v-model="event.name.value.value"
@@ -311,10 +311,10 @@ const openDialogBlockAndReserve = (event, open) => {
                                                             </div>
                                                             <div class="w-full">
                                                                 <v-select
-                                                                    color="purple"
+                                                                    color="cyan"
                                                                     label="Visivilidad de evento"
                                                                     :items="events_visibility_types.map(item => ({ title: item.name, value: item.id }))"
-                                                                    variant="outlined"
+                                                                    variant="solo"
                                                                     v-model="event.event_visibility_type_id.value.value"
                                                                     :error-messages="event.event_visibility_type_id.errorMessage.value"
                                                                 ></v-select>
@@ -324,7 +324,7 @@ const openDialogBlockAndReserve = (event, open) => {
                                                         <div class="flex flex-col lg:flex-row items-center justify-between gap-5 my-2">
                                                             <div class="w-full">
                                                                 <v-textarea color="primary" label="Descripción" rows="3"
-                                                                    variant="outlined" auto-grow
+                                                                    variant="solo" auto-grow
                                                                     v-model="event.description.value.value"
                                                                     :error-messages="event.description.errorMessage.value"></v-textarea>
                                                                 <InputError :message="dataEvent.errors.description" />
@@ -332,14 +332,14 @@ const openDialogBlockAndReserve = (event, open) => {
                                                         </div>
                                                         <div class="flex flex-col lg:flex-row items-center justify-between gap-5 mb-2">
                                                             <div class="w-full">
-                                                                <v-date-input density="compact" color="primary" clearable variant="outlined"
+                                                                <v-date-input density="compact" color="primary" clearable variant="solo"
                                                                     label="Fecha de inicio"
                                                                     v-model="event.start_date.value.value"
                                                                     :error-messages="event.start_date.errorMessage.value"></v-date-input>
                                                                 <InputError :message="dataEvent.errors.start_date" />
                                                             </div>
                                                             <div class="w-full">
-                                                                <v-text-field v-model="event.start_time.value.value" variant="outlined"
+                                                                <v-text-field v-model="event.start_time.value.value" variant="solo"
                                                                     :active="event.start_time_picker.value"
                                                                     label="Hora de inicio"
                                                                     prepend-icon="mdi-clock-time-four-outline"
@@ -362,14 +362,14 @@ const openDialogBlockAndReserve = (event, open) => {
                                                         <div
                                                             class="flex flex-col lg:flex-row items-center justify-between gap-5 mb-2">
                                                             <div class="w-full">
-                                                                <v-date-input density="compact" color="primary" clearable variant="outlined"
+                                                                <v-date-input density="compact" color="primary" clearable variant="solo"
                                                                     label="Fecha de finalización"
                                                                     v-model="event.end_date.value.value"
                                                                     :error-messages="event.end_date.errorMessage.value"></v-date-input>
                                                                 <InputError :message="dataEvent.errors.end_date" />
                                                             </div>
                                                             <div class="w-full">
-                                                                <v-text-field v-model="event.end_time.value.value" variant="outlined"
+                                                                <v-text-field v-model="event.end_time.value.value" variant="solo"
                                                                     :active="event.end_time_picker.value"
                                                                     label="Hora de finalización"
                                                                     prepend-icon="mdi-clock-time-four-outline"
@@ -440,7 +440,7 @@ const openDialogBlockAndReserve = (event, open) => {
                                                 class="!px-4 text-none" variant="tonal">
                                                 Cancelar
                                             </v-btn>
-                                            <v-btn @click="deleteEventConfirmation" color="purple" rounded="xl"
+                                            <v-btn @click="deleteEventConfirmation" color="cyan" rounded="xl"
                                                 class="!px-4 text-none" variant="elevated">
                                                 Eliminar
                                             </v-btn>

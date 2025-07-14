@@ -180,7 +180,7 @@ const editInstitution = (selectedInstitution) => {
                         <v-spacer></v-spacer>
                         <v-dialog v-model="dialogFormInstitution" max-width="800px">
                             <template v-slot:activator="{ props }">
-                                <v-btn variant="tonal" class="mb-2 !mr-5 text-none" color="purple" rounded="xl"
+                                <v-btn variant="tonal" class="mb-2 !mr-5 text-none" color="cyan" rounded="xl"
                                     v-bind="props">
                                     Nueva Institución
                                 </v-btn>
@@ -284,7 +284,7 @@ const editInstitution = (selectedInstitution) => {
                                         @click="closeFormInstitution">
                                         Cancelar
                                     </v-btn>
-                                    <v-btn color="purple" rounded="xl" class="!px-4 text-none" variant="elevated"
+                                    <v-btn color="cyan" rounded="xl" class="!px-4 text-none" variant="elevated"
                                         @click="saveDataInstitution">
                                         Guardar
                                     </v-btn>
@@ -300,7 +300,7 @@ const editInstitution = (selectedInstitution) => {
                                         class="!px-4 text-none" variant="tonal">
                                         Cancelar
                                     </v-btn>
-                                    <v-btn @click="deleteInstitutionConfirmation" color="purple" rounded="xl"
+                                    <v-btn @click="deleteInstitutionConfirmation" color="cyan" rounded="xl"
                                         class="!px-4 text-none" variant="elevated">
                                         Eliminar
                                     </v-btn>

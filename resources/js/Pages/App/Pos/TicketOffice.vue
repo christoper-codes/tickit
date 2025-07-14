@@ -579,7 +579,7 @@ const pdf = () => {
                                         <v-select
                                             color="primary"
                                             clearable
-                                            variant="outlined"
+                                            variant="solo"
                                             label="Seleciona la caja"
                                             hint="Selecciona la caja"
                                             v-model= "cashRegisterFields.cash_register_type_id.value.value"
@@ -590,7 +590,7 @@ const pdf = () => {
                                         <v-text-field
                                             color="primary"
                                             label="Saldo de apertura"
-                                            variant="outlined"
+                                            variant="solo"
                                             placeholder="$1000.00"
                                             hint="Ingresa el saldo de apertura"
                                             v-model="cashRegisterFields.opening_balance.value.value"
@@ -765,14 +765,14 @@ const pdf = () => {
                                                                             v-model="paymentTypesSelected"
                                                                             :label="type"
                                                                             :value="type"
-                                                                            color="purple"
+                                                                            color="cyan"
                                                                             ></v-checkbox>
                                                                         </div>
                                                                     </div>
                                                                     <div class="!w-full mt-0">
                                                                         <v-tabs
                                                                             v-model="tabs"
-                                                                            color="purple"
+                                                                            color="cyan"
                                                                             grow
                                                                             >
                                                                             <v-tab :value="1">
@@ -804,7 +804,7 @@ const pdf = () => {
                                                                                     v-model="cancelSeatCodes"
                                                                                     multiple
                                                                                     label="Selecciona los asientos a cancelar"
-                                                                                    color="purple"
+                                                                                    color="cyan"
                                                                                     clearable
                                                                                     class="w-full"
                                                                                     hint="Opcion multiple"

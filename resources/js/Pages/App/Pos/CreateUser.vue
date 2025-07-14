@@ -276,7 +276,7 @@ props.users.forEach(element => {
                 </div>
                 <template v-slot:actions>
                     <v-btn
-                        color="purple"
+                        color="cyan"
                         rounded="xl"
                         class="!px-4 text-none"
                         variant="elevated"
@@ -291,7 +291,7 @@ props.users.forEach(element => {
             <v-card title="¡Usuario Actualizado!">
                 <template v-slot:actions>
                     <v-btn
-                        color="purple"
+                        color="cyan"
                         rounded="xl"
                         class="!px-4 text-none"
                         variant="elevated"
@@ -337,7 +337,7 @@ props.users.forEach(element => {
                     Cancelar
                 </v-btn>
                 <v-btn
-                    color="purple"
+                    color="cyan"
                     rounded="xl"
                     class="!px-4 text-none"
                     variant="elevated"
@@ -468,7 +468,7 @@ props.users.forEach(element => {
                         Cancelar
                     </v-btn>
                     <v-btn
-                        color="purple"
+                        color="cyan"
                         rounded="xl"
                         class="!px-4 text-none"
                         variant="elevated"
@@ -492,7 +492,7 @@ props.users.forEach(element => {
                             v-model="searchTab"
                             label="Buscar usuario..."
                             prepend-inner-icon="mdi-magnify"
-                            variant="outlined"
+                            variant="solo"
                             color="orange-darken-2"
                             hide-details
                             single-line
@@ -504,7 +504,7 @@ props.users.forEach(element => {
                             <v-btn
                                 variant="tonal"
                                 class="mb-2 !mr-5 text-none my-3 mx-3"
-                                color="purple"
+                                color="cyan"
                                 rounded="xl"
                                 @click="userCreateRol"
                             >
@@ -515,7 +515,7 @@ props.users.forEach(element => {
                             <v-btn
                                 variant="tonal"
                                 class="mb-2 !mr-5 text-none my-3 mx-3"
-                                color="purple"
+                                color="cyan"
                                 rounded="xl"
                                 @click="userChangeRol"
                             >
