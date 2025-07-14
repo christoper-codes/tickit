@@ -96,7 +96,7 @@ Route::post('/asientos-por-zona', [EventController::class, 'getEventSeatCatalogu
 */
 Route::get('/blog/{id}', [BlogController::class, 'index'])->name('blogs.show');
 Route::get('/taquillas/check-ticket', [TicketOfficeController::class, 'check'])->name('ticket-offices.check');
-Route::get('/taquillas/share-ticket', [TicketOfficeController::class, 'share'])->name('ticket-offices.share');
+Route::get('/dashboard/share-ticket', [TicketOfficeController::class, 'share'])->name('ticket-offices.share');
 Route::get('/taquillas/search-ticket', [TicketOfficeController::class, 'search'])->name('ticket-offices.search');
 Route::get('/taquillas/search-ticket-event/{id}', [TicketOfficeController::class, 'searchWithEvent'])->name('ticket-offices.search.event');
 
@@ -145,13 +145,6 @@ Route::get('/block-and-reservation-statuses', [SeatCatalogueStatusController::cl
 */
 Route::get('/promociones-asientos', [EventSeatCatalogPromotionController::class, 'index'])->name('event.seat.catalog.promotion.index');
 
-/*
-* |--------------------------------------------------------------------------
-* | Web Routes
-* |--------------------------------------------------------------------------
-* |Digital cards | ROUTES
-*/
-Route::get('/mis-tarjetas', [WalletAccountTemporalController::class, 'index'])->name('wallet-account.index');
 
 /*
 * |--------------------------------------------------------------------------

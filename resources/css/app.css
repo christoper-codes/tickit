@@ -38,16 +38,16 @@
 .v-navigation-drawer__scrim {
     position: fixed !important;
 }
-/* @media (min-width: 1264px) {
-    .v-theme--light {
-        backdrop-filter: blur(3px) !important;
-    }
-}
- */
-.v-dialog > .v-overlay__content > .v-card, .v-dialog > .v-overlay__content > .v-sheet, .v-dialog > .v-overlay__content > form > .v-card, .v-dialog > .v-overlay__content > form > .v-sheet {
-    border-radius: 10px !important;
-}
 
+.v-dialog > .v-overlay__content > .v-card,
+.v-dialog > .v-overlay__content > .v-sheet,
+.v-dialog > .v-overlay__content > form > .v-card,
+.v-dialog > .v-overlay__content > form > .v-sheet {
+  border-radius: 10px !important;
+}
+.v-overlay__scrim {
+  background: rgb(0 0 0) !important;
+}
 /* |----------------------------------------------------------------------------
    | Custom Utilities | Tailwind
    |----------------------------------------------------------------------------

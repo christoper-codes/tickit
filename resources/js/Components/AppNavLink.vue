@@ -15,8 +15,8 @@ const props = defineProps({
 
 const classes = computed(() =>
     props.active
-        ? 'text-none !h-[50px] !rounded-2xl !w-full !bg-gradient-to-r !from-tw-primary !to-cyan-500 !text-white !justify-start !flex !items-center'
-        : 'text-none !h-[50px] !rounded-2xl !w-full !bg-transparent !justify-start !flex !items-center'
+        ? 'text-none !h-[60px] !rounded !w-full !justify-start !flex !items-center !border-l-4 !border-l-tw-primary !bg-black/5 dark:!bg-white/5'
+        : 'text-none !h-[60px] !rounded !w-full !bg-transparent !justify-start !flex !items-center'
 );
 
 const toggledraweAppNavState = () => {

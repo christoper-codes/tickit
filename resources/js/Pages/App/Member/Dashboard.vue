@@ -38,11 +38,6 @@ const tab = ref('tab-0');
     <Head title="Dashboard" />
     <AppLayout>
         <SuccessSession />
-        <BreadcrumbApp>
-            <template #title>
-                <span>Mis boletos</span>
-            </template>
-        </BreadcrumbApp>
         <div class="mt-10">
             <template v-if="eventsWithTickets.some(event => event.tickets.length > 0)">
                 <div v-for="event in eventsWithTickets" :key="event.event.id" class="mb-10 last:mb-0">
@@ -54,10 +49,9 @@ const tab = ref('tab-0');
                 </div>
             </template>
             <template v-else>
-                <div class="flex items-center justify-center flex-col gap-5 mt-10">
+                <div class="h-full flex items-center justify-center flex-col gap-5 mt-60">
                     <div class="text-center flex items-center justify-center flex-col gap-5">
-                        <img class="w-40 lg:w-72 h-auto" src="/storage/public/empty-cart.webp" alt="Webiste image">
-                        <span>No cuentas con boletos disponibles. ¡Compra tus boletos para el próximo partido!</span>
+                        <span>No cuentas con boletos disponibles. ¡Compra tus boletos para el próximo evento!</span>
                     </div>
                     <div>
                         <Link :href="route('events.index')">

@@ -208,8 +208,7 @@ props.users.forEach(element => {
                 <template v-else>
                     <div class="flex items-center justify-center flex-col gap-5 mt-10">
                         <div class="text-center flex items-center justify-center flex-col gap-5">
-                            <img class="w-40 lg:w-72 h-auto" src="/storage/public/empty-cart.webp" alt="Webiste image">
-                            <span>No cuentas con boletos disponibles. ¡Compra tus boletos para el próximo partido!</span>
+                            <span>No cuentas con boletos disponibles. ¡Compra tus boletos para el próximo evento!</span>
                         </div>
                         <div>
                             <Link :href="route('events.index')">

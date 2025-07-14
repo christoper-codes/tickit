@@ -5,6 +5,7 @@ import { Link, usePage } from '@inertiajs/vue3';
 import { onMounted, ref } from 'vue';
 import AppNavLink from './AppNavLink.vue';
 import useUserPolicy from '@/composables/UserPolicy';
+import PrimaryButton from './buttons/PrimaryButton.vue';
 
 
 const fav = ref(true);
@@ -58,7 +59,7 @@ const props = defineProps({
                         >
                             <template v-slot:activator="{ props }">
                                 <v-btn
-                                    class="!rounded-full !size-40 bg-profile !bg-slate-300 !shadow-none"
+                                    class="!rounded-full !size-40 bg-profile !bg-neutral-300 dark:!bg-neutral-800 !shadow-none"
                                     v-bind="props"
                                     @click="fav = !fav"
                                     >
@@ -83,34 +84,20 @@ const props = defineProps({
 
                             <v-card min-width="350" rounded="lg" class=" backdrop-blur-sm">
                                 <v-list class="!bg-transparent">
-                                <v-list-item
-                                    :prepend-avatar="`/storage/public/user-img.svg`"
-                                    :title="user.first_name"
-                                    :subtitle="'@'+user.username"
-                                >
-                                    <template v-slot:append>
-                                    <v-btn
-                                        :class="!fav ? 'text-red' : ''"
-                                        icon="mdi-heart"
-                                        variant="tonal"
-                                        @click="fav = !fav"
-                                    ></v-btn>
-                                    </template>
-                                </v-list-item>
+                                    <v-list-item :title="user.first_name" :subtitle="'@'+user.username">
+                                        <template v-slot:append>
+                                        <v-btn :class="!fav ? 'text-red' : ''" icon="mdi-heart" variant="tonal" @click="fav = !fav"></v-btn>
+                                        </template>
+                                    </v-list-item>
                                 </v-list>
 
-                                <v-divider></v-divider>
-
                                 <v-card-actions>
-                                <v-spacer></v-spacer>
-                                <div class="w-full flex items-center justify-between rounded-xl overflow-hidden shadow-lg relative mb-3">
-                                    <div class="w-[55%] p-3 pr-0 text-sm font-semibold text-gray-700">
-                                        <p class="">{{ user.first_name + ' ' + user.last_name }}</p>
-                                        <p class="text-xs font-normal mb-1">@{{ user.username }}</p>
+                                <div class="w-full flex items-center justify-between rounded-lg overflow-hidden shadow-xl relative mb-3">
+                                    <div class="w-[55%] py-7 px-3 pr-0 text-sm font-semibold text-gray-700">
                                         <Link :href="route('logout')" method="post" as="button">
                                             <v-btn  color="red" variant="tonal" block class="text-none" rounded="lg">
                                                 Cerrar sesión
-                                        </v-btn>
+                                            </v-btn>
                                         </Link>
                                     </div>
                                     <img class="w-[35%] absolute top-0 -right-5" src="https://modernize-nuxt3-main.netlify.app/images/backgrounds/unlimited-bg.png" alt="Webiste image">
@@ -137,20 +124,14 @@ const props = defineProps({
                                     <span class="material-symbols-outlined text-xl">confirmation_number</span>Taquillas
                                 </AppNavLink>
                             </div>
-                            <div class="w-full ">
-                                <AppNavLink :href="route('events.index')" :active="route().current('events.index')">
-                                    <span class="material-symbols-outlined text-xl">note_stack</span>Partidos
-                                </AppNavLink>
-                            </div>
-
                             <div class=" w-full">
                                 <AppNavLink :href="route('ticket-offices.share')" :active="route().current('ticket-offices.share')">
                                     <span class="material-symbols-outlined text-xl">share</span>Compartir boletos
                                 </AppNavLink>
                             </div>
-                            <div class=" w-full">
-                                <AppNavLink :href="route('wallet-account.index')" :active="route().current('wallet-account.index')">
-                                    <span class="material-symbols-outlined text-xl">credit_card</span>Mis tarjetas
+                            <div class="w-full ">
+                                <AppNavLink :href="route('events.index')" :active="route().current('events.index')">
+                                    <span class="material-symbols-outlined text-xl">note_stack</span>Próximos eventos
                                 </AppNavLink>
                             </div>
                         </div>
@@ -236,12 +217,11 @@ const props = defineProps({
                         </div>
                     </div>
 
-                    <div class="w-full p-5 flex items-center justify-between rounded-xl overflow-hidden shadow-xl border relative bg-white/10">
+                    <div class="w-full p-5 flex items-center justify-between rounded-xl overflow-hidden shadow-xl border relative bg-white/10 dark:bg-neutral-900">
                         <div class="w-full">
-
                             <v-dialog max-width="500">
                                     <template v-slot:activator="{ props: activatorProps }">
-                                        <v-btn  v-bind="activatorProps" color="red" variant="tonal" block class="text-none !h-[50px] !rounded-2xl">
+                                        <v-btn  v-bind="activatorProps" variant="tonal" block class="text-none !h-[60px] !bg-red-600 !rounded-2xl !text-white !border-b-4 !border-b-red-700">
                                             Cerrar sesión
                                         </v-btn>
                                     </template>
@@ -250,14 +230,13 @@ const props = defineProps({
 
                                         <v-card-actions class="!my-4 !px-4">
                                             <v-spacer></v-spacer>
-                                            <v-btn color="red" variant="tonal" rounded="lg" class="text-none !h-[50px] !px-4" text="Cancelar" @click="isActive.value = false"></v-btn>
+                                            <v-btn color="red" variant="tonal" class="text-none !h-[50px] !px-4 !rounded-2xl" text="Cancelar" @click="isActive.value = false"></v-btn>
                                             <Link :href="route('logout')" method="post" as="button">
-                                                <v-btn variant="elevated" rounded="lg" class="text-none !h-[50px] !bg-purple-500 !text-white !px-4" @click="isActive.value = false">
+                                                <PrimaryButton>
                                                     <span class="material-symbols-outlined text-xl !w-1/2">person</span> Cerrar sesión
-                                                </v-btn>
+                                                </PrimaryButton>
                                             </Link>
                                         </v-card-actions>
-
                                         </v-card>
                                     </template>
                             </v-dialog>

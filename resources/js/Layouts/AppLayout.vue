@@ -5,6 +5,8 @@ import { ref } from 'vue';
 import { drawerNavState, draweAppNavState } from '@/composables/drawersStates';
 import NavegationDrawerApp from '@/Components/NavegationDrawerApp.vue';
 import MasterLayout from './MasterLayout.vue';
+import PrimaryButton from '@/Components/buttons/PrimaryButton.vue';
+import { themeState } from '@/composables/theme/preference';
 
 const fav = ref(true);
 const menu = ref(false);
@@ -27,17 +29,14 @@ const isMobile = ref(window.innerWidth < 1024);
             <div v-if="draweAppNavState && isMobile" @click="draweAppNavState = !draweAppNavState" class="h-screen w-full bg-black/50 fixed z-50 backdrop-blur-sm"></div>
         </transition>
         <div class="fixed w-full z-40 top-0 left-0 overflow-hidden backdrop-filter backdrop-blur-md">
-            <div class="w-full bg-transparent py-5 lg:py-5 px-4 lg:px-10 flex items-center justify-between lg:pl-[295px]">
-                <div class="flex items-center gap-3">
-                    <Link :href="route('welcome')" class="flex gap-1 flex-col">
-                        <h1 class="bg-clip-text lg:ml-9 bg-gradient-to-r from-primary to-secondary text-transparent font-bebas text-xl md:text-4xl font-bold">victoria</h1>
-                    </Link>
-                </div>
-                <div class="lg:flex items-center gap-4 lg:gap-10 text-gray-500 hidden">
+            <div class="w-full bg-transparent py-5 lg:py-5 px-4 lg:px-10 flex items-center justify-end">
+                <div class="lg:flex items-center gap-4 lg:gap-6 text-gray-500 hidden">
+                    <svg @click="themeState = themeState === 'dark' ? 'light' : 'dark'" class="w-8 h-auto stroke-black dark:stroke-white cursor-pointer" data-slot="icon" fill="none" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636"></path><circle cx="12" cy="12" r="3.75" stroke-width="1.5" fill="none"></circle></svg>
+
                     <Link :href="route('events.index')">
-                        <v-btn variant="elevated" class="text-none !text-white !px-8 !h-[60px] !rounded-2xl !bg-gradient-to-r !from-primary !to-cyan-500">
-                            Comprar boletos
-                        </v-btn>
+                        <PrimaryButton heightbtn="!h-[60px]" paddingbtn="!px-10">
+                            <span>Encontrar eventos</span>
+                        </PrimaryButton>
                     </Link>
                 </div>
                 <div class="lg:hidden">
@@ -45,15 +44,14 @@ const isMobile = ref(window.innerWidth < 1024);
                 </div>
             </div>
         </div>
-
-        <div class="lg:ml-[270px] mt-[65px] lg:mt-[100px]">
+        <div class="lg:ml-[270px]">
             <main class="px-5 lg:px-0 lg:pr-5 space-y-4 sm:space-y-6 min-h-screen overflow-hidden relative">
             <div class="z-20 relative !m-0  min-h-screen" data-aos="fade-right" data-aos-duration="1500">
                 <div class="absolute -right-40 lg:-right-96 -top-52 lg:-top-52 h-[480px] w-[300px] lg:h-[680px] lg:w-[500px] rounded-full blur-[120px] lg:blur-[220px] bg-tw-primary">
                 </div>
                 <div class="absolute -bottom-60 -left-72 h-[700px] w-[1500px] rounded-full blur-[100px]">
                 </div>
-                    <div class="z-20 relative lg:!ml-12">
+                    <div class="z-20 relative lg:!pt-16">
                         <slot/>
                     </div>
                 </div>
@@ -64,7 +62,6 @@ const isMobile = ref(window.innerWidth < 1024);
 
 
 <style >
-
 .v-btn__prepend {
     margin-right: 3px;
 }
