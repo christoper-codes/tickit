@@ -18,8 +18,9 @@ export default {
                 metal: ['Metal Mania', ...defaultTheme.fontFamily.sans],
             },
             colors: {
-                'primary': '#9333ea',
-                'secondary': '#06b6d4',
+                'tw-primary': '#14b8a6',
+                'secondary': '#ecfeff',
+                'tw-primary-dark': '#0f766e',
             },
         },
     },

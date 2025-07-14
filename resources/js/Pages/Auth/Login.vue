@@ -58,11 +58,11 @@ const props = defineProps({
 <template>
     <Head title="Log in"/>
     <AuthenticationCard>
-        <div class="w-full lg:w-[70%] h-auto mx-auto px-5 lg:px-0 py-10 lg:py-0">
+        <div class="w-full h-auto mx-auto px-5 lg:px-0 py-10 lg:py-0 max-w-2xl">
             <div class="">
                 <ErrorSession />
-                <Link :href="route('events.index')">
-                    <div class="size-10 shadow-md rounded-full bg-primary p-2 flex items-center justify-center mb-3">
+                <Link :href="route('welcome')">
+                    <div class="size-10 shadow-md rounded-full bg-tw-primary p-2 flex items-center justify-center mb-3">
                         <span class="material-symbols-outlined text-white">arrow_back</span>
                     </div>
                 </Link>

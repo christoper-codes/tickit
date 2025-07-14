@@ -21,47 +21,6 @@
     }
 }
 
-
-:root {
-    /*
-    * Global primary colors
-    */
-    --primary-950: #ffffff;
-    --primary-900: #ffffff;
-    --primary-800: #ffffff;
-    --primary-700: #ffffff;
-    --primary-600: #ffffff;
-    --primary-500: #ffffff;
-    --primary-400: #ffffff;
-    --primary-300: #ffffff;
-    --primary-200: #ffffff;
-    --primary-100: #ffffff;
-    --primary-50: #ffffff;
-    /*
-    * End global primary colors
-    */
-
-    /*
-    * Global secondary colors
-    */
-    --secondary-950: #ffffff;
-    --secondary-900: #ffffff;
-    --secondary-800: #ffffff;
-    --secondary-700: #ffffff;
-    --secondary-600: #ffffff;
-    --secondary-500: #ffffff;
-    --secondary-400: #ffffff;
-    --secondary-300: #ffffff;
-    --secondary-200: #ffffff;
-    --secondary-100: #ffffff;
-    --secondary-50: #ffffff;
-    /*
-    * End global secondary colors
-    */
-
-
-}
-
 /* |----------------------------------------------------------------------------
    | Custom Utilities | Vuetify
    |----------------------------------------------------------------------------
@@ -95,23 +54,6 @@
 */
 html {
     touch-action: manipulation !important;
-}
-::-webkit-scrollbar {
-    width: 12px !important;
-}
-
-::-webkit-scrollbar-track {
-    background: #f5f5f5 !important;
-    border-radius: 0px !important;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #dbdbdb !important;
-    border-radius: 5px !important;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #c0c0c0 !important;
 }
 
 /* |----------------------------------------------------------------------------

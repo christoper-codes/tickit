@@ -14,7 +14,6 @@ const user = usePage().props.auth.user;
                 <Link :href="route('welcome')">
                     <div class="flex items-center relative">
                         <h2 class="font-extrabold font-bebas text-2xl !mt-1">victoria</h2>
-                        <img class="w-10 h-auto absolute -top-5 -left-3" src="/storage/public/hdx-logo.png" alt="hdx logo">
                     </div>
                 </Link>
                 <div @click="menuStateApp = !menuStateApp">
@@ -26,7 +25,6 @@ const user = usePage().props.auth.user;
             <Link :href="route('welcome')">
                 <div class="flex items-center  relative">
                     <h2 class="font-extrabold font-bebas text-4xl !mt-1">victoria</h2>
-                    <img class="w-10 h-auto absolute -top-5 -left-7" src="/storage/public/hdx-logo.png" alt="hdx logo">
                 </div>
             </Link>
 
