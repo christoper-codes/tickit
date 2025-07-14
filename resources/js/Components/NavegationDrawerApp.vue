@@ -45,13 +45,11 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="">
-    <v-layout>
-      <v-navigation-drawer v-model="draweAppNavState" temporary class="">
-        <div class="bg-white min-h-screen relative overflow-hidden border-r-2">
+  <div class="!bg-transparent">
+      <v-navigation-drawer v-model="draweAppNavState" temporary class="!bg-transparent">
+        <div class="min-h-screen relative overflow-hidden">
             <div class="w-full relative">
                 <div class="w-full py-3 lg:py-4 px-4">
-
                     <div class="text-center profile-btn cursor-pointer">
                         <v-menu
                         v-model="menu"
@@ -83,7 +81,7 @@ const props = defineProps({
                                 </div>
                             </template>
 
-                            <v-card min-width="350" rounded="lg" class="!bg-white backdrop-blur-sm">
+                            <v-card min-width="350" rounded="lg" class=" backdrop-blur-sm">
                                 <v-list class="!bg-transparent">
                                 <v-list-item
                                     :prepend-avatar="`/storage/public/user-img.svg`"
@@ -92,7 +90,7 @@ const props = defineProps({
                                 >
                                     <template v-slot:append>
                                     <v-btn
-                                        :class="fav ? 'text-red' : ''"
+                                        :class="!fav ? 'text-red' : ''"
                                         icon="mdi-heart"
                                         variant="tonal"
                                         @click="fav = !fav"
@@ -235,41 +233,6 @@ const props = defineProps({
                                     </v-list-group>
                                 </v-list>
                             </v-card>
-
-                           <!--  <div class="text-center w-full ">
-                                <v-menu
-                                v-model="menu2"
-                                :close-on-content-click="false"
-                                location="bottom start" origin="top center"
-                                >
-                                <template v-slot:activator="{ props }">
-                                    <v-btn v-bind="props" variant="text" class="text-none !h-[40px] !w-full !text-gray-300 !bg-transparent !justify-start" rounded="xl" block><span class="material-symbols-outlined text-xl">keyboard_arrow_down</span>Servicios</v-btn>
-                                </template>
-
-                                <v-card min-width="300" rounded="lg" class="">
-
-                                    <v-card-actions>
-                                        <v-spacer></v-spacer>
-                                        <v-btn
-                                            color="red"
-                                            variant="tonal"
-                                            class="text-none" rounded="lg"
-                                            @click="menu2 = false"
-                                        >
-                                            Cancel
-                                        </v-btn>
-                                        <v-btn
-                                            color="primary"
-                                            class="text-none" rounded="lg"
-                                            variant="tonal"
-                                            @click="menu2 = false"
-                                        >
-                                            Save
-                                        </v-btn>
-                                    </v-card-actions>
-                                </v-card>
-                                </v-menu>
-                            </div> -->
                         </div>
                     </div>
 
@@ -303,7 +266,6 @@ const props = defineProps({
                 </div>
         </div>
       </v-navigation-drawer>
-    </v-layout>
   </div>
 </template>
 

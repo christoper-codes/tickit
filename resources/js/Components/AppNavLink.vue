@@ -15,7 +15,7 @@ const props = defineProps({
 
 const classes = computed(() =>
     props.active
-        ? 'text-none !h-[50px] !rounded-2xl !w-full !bg-gradient-to-r !from-primary !to-cyan-500 !text-white !justify-start !flex !items-center'
+        ? 'text-none !h-[50px] !rounded-2xl !w-full !bg-gradient-to-r !from-tw-primary !to-cyan-500 !text-white !justify-start !flex !items-center'
         : 'text-none !h-[50px] !rounded-2xl !w-full !bg-transparent !justify-start !flex !items-center'
 );
 

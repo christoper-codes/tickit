@@ -1,12 +1,9 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import SaleTicket from '@/Components/SaleTicket.vue';
 import { Head, Link, usePage } from '@inertiajs/vue3';
-import TicketCharts from '@/Components/TicketCharts.vue';
 import confetti from 'canvas-confetti';
 import { onMounted, ref, watch } from 'vue';
-import Breadcrumb from '@/Components/Breadcrumb.vue';
 import SuccessSession from '@/Components/SuccessSession.vue';
 import BreadcrumbApp from '@/Components/BreadcrumbApp.vue';
 import SecondaryButton from '@/Components/buttons/SecondaryButton.vue';
@@ -26,49 +23,6 @@ const fire = (particleRatio, opts) => {
   });
 };
 
-const shootConfetti = () => {
-  fire(0.25, {
-    spread: 26,
-    startVelocity: 55,
-  });
-  fire(0.2, {
-    spread: 60,
-  });
-  fire(0.35, {
-    spread: 100,
-    decay: 0.91,
-    scalar: 0.8,
-  });
-  fire(0.1, {
-    spread: 120,
-    startVelocity: 25,
-    decay: 0.92,
-    scalar: 1.2,
-  });
-  fire(0.1, {
-    spread: 120,
-    startVelocity: 45,
-  });
-};
-
-const isNewUser = false;
-
-const shootConfettiTwice = () => {
-  shootConfetti();
-  setTimeout(shootConfetti, 1000);
-};
-
-onMounted(() => {
-  if (isNewUser) {
-    shootConfettiTwice();
-  }
-});
-
-/* watch(() => page.flash, (newFlash) => {
-  if (newFlash === 'is_new_user') {
-    shootConfettiTwice();
-  }
-}); */
 
 const props = defineProps({
     'events_with_tickets': {
@@ -82,16 +36,13 @@ const tab = ref('tab-0');
 
 <template>
     <Head title="Dashboard" />
-
     <AppLayout>
         <SuccessSession />
-
         <BreadcrumbApp>
             <template #title>
                 <span>Mis boletos</span>
             </template>
         </BreadcrumbApp>
-
         <div class="mt-10">
             <template v-if="eventsWithTickets.some(event => event.tickets.length > 0)">
                 <div v-for="event in eventsWithTickets" :key="event.event.id" class="mb-10 last:mb-0">
@@ -121,7 +72,6 @@ const tab = ref('tab-0');
                 </div>
             </template>
         </div>
-
     </AppLayout>
 </template>
 
