@@ -1,7 +1,6 @@
 import './bootstrap';
 import '../css/app.css';
 import '@mdi/font/css/materialdesignicons.css';
-import { primariesAndSecondariesColorsHDX, primariesAndSecondariesColorsBUAP, handleClubSettings } from './management-tailwind';
 
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
@@ -49,7 +48,7 @@ createInertiaApp({
             .mount(el);
     },
     progress: {
-        color: '#a855f7',
+        color: '#14b8a6',
     },
 });
 
@@ -58,33 +57,9 @@ createInertiaApp({
 * | Management content after to load | DOM
 * |--------------------------------------------------------------------------|
 */
-
 document.addEventListener('DOMContentLoaded', () => {
-    /*
-    * Identify location
-    */
-    identifyLocation();
- /*
-* |--------------------------------------------------------------------------|
-* | Insert the Leaflet map when the page is loaded | Club
-* |--------------------------------------------------------------------------|
-*/
     Aos.init();
 });
 
-
-/*
-* |--------------------------------------------------------------------------|
-* | Management user localitation | Club
-* |--------------------------------------------------------------------------|
-*/
-function identifyLocation() {
-
-    const colors = primariesAndSecondariesColorsHDX();
-    for (const color in colors) {
-        document.documentElement.style.setProperty(`--${color}`, colors[color]);
-    }
-
-}
 
 
