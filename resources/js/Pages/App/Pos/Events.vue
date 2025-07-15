@@ -21,6 +21,7 @@ const { dateFormat } = useDateFormat();
 const loading = ref(false);
 const filteredEvents = ref([]);
 const selectedEventType = ref('todos'); // Estado para el filtro seleccionado
+const searchQuery = ref(''); // Estado para la búsqueda
 const { viewVendorTopics, viewAdminTopics } = useUserPolicy();
 const showEvent = () => {loading.value = true;}
 
@@ -39,31 +40,8 @@ const props = defineProps({
     },
 });
 
-console.log(props.events);
-
-const parallaxY = ref(0);
-const isLg = ref(window.innerWidth >= 1024);
-
-const handleScroll = () => {
-  if (isLg.value) {
-    parallaxY.value = window.scrollY * 0.5;
-  } else {
-    parallaxY.value = 0;
-  }
-};
-
-const handleResize = () => {
-  isLg.value = window.innerWidth >= 1024;
-  if (!isLg.value) {
-    parallaxY.value = 0;
-  }
-};
-
 onMounted(() => {
     filterEventsByType('todos');
-
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleResize);
 });
 
 
@@ -81,7 +59,11 @@ const closeImageModal = () => {
 
 const filterEventsByType = (type) => {
     selectedEventType.value = type;
+    applyFilters();
+}
 
+// Función para aplicar todos los filtros (tipo + búsqueda)
+const applyFilters = () => {
     let baseEvents = props.events.filter((event) => {
         if(event.event_visibility_type.name == 'publico'){
             return true;
@@ -97,13 +79,26 @@ const filterEventsByType = (type) => {
         return false;
     });
 
-    if (type === 'todos') {
-        filteredEvents.value = baseEvents;
-    } else {
-        filteredEvents.value = baseEvents.filter(event =>
-            event.event_type.name.toLowerCase() === type.toLowerCase()
+    // Filtrar por tipo
+    if (selectedEventType.value !== 'todos') {
+        baseEvents = baseEvents.filter(event =>
+            event.event_type.name.toLowerCase() === selectedEventType.value.toLowerCase()
         );
     }
+
+    // Filtrar por búsqueda
+    if (searchQuery.value.trim()) {
+        baseEvents = baseEvents.filter(event =>
+            event.name.toLowerCase().includes(searchQuery.value.toLowerCase().trim())
+        );
+    }
+
+    filteredEvents.value = baseEvents;
+}
+
+// Función para manejar la búsqueda
+const handleSearch = () => {
+    applyFilters();
 }
 </script>
 
@@ -113,7 +108,6 @@ const filterEventsByType = (type) => {
     <CashRegisterNav v-bind:user_roles="user_roles"/>
     <GuestNavSocial />
     <AppNav />
-    <!--<Banner :banner="platform_settings[0].settings.banner"/>-->
     <transition name="fade">
         <div v-if="showImageModal"
             class="fixed inset-0 !z-50 flex items-center justify-center bg-black/50 backdrop-blur-[9px] transition-all duration-500"
@@ -127,16 +121,30 @@ const filterEventsByType = (type) => {
     <section class="py-5 w-full relative z-20">
         <GuestNav/>
         <div class="max-w-7xl mx-auto px-4 lg:px-0 text-center mt-16">
-            <h2 class="font-bold font-bebas text-8xl">Eventos recomendados</h2>
-            <p>Explora los eventos más destacado y descubre lo que tenemos preparado para ti.</p>
-            <div class="flex items-center justify-center gap-8 mt-10">
-                <v-btn @click="filterEventsByType('todos')" variant="tonal" :class="selectedEventType === 'todos' ? '!h-[70px] !px-14 !bg-yellow-500 !border-b-4 !border-b-yellow-700 !overflow-hidden !text-white !rounded-2xl !relative before:!content-[\'\'] before:!w-10 before:!h-10 before:!bg-white/25 before:!absolute before:!rounded-full before:!-bottom-[13px] before:!-right-[13px]' : '!h-[70px] !px-14 !border-b-4 !border-b-neutral-400 !rounded-2xl !bg-neutral-100 !text-neutral-700 !overflow-hidden'">
+            <h2 class="font-bold font-bebas text-8xl">¡Encuentra tus eventos!</h2>
+            <p class="mt-1">Explora los eventos más destacados y descubre lo que tenemos preparado para ti.</p>
+            <div class="max-w-2xl mx-auto mt-10">
+                <v-text-field
+                    theme="light"
+                    v-model="searchQuery"
+                    @input="handleSearch"
+                    color="cyan"
+                    placeholder="Nombre del evento"
+                    label="Buscar evento"
+                    variant="solo"
+                    class="!rounded-2xl"
+                    prepend-inner-icon="mdi-magnify"
+                    clearable
+                ></v-text-field>
+            </div>
+            <div class="flex items-center justify-between mx-auto gap-8 mt-3 max-w-2xl">
+                <v-btn @click="filterEventsByType('todos')" variant="tonal" :class="selectedEventType === 'todos' ? '!h-[70px] !px-[67px] !bg-yellow-500 !border-b-4 !border-b-yellow-700 !overflow-hidden !text-white !rounded-2xl !relative before:!content-[\'\'] before:!w-10 before:!h-10 before:!bg-white/25 before:!absolute before:!rounded-full before:!-bottom-[13px] before:!-right-[13px]' : '!h-[70px] !px-[67px] !border-b-4 !border-b-neutral-400 !rounded-2xl !bg-neutral-100 !text-neutral-700 !overflow-hidden'">
                    <span>Todos</span>
                 </v-btn>
-                <v-btn @click="filterEventsByType('deportivo')" variant="tonal" :class="selectedEventType === 'deportivo' ? '!h-[70px] !px-14 !bg-yellow-500 !border-b-4 !border-b-yellow-700 !overflow-hidden !text-white !rounded-2xl !relative before:!content-[\'\'] before:!w-10 before:!h-10 before:!bg-white/25 before:!absolute before:!rounded-full before:!-bottom-[13px] before:!-right-[13px]' : '!h-[70px] !px-14 !border-b-4 !border-b-neutral-400 !rounded-2xl !bg-neutral-100 !text-neutral-700 !overflow-hidden'">
+                <v-btn @click="filterEventsByType('deportivo')" variant="tonal" :class="selectedEventType === 'deportivo' ? '!h-[70px] !px-[67px] !bg-yellow-500 !border-b-4 !border-b-yellow-700 !overflow-hidden !text-white !rounded-2xl !relative before:!content-[\'\'] before:!w-10 before:!h-10 before:!bg-white/25 before:!absolute before:!rounded-full before:!-bottom-[13px] before:!-right-[13px]' : '!h-[70px] !px-[67px] !border-b-4 !border-b-neutral-400 !rounded-2xl !bg-neutral-100 !text-neutral-700 !overflow-hidden'">
                    <span>Deportivos</span>
                 </v-btn>
-                <v-btn @click="filterEventsByType('cultural')" variant="tonal" :class="selectedEventType === 'cultural' ? '!h-[70px] !px-14 !bg-yellow-500 !border-b-4 !border-b-yellow-700 !overflow-hidden !text-white !rounded-2xl !relative before:!content-[\'\'] before:!w-10 before:!h-10 before:!bg-white/25 before:!absolute before:!rounded-full before:!-bottom-[13px] before:!-right-[13px]' : '!h-[70px] !px-14 !border-b-4 !border-b-neutral-400 !rounded-2xl !bg-neutral-100 !text-neutral-700 !overflow-hidden'">
+                <v-btn @click="filterEventsByType('cultural')" variant="tonal" :class="selectedEventType === 'cultural' ? '!h-[70px] !px-[67px] !bg-yellow-500 !border-b-4 !border-b-yellow-700 !overflow-hidden !text-white !rounded-2xl !relative before:!content-[\'\'] before:!w-10 before:!h-10 before:!bg-white/25 before:!absolute before:!rounded-full before:!-bottom-[13px] before:!-right-[13px]' : '!h-[70px] !px-[67px] !border-b-4 !border-b-neutral-400 !rounded-2xl !bg-neutral-100 !text-neutral-700 !overflow-hidden'">
                    <span>Culturales</span>
                 </v-btn>
             </div>
@@ -144,14 +152,14 @@ const filterEventsByType = (type) => {
     </section>
 
     <main class="max-w-7xl mx-auto px-4 lg:px-0 relative mb-20">
-        <div class="absolute -top-[700px] left-1/2 -translate-x-1/2 h-[480px] w-[300px] lg:h-[680px] lg:w-[600px] rounded-full blur-[120px] lg:blur-[220px] bg-tw-primary">
+        <div class="absolute -top-[1000px] left-1/2 -translate-x-1/2 h-[480px] w-[300px] lg:h-[680px] lg:w-[800px] rounded-full blur-[120px] lg:blur-[220px] bg-tw-primary">
         </div>
-        <div class="max-w-7xl min-h-screen pt-0 mx-auto z-20 relative">
+        <div class="max-w-7xl min-h-screen pt-0 mx-auto z-10 relative">
             <div class="">
                 <div class="lg:col-span-2">
                     <div v-if="events.length > 0" class="py-8">
                         <div v-for="(event, index) in filteredEvents" :key="event.id"  class="space-y-5 lg:space-y-8 pb-10 mt-16">
-                            <div class="flex items-center justify-between gap-14" :class="index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'">
+                            <div class="flex items-center justify-between gap-14 group" :class="index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'">
                                 <div class="w-full lg:w-[40%]">
                                     <h2 class="font-bebas text-4xl font-bold lg:text-6xl">{{ event.name }}</h2>
                                     <h3 class="mt-5 inline-block"><span class="font-bold">Fecha:</span> {{ dateFormat(event.start_date) }}</h3>
@@ -182,9 +190,15 @@ const filterEventsByType = (type) => {
                                 <div class="w-full lg:w-[60%]">
                                     <div
                                         @click="openImageModal(`/storage/${event.global_image.file_path}`)"
-                                        class="group flex bg-cover relative h-[400px] aspect-3/4 object-cover bg-center w-full p-4 lg:p-7 rounded-xl overflow-hidden cursor-pointer transition-all duration-500 border-b-8 border-r-8 border-neutral-300 dark:border-neutral-700"
+                                        class="flex bg-cover relative h-[400px] aspect-3/4 object-cover bg-center w-full p-4 lg:p-7 rounded-xl overflow-hidden cursor-pointer transition-all duration-500 border-b-8 border-r-8 border-neutral-300 dark:border-neutral-700"
                                         :style="`background-image: url(/storage/${event.global_image.file_path})`"
                                         >
+                                        <div class="absolute top-4 left-4 z-20">
+                                            <span class="inline-flex items-center px-5 py-2 rounded-full text-xs font-medium bg-yellow-500 text-white">
+                                                {{ event.event_type.name }}
+                                            </span>
+                                        </div>
+
                                         <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:!opacity-100 transition-all duration-500 z-10 flex items-center justify-center">
                                             <div class="text-center">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-white mx-auto mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2" fill="none"/><line x1="21" y1="21" x2="16.65" y2="16.65" stroke="currentColor" stroke-width="2"/><line x1="11" y1="8" x2="11" y2="14" stroke="currentColor" stroke-width="2"/><line x1="8" y1="11" x2="14" y2="11" stroke="currentColor" stroke-width="2"/></svg>
@@ -193,6 +207,8 @@ const filterEventsByType = (type) => {
                                                 </h2>
                                             </div>
                                         </div>
+
+                                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none z-30"></div>
                                     </div>
                                 </div>
                             </div>

@@ -285,7 +285,7 @@ window.addEventListener('resize', () => {
                 </div>
             </div>
         </section>
-        <section id="contact" class="max-w-7xl mx-auto relative mb-24 !px-4 lg:!px-0">
+        <section id="contact" class="max-w-7xl mx-auto relative mb-40 !px-4 lg:!px-0">
             <div data-aos="fade-left" data-aos-duration="1300" data-aos-once="true" class="mt-24 w-full">
                 <h3 class="font-bebas text-4xl lg:text-6xl font-bold">Ubicación del estadio</h3>
                 <p>Calle Navegantes 327, Fracc. Virginia, 94294 Veracruz, Ver.</p>

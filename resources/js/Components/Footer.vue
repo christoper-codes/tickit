@@ -8,7 +8,7 @@ const year = new Date().getFullYear()
         <div class="text-center text-xs lg:text-base w-full py-4 relative z-10">
             © {{ year }} Todos los derechos reservados. <a href="/politicas-de-privacidad" target="_blank"><span class="underline">Políticas de privacidad</span></a>
         </div>
-        <div class="absolute left-1/2 -translate-x-1/2 bottom-0 h-[60px] w-[100%] rounded-full blur-[100px] bg-tw-primary"></div>
+        <div class="absolute left-[55%] -translate-x-1/2 bottom-0 h-[60px] w-[100%] rounded-full blur-[100px] bg-tw-primary"></div>
     </footer>
 </template>
 
