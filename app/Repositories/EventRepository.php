@@ -224,4 +224,16 @@ class EventRepository implements EventRepositoryInterface
                 'updated_at' => now()
             ]);
     }
+
+    public function getClosestEventToToday()
+    {
+        $today = now()->startOfDay();
+
+        return Event::with(['globalImage'])
+            ->where('is_active', true)
+            ->selectRaw('*, ABS(DATEDIFF(start_date, ?)) as date_diff', [$today->format('Y-m-d')])
+            ->orderBy('date_diff', 'asc')
+            ->orderBy('start_date', 'asc')
+            ->first();
+    }
 }

@@ -144,6 +144,14 @@ class EventController extends Controller
         //
     }
 
+    public function getClosestEventToToday()
+    {
+        $event = $this->event_repository->getClosestEventToToday();
+        return Inertia::render('Guest/Welcome', [
+            'event' => $event
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      */

@@ -2,12 +2,21 @@
 import PrimaryButton from '@/Components/buttons/PrimaryButton.vue';
 import SecondaryButton from '@/Components/buttons/SecondaryButton.vue';
 import Footer from '@/Components/Footer.vue';
+import AppNav from '@/Components/navs/AppNav.vue';
 import GuestNav from '@/Components/navs/GuestNav.vue';
+import GuestNavSocial from '@/Components/navs/GuestNavSocial.vue';
 import { themeState } from '@/composables/theme/preference';
 import MasterLayout from '@/Layouts/MasterLayout.vue';
 import { Link, Head, usePage } from '@inertiajs/vue3';
 import { ref, onMounted } from 'vue'
 
+
+const props = defineProps({
+  event: {
+    type: Object,
+    required: true,
+  },
+});
 
 const cards = [
     {
@@ -41,7 +50,6 @@ const cards = [
     img: 'https://images.pexels.com/photos/4542836/pexels-photo-4542836.jpeg',
     },
 ];
-
 
 const faqs = [
   {
@@ -125,9 +133,10 @@ window.addEventListener('resize', () => {
 
 <template>
     <Head title="Vienvenidos" />
+    <AppNav />
     <MasterLayout>
         <section class="min-h-screen !p-4 sm:!p-8 flex w-full relative">
-            <div class="rounded-3xl px-4 lg:px-0 w-full overflow-hidden relative z-10 bg-cover object-cover bg-center" :style="`background-image: url('https://images.pexels.com/photos/167491/pexels-photo-167491.jpeg')`">
+            <div class="rounded-3xl px-4 lg:px-0 w-full overflow-hidden relative z-10 bg-cover object-cover bg-center" :style="`background-image: url(/storage/${event.global_image.file_path})`">
                <div class="absolute top-0 left-0 px-4 lg:px-0 w-full mt-5 !text-white !stroke-white">
                  <GuestNav/>
                </div>
@@ -139,20 +148,29 @@ window.addEventListener('resize', () => {
                                 <span class="material-symbols-outlined">arrow_right_alt</span>Proximo evento
                             </div>
                             <h1 class="text-4xl lg:text-8xl font-bold mb-4 drop-shadow-lg font-bebas">
-                                The Killers 10 de Diciembre
+                                {{ event.name }}
                             </h1>
                             <p class="text-lg lg:text-xl mb-8 drop-shadow-md opacity-90">
-                                Descubre los mejores eventos y experiencias únicas en TicketOffice. ¡No te pierdas la oportunidad de vivir momentos inolvidables!
+                                {{ event.description }} ¡No te pierdas la oportunidad de vivir momentos inolvidables!
                             </p>
                         </div>
                         <div data-aos="fade-left" data-aos-duration="1300" data-aos-once="true" class="max-w-2xl flex flex-col md:flex-row md:items-center gap-5">
-                            <PrimaryButton heightbtn="!h-[70px] !text-base !w-full md:!w-auto" paddingbtn="!px-14">
-                                <span class="material-symbols-outlined text-xl mr-1">shopping_cart</span>Comprar Entradas
-                            </PrimaryButton>
+                            <Link v-if="$page.props.auth.user" :href="route('events.show', { slug: event.slug, id: event.id } )">
+                                <PrimaryButton heightbtn="!h-[70px] !text-base !w-full md:!w-auto" paddingbtn="!px-14">
+                                    <span class="material-symbols-outlined text-xl mr-1">shopping_cart</span>Comprar Entradas
+                                </PrimaryButton>
+                            </Link>
+                            <Link v-else :href="route('login', { slug: event.slug, id: event.id})">
+                                <PrimaryButton heightbtn="!h-[70px] !text-base !w-full md:!w-auto" paddingbtn="!px-14">
+                                    <span class="material-symbols-outlined text-xl mr-1">shopping_cart</span>Comprar Entradas
+                                </PrimaryButton>
+                            </Link>
 
-                            <SecondaryButton heightbtn="!h-[70px] !text-base !w-full md:!w-auto" paddingbtn="!px-14">
-                                <span>Ver eventos</span>
-                            </SecondaryButton>
+                            <Link :href="route('events.index')">
+                                <SecondaryButton heightbtn="!h-[70px] !text-base !w-full md:!w-auto" paddingbtn="!px-14">
+                                    <span>Ver eventos</span>
+                                </SecondaryButton>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -233,9 +251,11 @@ window.addEventListener('resize', () => {
                         </div>
                     </div>
                     <div class="flex justify-center">
-                        <PrimaryButton heightbtn="!h-[70px]" paddingbtn="!px-14">
-                            Ver proximos eventos
-                        </PrimaryButton>
+                        <Link :href="route('events.index')">
+                            <PrimaryButton heightbtn="!h-[70px]" paddingbtn="!px-14">
+                                Ver proximos eventos
+                            </PrimaryButton>
+                        </Link>
                     </div>
                 </div>
             </div>

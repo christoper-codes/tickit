@@ -226,7 +226,7 @@ const props = defineProps({
                         </div>
 
                         <div class="mt-5 lg:mt-0 w-full">
-                             <PrimaryButton @click="submit" :disabled="data.processing" heightbtn="!h-[60px] !text-base !w-full" paddingbtn="!px-10" :loading="loading">
+                             <PrimaryButton @click="submit" heightbtn="!h-[60px] !text-base !w-full" paddingbtn="!px-10" :loading="loading">
                                 <span class="material-symbols-outlined text-2xl !w-1/2">fingerprint</span>Registrarse ahora
                             </PrimaryButton>
                         </div>

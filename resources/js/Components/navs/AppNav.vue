@@ -20,67 +20,19 @@ const isMember = ref(true)
       ></div>
     </transition>
     <transition name="slide" mode="out-in">
-      <div
-        v-if="menuStateApp"
-        class="bg-white fixed top-0 left-0 h-screen w-[100%] md:w-[50%] lg:w-[43%] xl:w-[35%] z-30 overflow-hidden"
-      >
-        <div
-          class="h-full w-full flex flex-col items-start justify-between py-7 px-5 relative z-0"
-        >
-          <svg
-            class="absolute inset-0 size-full stroke-black/10 [mask-image:radial-gradient(100%_50%_at_top_right,white,transparent)]"
-            aria-hidden="true"
-          >
-            <defs>
-              <pattern
-                id="about-svg"
-                width="80"
-                height="80"
-                x="50%"
-                y="-1"
-                patternUnits="userSpaceOnUse"
-              >
-                <path d="M.5 200V.5H200" fill="none" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" stroke-width="0" fill="url(#about-svg)" />
-          </svg>
-            <div class="absolute -bottom-60 h-[680px] w-[500px] rounded-full blur-[150px] bg-white">
-            </div>
-          <div
-            @click="menuStateApp = !menuStateApp"
-            class="p-1 border-2 border-black/50 rounded cursor-pointer z-10"
-          >
-            <svg
-              class="w-8 h-auto stroke-black"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
+      <div v-if="menuStateApp" class="bg-white dark:!bg-neutral-800 text-neutral-800 dark:!text-white fixed top-0 left-0 h-screen w-[100%] md:w-[50%] lg:w-[43%] xl:w-[35%] z-30 overflow-hidden">
+        <div class="h-full w-full flex flex-col items-start justify-between py-7 px-5 relative z-0">
+          <svg class="absolute inset-0 size-full stroke-black/10 dark:stroke-white/20 [mask-image:radial-gradient(100%_50%_at_top_right,white,transparent)]" aria-hidden="true"><defs><pattern id="about-svg" width="80" height="80" x="50%" y="-1" patternUnits="userSpaceOnUse"><path d="M.5 200V.5H200" fill="none" /></pattern></defs><rect width="100%" height="100%" stroke-width="0" fill="url(#about-svg)" /></svg>
+          <div @click="menuStateApp = !menuStateApp" class="p-1 border-2  border-black/50 dark:border-white/50 rounded cursor-pointer z-10">
+            <svg class="w-8 h-auto stroke-black dark:stroke-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
           </div>
-          <div
-            class="w-full text-center inline-flex flex-col gap-9 2xl:gap-9 text-4xl z-10 text-neutral-800"
-          >
-            <Link
-                :href="route('events.index')"
-                class="w-full"
-                @click="menuStateApp = !menuStateApp"
-            >
+          <div class="w-full text-center inline-flex flex-col gap-9 2xl:gap-9 text-4xl z-10">
+            <Link :href="route('events.index')" class="w-full" @click="menuStateApp = !menuStateApp">
                 <div class="inline-block">
                     <div class="relative inline-block transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-500 hover:after:w-full">Eventos</div>
                 </div>
             </Link>
-            <Link
-                v-if="$page.props.auth.user"
-                :href="route('dashboard')"
-                class="w-full"
-                @click="menuStateApp = !menuStateApp"
-            >
+            <Link v-if="$page.props.auth.user" :href="route('dashboard')" class="w-full" @click="menuStateApp = !menuStateApp">
                 <div class="inline-block">
                     <div class="relative inline-block transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-500 hover:after:w-full">Mis boletos</div>
                 </div>
@@ -116,14 +68,11 @@ const isMember = ref(true)
                 </div>
             </Link>
           </div>
-          <div
-            class="flex items-center justify-center gap-3 flex-col w-full z-10"
-          >
-            <div class="flex items-center  relative text-neutral-800">
+          <div class="flex items-center justify-center gap-3 flex-col w-full z-10">
+            <div class="flex items-center relative">
                 <h2 class="font-extrabold font-bebas text-4xl !mt-1">victoria</h2>
-                <img class="w-10 h-auto absolute -top-5 -left-7" src="/storage/public/hdx-logo.png" alt="hdx logo">
             </div>
-            <div class="text-center w-full text-xs 2xl:text-sm text-neutral-400">
+            <div class="text-center w-full text-xs 2xl:text-sm">
               © {{ year }} Todos los derechos reservados.
             </div>
           </div>

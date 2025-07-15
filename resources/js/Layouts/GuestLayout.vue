@@ -106,9 +106,6 @@ if (props.user_roles && !viewVendorTopics(props.user_roles)) {
                             :close-on-content-click="false"
                             location="bottom start" origin="top center"
                             >
-                            <!-- <template v-slot:activator="{ props }">
-                                <v-btn v-bind="props" variant="text" class="text-none !h-[80px] !w-28 !text-gray-600 !bg-transparent" rounded="0"><span class="material-symbols-outlined text-lg">settings</span>Servicios</v-btn>
-                            </template> -->
 
                             <v-card min-width="500" rounded="lg" class="!bg-white backdrop-blur-sm">
                                 <v-list class="!bg-transparent">
@@ -176,9 +173,6 @@ if (props.user_roles && !viewVendorTopics(props.user_roles)) {
                         <GuestNavLink :href="route('events.index')" :active="route().current('events.index') || route().current('events.show')">
                             <span class="material-symbols-outlined text-lg">note_stack</span>Eventos
                         </GuestNavLink>
-                        <!-- <GuestNavLink :href="route('blogs.show', 1)" :active="route().current('blogs.show')">
-                            <span class="material-symbols-outlined text-lg">bookmark</span>Blogs
-                        </GuestNavLink> -->
                     </div>
                     <ErrorSession />
                     <div v-if="$page.props.auth.user && !isEventsShow" class="flex items-center gap-3">

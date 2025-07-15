@@ -103,15 +103,17 @@ const handleSearch = () => {
             class="fixed inset-0 !z-50 flex items-center justify-center bg-black/50 backdrop-blur-[9px] transition-all duration-500"
             @click.self="closeImageModal"
         >
-            <div class="bg-neutral-200 dark:bg-neutral-500 shadow-2xl rounded-lg p-3 relative max-w-full w-[90vw] md:w-[60%] flex flex-col items-center transition-all duration-500">
+            <div class="bg-neutral-200 dark:bg-neutral-500 shadow-2xl rounded-lg p-2 lg:p-3 relative max-w-full w-[90vw] md:w-[60%] flex flex-col items-center transition-all duration-500">
                 <img class="w-full h-auto rounded-lg" :src="modalImageSrc" alt="Imagen ampliada" />
             </div>
         </div>
     </transition>
     <section class="py-5 w-full relative z-20">
-        <GuestNav/>
+        <div class="px-4 lg:px-0">
+            <GuestNav/>
+        </div>
         <div class="max-w-7xl mx-auto px-4 lg:px-0 text-center mt-16">
-            <h2 class="font-bold font-bebas text-8xl">¡Encuentra tus eventos!</h2>
+            <h2 class="font-bold font-bebas text-6xl md:text-8xl">¡Encuentra tus eventos!</h2>
             <p class="mt-1">Explora los eventos más destacados y descubre lo que tenemos preparado para ti.</p>
             <div class="max-w-2xl mx-auto mt-10">
                 <v-text-field
@@ -127,14 +129,14 @@ const handleSearch = () => {
                     clearable
                 ></v-text-field>
             </div>
-            <div class="flex items-center justify-between mx-auto gap-8 mt-3 max-w-2xl">
-                <v-btn @click="filterEventsByType('todos')" variant="tonal" :class="selectedEventType === 'todos' ? '!h-[70px] !px-[67px] !bg-yellow-500 !border-b-4 !border-b-yellow-700 !overflow-hidden !text-white !rounded-2xl !relative before:!content-[\'\'] before:!w-10 before:!h-10 before:!bg-white/25 before:!absolute before:!rounded-full before:!-bottom-[13px] before:!-right-[13px]' : '!h-[70px] !px-[67px] !border-b-4 !border-b-neutral-400 !rounded-2xl !bg-neutral-100 !text-neutral-700 !overflow-hidden'">
+            <div class="flex items-center justify-between mx-auto gap-1 lg:gap-8 mt-3 max-w-2xl">
+                <v-btn @click="filterEventsByType('todos')" variant="tonal" :class="selectedEventType === 'todos' ? '!h-[60px] md:!h-[70px] !px-[23px] md:!px-[67px] !bg-yellow-500 !border-b-4 !border-b-yellow-700 !overflow-hidden !text-white !rounded-2xl !relative before:!content-[\'\'] before:!w-10 before:!h-10 before:!bg-white/25 before:!absolute before:!rounded-full before:!-bottom-[13px] before:!-right-[13px]' : '!h-[60px] md:!h-[70px] !px-[23px] md:!px-[67px] !border-b-4 !border-b-neutral-400 !rounded-2xl !bg-neutral-100 !text-neutral-700 !overflow-hidden'">
                    <span>Todos</span>
                 </v-btn>
-                <v-btn @click="filterEventsByType('deportivo')" variant="tonal" :class="selectedEventType === 'deportivo' ? '!h-[70px] !px-[67px] !bg-yellow-500 !border-b-4 !border-b-yellow-700 !overflow-hidden !text-white !rounded-2xl !relative before:!content-[\'\'] before:!w-10 before:!h-10 before:!bg-white/25 before:!absolute before:!rounded-full before:!-bottom-[13px] before:!-right-[13px]' : '!h-[70px] !px-[67px] !border-b-4 !border-b-neutral-400 !rounded-2xl !bg-neutral-100 !text-neutral-700 !overflow-hidden'">
+                <v-btn @click="filterEventsByType('deportivo')" variant="tonal" :class="selectedEventType === 'deportivo' ? '!h-[60px] md:!h-[70px] !px-[23px] md:!px-[67px] !bg-yellow-500 !border-b-4 !border-b-yellow-700 !overflow-hidden !text-white !rounded-2xl !relative before:!content-[\'\'] before:!w-10 before:!h-10 before:!bg-white/25 before:!absolute before:!rounded-full before:!-bottom-[13px] before:!-right-[13px]' : '!h-[60px] md:!h-[70px] !px-[23px] md:!px-[67px] !border-b-4 !border-b-neutral-400 !rounded-2xl !bg-neutral-100 !text-neutral-700 !overflow-hidden'">
                    <span>Deportivos</span>
                 </v-btn>
-                <v-btn @click="filterEventsByType('cultural')" variant="tonal" :class="selectedEventType === 'cultural' ? '!h-[70px] !px-[67px] !bg-yellow-500 !border-b-4 !border-b-yellow-700 !overflow-hidden !text-white !rounded-2xl !relative before:!content-[\'\'] before:!w-10 before:!h-10 before:!bg-white/25 before:!absolute before:!rounded-full before:!-bottom-[13px] before:!-right-[13px]' : '!h-[70px] !px-[67px] !border-b-4 !border-b-neutral-400 !rounded-2xl !bg-neutral-100 !text-neutral-700 !overflow-hidden'">
+                <v-btn @click="filterEventsByType('cultural')" variant="tonal" :class="selectedEventType === 'cultural' ? '!h-[60px] md:!h-[70px] !px-[23px] md:!px-[67px] !bg-yellow-500 !border-b-4 !border-b-yellow-700 !overflow-hidden !text-white !rounded-2xl !relative before:!content-[\'\'] before:!w-10 before:!h-10 before:!bg-white/25 before:!absolute before:!rounded-full before:!-bottom-[13px] before:!-right-[13px]' : '!h-[60px] md:!h-[70px] !px-[23px] md:!px-[67px] !border-b-4 !border-b-neutral-400 !rounded-2xl !bg-neutral-100 !text-neutral-700 !overflow-hidden'">
                    <span>Culturales</span>
                 </v-btn>
             </div>
@@ -149,7 +151,7 @@ const handleSearch = () => {
                 <div class="lg:col-span-2">
                     <div v-if="events.length > 0" class="py-8">
                         <div v-for="(event, index) in filteredEvents" :key="event.id"  class="space-y-5 lg:space-y-8 pb-10 mt-16">
-                            <div class="flex items-center justify-between gap-14 group" :class="index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'">
+                            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 lg:gap-14 group" :class="index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'">
                                 <div class="w-full lg:w-[40%]">
                                     <h2 class="font-bebas text-4xl font-bold lg:text-6xl">{{ event.name }}</h2>
                                     <h3 class="mt-5 inline-block"><span class="font-bold">Fecha:</span> {{ dateFormat(event.start_date) }}</h3>
@@ -163,7 +165,7 @@ const handleSearch = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="flex flex-col md:flex-row md:items-center gap-5 mt-4 w-full">
+                                    <div class="hidden flex-col md:flex-row md:items-center gap-5 mt-4 w-full lg:flex">
                                         <Link v-if="$page.props.auth.user" :href="route('events.show', { slug: event.slug, id: event.id } )" class="w-full">
                                             <PrimaryButton @click="showEvent" heightbtn="!h-[65px] !px-14 !w-full !block" :loading="loading">
                                                 <span class="material-symbols-outlined text-lg">shopping_cart</span>Comprar entradas
@@ -180,7 +182,7 @@ const handleSearch = () => {
                                 <div class="w-full lg:w-[60%]">
                                     <div
                                         @click="openImageModal(`/storage/${event.global_image.file_path}`)"
-                                        class="flex bg-cover relative h-[400px] aspect-3/4 object-cover bg-center w-full p-4 lg:p-7 rounded-xl overflow-hidden cursor-pointer transition-all duration-500 border-b-8 border-r-8 border-neutral-300 dark:border-neutral-700"
+                                        class="flex bg-cover relative h-[300px] lg:h-[400px] aspect-3/4 object-cover bg-center w-full p-4 lg:p-7 rounded-xl overflow-hidden cursor-pointer transition-all duration-500 border-b-8 border-r-8 border-neutral-300 dark:border-neutral-700"
                                         :style="`background-image: url(/storage/${event.global_image.file_path})`"
                                         >
                                         <div class="absolute top-4 left-4 z-20">
@@ -199,6 +201,18 @@ const handleSearch = () => {
                                         </div>
 
                                         <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none z-30"></div>
+                                    </div>
+                                    <div class="flex lg:hidden flex-col md:flex-row md:items-center gap-5 mt-4 w-full">
+                                        <Link v-if="$page.props.auth.user" :href="route('events.show', { slug: event.slug, id: event.id } )" class="w-full">
+                                            <PrimaryButton @click="showEvent" heightbtn="!h-[65px] !px-14 !w-full !block" :loading="loading">
+                                                <span class="material-symbols-outlined text-lg">shopping_cart</span>Comprar entradas
+                                            </PrimaryButton>
+                                        </Link>
+                                        <Link v-else :href="route('login', { slug: event.slug, id: event.id})" class="w-full">
+                                            <PrimaryButton  heightbtn="!h-[65px] !px-14 !w-full !block" :loading="loading">
+                                                <span class="material-symbols-outlined text-lg">shopping_cart</span>Comprar entradas
+                                            </PrimaryButton>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>

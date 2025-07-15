@@ -66,9 +66,6 @@ const year = new Date().getFullYear()
                 <div class="relative inline-block transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-500 hover:after:w-full">Mis boletos</div>
             </div>
             <div class="inline-block cursor-pointer">
-                <div class="relative inline-block transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-500 hover:after:w-full">Hubicación</div>
-            </div>
-            <div class="inline-block cursor-pointer">
                 <div class="relative inline-block transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-500 hover:after:w-full">Iniciar sesión</div>
             </div>
             <div class="inline-block cursor-pointer">

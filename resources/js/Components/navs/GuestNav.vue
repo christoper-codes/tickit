@@ -13,7 +13,8 @@ const user = usePage().props.auth.user;
         <div class="lg:hidden">
             <div class="flex items-center w-full justify-between relative z-20">
                 <Link :href="route('welcome')">
-                    <div class="flex items-center relative">
+                    <div class="flex gap-2 items-center relative">
+                        <img class="w-6 rounded-sm z-20 relative" src="../../../../public/img/logo-light.png" alt="brand logo">
                         <h2 class="font-extrabold font-bebas text-2xl !mt-1">victoria</h2>
                     </div>
                 </Link>
@@ -27,7 +28,8 @@ const user = usePage().props.auth.user;
         </div>
         <div class="w-full hidden lg:flex items-center justify-between !mx-auto !max-w-7xl py-5 z-20 relative">
             <Link :href="route('welcome')">
-                <div class="flex items-center  relative">
+                <div class="flex items-center gap-2 relative">
+                    <img class="w-8 rounded-sm z-20 relative" src="../../../../public/img/logo-light.png" alt="brand logo">
                     <h2 class="font-extrabold font-bebas text-4xl !mt-1">victoria</h2>
                 </div>
             </Link>

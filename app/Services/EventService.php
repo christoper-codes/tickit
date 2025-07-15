@@ -90,6 +90,19 @@ class EventService
 
     /*
     * |--------------------------------------------------------------------------
+    * | Get closest event to today
+    */
+    public function getClosestEventToToday()
+    {
+        try {
+            return $this->event_repository->getClosestEventToToday();
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /*
+    * |--------------------------------------------------------------------------
     * | Get all events with traffic
     */
     public function getAllWithTraffic()

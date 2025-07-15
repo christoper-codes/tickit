@@ -109,7 +109,7 @@ const props = defineProps({
                             <v-switch label="Recordar sesión" v-model="remember.value.value" color="cyan"></v-switch>
                             <Link :href="route('password.request')" class="text-tw-primary underline mb-7">¿Olvidaste tu contraseña?</Link>
                         </div>
-                        <PrimaryButton @click="submit" :disabled="data.processing" heightbtn="!h-[60px] !text-base !w-full md:!w-auto" paddingbtn="!px-10" :loading="loading">
+                        <PrimaryButton @click="submit" heightbtn="!h-[60px] !text-base !w-full md:!w-auto" paddingbtn="!px-10" :loading="loading">
                             <span class="material-symbols-outlined text-2xl !w-1/2">fingerprint</span>Iniciar sesión
                         </PrimaryButton>
                         <div class="lg:hidden mt-5">

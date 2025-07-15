@@ -28,4 +28,5 @@ interface EventRepositoryInterface
     public function releaseReservedSeats($event_id);
     public function getOnlyById($id);
     public function reserveSeatsToBuyBatch($event_id, $seat_catalogue_ids, $member_user_id);
+    public function getClosestEventToToday();
 }
