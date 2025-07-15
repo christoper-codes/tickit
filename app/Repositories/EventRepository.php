@@ -22,7 +22,7 @@ class EventRepository implements EventRepositoryInterface
 
     public function getAllActive()
     {
-         return Event::with(['globalImage','serie.globalSeason.stadium.globalAddress', 'globalSeason', 'eventVisibilityType'])
+         return Event::with(['globalImage','eventVisibilityType', 'eventType'])
         ->where('is_active', true)
         ->get();
     }
