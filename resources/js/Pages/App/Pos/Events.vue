@@ -1,27 +1,21 @@
 <script setup>
-import NavigationDrawer from '@/Components/NavigationDrawer.vue';
-import GuestLayout from '@/Layouts/GuestLayout.vue';
 import { Head, Link, usePage } from '@inertiajs/vue3';
 import Footer from '@/Components/Footer.vue';
 import { onMounted, ref } from 'vue';
-import ErrorSession from '@/Components/ErrorSession.vue';
 import useDateFormat from '@/composables/dateFormat';
 import useUserPolicy from '@/composables/UserPolicy';
 import PrimaryButton from '@/Components/buttons/PrimaryButton.vue';
-import SecondaryButton from '@/Components/buttons/SecondaryButton.vue';
 import GuestNav from '@/Components/navs/GuestNav.vue';
 import GuestNavSocial from '@/Components/navs/GuestNavSocial.vue';
-import { menuStateSocialMedia, menuStateApp } from '@/composables/nav/menu-state.js'
 import AppNav from '@/Components/navs/AppNav.vue';
 import CashRegisterNav from '@/Components/navs/CashRegisterNav.vue';
-import Banner from '@/Components/Banner.vue';
 import MasterLayout from '@/Layouts/MasterLayout.vue';
 
 const { dateFormat } = useDateFormat();
 const loading = ref(false);
 const filteredEvents = ref([]);
-const selectedEventType = ref('todos'); // Estado para el filtro seleccionado
-const searchQuery = ref(''); // Estado para la búsqueda
+const selectedEventType = ref('todos');
+const searchQuery = ref('');
 const { viewVendorTopics, viewAdminTopics } = useUserPolicy();
 const showEvent = () => {loading.value = true;}
 
@@ -62,7 +56,6 @@ const filterEventsByType = (type) => {
     applyFilters();
 }
 
-// Función para aplicar todos los filtros (tipo + búsqueda)
 const applyFilters = () => {
     let baseEvents = props.events.filter((event) => {
         if(event.event_visibility_type.name == 'publico'){
@@ -79,14 +72,12 @@ const applyFilters = () => {
         return false;
     });
 
-    // Filtrar por tipo
     if (selectedEventType.value !== 'todos') {
         baseEvents = baseEvents.filter(event =>
             event.event_type.name.toLowerCase() === selectedEventType.value.toLowerCase()
         );
     }
 
-    // Filtrar por búsqueda
     if (searchQuery.value.trim()) {
         baseEvents = baseEvents.filter(event =>
             event.name.toLowerCase().includes(searchQuery.value.toLowerCase().trim())
@@ -96,7 +87,6 @@ const applyFilters = () => {
     filteredEvents.value = baseEvents;
 }
 
-// Función para manejar la búsqueda
 const handleSearch = () => {
     applyFilters();
 }
