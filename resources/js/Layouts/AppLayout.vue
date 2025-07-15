@@ -30,8 +30,10 @@ const isMobile = ref(window.innerWidth < 1024);
         </transition>
         <div class="fixed w-full z-40 top-0 left-0 overflow-hidden backdrop-filter backdrop-blur-md">
             <div class="w-full bg-transparent py-5 lg:py-5 px-4 lg:px-10 flex items-center justify-end">
-                <div class="lg:flex items-center gap-4 lg:gap-6 text-gray-500 hidden">
-                    <svg @click="themeState = themeState === 'dark' ? 'light' : 'dark'" class="w-8 h-auto stroke-black dark:stroke-white cursor-pointer" data-slot="icon" fill="none" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636"></path><circle cx="12" cy="12" r="3.75" stroke-width="1.5" fill="none"></circle></svg>
+                <div class="lg:flex items-center gap-4 lg:gap-6 hidden">
+                    <h3 class="font-bold">v3.0.1</h3>
+
+                    <svg @click="themeState = themeState === 'dark' ? 'light' : 'dark'" class="w-8 h-auto stroke-black dark:stroke-white cursor-pointer" data-slot="icon" fill="none" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636"></path><circle cx="12" cy="12" r="3.75" stroke-width="1.5" fill="none"></circle></svg>
 
                     <Link :href="route('events.index')">
                         <PrimaryButton heightbtn="!h-[60px]" paddingbtn="!px-10">

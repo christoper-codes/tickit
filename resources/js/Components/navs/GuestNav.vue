@@ -45,7 +45,7 @@ const user = usePage().props.auth.user;
                     <Link :href="route('register')" class="relative inline-block transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-500 hover:after:w-full">Registrarse</Link>
                 </div>
                 <div v-if="user" class="inline-block">
-                    <Link :href="route('events.index')" class="relative inline-block transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-500 hover:after:w-full">Partidos</Link>
+                    <Link :href="route('events.index')" class="relative inline-block transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-500 hover:after:w-full">Eventos</Link>
                 </div>
                 <div v-if="user" class="inline-block">
                     <Link :href="route('dashboard')" class="relative inline-block transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-500 hover:after:w-full">Dashboard</Link>

@@ -133,11 +133,11 @@ const filterEventsByType = (type) => {
                 <v-btn @click="filterEventsByType('todos')" variant="tonal" :class="selectedEventType === 'todos' ? '!h-[70px] !px-14 !bg-yellow-500 !border-b-4 !border-b-yellow-700 !overflow-hidden !text-white !rounded-2xl !relative before:!content-[\'\'] before:!w-10 before:!h-10 before:!bg-white/25 before:!absolute before:!rounded-full before:!-bottom-[13px] before:!-right-[13px]' : '!h-[70px] !px-14 !border-b-4 !border-b-neutral-400 !rounded-2xl !bg-neutral-100 !text-neutral-700 !overflow-hidden'">
                    <span>Todos</span>
                 </v-btn>
-                <v-btn @click="filterEventsByType('cultural')" variant="tonal" :class="selectedEventType === 'cultural' ? '!h-[70px] !px-14 !bg-yellow-500 !border-b-4 !border-b-yellow-700 !overflow-hidden !text-white !rounded-2xl !relative before:!content-[\'\'] before:!w-10 before:!h-10 before:!bg-white/25 before:!absolute before:!rounded-full before:!-bottom-[13px] before:!-right-[13px]' : '!h-[70px] !px-14 !border-b-4 !border-b-neutral-400 !rounded-2xl !bg-neutral-100 !text-neutral-700 !overflow-hidden'">
-                   <span>Culturales</span>
-                </v-btn>
                 <v-btn @click="filterEventsByType('deportivo')" variant="tonal" :class="selectedEventType === 'deportivo' ? '!h-[70px] !px-14 !bg-yellow-500 !border-b-4 !border-b-yellow-700 !overflow-hidden !text-white !rounded-2xl !relative before:!content-[\'\'] before:!w-10 before:!h-10 before:!bg-white/25 before:!absolute before:!rounded-full before:!-bottom-[13px] before:!-right-[13px]' : '!h-[70px] !px-14 !border-b-4 !border-b-neutral-400 !rounded-2xl !bg-neutral-100 !text-neutral-700 !overflow-hidden'">
                    <span>Deportivos</span>
+                </v-btn>
+                <v-btn @click="filterEventsByType('cultural')" variant="tonal" :class="selectedEventType === 'cultural' ? '!h-[70px] !px-14 !bg-yellow-500 !border-b-4 !border-b-yellow-700 !overflow-hidden !text-white !rounded-2xl !relative before:!content-[\'\'] before:!w-10 before:!h-10 before:!bg-white/25 before:!absolute before:!rounded-full before:!-bottom-[13px] before:!-right-[13px]' : '!h-[70px] !px-14 !border-b-4 !border-b-neutral-400 !rounded-2xl !bg-neutral-100 !text-neutral-700 !overflow-hidden'">
+                   <span>Culturales</span>
                 </v-btn>
             </div>
         </div>
@@ -149,7 +149,7 @@ const filterEventsByType = (type) => {
         <div class="max-w-7xl min-h-screen pt-0 mx-auto z-20 relative">
             <div class="">
                 <div class="lg:col-span-2">
-                    <div v-if="events.length > 0" class="py-8 lg:pe-8">
+                    <div v-if="events.length > 0" class="py-8">
                         <div v-for="(event, index) in filteredEvents" :key="event.id"  class="space-y-5 lg:space-y-8 pb-10 mt-16">
                             <div class="flex items-center justify-between gap-14" :class="index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'">
                                 <div class="w-full lg:w-[40%]">

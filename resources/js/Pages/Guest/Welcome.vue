@@ -66,6 +66,27 @@ const faqs = [
   },
 ];
 
+const testimonials = [
+{
+    name: 'Ana Patricia',
+    role: 'Estudiante universitaria',
+    avatar: 'https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=150',
+    testimonial: 'Me encanta que pueda compartir boletos con mis amigos directamente desde la app y las promociones para estudiantes son geniales.'
+  },
+  {
+    name: 'María González',
+    role: 'Aficionada de los conciertos',
+    avatar: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=150',
+    testimonial: 'La plataforma es súper fácil de usar. Compré mis boletos en minutos. ¡Excelente servicio!'
+  },
+  {
+    name: 'Carlos Ramírez',
+    role: 'Empresario',
+    avatar: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=150',
+    testimonial: 'He usado muchas plataformas de boletos y esta es la mejor. Los abonos me permiten ahorrar mucho dinero y tiempo.'
+  },
+];
+
 const carouselRef = ref(null)
 
 const scrollLeft = () => {
@@ -145,7 +166,7 @@ window.addEventListener('resize', () => {
                         Nuestros servicios
                     </h2>
                     <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
-                        <p class="lg:w-2/3 text-lg lg:text-xl">
+                        <p class="lg:w-2/3 text-lg">
                             En nuestro sistema de boletos, hacemos que asistir a tus eventos favoritos sea fácil, rápido y seguro. Compra en línea, aprovecha promociones, adquiere abonos y elige cómo pagar, todo con la opción de atención en taquillas físicas si lo prefieres.
                         </p>
                         <div class="flex lg:items-center lg:justify-center gap-5">
@@ -219,7 +240,51 @@ window.addEventListener('resize', () => {
                 </div>
             </div>
         </section>
+        <section id="testimonial" class="max-w-7xl mx-auto relative mt-32 mb-32 !px-4 lg:!px-0">
+            <div data-aos="fade-down" data-aos-duration="1300" data-aos-once="true" class="text-center mb-12">
+                <h2 class="font-bebas text-4xl lg:text-6xl font-bold mb-4">
+                    Lo que dicen nuestros usuarios
+                </h2>
+                <p class="opacity-80">
+                    Testimonios reales de personas que han confiado en nuestra plataforma
+                </p>
+            </div>
 
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div v-for="(testimonial, index) in testimonials" :key="index"
+                     data-aos="fade-up"
+                     data-aos-duration="1300"
+                     data-aos-once="true"
+                     :data-aos-delay="index * 200"
+                     class="bg-white dark:!bg-neutral-800 rounded-xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-500">
+
+                    <div class="text-tw-primary text-4xl mb-4">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-10zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/></svg>
+                    </div>
+
+                    <p class="text-gray-700 dark:text-gray-300 mb-6 italic">
+                        "{{ testimonial.testimonial }}"
+                    </p>
+
+                    <div class="flex items-center">
+                        <img :src="testimonial.avatar" :alt="testimonial.name" class="w-12 h-12 rounded-full object-cover mr-4 border-2 border-primary/20">
+                        <div>
+                            <h4 class="font-semibold text-gray-900 dark:text-white">{{ testimonial.name }}</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">
+                                {{ testimonial.role }}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center mt-4">
+                        <div class="flex text-yellow-400">
+                            <svg v-for="i in 5" :key="i" class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        </div>
+                        <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">5.0</span>
+                    </div>
+                </div>
+            </div>
+        </section>
         <section id="contact" class="max-w-7xl mx-auto relative mb-24 !px-4 lg:!px-0">
             <div data-aos="fade-left" data-aos-duration="1300" data-aos-once="true" class="mt-24 w-full">
                 <h3 class="font-bebas text-4xl lg:text-6xl font-bold">Ubicación del estadio</h3>
