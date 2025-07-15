@@ -6,9 +6,8 @@ import GuestNav from '@/Components/navs/GuestNav.vue';
 import { themeState } from '@/composables/theme/preference';
 import MasterLayout from '@/Layouts/MasterLayout.vue';
 import { Link, Head, usePage } from '@inertiajs/vue3';
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
-const carouselRef = ref(null)
 
 const cards = [
     {
@@ -67,17 +66,40 @@ const faqs = [
   },
 ];
 
+const carouselRef = ref(null)
 
-function scrollLeft() {
+const scrollLeft = () => {
   if (carouselRef.value) {
     carouselRef.value.scrollBy({ left: -320, behavior: 'smooth' })
   }
 }
-function scrollRight() {
+const scrollRight = () => {
   if (carouselRef.value) {
     carouselRef.value.scrollBy({ left: 320, behavior: 'smooth' })
   }
 }
+
+const centerCarousel = () => {
+  if (carouselRef.value && window.innerWidth >= 1024) {
+    const container = carouselRef.value;
+    const scrollWidth = container.scrollWidth;
+    const clientWidth = container.clientWidth;
+    const scrollPosition = (scrollWidth - clientWidth) / 2;
+    container.scrollLeft = scrollPosition;
+  }
+}
+
+onMounted(() => {
+  setTimeout(centerCarousel, 100);
+});
+
+window.addEventListener('resize', () => {
+  if (window.innerWidth >= 1024) {
+    centerCarousel();
+  } else if (carouselRef.value) {
+    carouselRef.value.scrollLeft = 0;
+  }
+});
 </script>
 
 <template>
@@ -138,8 +160,8 @@ function scrollRight() {
                 </div>
                 <div class="relative !pb-12 md:!pb-32">
                     <div class="relative !-ml-7 lg:!-ml-0">
-                    <div class="custom-scrollbar relative mt-4 overflow-x-auto" ref="carouselRef">
-                        <div class="relative !mx-auto flex max-w-7xl flex-col !px-4 lg:!px-0 !py-4 xl:flex-row gap-8">
+                    <div class="custom-scrollbar relative mt-4 overflow-x-auto scroll-smooth" ref="carouselRef">
+                        <div class="relative !mx-auto flex max-w-none flex-col !px-4 lg:!px-0 !py-4 xl:flex-row gap-8 justify-center">
                         <div class="relative flex items-stretch !max-w-none gap-6 md:gap-8 !p-2">
                             <div v-for="(card, index) in cards" :key="index" class="z-10 relative max-w-[20rem] shrink-0 md:max-w-sm bg-gray-200 dark:!bg-white/20 !p-2 rounded-lg shadow-lg">
                             <div class="flex bg-cover relative h-[600px] aspect-3/4 object-cover w-full !p-4 rounded-lg overflow-hidden" :style="`background-image: url('${card.img}')`">
