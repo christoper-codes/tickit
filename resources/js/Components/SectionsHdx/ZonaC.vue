@@ -30,7 +30,7 @@ onMounted(() => {
     if (elemento) {
         if (props.action === "status") {
             if (seat.seat_catalogue_status.name === 'disponible') {
-                elemento.classList.add('fill-yellow-500');
+                elemento.classList.add('fill-neutral-400');
             } else if (seat.seat_catalogue_status.name === 'reservado') {
                 if (props.purchaseOnline) {
                     elemento.classList.add('fill-gray-600');
@@ -46,7 +46,7 @@ onMounted(() => {
                 const existSeat = props.seatsSelected.find(s => s.seat_catalogue.code === seat.seat_catalogue.code);
 
                 if (!existSeat) {
-                    elemento.classList.remove('fill-yellow-500', 'fill-pink-600', 'fill-gray-600');
+                    elemento.classList.remove('fill-neutral-400', 'fill-pink-600', 'fill-gray-600');
                     elemento.classList.add('fill-green-500');
                 }
                 emit('add-seat', seat);
@@ -58,7 +58,7 @@ onMounted(() => {
         }else if (props.action === "promotion") {
 
             if (seat.promotions.length === 0) {
-                elemento.classList.add('fill-yellow-500');
+                elemento.classList.add('fill-neutral-400');
             } else if (seat.promotions.length > 0) {
                 elemento.classList.add('fill-purple-500');
             }
@@ -68,7 +68,7 @@ onMounted(() => {
                 const existSeat = props.seatsSelected.find(s => s.seat_catalogue.code === seat.seat_catalogue.code);
 
                 if (!existSeat) {
-                    elemento.classList.remove('fill-yellow-500', 'fill-purple-500');
+                    elemento.classList.remove('fill-neutral-400', 'fill-purple-500');
                     elemento.classList.add('fill-green-500');
                 }
                 emit('add-seat', seat);
@@ -79,13 +79,13 @@ onMounted(() => {
 
         }else if (props.action === "price") {
 
-            elemento.classList.add('fill-yellow-500');
+            elemento.classList.add('fill-neutral-400');
 
             const handleClick = () => {
                 const existSeat = props.seatsSelected.find(s => s.seat_catalogue.code === seat.seat_catalogue.code);
 
                 if (!existSeat) {
-                    elemento.classList.remove('fill-yellow-500');
+                    elemento.classList.remove('fill-neutral-400');
                     elemento.classList.add('fill-green-500');
                 }
                 emit('add-seat', seat);
@@ -102,7 +102,7 @@ onMounted(() => {
 
                         elemento.classList.add('cursor-not-allowed', 'fill-purple-500');
                     }else{
-                        elemento.classList.add('cursor-pointer', 'fill-yellow-500');
+                        elemento.classList.add('cursor-pointer', 'fill-neutral-400');
                     }
                     //elemento.classList.remove('cursor-not-allowed', 'fill-purple-500', 'fill-red-500');
                     const handleClick = () => {
@@ -114,18 +114,16 @@ onMounted(() => {
                             elemento.classList.add('fill-pink-500');
                         } else {
                             elemento.classList.remove('fill-green-500');
-                            elemento.classList.add('fill-yellow-500');
+                            elemento.classList.add('fill-neutral-400');
                         }
 
                         emit('add-seat', seat);
                     } else {
                         if(seat.seat_catalogue_status.name === 'reservado') {
-                            console.log('reservado no existe' )
                             elemento.classList.remove('fill-pink-500');
                             elemento.classList.add('fill-green-500');
                         } else {
-                            console.log('disponible no existe' )
-                            elemento.classList.remove('fill-yellow-500');
+                            elemento.classList.remove('fill-neutral-400');
                             elemento.classList.add('fill-green-500');
                         }
                         emit('add-seat', seat);
@@ -168,7 +166,7 @@ watch(() => props.seatsSelected, (newSeatsSelected, oldSeatsSelected) => {
             if (props.action === "status") {
                 elemento.classList.remove('fill-green-500');
                 if (seat.seat_catalogue_status.name === 'disponible') {
-                    elemento.classList.add('fill-yellow-500');
+                    elemento.classList.add('fill-neutral-400');
                 } else if (seat.seat_catalogue_status.name === 'reservado') {
                     elemento.classList.add('fill-pink-600');
                 } else if (seat.seat_catalogue_status.name === 'inhabilitado') {
@@ -177,7 +175,7 @@ watch(() => props.seatsSelected, (newSeatsSelected, oldSeatsSelected) => {
             }else if (props.action === "promotion") {
                 elemento.classList.remove('fill-green-500');
                 if (seat.promotions.length === 0) {
-                    elemento.classList.add('fill-yellow-500');
+                    elemento.classList.add('fill-neutral-400');
                 } else if (seat.promotions.length > 0) {
                     elemento.classList.add('fill-purple-500');
                 }
@@ -188,7 +186,7 @@ watch(() => props.seatsSelected, (newSeatsSelected, oldSeatsSelected) => {
                 }else{
                     elemento.classList.remove('fill-green-500');
                     elemento.classList.remove('fill-purple-500');
-                    elemento.classList.add('fill-yellow-500');
+                    elemento.classList.add('fill-neutral-400');
                 }
             }else{
                 if(seat.seat_catalogue_status.name === 'reservado') {
@@ -196,7 +194,7 @@ watch(() => props.seatsSelected, (newSeatsSelected, oldSeatsSelected) => {
                     elemento.classList.add('fill-pink-500');
                 } else {
                     elemento.classList.remove('fill-green-500');
-                    elemento.classList.add('fill-yellow-500');
+                    elemento.classList.add('fill-neutral-400');
                 }
             }
         }
@@ -228,9 +226,9 @@ watch(() => props.seatsAutoClic, (newSeatsSelected = [], oldSeatsSelected = []) 
     <defs>
         <linearGradient id="Degradado_sin_nombre_3" x1="161.08" y1="291.47" x2="589.77" y2="-137.22"
             gradientUnits="userSpaceOnUse">
-            <stop offset="0" stop-color="#ff9dff" />
-            <stop offset="0.65" stop-color="#a161ff" />
-            <stop offset="1" stop-color="#7343ff" />
+            <stop offset="0" stop-color="#9CA3AF" />
+            <stop offset="0.65" stop-color="#9CA3AF" />
+            <stop offset="1" stop-color="#9CA3AF" />
         </linearGradient>
     </defs>
     <path id="CA1"

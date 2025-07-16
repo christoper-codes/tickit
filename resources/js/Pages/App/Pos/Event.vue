@@ -81,15 +81,15 @@ function loadSvg(id) {
 
                 const { x, y } = getCenterCoordinates(id);
                 if(window.innerWidth > 1024) {
-                    panZoomInstance.smoothZoom(x, y, 2.3);
+                    panZoomInstance.smoothZoom(x, y, 2);
                 }else {
                     panZoomInstance.smoothZoom(x, y, 5);
                 }
 
             }
-            if(window.innerWidth > 1024) {
+            if(window.innerWidth > 1024 && id == 'zones_hdx') {
                 panZoomInstance.smoothZoom(1300, 300, 0.9);
-            } else {
+            } else if(window.innerWidth <= 1024 && id == 'zones_hdx') {
                 panZoomInstance.smoothZoom(100, 350, 1.7);
             }
         }
@@ -603,7 +603,7 @@ const handleSectionClick = (section) => {
             if(section == 'zonaC'){
                 seatsCSection.value = success.data.data;
                 loadSvg('zonaC');
-                viewSelectedSection.value = 'Zona C';
+                viewSelectedSection.value = 'Zona Principal';
                 const stadiumHdxImg = document.querySelector('#stadium-hdx-img');
                 stadiumHdxImg.classList.remove('rotate-0');
                 stadiumHdxImg.classList.add('rotate-90');
@@ -1476,8 +1476,8 @@ watch(() => paymentInstallmentSelected.value, () => {
         </v-dialog>
 
         <transition name="slide">
-            <div  v-if="seatsSelected.length > 0 && tab == 'seats'" class="hidden fixed lg:top-7 rounded-lg shadow-xl p-2 right-3 max-h-60 overflow-y-auto w-60 z-[60] lg:flex items-center justify-center">
-                <table class="min-w-full divide-y divide-gray-200">
+            <div  v-if="seatsSelected.length > 0 && tab == 'seats'" class="hidden fixed lg:top-7 rounded-lg shadow-xl p-2 right-3 max-h-60 overflow-y-auto w-60 z-[60] lg:flex items-center justify-center bg-white/50 dark:!bg-neutral-800/50 backdrop-blur-xl dark:!text-white">
+                <table class="min-w-full divide-y divide-gray-200 dark:divide-neutral-500">
                     <thead>
                         <tr>
                         <th scope="col" class=" p-2 text-start whitespace-nowrap">
@@ -1499,13 +1499,13 @@ watch(() => paymentInstallmentSelected.value, () => {
                         </tr>
                     </thead>
 
-                    <tbody class="divide-y divide-gray-200">
+                    <tbody>
                         <tr v-for="seat in seatsSelected" :key="seat.seat_catalogue.code">
                         <td class="size-px whitespace-nowrap  p-2">
-                            <span class="text-sm text-gray-800">{{ seat.seat_catalogue.zone }}{{ seat.seat_catalogue.row }}{{ seat.seat_catalogue.seat }}</span>
+                            <span class="text-sm">{{ seat.seat_catalogue.zone }}{{ seat.seat_catalogue.row }}{{ seat.seat_catalogue.seat }}</span>
                         </td>
                         <td class="size-px whitespace-nowrap  p-2">
-                            <span class="text-sm text-green-600">
+                            <span class="text-sm">
                                 <div v-for="priceType in seat.price_types" :key="priceType.id">
                                     <div>
                                         <span v-if="priceType.name === (purchaseType == 'abonado' ? 'abonado' : 'regular')">
@@ -1525,7 +1525,7 @@ watch(() => paymentInstallmentSelected.value, () => {
         </transition>
         <transition name="slide">
             <div v-if="seatsSelected.length > 0 && tab == 'seats'" @click="scrollTopaymentSection" class="fixed bottom-5 lg:bottom-16 right-3 z-[60]">
-                <div class="flex items-center text-xs lg:text-base gap-2 justify-center bg-gradient-to-r from-green-500 to-cyan-500 text-white cursor-pointer hover:scale-105 transition-transform duration-500 px-4 lg:px-6 py-3 lg:py-4 rounded-2xl">
+                <div class="flex items-center text-xs lg:text-base gap-2 justify-center bg-green-500 border-b-4 border-b-green-700 text-white cursor-pointer hover:scale-105 transition-transform duration-500 px-4 lg:px-6 py-3 lg:py-4 rounded-2xl">
                     <span class="material-symbols-outlined z-20 text-xl lg:text-xl">arrow_forward</span>Procesar Compra
                 </div>
             </div>
@@ -1581,24 +1581,24 @@ watch(() => paymentInstallmentSelected.value, () => {
                         <h3 class="text-center font-bold text-lg mb-3 text-gray-700">Selecciona una promoción:</h3>
                         <v-radio-group v-model="selectedPromotion" inline>
                             <div v-for="(promotion, index) in promotionTypesCo" :key="index">
-                                    <div v-if="promotion.percent_allow > 0">
-                                        <div class="border-4 border-yellow-500 rounded-xl bg-white p-2 m-3">
-                                            <v-radio color="yellow" :key="index" :value="promotion">
-                                                <template v-slot:label>
-                                                    <div>{{ promotion.description }} de {{ promotion.percent_allow }}% ({{ formatFirstLetterUppercase(promotion.type) }})<strong class="text-yellow-700">. Asientos de {{ formatPrice(promotion.final_price) }}</strong></div>
-                                                </template>
-                                            </v-radio>
-                                        </div>
+                                <div v-if="promotion.percent_allow > 0">
+                                    <div class="border-4 border-yellow-500 rounded-xl bg-white p-2 m-3">
+                                        <v-radio color="yellow" :key="index" :value="promotion">
+                                            <template v-slot:label>
+                                                <div>{{ promotion.description }} de {{ promotion.percent_allow }}% ({{ formatFirstLetterUppercase(promotion.type) }})<strong class="text-yellow-700">. Asientos de {{ formatPrice(promotion.final_price) }}</strong></div>
+                                            </template>
+                                        </v-radio>
                                     </div>
-                                    <div v-else-if="promotion.quantity > promotion.generic_seats_allowed">
-                                        <div class="border-4 border-purple-500 rounded-xl bg-white p-2 m-3">
-                                            <v-radio color="cyan" :key="index" :value="promotion">
-                                                <template v-slot:label>
-                                                    <div>{{ promotion.description }}<strong class="text-purple-700">. Para asientos con precio de {{ formatPrice(promotion.final_price) }}</strong></div>
-                                                </template>
-                                            </v-radio>
-                                        </div>
+                                </div>
+                                <div v-else-if="promotion.quantity > promotion.generic_seats_allowed">
+                                    <div class="border-4 border-purple-500 rounded-xl bg-white p-2 m-3">
+                                        <v-radio color="cyan" :key="index" :value="promotion">
+                                            <template v-slot:label>
+                                                <div>{{ promotion.description }}<strong class="text-purple-700">. Para asientos con precio de {{ formatPrice(promotion.final_price) }}</strong></div>
+                                            </template>
+                                        </v-radio>
                                     </div>
+                                </div>
                             </div>
                         </v-radio-group>
                     </v-col>
@@ -1687,7 +1687,7 @@ watch(() => paymentInstallmentSelected.value, () => {
                                 <div class="flex flex-col lg:flex-row items-start justify-center gap-10 lg:gap-16">
                                     <div class="grid grid-cols-3 items-start justify-center gap-5 w-full lg:w-auto">
                                         <div class="flex items-center justify-center gap-1 flex-col">
-                                            <div class="size-14 rounded-t-2xl rounded-b-md bg-neutral-200"></div>
+                                            <div class="size-14 rounded-t-2xl rounded-b-md bg-neutral-400"></div>
                                             <p class="text-center text-sm">Disponible</p>
                                         </div>
                                         <div class="flex items-center justify-center gap-1 flex-col">
@@ -1747,7 +1747,7 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                         </div>
                                                     </div>
                                                     <div class="items-center flex-col gap-1 hidden lg:flex relative">
-                                                        <h3 class="font-bold font-bebas text-4xl">{{ viewSelectedSection}}</h3>
+                                                        <h3 class="font-bold font-bebas text-4xl lg:text-5xl">{{ viewSelectedSection}}</h3>
                                                     </div>
                                                     <div class="flex items-center gap-3">
                                                         <SecondaryButton @click="resetZoom" heightbtn="!h-[50px] lg:!h-[60px]" paddingbtn="!px-9 lg:!px-12">
@@ -1798,9 +1798,9 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                 <template v-slot:default="{ isActive }">
                                                     <div class="w-full h-full">
                                                         <div class="h-screen flex items-center justify-center w-full">
-                                                            <div class="p-3 animate-spin drop-shadow-2xl bg-gradient-to-bl from-pink-400 via-purple-400 to-indigo-600 md:w-48 md:h-48 h-32 w-32 aspect-square rounded-full">
-                                                                <div class="flex items-center justify-center rounded-full h-full w-full bg-white dark:bg-zinc-900 background-blur-md">
-                                                                    <img class="w-14 h-auto" src="https://victoriadexalapa.com.mx/wp-content/uploads/2024/01/cropped-SIMBOLO-HDX-2023-e1705427673690-1.png" alt="img logo">
+                                                            <div class="animate-spin drop-shadow-2xl border-8 border-white bg-transparent backdrop-blur-md md:w-40 md:h-40 h-32 w-32 aspect-square rounded-full">
+                                                                <div class="flex items-center justify-center rounded-full h-full w-full">
+                                                                    <span class="material-symbols-outlined !text-4xl text-white">confirmation_number</span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1829,59 +1829,59 @@ watch(() => paymentInstallmentSelected.value, () => {
                                             <div v-if="seatsSelected.length > 0" class="payment-secction">
                                                 <div class="w-full ">
                                                     <v-expansion-panels v-model="panel" multiple>
-                                                        <v-expansion-panel class="!px-3 lg:!px-10 !rounded-2xl !py-2 !border shadow-lg">
+                                                        <v-expansion-panel class="!px-3 lg:!px-10 !rounded-2xl !py-2 !border shadow-lg dark:!border-neutral-600">
                                                             <v-expansion-panel-title expand-icon="mdi-menu-down">
                                                                 Asientos seleccionados
                                                             </v-expansion-panel-title>
                                                             <v-expansion-panel-text>
                                                                 <div>
-                                                                    <table class="min-w-full divide-y divide-gray-200">
-                                                                        <thead class="bg-gray-100">
+                                                                    <table class="min-w-full text-neutral-800 dark:!text-neutral-200 divide-y divide-gray-200 dark:!divide-neutral-600">
+                                                                        <thead>
                                                                             <tr>
                                                                             <th scope="col" class=" p-2 text-start whitespace-nowrap">
-                                                                                <span class="text-xs font-semibold uppercase tracking-wide text-gray-800">
+                                                                                <span class="text-xs font-semibold uppercase tracking-wide">
                                                                                     zona
                                                                                 </span>
                                                                             </th>
 
                                                                             <th scope="col" class=" p-2 text-start whitespace-nowrap">
-                                                                                <span class="text-xs font-semibold uppercase tracking-wide text-gray-800">
+                                                                                <span class="text-xs font-semibold uppercase tracking-wide">
                                                                                     Fila
                                                                                 </span>
                                                                             </th>
 
                                                                             <th scope="col" class=" p-2 text-start whitespace-nowrap">
-                                                                                <span class="text-xs font-semibold uppercase tracking-wide text-gray-800">
+                                                                                <span class="text-xs font-semibold uppercase tracking-wide">
                                                                                     asiento
                                                                                 </span>
                                                                             </th>
 
                                                                             <th scope="col" class=" p-2 text-start whitespace-nowrap">
-                                                                                <span class="text-xs font-semibold uppercase tracking-wide text-gray-800">
+                                                                                <span class="text-xs font-semibold uppercase tracking-wide">
                                                                                 precio
                                                                                 </span>
                                                                             </th>
                                                                             <th scope="col" class=" p-2 text-start whitespace-nowrap">
-                                                                                <span class="text-xs font-semibold uppercase tracking-wide text-gray-800">
+                                                                                <span class="text-xs font-semibold uppercase tracking-wide">
                                                                                     Acción
                                                                                 </span>
                                                                             </th>
                                                                             </tr>
                                                                         </thead>
 
-                                                                        <tbody class="divide-y divide-gray-200">
+                                                                        <tbody>
                                                                             <tr v-for="seat in seatsSelected" :key="seat.seat_catalogue.code">
                                                                             <td class="size-px whitespace-nowrap p-2">
-                                                                                <span class="text-sm text-gray-800">{{ seat.seat_catalogue.zone }}</span>
+                                                                                <span class="text-sm">{{ seat.seat_catalogue.zone }}</span>
                                                                             </td>
                                                                             <td class="size-px whitespace-nowrap  p-2">
-                                                                                <span class="text-sm text-gray-800">{{ seat.seat_catalogue.row }}</span>
+                                                                                <span class="text-sm">{{ seat.seat_catalogue.row }}</span>
                                                                             </td>
                                                                             <td class="size-px whitespace-nowrap  p-2">
-                                                                                <span class="text-sm text-gray-800">{{ seat.seat_catalogue.seat }}</span>
+                                                                                <span class="text-sm">{{ seat.seat_catalogue.seat }}</span>
                                                                             </td>
                                                                             <td class="size-px whitespace-nowrap  p-2">
-                                                                                <span class="text-sm text-green-600">
+                                                                                <span class="text-sm text-green-600 dark:text-green-400">
                                                                                     <div v-for="priceType in seat.price_types" :key="priceType.id">
                                                                                         <div>
                                                                                             <span v-if="priceType.name === (purchaseType == 'abonado' ? 'abonado' : 'regular')">
@@ -1941,7 +1941,7 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                                 ></v-select>
 
                                                                 <div v-if="paymentTypesSelected.some(type => type.name === 'tarjeta')">
-                                                                    <h4 class="text-xs px-4 py-1 rounded-full font-bold text-purple-600 text-center mb-2">
+                                                                    <h4 class="text-xs px-4 py-1 rounded-full font-bold text-center mb-2">
                                                                         Complemento para pago con tarjeta
                                                                     </h4>
                                                                     <v-select
@@ -2127,7 +2127,7 @@ watch(() => paymentInstallmentSelected.value, () => {
 
                                                                 <p v-if="!valid" class="py-4 px-4 rounded-lg bg-red-100 border-l-[6px] border-l-red-500 text-red-600 text-xs my-4">{{ error }}</p>
 
-                                                                <div class="mt-5 text-gray-700 "> <!-- :disabled="!form" -->
+                                                                <div class="mt-5">
                                                                     <div v-if="!viewVendorTopics(user_roles)" class="flex items-center justify-between ">
                                                                         <v-radio-group inline label="Tipo de compra a realizar" v-model="purchaseType">
                                                                             <v-radio
@@ -2214,10 +2214,10 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                                     </div>
 
                                                                     <div v-if="purchaseStatus == 'retry'">
-                                                                        <p class="py-4 px-4 rounded-lg bg-red-100 border-l-[6px] border-l-red-500 text-red-600 text-xs my-4">Estás en el proceso final de compra. Si se requiere agregar otro asiento, cancele la selección actual y vuelva a reintente.</p>
+                                                                        <p class="py-4 px-4 rounded-lg bg-red-100 dark:bg-red-100/10 border-l-[6px] border-l-red-500 text-red-600 dark:text-white text-xs my-4">Estás en el proceso final de compra. Si se requiere agregar otro asiento, cancele la selección actual y vuelva a reintente.</p>
                                                                     </div>
                                                                     <div v-if="purchaseType == 'partido'">
-                                                                        <p class="py-4 px-4 rounded-lg bg-green-100 border-l-[6px] border-l-green-500 text-green-600 text-xs my-4">Los boletos adquiridos serán válidos solo para un partido.</p>
+                                                                        <p class="py-4 px-4 rounded-lg bg-green-100 dark:bg-green-100/10 border-l-[6px] border-l-green-500 text-green-600 dark:text-white text-xs my-4">Los boletos adquiridos serán válidos solo para un partido.</p>
                                                                     </div>
                                                                     <div v-else-if="purchaseType == 'serie'">
                                                                         <p class="py-4 px-4 rounded-lg bg-purple-100 border-l-[6px] border-l-purple-500 text-purple-600 text-xs my-4">Los boletos adquiridos serán válidos solo para dos partidos del mismo evento.</p>
@@ -2232,7 +2232,7 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                                         v-if="showButtonPayment"
                                                                         @click="showPaymentDrawer"
                                                                         size="large" block
-                                                                        class="text-none !text-white !bg-gradient-to-r !rounded-2xl !h-[60px] !from-purple-600 !to-pink-400"
+                                                                        class="text-none !text-white !bg-gradient-to-r !rounded-2xl !h-[60px] !from-tw-primary !to-blue-500 !border-b-4 !border-b-tw-primary-dark"
                                                                     >
                                                                         <span class="material-symbols-outlined text-xl !w-1/2">shopping_cart</span>Adquirir boletos
                                                                     </v-btn>
@@ -2242,7 +2242,7 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                                         :loading="loadingg"
                                                                         type="submit"
                                                                         size="large" block
-                                                                        class="text-none !text-white !bg-gradient-to-r !rounded-2xl !h-[60px] !from-purple-600 !to-pink-400"
+                                                                        class="text-none !text-white !bg-gradient-to-r !rounded-2xl !h-[60px] !from-tw-primary !to-blue-500 !border-b-4 !border-b-tw-primary-dark"
                                                                     >
                                                                         <span class="material-symbols-outlined text-xl !w-1/2">shopping_cart</span>Adquirir boletos
                                                                     </v-btn>
@@ -2251,7 +2251,7 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                                         :loading="loadingg"
                                                                         type="submit"
                                                                         size="large" block
-                                                                        class="text-none !text-white !bg-gradient-to-r !rounded-2xl !h-[60px] !from-purple-600 !to-pink-400"
+                                                                        class="text-none !text-white !bg-gradient-to-r !rounded-2xl !h-[60px] !from-tw-primary !to-blue-500 !border-b-4 !border-b-tw-primary-dark"
                                                                     >
                                                                         <span class="material-symbols-outlined text-xl !w-1/2">shopping_cart</span>Adquirir boletos
                                                                     </v-btn>
@@ -2261,14 +2261,14 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                                         :disabled="!form"
                                                                         type="submit"
                                                                         size="large" block
-                                                                        class="text-none !text-white !bg-gradient-to-r !rounded-2xl !h-[60px] !from-purple-600 !to-pink-400"
+                                                                        class="text-none !text-white !bg-gradient-to-r !rounded-2xl !h-[60px] !from-tw-primary !to-blue-500 !border-b-4 !border-b-tw-primary-dark"
                                                                     >
                                                                         <span class="material-symbols-outlined text-xl !w-1/2">shopping_cart</span>Adquirir boletos
                                                                     </v-btn>
                                                                     <v-btn
                                                                         @click="selectZones"
                                                                         size="large" block
-                                                                        class="text-none !text-white !bg-gradient-to-b !rounded-2xl !h-[60px] !from-red-600 !to-red-400 mt-5 mb-20"
+                                                                        class="text-none !text-white !bg-gradient-to-b !rounded-2xl !h-[60px] !from-red-600 !to-red-400 mt-5 mb-20 !border-b-4 !border-b-red-700"
                                                                     >
                                                                         <span class="material-symbols-outlined text-xl !w-1/2">delete</span>Cancelar seleccion
                                                                     </v-btn>
@@ -2519,7 +2519,7 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                                         </template>
                                                                         <template v-slot:default="{ isActive }">
                                                                             <v-card class="!relative">
-                                                                                <div class="p-7 relative overflow-y-auto text-gray-700 ">
+                                                                                <div class="p-7 relative overflow-y-auto">
                                                                                     <h2 class="font-bebas font-bold text-3xl">Resumen de compra</h2>
                                                                                     <h2 class="font-bebas font-bold text-2xl mt-5">Total: {{ formatPrice(totalAmount) }}</h2>
                                                                                     <div class="flex flex-col lg:flex-row gap-3">
@@ -2570,9 +2570,9 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                                                         <div v-if="installmentSale">Total restante : <span>{{ formatPrice( parseFloat(totalAmount) - ((parseFloat(amountToPayCard) || 0) + (parseFloat(amountToPayCash) || 0))  ) }}</span></div>
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="flex items-center justify-end md:gap-3 absolute bottom-5 pt-5 right-5 bg-white">
-                                                                                        <v-btn color="red" variant="tonal" class="text-none !px-4 lg:!px-8 mr-2 !h-[60px] lg:!h-[70px] !rounded-2xl" text="Cancelar" @click="isActive.value = false"></v-btn>
-                                                                                        <v-btn :loading="loading" variant="elevated" class="text-none !px-4 lg:!px-8 !h-[60px] lg:!h-[70px] !rounded-2xl !bg-green-500 !text-white" text="Reservar y comprar" @click="onSubmitConfirm(isActive)"></v-btn>
+                                                                                <div class="flex items-center justify-end md:gap-3 absolute bottom-5 pt-5 right-5 backdrop-blur-xl">
+                                                                                        <v-btn color="red" variant="tonal" class="text-none !px-4 lg:!px-8 mr-2 !h-[60px] lg:!h-[70px] !rounded-2xl !border-b-4 !border-b-red-700/50" text="Cancelar" @click="isActive.value = false"></v-btn>
+                                                                                        <v-btn :loading="loading" variant="elevated" class="text-none !px-4 lg:!px-8 !h-[60px] lg:!h-[70px] !rounded-2xl !border-b-4 !border-b-green-700 !bg-green-500 !text-white" text="Reservar y comprar" @click="onSubmitConfirm(isActive)"></v-btn>
                                                                                     </div>
                                                                             </v-card>
                                                                         </template>

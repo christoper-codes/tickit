@@ -103,7 +103,7 @@ const handleSearch = () => {
             class="fixed inset-0 !z-50 flex items-center justify-center bg-black/50 backdrop-blur-[9px] transition-all duration-500"
             @click.self="closeImageModal"
         >
-            <div class="bg-neutral-200 shadow-2xl rounded-lg p-2 relative max-w-full w-[90vw] md:w-[60%] flex flex-col items-center transition-all duration-500">
+            <div class="bg-neutral-200 dark:bg-neutral-500 shadow-2xl rounded-lg p-2 relative max-w-full w-[90vw] md:w-[60%] flex flex-col items-center transition-all duration-500">
                 <img class="w-full h-auto rounded-lg" :src="modalImageSrc" alt="Imagen ampliada" />
             </div>
         </div>

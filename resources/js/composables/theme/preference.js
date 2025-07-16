@@ -9,7 +9,6 @@ const darkModeState = reactive({
 export const themeState = ref(darkModeState.isDark ? 'dark' : 'light')
 
 watch(themeState, (val) => {
-  console.log('Theme changed to:', val)
   darkModeState.isDark = val === 'dark'
   localStorage.setItem('theme', val)
   document.documentElement.classList.toggle('dark', val === 'dark')

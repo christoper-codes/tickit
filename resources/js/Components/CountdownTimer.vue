@@ -29,8 +29,22 @@ const startTimer = () => {
   }, 1000);
 };
 
+const stopTimer = () => {
+  if (timer) {
+    clearInterval(timer);
+    timer = null;
+  }
+};
+
+const resetTimer = () => {
+  stopTimer();
+  minutes.value = props.initialMinutes;
+  seconds.value = 0;
+};
+
 watch(drawerPaymentState, (newValue) => {
   if (newValue) {
+    resetTimer();
     startTimer();
   } else {
     stopTimer();
@@ -38,7 +52,7 @@ watch(drawerPaymentState, (newValue) => {
 });
 
 onUnmounted(() => {
-  clearInterval(timer);
+  stopTimer();
 });
 </script>
 
