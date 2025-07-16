@@ -734,10 +734,6 @@ const props = defineProps({
         type: Object,
         required: true,
     },
-    users: {
-        type: Array,
-        required: true,
-    },
     user_roles: {
         type: Array,
         required: false,
@@ -772,7 +768,6 @@ const props = defineProps({
     },
 });
 
-const users_list = [];
 const sale_debtors_list = [];
 const userToTransfer = ref(null);
 const saleDeptorSelected = ref(null);
@@ -781,15 +776,6 @@ const purchaseType = props.event.enabled_for_season_tickets ? ref('abonado') : r
 if(viewVendorTopics(props.user_roles)) {
     purchaseOnline.value = false;
 }
-
-props.users.forEach(element => {
-    users_list.push(
-        {
-            name: `${element['first_name']} ${element['last_name']} (${element['email']})`,
-            value: element['id']
-        }
-    )
-});
 
 props.sale_debtors.forEach(element => {
     sale_debtors_list.push(
@@ -2527,25 +2513,6 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                                             <v-btn id="on-submit-confirm" v-bind="activatorProps" variant="elevated" class="!hidden text-none !text-white !bg-gradient-to-r !from-purple-600 !to-pink-400" rounded="xl" size="large" block><span class="material-symbols-outlined text-xl !w-1/2">shopping_cart</span>Adquirir boletos</v-btn>
                                                                         </template>
                                                                         <template v-slot:default="{ isActive }">
-                                                                        <!-- <v-container v-if="viewVendorTopics(user_roles)">
-                                                                                <v-row>
-                                                                                    <v-col xs12 sm6 md4>
-                                                                                        <v-autocomplete
-                                                                                            v-model="userToTransfer"
-                                                                                            clearable
-                                                                                            color="cyan"
-                                                                                            chips
-                                                                                            label="Buscar usuario para asignar la compra"
-                                                                                            hint="El usuario que se seleccione tendra sus boletos en su applicacion."
-                                                                                            persistent-hint=""
-                                                                                            :items="users_list"
-                                                                                            variant="solo-filled"
-                                                                                            item-title="name"
-                                                                                            item-value="value"
-                                                                                        ></v-autocomplete>
-                                                                                    </v-col>
-                                                                                </v-row>
-                                                                            </v-container> -->
                                                                             <v-card class="!relative">
                                                                                 <div class="p-7 relative overflow-y-auto text-gray-700 ">
                                                                                     <h2 class="font-bebas font-bold text-3xl">Resumen de compra</h2>

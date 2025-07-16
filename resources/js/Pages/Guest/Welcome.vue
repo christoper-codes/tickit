@@ -136,8 +136,8 @@ window.addEventListener('resize', () => {
     <AppNav />
     <MasterLayout>
         <section class="min-h-screen !p-4 sm:!p-8 flex w-full relative">
-            <div class="rounded-3xl px-4 lg:px-0 w-full overflow-hidden relative z-10 bg-cover object-cover bg-center" :style="`background-image: url(/storage/${event.global_image.file_path})`">
-               <div class="absolute top-0 left-0 px-4 lg:px-0 w-full mt-5 !text-white !stroke-white">
+            <div class="rounded-3xl px-5 lg:px-0 w-full overflow-hidden relative z-10 bg-cover object-cover bg-center" :style="`background-image: url(/storage/${event.global_image.file_path})`">
+               <div class="absolute top-0 left-0 px-5 lg:px-0 w-full mt-5 !text-white !stroke-white">
                  <GuestNav/>
                </div>
                 <div class="absolute inset-0 bg-gradient-to-l from-transparent via-black/60 to-black/95"></div>
@@ -179,15 +179,15 @@ window.addEventListener('resize', () => {
         <section id="services" class="relative">
             <div class="absolute left-1/2 -translate-x-1/2 -top-52 lg:-top-[500px] h-[380px] w-[300px] lg:h-[500px] lg:w-[600px] rounded-full blur-[120px] lg:blur-[220px] bg-tw-primary"></div>
             <div class="!mx-auto !px-4 lg:!px-0 relative z-10">
-                <div data-aos="fade-down" data-aos-duration="1300" data-aos-once="true" class="max-w-7xl !mx-auto !pt-12 lg:!pt-24">
-                    <h2 class="font-display text-4xl font-bold text-balance font-bebas lg:text-6xl !mb-8 !mx-auto">
+                <div class="max-w-7xl !mx-auto !pt-12 lg:!pt-24">
+                    <h2 data-aos="fade-left" data-aos-duration="1300" data-aos-once="true" class="font-display text-4xl font-bold text-balance font-bebas lg:text-6xl !mb-8 !mx-auto">
                         Nuestros servicios
                     </h2>
-                    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+                    <div data-aos="fade-left" data-aos-duration="1300" data-aos-once="true" class="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
                         <p class="lg:w-2/3 text-lg">
                             En nuestro sistema de boletos, hacemos que asistir a tus eventos favoritos sea fácil, rápido y seguro. Compra en línea, aprovecha promociones, adquiere abonos y elige cómo pagar, todo con la opción de atención en taquillas físicas si lo prefieres.
                         </p>
-                        <div class="flex lg:items-center lg:justify-center gap-5">
+                        <div data-aos="fade-right" data-aos-duration="1300" data-aos-once="true" class="flex lg:items-center lg:justify-center gap-5">
                             <v-btn @click="scrollLeft" class="!p-5 !border !border-dark/40 dark:!border-light/30 !bg-light dark:!bg-dark !rounded-lg !h-full !shadow-none">
                                 <svg class="w-10 h-10" data-slot="icon" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" ></path></svg>
                             </v-btn>
@@ -202,20 +202,20 @@ window.addEventListener('resize', () => {
                     <div class="custom-scrollbar relative mt-4 overflow-x-auto scroll-smooth" ref="carouselRef">
                         <div class="relative !mx-auto flex max-w-none flex-col !px-4 lg:!px-0 !py-4 xl:flex-row gap-8 justify-center">
                         <div class="relative flex items-stretch !max-w-none gap-6 md:gap-8 !p-2">
-                            <div v-for="(card, index) in cards" :key="index" class="z-10 relative max-w-[20rem] shrink-0 md:max-w-sm bg-gray-200 dark:!bg-white/20 !p-2 rounded-lg shadow-lg">
-                            <div class="flex bg-cover relative h-[600px] aspect-3/4 object-cover w-full !p-4 rounded-lg overflow-hidden" :style="`background-image: url(${card.img})`">
-                                <div class="z-10 flex flex-col flex-1 justify-end text-white">
-                                <div class="flex-col gap-4 justify-end">
-                                    <h3 class="font-display tracking-tight text-4xl lg:text-5xl md:leading-tight font-bebas">
-                                        {{ card.title }}
-                                    </h3>
-                                    <p>
-                                        {{ card.desc }}
-                                    </p>
+                            <div data-aos="fade-down" data-aos-duration="1300" data-aos-once="true" v-for="(card, index) in cards" :key="index" :data-aos-delay="index * 200" class="z-10 relative max-w-[20rem] shrink-0 md:max-w-sm bg-gray-200 dark:!bg-white/20 !p-2 rounded-lg shadow-lg">
+                                <div class="flex bg-cover relative h-[600px] aspect-3/4 object-cover w-full !p-4 rounded-lg overflow-hidden" :style="`background-image: url(${card.img})`">
+                                    <div class="z-10 flex flex-col flex-1 justify-end text-white">
+                                    <div class="flex-col gap-4 justify-end">
+                                        <h3 class="font-display tracking-tight text-4xl lg:text-5xl md:leading-tight font-bebas">
+                                            {{ card.title }}
+                                        </h3>
+                                        <p>
+                                            {{ card.desc }}
+                                        </p>
+                                    </div>
+                                    </div>
+                                    <div class="z-0 absolute bottom-0 left-0 right-0 h-[350px] lg:h-[350px] !bg-[linear-gradient(180deg,rgba(0,0,0,0)_0%,#000_90%)] block"></div>
                                 </div>
-                                </div>
-                                <div class="z-0 absolute bottom-0 left-0 right-0 h-[350px] lg:h-[350px] !bg-[linear-gradient(180deg,rgba(0,0,0,0)_0%,#000_90%)] block"></div>
-                            </div>
                             </div>
                             <div class="w-[4px] shrink-0">&nbsp;</div>
                         </div>
@@ -250,7 +250,7 @@ window.addEventListener('resize', () => {
                             </div>
                         </div>
                     </div>
-                    <div class="flex justify-center">
+                    <div data-aos="fade-left" data-aos-duration="1300" data-aos-once="true" class="flex justify-center">
                         <Link :href="route('events.index')">
                             <PrimaryButton heightbtn="!h-[70px]" paddingbtn="!px-14">
                                 Ver proximos eventos

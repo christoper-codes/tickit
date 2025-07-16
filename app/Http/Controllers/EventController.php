@@ -204,18 +204,23 @@ class EventController extends Controller
     {
 
         try {
-            $event = Event::findOrFail($id);
-            if(!$event || $event->is_active == false){
-                throw new \Exception('El evento esta inactivo');
-            }
-            $event->globalImage;
-            $event->serie->globalSeason;
+            $event = Event::with(['globalImage', 'serie.globalSeason'])
+                ->where('id', $id)
+                ->where('is_active', true)
+                ->firstOrFail();
+
             $payment_installments = [];
             $user = Auth::user();
-            $users = User::all();
-            $user_roles = Auth::user()->userRoles;
-            $global_payment_types = GlobalPaymentType::where('is_active', true)->get();
-            $global_card_payment_types = GlobalCardPaymentType::all();
+            $user_roles = $user->userRoles;
+
+            $global_payment_types = cache()->remember('global_payment_types_active', 3600, function () {
+                return GlobalPaymentType::where('is_active', true)->get();
+            });
+
+            $global_card_payment_types = cache()->remember('global_card_payment_types', 3600, function () {
+                return GlobalCardPaymentType::all();
+            });
+
             $sale_debtors = $this->sale_debtor_service->getAll(1);
 
             $purchase_types = [PurchaseTypes::MATCH->value];
@@ -236,9 +241,11 @@ class EventController extends Controller
             /*
             * get institutions with its agreements and promotions by stadium
             */
-            $institutions = Institution::where('stadium_id', $event->stadium_id)
-                ->with(['agreements.promotions.promotionType'])
-                ->get();
+            $institutions = cache()->remember("institutions_stadium_{$event->stadium_id}", 3600, function () use ($event) {
+                return Institution::where('stadium_id', $event->stadium_id)
+                    ->with(['agreements.promotions.promotionType'])
+                    ->get();
+            });
 
             return Inertia::render('App/Pos/Event', [
                 'isEventsShow' => true,
@@ -248,7 +255,6 @@ class EventController extends Controller
                 'c_zone' => [],
                 'f_zone' => [],
                 'user' => $user,
-                'users' => $users,
                 'user_roles' => $user_roles,
                 'global_payment_types' => $global_payment_types,
                 'global_card_payment_types' => $global_card_payment_types,

@@ -113,23 +113,25 @@ const handleSearch = () => {
             <GuestNav/>
         </div>
         <div class="max-w-7xl mx-auto px-4 lg:px-0 text-center mt-16">
-            <h2 class="font-bold font-bebas text-6xl md:text-8xl">¡Encuentra tus eventos!</h2>
-            <p class="mt-1 opacity-70">Explora los eventos más destacados y descubre lo que tenemos preparado para ti.</p>
-            <div class="max-w-2xl mx-auto mt-10">
-                <v-text-field
-                    theme="light"
-                    v-model="searchQuery"
-                    @input="handleSearch"
-                    color="cyan"
-                    placeholder="Nombre del evento"
-                    label="Buscar evento"
-                    variant="solo"
-                    class="!rounded-2xl"
-                    prepend-inner-icon="mdi-magnify"
-                    clearable
-                ></v-text-field>
+            <div data-aos="fade-right" data-aos-duration="1300" data-aos-once="true">
+                <h2 class="font-bold font-bebas text-6xl md:text-8xl">¡Encuentra tus eventos!</h2>
+                <p class="mt-1 opacity-70">Explora los eventos más destacados y descubre lo que tenemos preparado para ti.</p>
+                <div class="max-w-2xl mx-auto mt-10">
+                    <v-text-field
+                        theme="light"
+                        v-model="searchQuery"
+                        @input="handleSearch"
+                        color="cyan"
+                        placeholder="Nombre del evento"
+                        label="Buscar evento"
+                        variant="solo"
+                        class="!rounded-2xl"
+                        prepend-inner-icon="mdi-magnify"
+                        clearable
+                    ></v-text-field>
+                </div>
             </div>
-            <div class="flex items-center justify-between mx-auto gap-1 lg:gap-8 mt-3 max-w-2xl">
+            <div data-aos="fade-left" data-aos-duration="1300" data-aos-once="true" class="flex items-center justify-between mx-auto gap-1 lg:gap-8 mt-3 max-w-2xl">
                 <v-btn @click="filterEventsByType('todos')" variant="tonal" :class="selectedEventType === 'todos' ? '!h-[60px] md:!h-[70px] !px-[23px] md:!px-[67px] !bg-yellow-500 !border-b-4 !border-b-yellow-700 !overflow-hidden !text-white !rounded-2xl !relative before:!content-[\'\'] before:!w-10 before:!h-10 before:!bg-white/25 before:!absolute before:!rounded-full before:!-bottom-[13px] before:!-right-[13px]' : '!h-[60px] md:!h-[70px] !px-[23px] md:!px-[67px] !border-b-4 !border-b-neutral-400 !rounded-2xl !bg-neutral-100 !text-neutral-700 !overflow-hidden'">
                    <span>Todos</span>
                 </v-btn>
@@ -149,7 +151,7 @@ const handleSearch = () => {
         <div class="max-w-7xl min-h-screen pt-0 mx-auto z-10 relative">
             <div class="">
                 <div class="lg:col-span-2">
-                    <div v-if="events.length > 0" class="py-8">
+                    <div v-if="events.length > 0" class="pb-8 lg:pt-8">
                         <div v-for="(event, index) in filteredEvents" :key="event.id"  class="space-y-5 lg:space-y-8 pb-10 mt-16">
                             <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 lg:gap-14 group" :class="index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'">
                                 <div class="w-full lg:w-[40%]">
