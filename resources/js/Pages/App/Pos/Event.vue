@@ -1524,14 +1524,14 @@ watch(() => paymentInstallmentSelected.value, () => {
             </div>
         </transition>
         <transition name="slide">
-            <div  v-if="seatsSelected.length > 0 && tab == 'seats'" @click="scrollTopaymentSection" class="fixed bottom-5 lg:bottom-16 right-3 z-[60]">
+            <div v-if="seatsSelected.length > 0 && tab == 'seats'" @click="scrollTopaymentSection" class="fixed bottom-5 lg:bottom-16 right-3 z-[60]">
                 <div class="flex items-center text-xs lg:text-base gap-2 justify-center bg-gradient-to-r from-green-500 to-cyan-500 text-white cursor-pointer hover:scale-105 transition-transform duration-500 px-4 lg:px-6 py-3 lg:py-4 rounded-2xl">
                     <span class="material-symbols-outlined z-20 text-xl lg:text-xl">arrow_forward</span>Procesar Compra
                 </div>
             </div>
         </transition>
         <div v-if="tab == 'payment'" @click="tab = 'seats'" class="fixed bottom-5 lg:bottom-16 right-3 z-[60]">
-            <div class="flex items-center border-b-4 border-b-neutral-300 text-xs lg:text-base gap-2 justify-center bg-gradient-to-r from-tw-primary to-purple-500 text-white cursor-pointer hover:scale-105 transition-transform duration-500 px-4 lg:px-6 py-3 lg:py-4 rounded-2xl">
+            <div class="flex items-center border-b-4 border-b-yellow-700 text-xs lg:text-base gap-2 justify-center bg-yellow-500 text-white cursor-pointer hover:scale-105 transition-transform duration-500 px-4 lg:px-6 py-3 lg:py-4 rounded-2xl">
                 <span class="material-symbols-outlined z-20 text-xl lg:text-xl">arrow_back</span>Seguir comprando
             </div>
         </div>
