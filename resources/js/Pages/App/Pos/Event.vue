@@ -25,6 +25,7 @@ import AppNav from '@/Components/navs/AppNav.vue';
 import CashRegisterNav from '@/Components/navs/CashRegisterNav.vue';
 import PrimaryButton from '@/Components/buttons/PrimaryButton.vue';
 import MasterLayout from '@/Layouts/MasterLayout.vue';
+import SecondaryButton from '@/Components/buttons/SecondaryButton.vue';
 
 const { dateFormat } = useDateFormat();
 const { formatFirstLetterUppercase } = useStringFormat();
@@ -86,8 +87,10 @@ function loadSvg(id) {
                 }
 
             }
-            if(window.innerWidth > 1024 && id == 'zones_hdx') {
-                panZoomInstance.smoothZoom(1600, 600, 0.9);
+            if(window.innerWidth > 1024) {
+                panZoomInstance.smoothZoom(1300, 300, 0.9);
+            } else {
+                panZoomInstance.smoothZoom(100, 350, 1.7);
             }
         }
     },300);
@@ -571,7 +574,7 @@ const globalCardPayementTypeProps = (item) => {
 
 const isSvgVisible = ref(true);
 const selectedSection = ref('');
-const viewSelectedSection = ref('Zonas HDX');
+const viewSelectedSection = ref('Todas las Zonas');
 const seatsASection = ref([]);
 const seatsBSection = ref([]);
 const seatsCSection = ref([]);
@@ -675,7 +678,7 @@ const selectZones = () => {
     agreementSection.value = {};
     valid.value = true;
     purchaseStatus.value = 'process';
-    viewSelectedSection.value = 'Zonas HDX';
+    viewSelectedSection.value = 'Todas las Zonas';
     purchaseType.value = props.event.enabled_for_season_tickets ? 'abonado' : 'partido';
     loadingg.value = false;
     loading.value = false;
@@ -1443,8 +1446,8 @@ watch(() => paymentInstallmentSelected.value, () => {
                 class="fixed inset-0 !z-50 flex items-center justify-center bg-black/50 backdrop-blur-[7px] transition-all duration-500"
                 @click.self="closeImageModal"
             >
-                <div class="bg-gradient-to-tr from-white to-primary shadow-2xl rounded p-3 relative max-w-full w-[90vw] md:w-[520px] flex flex-col items-center transition-all duration-500">
-                    <img class="w-full h-auto" :src="modalImageSrc" alt="Imagen ampliada" />
+                <div class="bg-neutral-200 shadow-2xl rounded-lg p-2 relative max-w-full w-[90vw] md:w-[60%] flex flex-col items-center transition-all duration-500">
+                    <img class="w-full h-auto rounded-lg" :src="modalImageSrc" alt="Imagen ampliada" />
                 </div>
             </div>
         </transition>
@@ -1528,7 +1531,7 @@ watch(() => paymentInstallmentSelected.value, () => {
             </div>
         </transition>
         <div v-if="tab == 'payment'" @click="tab = 'seats'" class="fixed bottom-5 lg:bottom-16 right-3 z-[60]">
-            <div class="flex items-center text-xs lg:text-base gap-2 justify-center bg-gradient-to-r from-primary to-cyan-500 text-white cursor-pointer hover:scale-105 transition-transform duration-500 px-4 lg:px-6 py-3 lg:py-4 rounded-2xl">
+            <div class="flex items-center border-b-4 border-b-neutral-300 text-xs lg:text-base gap-2 justify-center bg-gradient-to-r from-tw-primary to-purple-500 text-white cursor-pointer hover:scale-105 transition-transform duration-500 px-4 lg:px-6 py-3 lg:py-4 rounded-2xl">
                 <span class="material-symbols-outlined z-20 text-xl lg:text-xl">arrow_back</span>Seguir comprando
             </div>
         </div>
@@ -1607,59 +1610,65 @@ watch(() => paymentInstallmentSelected.value, () => {
             class="flex items-center justify-center bg-cover relative min-h-screen lg:min-h-screen aspect-3/4 object-cover bg-center w-full p-4 lg:p-7 shadow-xl overflow-hidden transition-all duration-500"
             :style="`background-image: url(/storage/${event.global_image.file_path})`"
             >
-            <div class="absolute top-10 mx-auto w-full text-white z-20 px-1">
+            <div class="absolute top-7 lg:top-5 mx-auto w-full text-white z-20 px-4 lg:px-0">
                 <GuestNav/>
             </div>
             <div class="max-w-7xl mx-auto z-10 flex flex-col flex-1 items-center justify-center text-white">
-                <div class="flex-col gap-4 justify-end w-full mt-32">
+                <div class="flex-col gap-4 justify-end w-full mt-20">
                     <div data-aos="fade-left" data-aos-duration="1300" data-aos-once="true" class="flex lg:items-center flex-col justify-between gap-5 lg:gap-10">
-                        <div class="text-center">
-                            <Link :href="route('events.index')">
-                                <div class="size-10 inline-flex shadow-md rounded-full bg-tw-primary p-2 items-center justify-center mb-3">
-                                    <span class="material-symbols-outlined text-white">arrow_back</span>
-                                </div>
-                            </Link>
-                            <div class="flex flex-col lg:flex-row lg:items-center justify-center gap-2">
-                                <p class="lg:text-lg">{{ event.description }}</p>
+                        <div class="text-center flex items-center justify-center flex-col">
+                            <div class="flex items-center justify-center gap-4 mb-3">
+                                 <Link :href="route('events.index')">
+                                    <div class="size-10 inline-flex shadow-md rounded-full bg-tw-primary p-2 items-center justify-center">
+                                        <span class="material-symbols-outlined text-white">arrow_back</span>
+                                    </div>
+                                </Link>
                                 <v-rating
                                     readonly
                                     :length="5"
                                     :size="26"
                                     :model-value="5"
+                                    class="!scale-110"
                                     active-color="yellow"
                                 />
                             </div>
-                            <h2 class="inline-block font-bebas pr-1 mt-1 text-6xl lg:text-8xl font-bold">
+                            <div class="flex items-center gap-1">
+                                <span class="material-symbols-outlined lg:text-2xl block">access_time</span>
+                                <h3 class="lg:text-lg">{{ dateFormat(event.start_date) }}</h3>
+                            </div>
+                            <h2 class="inline-block font-bebas pr-1 mt-8 text-5xl lg:text-8xl font-bold">
                                 {{ event.name }}
                             </h2>
-                            <div class="flex flex-col lg:flex-row lg:items-center justify-center gap-4 mt-3 lg:mt-2">
+                            <div class="flex flex-col lg:flex-row lg:items-center justify-center gap-2 mt-3 lg:mt-2">
                                 <div class="flex items-center gap-1">
-                                    <span class="material-symbols-outlined lg:text-2xl block">calendar_today</span>
-                                    <h3 class="lg:text-lg">{{ event.serie.global_season.name }}</h3>
-                                </div>
-                                <div class="flex items-center gap-1">
-                                    <span class="material-symbols-outlined lg:text-2xl block">access_time</span>
-                                    <h3  class="lg:text-lg">{{ dateFormat(event.start_date) }}</h3>
+                                    <span class="material-symbols-outlined lg:text-2xl hidden lg:block">calendar_today</span>
+                                    <h3 class="lg:text-lg">{{ event.serie.global_season.name }} | {{ event.description }}</h3>
                                 </div>
                             </div>
                         </div>
-                        <div class="flex items-center gap-6 mb-10 lg:mb-0">
-                            <div class="border-2 cursor-pointer h-[150px] w-[100px] lg:h-[200px] lg:w-[150px] object-cover bg-center bg-cover relative overflow-hidden rounded" @click="openImageModal(`/storage/${event.global_image.file_path}`)"  :style="`background-image: url(/storage/${event.global_image.file_path})`">
+                        <div class="flex items-center justify-center gap-6">
+                            <div class="border-2 cursor-pointer h-[120px] w-[90px] lg:h-[140px] lg:w-[150px] object-cover bg-center bg-cover relative overflow-hidden rounded" @click="openImageModal(`/storage/${event.global_image.file_path}`)"  :style="`background-image: url(/storage/${event.global_image.file_path})`">
                                 <div class="absolute inset-0 bg-black/40 opacity-100 z-20 flex items-center justify-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2" fill="none"/><line x1="21" y1="21" x2="16.65" y2="16.65" stroke="currentColor" stroke-width="2"/><line x1="11" y1="8" x2="11" y2="14" stroke="currentColor" stroke-width="2"/><line x1="8" y1="11" x2="14" y2="11" stroke="currentColor" stroke-width="2"/></svg>
                                 </div>
                             </div>
-                            <iframe class="rounded h-[150px] w-[100px] lg:h-[200px] lg:w-[150px]" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3760.653263134143!2d-96.91874712501097!3d19.51354808178317!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85db320be3350bd1%3A0xba83c38e6e168a4!2sGimnasio%20Nido%20del%20Halc%C3%B3n%20UV!5e0!3m2!1ses-419!2smx!4v1735482228924!5m2!1ses-419!2smx" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <iframe class="rounded h-[120px] w-[90px] lg:h-[140px] lg:w-[150px]" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3169.1000362447776!2d-96.12713863341021!3d19.16389135194487!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85c3413bee13e223%3A0x4fe5b42b583ae037!2sEstadio%20Luis%20Pirata%20Fuente!5e0!3m2!1ses-419!2smx!4v1752452039471!5m2!1ses-419!2smx" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                        <div class="flex items-center justify-center flex-col gap-2 mt-5">
+                            <p>Scroll para ver más</p>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                            </svg>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="z-0 absolute backdrop-blur-sm bottom-0 left-0 right-0 h-full !bg-[linear-gradient(180deg,rgba(0,0,0,0)_-30%,#000_90%)] block"></div>
+            <div class="z-0 absolute backdrop-blur-md bottom-0 left-0 right-0 h-full !bg-[linear-gradient(180deg,rgba(0,0,0,0)_-30%,#000_150%)] block"></div>
         </div>
 
         <div ref="paymentSection"></div>
 
-        <div class="w-full overflow-hidden">
+        <div class="w-full overflow-hidden mb-16">
             <main  class="min-h-screen max-w-7xl mx-auto pt-20 relative">
                 <div class="absolute -right-40 lg:-right-96 -top-52 lg:-top-52 h-[480px] w-[300px] lg:h-[680px] lg:w-[500px] rounded-full blur-[120px] lg:blur-[220px] bg-tw-primary">
                 </div>
@@ -1678,7 +1687,7 @@ watch(() => paymentInstallmentSelected.value, () => {
                                 <div class="flex flex-col lg:flex-row items-start justify-center gap-10 lg:gap-16">
                                     <div class="grid grid-cols-3 items-start justify-center gap-5 w-full lg:w-auto">
                                         <div class="flex items-center justify-center gap-1 flex-col">
-                                            <div class="size-14 rounded-t-2xl rounded-b-md bg-yellow-500"></div>
+                                            <div class="size-14 rounded-t-2xl rounded-b-md bg-neutral-200"></div>
                                             <p class="text-center text-sm">Disponible</p>
                                         </div>
                                         <div class="flex items-center justify-center gap-1 flex-col">
@@ -1689,22 +1698,22 @@ watch(() => paymentInstallmentSelected.value, () => {
                                             <div class="size-14 rounded-t-2xl rounded-b-md bg-green-500"></div>
                                             <p class="text-center text-sm">Seleccionado</p>
                                         </div>
-                                        <div v-if="viewVendorTopics(props.user_roles)" class="flex items-center justify-center gap-1 flex-col">
+                                        <div class="flex items-center justify-center gap-1 flex-col">
                                             <div class="size-14 rounded-t-2xl rounded-b-md bg-pink-600"></div>
-                                            <p class="text-center text-sm">Reservado <br> para abonado</p>
+                                            <p class="text-center text-sm">Reservado</p>
                                         </div>
-                                        <div v-if="viewVendorTopics(props.user_roles)" class="flex items-center justify-center gap-1 flex-col">
+                                        <div class="flex items-center justify-center gap-1 flex-col">
                                             <div class="size-14 rounded-t-2xl rounded-b-md bg-gray-600"></div>
                                             <p class="text-center text-sm">Inhabilitado</p>
                                         </div>
-                                        <div v-if="viewVendorTopics(props.user_roles)" class="flex items-center justify-center gap-1 flex-col">
+                                        <div class="flex items-center justify-center gap-1 flex-col">
                                             <div class="size-14 rounded-t-2xl rounded-b-md bg-cyan-500"></div>
                                             <p class="text-center text-sm">En transito</p>
                                         </div>
                                     </div>
                                     <div v-if="seatAvailability.length > 0" class="w-full lg:w-auto grid grid-cols-3 gap-5 items-center justify-center">
                                         <div v-for="(availability, index) in seatAvailability" :key="index">
-                                            <div class="p-3 border-2 rounded-lg bg-white text-center">
+                                            <div class="p-3 border-2 dark:border-neutral-600 rounded-lg bg-white dark:!bg-neutral-800 text-center dark:!text-neutral-200">
                                                 <p class="text-[10px] lg:text-xs font-bold">Zona {{ availability.zone }}</p>
                                                 <p class="text-[10px] lg:text-xs">{{ availability.available_seats }} <br> asientos libres</p>
                                             </div>
@@ -1722,42 +1731,39 @@ watch(() => paymentInstallmentSelected.value, () => {
                                         <div class="h-[72px] w-[100px] rounded-lg bg-gray-300 animate-pulse"></div>
                                     </div>
                                 </div>
-                                <div class="my-10">
+                                <div class="my-20">
                                     <div class="w-full relative">
-                                        <div class="mt-7 w-full">
+                                        <div class="w-full">
                                             <div class="flex flex-col gap-3 justify-between mb-4 w-full">
                                                 <div class="flex flex-col lg:flex-row items-center justify-between w-full gap-3 my-3">
                                                     <div class="flex items-center gap-3 flex-col md:flex-row">
                                                         <div class="flex items-center gap-3">
-                                                            <v-btn @click="zoomIn" variant="tonal" class="!h-[50px] lg:!h-[60px] !px-9 lg:!px-12 !bg-white !border-2 !border-neutral-300 !rounded-2xl !text-neutral-700">
-                                                                <span class="material-symbols-outlined text-2xl">add</span>zoom
-                                                            </v-btn>
-                                                            <v-btn @click="zoomOut" variant="tonal" class="!h-[50px] lg:!h-[60px] !px-9 lg:!px-12 !bg-white !border-2 !border-neutral-300 !rounded-2xl !text-neutral-700">
-                                                                <span class="material-symbols-outlined text-2xl">remove</span>zoom
-                                                            </v-btn>
+                                                            <SecondaryButton @click="zoomIn" heightbtn="!h-[50px] lg:!h-[60px]" paddingbtn="!px-9 lg:!px-12">
+                                                                <span class="material-symbols-outlined text-2xl !mr-1">add</span>zoom
+                                                            </SecondaryButton>
+                                                            <SecondaryButton @click="zoomOut" heightbtn="!h-[50px] lg:!h-[60px]" paddingbtn="!px-9 lg:!px-12">
+                                                                <span class="material-symbols-outlined text-2xl !mr-1">remove</span>zoom
+                                                            </SecondaryButton>
                                                         </div>
                                                     </div>
                                                     <div class="items-center flex-col gap-1 hidden lg:flex relative">
                                                         <h3 class="font-bold font-bebas text-4xl">{{ viewSelectedSection}}</h3>
-                                                        <div class="border-2 cursor-pointer h-[50px] w-[100px] object-cover bg-center bg-cover relative overflow-hidden rounded" @click="openImageModal(`/storage/public/show-hdx.jpg`)"  :style="`background-image: url(/storage/public/show-hdx.jpg)`">
-                                                            <div class="absolute inset-0 bg-black/50 opacity-100 z-20 flex items-center justify-center">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2" fill="none"/><line x1="21" y1="21" x2="16.65" y2="16.65" stroke="currentColor" stroke-width="2"/><line x1="11" y1="8" x2="11" y2="14" stroke="currentColor" stroke-width="2"/><line x1="8" y1="11" x2="14" y2="11" stroke="currentColor" stroke-width="2"/></svg>
-                                                            </div>
-                                                        </div>
                                                     </div>
                                                     <div class="flex items-center gap-3">
-                                                        <v-btn @click="resetZoom" variant="tonal" class="!h-[50px] lg:!h-[60px] !px-9 lg:!px-12 !bg-white !border-2 !border-neutral-300 !rounded-2xl !text-neutral-700">
-                                                            <span class="material-symbols-outlined text-2xl">my_location</span>Restablecer
-                                                        </v-btn>
-                                                        <v-btn @click="selectZones" variant="tonal" class="!h-[50px] lg:!h-[60px] !px-9 lg:!px-12 !bg-white !border-2 !border-neutral-300 !rounded-2xl !text-neutral-700">
-                                                            <span class="material-symbols-outlined text-2xl">location_on</span>zonas
-                                                        </v-btn>
+                                                        <SecondaryButton @click="resetZoom" heightbtn="!h-[50px] lg:!h-[60px]" paddingbtn="!px-9 lg:!px-12">
+                                                            <span class="material-symbols-outlined text-2xl !mr-1">my_location</span>Restablecer
+                                                        </SecondaryButton>
+                                                        <SecondaryButton @click="selectZones" heightbtn="!h-[50px] lg:!h-[60px]" paddingbtn="!px-9 lg:!px-12">
+                                                            <span class="material-symbols-outlined text-2xl !mr-1">location_on</span>zonas
+                                                        </SecondaryButton>
                                                     </div>
                                                 </div>
 
                                                 <div class="flex h-[400px] bg-white rounded-3xl cursor-grab lg:h-[500px] items-center justify-center overflow-hidden bordermt-5 gap-3 relative">
-                                                    <div class="size-[100px] lg:size-36 border border-gray-300 absolute top-0 left-0 z-20 bg-white rounded-lg flex items-center justify-center">
-                                                        <img id="stadium-hdx-img" class="size-20 lg:size-32 rotate-0 transition-all duration-1000" src="../../../../../public/img/stadium-hdx-img.svg" alt="Webiste image">
+                                                    <div class="size-[100px] lg:size-36 border border-gray-300 dark:!border-neutral-300 absolute top-2 left-2 z-20 bg-white rounded-xl flex items-center justify-center">
+                                                        <div id="stadium-hdx-img" class="w-14 h-20 lg:w-20 lg:h-28 rotate-0 transition-all duration-1000 bg-neutral-800 items-center justify-center flex text-white rounded-md">
+                                                            <span class="block text-[9px] lg:!text-xs">Escenario</span>
+                                                        </div>
                                                     </div>
                                                     <div v-if="isSvgVisible">
                                                         <EstadioHdx  @handle-section-click="handleSectionClick"/>
@@ -1818,8 +1824,7 @@ watch(() => paymentInstallmentSelected.value, () => {
                                     <div class="w-full">
                                         <div class="lg:px-5 relative flex flex-col-reverse">
                                             <div v-if="seatsSelected.length == 0" class="flex flex-col items-center gap-10 justify-center">
-                                                <h3>No hay asientos seleccionados</h3>
-                                                <img class="w-40 lg:w-96 h-auto" src="/storage/public/empty-cart.webp" alt="Webiste image">
+                                                <h3 class="mt-10 font-bold">No hay asientos seleccionados</h3>
                                             </div>
                                             <div v-if="seatsSelected.length > 0" class="payment-secction">
                                                 <div class="w-full ">
