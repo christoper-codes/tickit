@@ -108,13 +108,13 @@ const handleSearch = () => {
             </div>
         </div>
     </transition>
-    <section class="py-5 w-full relative z-20">
-        <div class="px-4 lg:px-0">
+    <section class="py-5 w-full relative z-20 mt-3">
+        <div class="px-4 lg:px-0 lg:pt-0 lg:!-mt-3">
             <GuestNav/>
         </div>
         <div class="max-w-7xl mx-auto px-4 lg:px-0 text-center mt-16">
             <h2 class="font-bold font-bebas text-6xl md:text-8xl">¡Encuentra tus eventos!</h2>
-            <p class="mt-1">Explora los eventos más destacados y descubre lo que tenemos preparado para ti.</p>
+            <p class="mt-1 opacity-70">Explora los eventos más destacados y descubre lo que tenemos preparado para ti.</p>
             <div class="max-w-2xl mx-auto mt-10">
                 <v-text-field
                     theme="light"
@@ -158,7 +158,7 @@ const handleSearch = () => {
                                     <p class="mt-3">{{ event.description }}</p>
                                     <div class="flex items-center mt-3">
                                         <div class="flex items-center gap-x-3">
-                                            <img class="h-14 w-14 rounded-full" src="../../../../../public/img/user-img.svg" alt="Author Image">
+                                            <img class="w-9 lg:w-12 rounded-full" src="../../../../../public/img/user-img.svg" alt="Author Image">
                                             <div>
                                                 <p class="text-base font-medium">Directiva victoria</p>
                                                 <p class="text-sm text-gray-500">Autor</p>

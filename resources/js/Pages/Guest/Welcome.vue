@@ -20,34 +20,34 @@ const props = defineProps({
 
 const cards = [
     {
-    title: 'Abonos',
-    desc: 'Adquiere abonos para no tener que comprar boletos partido por partido. Ahorra tiempo y asegura tu lugar para toda la temporada o varios eventos.',
-    img: 'https://images.pexels.com/photos/8261581/pexels-photo-8261581.jpeg',
+        title: 'Abonos',
+        desc: 'Adquiere abonos para no tener que comprar boletos partido por partido. Ahorra tiempo y asegura tu lugar para toda la temporada o varios eventos.',
+        img: '/services/service-1.jpeg',
     },
     {
-    title: 'Promociones',
-    desc: 'Aprovecha descuentos exclusivos al comprar varios boletos, por fechas especiales o con cupones promocionales. ¡Tu experiencia más accesible!',
-    img: 'https://images.pexels.com/photos/2456353/pexels-photo-2456353.jpeg',
+        title: 'Promociones',
+        desc: 'Aprovecha descuentos exclusivos al comprar varios boletos, por fechas especiales o con cupones promocionales. ¡Tu experiencia más accesible!',
+        img: '/services/service-2.jpeg',
     },
     {
-    title: 'Mapa interactivo',
-    desc: 'Elige fácilmente tus asientos con un mapa visual del estadio. Compara zonas, precios y selecciona justo donde quieres estar.',
-    img: 'https://images.pexels.com/photos/8554385/pexels-photo-8554385.jpeg',
+        title: 'Mapa interactivo',
+        desc: 'Elige fácilmente tus asientos con un mapa visual del estadio. Compara zonas, precios y selecciona justo donde quieres estar.',
+        img: '/services/service-3.jpeg',
     },
     {
-    title: 'Pasarelas de pago',
-    desc: 'Compra en línea de forma segura con PayPal, Mercado Pago, tarjetas y más. También puedes pagar en taquilla con tarjeta o efectivo.',
-    img: 'https://images.pexels.com/photos/4542839/pexels-photo-4542839.jpeg',
+        title: 'Pasarelas de pago',
+        desc: 'Compra en línea de forma segura con PayPal, Mercado Pago, tarjetas y más. También puedes pagar en taquilla con tarjeta o efectivo.',
+        img: '/services/service-4.jpeg',
     },
     {
         title: 'Comparte tus boletos',
         desc: '¿Compraste varios boletos? Compártelos fácilmente con tus amigos desde tu cuenta. Ellos podrán acceder con su propio QR sin complicaciones.',
-        img: 'https://images.pexels.com/photos/3184394/pexels-photo-3184394.jpeg',
+        img: '/services/service-6.jpeg',
     },
     {
-    title: 'Taquillas físicas',
-    desc: '¿Prefieres comprar en persona? También contamos con taquillas físicas en el estadio, listas para atenderte con distintos métodos de pago.',
-    img: 'https://images.pexels.com/photos/4542836/pexels-photo-4542836.jpeg',
+        title: 'Taquillas físicas',
+        desc: '¿Prefieres comprar en persona? También contamos con taquillas físicas en el estadio, listas para atenderte con distintos métodos de pago.',
+        img: '/services/service-5.jpeg',
     },
 ];
 
@@ -203,7 +203,7 @@ window.addEventListener('resize', () => {
                         <div class="relative !mx-auto flex max-w-none flex-col !px-4 lg:!px-0 !py-4 xl:flex-row gap-8 justify-center">
                         <div class="relative flex items-stretch !max-w-none gap-6 md:gap-8 !p-2">
                             <div v-for="(card, index) in cards" :key="index" class="z-10 relative max-w-[20rem] shrink-0 md:max-w-sm bg-gray-200 dark:!bg-white/20 !p-2 rounded-lg shadow-lg">
-                            <div class="flex bg-cover relative h-[600px] aspect-3/4 object-cover w-full !p-4 rounded-lg overflow-hidden" :style="`background-image: url('${card.img}')`">
+                            <div class="flex bg-cover relative h-[600px] aspect-3/4 object-cover w-full !p-4 rounded-lg overflow-hidden" :style="`background-image: url(${card.img})`">
                                 <div class="z-10 flex flex-col flex-1 justify-end text-white">
                                 <div class="flex-col gap-4 justify-end">
                                     <h3 class="font-display tracking-tight text-4xl lg:text-5xl md:leading-tight font-bebas">
