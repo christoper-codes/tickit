@@ -158,6 +158,9 @@ const handleSearch = () => {
                                     <h2 class="font-bebas text-4xl font-bold lg:text-6xl">{{ event.name }}</h2>
                                     <h3 class="mt-5 inline-block"><span class="font-bold">Fecha:</span> {{ dateFormat(event.start_date) }}</h3>
                                     <p class="mt-3">{{ event.description }}</p>
+                                    <p v-if="event.enabled_for_season_tickets" class="mt-3 inline-block py-1 px-3 rounded-full bg-tw-primary/20 font-bold text-xs">
+                                       ✅ Venta de abonos disponible
+                                    </p>
                                     <div class="flex items-center mt-3">
                                         <div class="flex items-center gap-x-3">
                                             <img class="w-9 lg:w-12 rounded-full" src="../../../../../public/img/user-img.svg" alt="Author Image">
@@ -170,12 +173,12 @@ const handleSearch = () => {
                                     <div class="hidden flex-col md:flex-row md:items-center gap-5 mt-4 w-full lg:flex">
                                         <Link v-if="$page.props.auth.user" :href="route('events.show', { slug: event.slug, id: event.id } )" class="w-full">
                                             <PrimaryButton @click="showEvent" heightbtn="!h-[65px] !px-14 !w-full !block" :loading="loading">
-                                                <span class="material-symbols-outlined text-lg">shopping_cart</span>Comprar entradas
+                                                <span class="material-symbols-outlined text-lg">shopping_cart</span> {{ event.enabled_for_season_tickets ? 'Comprar abonos' : 'Comprar entradas' }}
                                             </PrimaryButton>
                                         </Link>
                                         <Link v-else :href="route('login', { slug: event.slug, id: event.id})" class="w-full">
                                             <PrimaryButton  heightbtn="!h-[65px] !px-14 !w-full !block" :loading="loading">
-                                                <span class="material-symbols-outlined text-lg">shopping_cart</span>Comprar entradas
+                                                <span class="material-symbols-outlined text-lg">shopping_cart</span> {{ event.enabled_for_season_tickets ? 'Comprar abonos' : 'Comprar entradas' }}
                                             </PrimaryButton>
                                         </Link>
                                     </div>
@@ -188,9 +191,12 @@ const handleSearch = () => {
                                         :style="`background-image: url(/storage/${event.global_image.file_path})`"
                                         >
                                         <div class="absolute top-4 left-4 z-20">
-                                            <span class="inline-flex items-center px-5 py-2 rounded-full text-xs font-medium bg-yellow-500 text-white">
+                                            <div class="flex items-center justify-center text-center px-5 py-2 rounded-full text-xs font-medium bg-yellow-500 text-white">
                                                 {{ event.event_type.name }}
-                                            </span>
+                                            </div>
+                                            <div v-if="event.enabled_for_season_tickets" class="flex items-center mt-2 justify-center text-center px-5 py-2 rounded-full text-xs font-medium bg-tw-primary text-white">
+                                                Venta de abonos
+                                            </div>
                                         </div>
 
                                         <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:!opacity-100 transition-all duration-500 z-10 flex items-center justify-center">
@@ -207,12 +213,12 @@ const handleSearch = () => {
                                     <div class="flex lg:hidden flex-col md:flex-row md:items-center gap-5 mt-4 w-full">
                                         <Link v-if="$page.props.auth.user" :href="route('events.show', { slug: event.slug, id: event.id } )" class="w-full">
                                             <PrimaryButton @click="showEvent" heightbtn="!h-[65px] !px-14 !w-full !block" :loading="loading">
-                                                <span class="material-symbols-outlined text-lg">shopping_cart</span>Comprar entradas
+                                                <span class="material-symbols-outlined text-lg">shopping_cart</span> {{ event.enabled_for_season_tickets ? 'Comprar abonos' : 'Comprar entradas' }}
                                             </PrimaryButton>
                                         </Link>
                                         <Link v-else :href="route('login', { slug: event.slug, id: event.id})" class="w-full">
                                             <PrimaryButton  heightbtn="!h-[65px] !px-14 !w-full !block" :loading="loading">
-                                                <span class="material-symbols-outlined text-lg">shopping_cart</span>Comprar entradas
+                                                <span class="material-symbols-outlined text-lg">shopping_cart</span> {{ event.enabled_for_season_tickets ? 'Comprar abonos' : 'Comprar entradas' }}
                                             </PrimaryButton>
                                         </Link>
                                     </div>

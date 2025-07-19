@@ -1626,7 +1626,7 @@ watch(() => paymentInstallmentSelected.value, () => {
                 <GuestNav/>
             </div>
             <div class="max-w-7xl mx-auto z-10 flex flex-col flex-1 items-center justify-center text-white">
-                <div class="flex-col gap-4 justify-end w-full mt-20">
+                <div class="flex-col gap-4 justify-end w-full mt-28">
                     <div data-aos="fade-left" data-aos-duration="1300" data-aos-once="true" class="flex lg:items-center flex-col justify-between gap-5 lg:gap-10">
                         <div class="text-center flex items-center justify-center flex-col">
                             <div class="flex items-center justify-center gap-4 mb-3">
@@ -1956,50 +1956,53 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                                     <h4 class="text-xs px-4 py-1 rounded-full font-bold text-center mb-2">
                                                                         Complemento para pago con tarjeta
                                                                     </h4>
-                                                                    <v-select
-                                                                        color="cyan"
-                                                                        variant="solo"
-                                                                        clearable
-                                                                        label="Selecciona el tipo de tarjeta"
-                                                                        :item-props="globalCardPayementTypeProps"
-                                                                        :items="global_card_payment_types"
-                                                                        v-model="cardPaymentTypesSelected"
-                                                                        :rules="[rules.required]"
-                                                                        :error="cardPaymentTypeError"
-                                                                        :error-messages="cardPaymentTypeError ? ['Este campo es obligatorio'] : []"
-                                                                    ></v-select>
-                                                                    <div v-if="!installmentSale && viewVendorTopics(user_roles)">
-                                                                        <v-text-field
-                                                                            label="Monto a pagar con tarjeta"
-                                                                            class="!mt-2"
-                                                                            variant="solo"
+                                                                    <div class="flex flex-col lg:flex-row items-center justify-between gap-4">
+                                                                        <v-select
                                                                             color="cyan"
+                                                                            variant="solo"
                                                                             clearable
+                                                                            class="!w-full"
+                                                                            label="Selecciona el tipo de tarjeta"
+                                                                            :item-props="globalCardPayementTypeProps"
+                                                                            :items="global_card_payment_types"
+                                                                            v-model="cardPaymentTypesSelected"
+                                                                            :rules="[rules.required]"
+                                                                            :error="cardPaymentTypeError"
+                                                                            :error-messages="cardPaymentTypeError ? ['Este campo es obligatorio'] : []"
+                                                                        ></v-select>
+                                                                        <div v-if="!installmentSale && viewVendorTopics(user_roles)">
+                                                                            <v-text-field
+                                                                                label="Monto a pagar con tarjeta"
+                                                                                class="!w-full"
+                                                                                variant="solo"
+                                                                                color="cyan"
+                                                                                clearable
+                                                                                v-model="amountToPayCard"
+                                                                                :rules="[rules.required, rules.isNumber, rules.isAmountToPay]"
+                                                                            ></v-text-field>
+                                                                        </div>
+                                                                        <div v-else-if="installmentSale && viewVendorTopics(user_roles)">
+                                                                            <v-text-field
+                                                                                label="Monto a pagar con tarjeta"
+                                                                                class="!w-full"
+                                                                                variant="solo"
+                                                                                color="cyan"
+                                                                                clearable
+                                                                                v-model="amountToPayCard"
+                                                                                :rules="[rules.required, rules.isNumber]"
+                                                                            ></v-text-field>
+                                                                        </div>
+                                                                        <v-text-field
+                                                                            v-else
+                                                                            label="Monto a pagar con tarjeta"
+                                                                            class="!w-full"
+                                                                            color="cyan"
+                                                                            variant="solo"
+                                                                            readonly
                                                                             v-model="amountToPayCard"
                                                                             :rules="[rules.required, rules.isNumber, rules.isAmountToPay]"
                                                                         ></v-text-field>
                                                                     </div>
-                                                                    <div v-else-if="installmentSale && viewVendorTopics(user_roles)">
-                                                                        <v-text-field
-                                                                            label="Monto a pagar con tarjeta"
-                                                                            class="!mt-2"
-                                                                            variant="solo"
-                                                                            color="cyan"
-                                                                            clearable
-                                                                            v-model="amountToPayCard"
-                                                                            :rules="[rules.required, rules.isNumber]"
-                                                                        ></v-text-field>
-                                                                    </div>
-                                                                    <v-text-field
-                                                                        v-else
-                                                                        label="Monto a pagar con tarjeta"
-                                                                        class="!mt-2"
-                                                                        color="cyan"
-                                                                        variant="solo"
-                                                                        readonly
-                                                                        v-model="amountToPayCard"
-                                                                        :rules="[rules.required, rules.isNumber, rules.isAmountToPay]"
-                                                                    ></v-text-field>
                                                                 </div>
 
                                                                 <div v-if="paymentTypesSelected.some(type => type.name === 'efectivo')">
@@ -2240,50 +2243,52 @@ watch(() => paymentInstallmentSelected.value, () => {
 
                                                                     <p class="opacity-50 text-right mb-3">Subtotal (tipos de precios selecionados): {{ formatPrice(totalAmount) }}</p>
                                                                     <p class="font-bold text-3xl lg:text-4xl text-right mb-3 font-bebas">Total: {{ formatPrice(totalAmount) }}</p>
-                                                                    <v-btn
-                                                                        v-if="showButtonPayment"
-                                                                        @click="showPaymentDrawer"
-                                                                        size="large" block
-                                                                        class="text-none !text-white !bg-gradient-to-r !rounded-2xl !h-[60px] !from-tw-primary !to-blue-500 !border-b-4 !border-b-tw-primary-dark"
-                                                                    >
-                                                                        <span class="material-symbols-outlined text-xl !w-1/2">shopping_cart</span>Adquirir boletos
-                                                                    </v-btn>
-                                                                    <v-btn
-                                                                        v-else-if="!installmentSale && viewVendorTopics(user_roles)"
-                                                                        :disabled="!form"
-                                                                        :loading="loadingg"
-                                                                        type="submit"
-                                                                        size="large" block
-                                                                        class="text-none !text-white !bg-gradient-to-r !rounded-2xl !h-[60px] !from-tw-primary !to-blue-500 !border-b-4 !border-b-tw-primary-dark"
-                                                                    >
-                                                                        <span class="material-symbols-outlined text-xl !w-1/2">shopping_cart</span>Adquirir boletos
-                                                                    </v-btn>
-                                                                    <v-btn
-                                                                        v-else-if="installmentSale && viewVendorTopics(user_roles)"
-                                                                        :loading="loadingg"
-                                                                        type="submit"
-                                                                        size="large" block
-                                                                        class="text-none !text-white !bg-gradient-to-r !rounded-2xl !h-[60px] !from-tw-primary !to-blue-500 !border-b-4 !border-b-tw-primary-dark"
-                                                                    >
-                                                                        <span class="material-symbols-outlined text-xl !w-1/2">shopping_cart</span>Adquirir boletos
-                                                                    </v-btn>
-                                                                    <v-btn
-                                                                        v-else
-                                                                        :loading="loadingg"
-                                                                        :disabled="!form"
-                                                                        type="submit"
-                                                                        size="large" block
-                                                                        class="text-none !text-white !bg-gradient-to-r !rounded-2xl !h-[60px] !from-tw-primary !to-blue-500 !border-b-4 !border-b-tw-primary-dark"
-                                                                    >
-                                                                        <span class="material-symbols-outlined text-xl !w-1/2">shopping_cart</span>Adquirir boletos
-                                                                    </v-btn>
-                                                                    <v-btn
-                                                                        @click="selectZones"
-                                                                        size="large" block
-                                                                        class="text-none !text-white !bg-gradient-to-b !rounded-2xl !h-[60px] !from-red-600 !to-red-400 mt-5 mb-20 !border-b-4 !border-b-red-700"
-                                                                    >
-                                                                        <span class="material-symbols-outlined text-xl !w-1/2">delete</span>Cancelar seleccion
-                                                                    </v-btn>
+                                                                    <div class="flex items-center flex-col justify-between gap-7 mt-5">
+                                                                        <v-btn
+                                                                            v-if="showButtonPayment"
+                                                                            @click="showPaymentDrawer"
+                                                                            size="large"
+                                                                            class="text-none !text-white !bg-gradient-to-r !w-full !rounded-2xl !h-[60px] !from-tw-primary !to-blue-500 !border-b-4 !border-b-tw-primary-dark"
+                                                                        >
+                                                                            <span class="material-symbols-outlined text-xl !w-1/2">shopping_cart</span>Adquirir boletos
+                                                                        </v-btn>
+                                                                        <v-btn
+                                                                            v-else-if="!installmentSale && viewVendorTopics(user_roles)"
+                                                                            :disabled="!form"
+                                                                            :loading="loadingg"
+                                                                            type="submit"
+                                                                            size="large"
+                                                                            class="text-none !text-white !bg-gradient-to-r !w-full !rounded-2xl !h-[60px] !from-tw-primary !to-blue-500 !border-b-tw-primary-dark"
+                                                                        >
+                                                                            <span class="material-symbols-outlined text-xl !w-1/2">shopping_cart</span>Adquirir boletos
+                                                                        </v-btn>
+                                                                        <v-btn
+                                                                            v-else-if="installmentSale && viewVendorTopics(user_roles)"
+                                                                            :loading="loadingg"
+                                                                            type="submit"
+                                                                            size="large"
+                                                                            class="text-none !text-white !bg-gradient-to-r !w-full !rounded-2xl !h-[60px] !from-tw-primary !to-blue-500 !border-b-tw-primary-dark"
+                                                                        >
+                                                                            <span class="material-symbols-outlined text-xl !w-1/2">shopping_cart</span>Adquirir boletos
+                                                                        </v-btn>
+                                                                        <v-btn
+                                                                            v-else
+                                                                            :loading="loadingg"
+                                                                            :disabled="!form"
+                                                                            type="submit"
+                                                                            size="large"
+                                                                            class="text-none !text-white !bg-gradient-to-r !w-full !rounded-2xl !h-[60px] !from-tw-primary !to-blue-500 !border-b-tw-primary-dark"
+                                                                        >
+                                                                            <span class="material-symbols-outlined text-xl !w-1/2">shopping_cart</span>Adquirir boletos
+                                                                        </v-btn>
+                                                                        <v-btn
+                                                                            @click="selectZones"
+                                                                            size="large"
+                                                                            class="text-none !text-white !bg-gradient-to-b !w-full !rounded-2xl !h-[60px] !from-red-600 !to-red-400 !border-b-red-700"
+                                                                        >
+                                                                            <span class="material-symbols-outlined text-xl !w-1/2">delete</span>Cancelar seleccion
+                                                                        </v-btn>
+                                                                    </div>
 
                                                                     <v-dialog fullscreen v-model="seasonTicketsDialog" transition="dialog-bottom-transition">
                                                                         <template v-slot:activator="{ props: activatorProps }">
@@ -2291,7 +2296,7 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                                         </template>
                                                                         <template v-slot:default="{ isActive }">
                                                                             <v-card>
-                                                                                <v-toolbar class="!bg-gradient-to-r !from-slate-950 !via-tw-primary !to-slate-950">
+                                                                                <v-toolbar class="!bg-tw-primary !to-slate-950">
                                                                                     <v-btn
                                                                                     class="!text-white"
                                                                                     icon="mdi-close"
