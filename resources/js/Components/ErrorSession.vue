@@ -6,19 +6,13 @@ const message = ref('Fracaso en el proceso!');
 
 watch(showTostify, (value) => {
     if(value) {
-        Toastify({
-            text: message.value,
-            duration: -1,
-            className: "toastify-error",
-            newWindow: true,
-            close: true,
-            gravity: "top",
-            position: "right",
-            stopOnFocus: true,
-            onClick: function(){}
-        }).showToast();
+        toast(message.value, {
+            "theme": "auto",
+            "type": "error",
+            "autoClose": 10000,
+            "dangerouslyHTMLString": true
+        })
     }
-
     showTostify.value = false;
 });
 

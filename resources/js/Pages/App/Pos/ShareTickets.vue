@@ -63,7 +63,7 @@ const alert = ()=> {
 const selection = ref([])
 const send_tickets = (values)=>{
     if (tickets_list_v.value.length == 0) {
-         toast('Debe seleccionar a un boleto', {
+        toast('Debe seleccionar a un boleto', {
             "theme": "auto",
             "type": "error",
             "autoClose": 10000,
@@ -133,13 +133,13 @@ props.users.forEach(element => {
 
         <v-dialog v-model="alertDialong" max-width="500">
                 <template v-slot:default="{ isActive }">
-                    <v-card title="¿Estás seguro de finalizar tu sesión?">
+                    <v-card title="¿Estás seguro de compartir los boletos?">
 
                     <v-card-actions class="!my-4 !px-4">
                         <v-spacer></v-spacer>
                         <v-btn color="red" variant="tonal" class="text-none !h-[50px] !px-4 !rounded-2xl" text="Cancelar" @click="isActive.value = false"></v-btn>
                         <PrimaryButton @click="send_tickets">
-                            <span class="material-symbols-outlined text-xl !w-1/2">person</span> Cerrar sesión
+                            <span class="material-symbols-outlined text-xl !w-1/2">person</span> Compartir
                         </PrimaryButton>
                     </v-card-actions>
                     </v-card>
