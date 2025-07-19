@@ -158,7 +158,7 @@ const handleSearch = () => {
                                     <h2 class="font-bebas text-4xl font-bold lg:text-6xl">{{ event.name }}</h2>
                                     <h3 class="mt-5 inline-block"><span class="font-bold">Fecha:</span> {{ dateFormat(event.start_date) }}</h3>
                                     <p class="mt-3">{{ event.description }}</p>
-                                    <p v-if="event.enabled_for_season_tickets" class="mt-3 inline-block py-1 px-3 rounded-full bg-tw-primary/20 font-bold text-xs">
+                                    <p v-if="event.enabled_for_season_tickets" class="mt-3 inline-block py-1 px-3 rounded-full bg-tw-primary/20 font-bold text-xs shadow shadow-tw-primary">
                                        ✅ Venta de abonos disponible
                                     </p>
                                     <div class="flex items-center mt-3">

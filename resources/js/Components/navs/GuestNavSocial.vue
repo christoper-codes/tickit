@@ -1,7 +1,9 @@
 <script setup>
+import { Link, usePage } from '@inertiajs/vue3';
 import { menuStateSocialMedia } from '@/composables/nav/menu-state.js'
 
 const year = new Date().getFullYear()
+const user = usePage().props.auth.user;
 </script>
 
 <template>
@@ -59,18 +61,31 @@ const year = new Date().getFullYear()
           <div
             class="w-full text-center inline-flex flex-col gap-7 2xl:gap-9 text-2xl 2xl:text-3xl z-10 text-neutral-800 dark:text-neutral-100"
           >
-            <div class="inline-block cursor-pointer">
-                <div class="relative inline-block transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-500 hover:after:w-full">Eventos</div>
-            </div>
-            <div class="inline-block cursor-pointer">
-                <div class="relative inline-block transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-500 hover:after:w-full">Mis boletos</div>
-            </div>
-            <div class="inline-block cursor-pointer">
-                <div class="relative inline-block transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-500 hover:after:w-full">Iniciar sesión</div>
-            </div>
-            <div class="inline-block cursor-pointer">
-                <div class="relative inline-block transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-500 hover:after:w-full">Registrarme</div>
-            </div>
+            <Link :href="route('events.index')" class="inline-block cursor-pointer">
+                <div class="inline-block cursor-pointer">
+                    <div class="relative inline-block transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-500 hover:after:w-full">Eventos</div>
+                </div>
+            </Link>
+            <Link v-if="user" :href="route('welcome')" class="inline-block cursor-pointer">
+                <div class="inline-block cursor-pointer">
+                    <div class="relative inline-block transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-500 hover:after:w-full">Volver al inicio</div>
+                </div>
+            </Link>
+             <Link :href="route('dashboard')" class="inline-block cursor-pointer">
+                <div class="inline-block cursor-pointer">
+                    <div class="relative inline-block transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-500 hover:after:w-full">Mis boletos</div>
+                </div>
+            </Link>
+            <Link  v-if="!user" :href="route('login')" class="inline-block cursor-pointer">
+                <div class="inline-block cursor-pointer">
+                    <div class="relative inline-block transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-500 hover:after:w-full">Iniciar sesión</div>
+                </div>
+            </Link>
+            <Link  v-if="!user" :href="route('register')" class="inline-block cursor-pointer">
+                <div class="inline-block cursor-pointer">
+                    <div class="relative inline-block transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-500 hover:after:w-full">Registrarme</div>
+                </div>
+            </Link>
           </div>
           <div
             class="flex items-center justify-center gap-3 flex-col w-full z-10"
