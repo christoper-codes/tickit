@@ -10,6 +10,7 @@ import SaleTicket from '@/Components/SaleTicket.vue';
 import { shareTicketSchema } from '@/validation/Administration/share-tickets-schema';
 import SecondaryButton from '@/Components/buttons/SecondaryButton.vue';
 import { toast } from 'vue3-toastify'
+import PrimaryButton from '@/Components/buttons/PrimaryButton.vue';
 
 const { handleSubmit } = useForm({validationSchema : shareTicketSchema});
 
@@ -61,6 +62,16 @@ const alert = ()=> {
 
 const selection = ref([])
 const send_tickets = (values)=>{
+    if (tickets_list_v.value.length == 0) {
+         toast('Debe seleccionar a un boleto', {
+            "theme": "auto",
+            "type": "error",
+            "autoClose": 10000,
+            "dangerouslyHTMLString": true
+        })
+        return
+    }
+
     data.senderUserName = props.user['id'];
     data.receiverUserName = selected_value.value['id'];
 
@@ -93,13 +104,11 @@ const tickets_select = (ticket) => {
             tickets_list_v.value.push(ticket)
         }
     }
-
     selection.value = tickets_list_v.value;
 }
 
 
 props.users.forEach(element => {
-
     if (user['username'] != element['username']) {
         users_list.push(
             {
@@ -122,37 +131,20 @@ props.users.forEach(element => {
             <span>Compartir Boletos</span>
         </BreadcrumbAppSecondary>
 
-        <v-dialog
-            v-model="alertDialong"
-            width="900"
-        >
-            <v-card
-            >
+        <v-dialog v-model="alertDialong" max-width="500">
+                <template v-slot:default="{ isActive }">
+                    <v-card title="¿Estás seguro de finalizar tu sesión?">
 
-                <div class="p-5">
-                    <h1 style="color: black; font-weight: bold;">Términos y condiciones</h1>
-                    <br/>
-                    <p>
-                        <b style="color: red;">SOLO SE PUEDEN TRANSFERIR BOLETOS ENTRE USUARIOS DE OTRA APLICACIÓN (este boleto no llega al correo).</b>
-                    </p>
-                    <br/>
-                    <p class="text-red-500 lowercase">
-                     EL BOLETO NO ESTÁ SUJETO A REEMBOLSO, CAMBIO O REPOSICIÓN. EL BOLETO TE DA DERECHO A UN ACCESO AL INMUEBLE. El boleto te da derecho a un lugar específico dentro del inmueble. No está permitido el reingreso. Este boleto es válido solo para el evento y asiento descrito en pantalla. Queda prohibido mostrar capturas de pantalla del boleto en la entrada. El poseedor del boleto asume cualquier riesgo o peligro accidental proveniente del evento. La admisión está sujeta a que el espectador permita que se practique la revisión correspondiente para evitar el acceso a alimentos y bebidas alcohólicas, drogas, armas, mochilas, maletas, productos de tabaco, vapeadores, grabadoras, cámaras de cualquier tipo o cualquier otro artículo o sustancia no autorizada. El titular del inmueble del evento o sus representantes se reservan el derecho de admisión o, en su caso, se retirará del inmueble a cualquier persona cuya conducta se considere ofensiva, que induzca al desorden, y en general aquellas conductas que pudieran constituir una infracción o delito, no estando obligado a reembolsar cantidad alguna. El espectador se obliga a cumplir con las reglas del inmueble.
-                    </p>
-                </div>
-
-                <template v-slot:actions>
-                    <v-btn
-                        v-if="selection.length > 0"
-                        class="ms-auto"
-                        color="green"
-                        text="Aceptar"
-                        @click="send_tickets"
-                    ></v-btn>
+                    <v-card-actions class="!my-4 !px-4">
+                        <v-spacer></v-spacer>
+                        <v-btn color="red" variant="tonal" class="text-none !h-[50px] !px-4 !rounded-2xl" text="Cancelar" @click="isActive.value = false"></v-btn>
+                        <PrimaryButton @click="send_tickets">
+                            <span class="material-symbols-outlined text-xl !w-1/2">person</span> Cerrar sesión
+                        </PrimaryButton>
+                    </v-card-actions>
+                    </v-card>
                 </template>
-            </v-card>
         </v-dialog>
-
 
         <div class="pt-5 lg:pt-10">
             <div class="flex flex-col w-full justify-between">

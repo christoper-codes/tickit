@@ -20,14 +20,14 @@ const qrValue = computed(() => {
 
 <template>
       <div class="inline-flex flex-col items-center w-full lg:w-[415px] justify-center bg-center bg-cover text-gray-600">
-        <div :class="ticket.purchase_type == 'abonado' ? 'from-yellow-500 to-pink-400' : 'from-primary to-blue-500'" class="bg-gradient-to-r w-full lg:w-[415px] rounded-3xl">
+        <div :class="ticket.purchase_type == 'abonado' ? 'from-yellow-500 to-pink-400' : 'from-tw-primary to-blue-500'" class="bg-gradient-to-r w-full lg:w-[415px] rounded-3xl">
             <div class="flex flex-col">
-                <div class="bg-white relative drop-shadow-2xl rounded-3xl p-4 m-4">
+                <div class="bg-white relative rounded-3xl p-4 m-4">
                 <div class="flex-none sm:flex">
                     <div class="flex-auto justify-evenly">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center my-1">
-                            <ApplicationLogo class="w-11 h-auto fill-current" />
+                            <ApplicationLogo class="w-11 h-auto" />
                         </div>
                         <button>
                         <svg xmlns="http://www.w3.org/2000/svg" class="fill-current w-8 p-1 text-gray-600 rounded-md bg-gray-100" viewBox="0 0 24 24">
@@ -132,7 +132,7 @@ const qrValue = computed(() => {
                             :foreground="'#000000'"
                         />
 
-                        <a href="/terminos-y-condiciones" target="_blank" class="mt-3 text-xs"><span class="underline">Términos y condiciones</span></a>
+                        <a href="/politicas-de-privacidad" target="_blank" class="mt-3 text-xs"><span class="underline">Politicas de privacidad</span></a>
                     </div>
                     </div>
                 </div>
