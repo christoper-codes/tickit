@@ -605,8 +605,11 @@ const handleSectionClick = (section) => {
                 loadSvg('zonaC');
                 viewSelectedSection.value = 'Zona Principal';
                 const stadiumHdxImg = document.querySelector('#stadium-hdx-img');
+                const stadiumHdxText = document.querySelector('#stadium-hdx-text');
                 stadiumHdxImg.classList.remove('rotate-0');
                 stadiumHdxImg.classList.add('rotate-90');
+                stadiumHdxText.classList.remove('rotate-0');
+                stadiumHdxText.classList.add('-rotate-90');
             }
             if(section == 'zonaA'){
                 seatsASection.value = success.data.data;
@@ -693,6 +696,9 @@ const selectZones = () => {
     const stadiumHdxImg = document.querySelector('#stadium-hdx-img');
     stadiumHdxImg.classList.remove('rotate-90');
     stadiumHdxImg.classList.add('rotate-0');
+    const stadiumHdxText = document.querySelector('#stadium-hdx-text');
+    stadiumHdxText.classList.remove('-rotate-90');
+    stadiumHdxText.classList.add('rotate-0');
     selectedPromotion.value = null;
     selectedAgreementPromotion.value = null;
     seatsSelectedCopy.value = [];
@@ -1024,6 +1030,12 @@ const onSubmit = () => {
     if(purchaseType.value == 'abonado' && !seasonTicktesData.value){
         valid.value = false;
         error.value = 'Los datos de los abonado deben ser confirmados';
+        toast('Los datos de los abonado deben ser confirmados', {
+            "theme": "auto",
+            "type": "info",
+            "dangerouslyHTMLString": true
+        })
+        seasonTicketsDialogOpen();
         return;
     }
 
@@ -1636,7 +1648,7 @@ watch(() => paymentInstallmentSelected.value, () => {
                                 <span class="material-symbols-outlined lg:text-2xl block">access_time</span>
                                 <h3 class="lg:text-lg">{{ dateFormat(event.start_date) }}</h3>
                             </div>
-                            <h2 class="inline-block font-bebas pr-1 mt-8 text-5xl lg:text-8xl font-bold">
+                            <h2 class="inline-block font-bebas pr-1 mt-8 text-5xl lg:text-8xl font-bold max-w-4xl">
                                 {{ event.name }}
                             </h2>
                             <div class="flex flex-col lg:flex-row lg:items-center justify-center gap-2 mt-3 lg:mt-2">
@@ -1761,8 +1773,8 @@ watch(() => paymentInstallmentSelected.value, () => {
 
                                                 <div class="flex h-[400px] bg-white rounded-3xl cursor-grab lg:h-[500px] items-center justify-center overflow-hidden bordermt-5 gap-3 relative">
                                                     <div class="size-[100px] lg:size-36 border border-gray-300 dark:!border-neutral-300 absolute top-2 left-2 z-20 bg-white rounded-xl flex items-center justify-center">
-                                                        <div id="stadium-hdx-img" class="w-14 h-20 lg:w-20 lg:h-28 rotate-0 transition-all duration-1000 bg-neutral-800 items-center justify-center flex text-white rounded-md">
-                                                            <span class="block text-[9px] lg:!text-xs">Escenario</span>
+                                                        <div id="stadium-hdx-img" class="w-14 h-20 lg:w-20 lg:h-28 rotate-0 transition-all duration-1000 bg-neutral-400 items-center justify-center flex text-white rounded-md">
+                                                            <span id="stadium-hdx-text" class="block text-[9px] lg:!text-xs rotate-0">Escenario</span>
                                                         </div>
                                                     </div>
                                                     <div v-if="isSvgVisible">
@@ -2125,7 +2137,7 @@ watch(() => paymentInstallmentSelected.value, () => {
 
                                                                 </div>
 
-                                                                <p v-if="!valid" class="py-4 px-4 rounded-lg bg-red-100 border-l-[6px] border-l-red-500 text-red-600 text-xs my-4">{{ error }}</p>
+                                                                <p v-if="!valid" class="py-4 px-4 rounded-lg bg-red-100 dark:bg-red-100/10 border-l-[6px] border-l-red-500 text-red-600 dark:text-white text-xs my-4">{{ error }}</p>
 
                                                                 <div class="mt-5">
                                                                     <div v-if="!viewVendorTopics(user_roles)" class="flex items-center justify-between ">
@@ -2223,7 +2235,7 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                                         <p class="py-4 px-4 rounded-lg bg-purple-100 border-l-[6px] border-l-purple-500 text-purple-600 text-xs my-4">Los boletos adquiridos serán válidos solo para dos partidos del mismo evento.</p>
                                                                     </div>
                                                                     <div v-else-if="purchaseType == 'abonado'">
-                                                                        <p class="py-4 px-4 rounded-lg bg-yellow-100 border-l-[6px] border-l-yellow-500 text-yellow-600 text-xs my-4">Los boletos adquiridos serán validos solo para la temporada a la que pertenece este evento.</p>
+                                                                        <p class="py-4 px-4 rounded-lg bg-yellow-100 dark:bg-yellow-100/10 border-l-[6px] border-l-yellow-500 text-yellow-600 dark:text-white text-xs my-4">Los boletos adquiridos serán validos solo para la temporada a la que pertenece este evento.</p>
                                                                     </div>
 
                                                                     <p class="opacity-50 text-right mb-3">Subtotal (tipos de precios selecionados): {{ formatPrice(totalAmount) }}</p>
@@ -2279,7 +2291,7 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                                         </template>
                                                                         <template v-slot:default="{ isActive }">
                                                                             <v-card>
-                                                                                <v-toolbar class="!bg-gradient-to-r !from-slate-950 !via-purple-950 !to-slate-950">
+                                                                                <v-toolbar class="!bg-gradient-to-r !from-slate-950 !via-tw-primary !to-slate-950">
                                                                                     <v-btn
                                                                                     class="!text-white"
                                                                                     icon="mdi-close"
@@ -2299,34 +2311,34 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                                                 <v-form v-model="seasonTicketsForm" @submit.prevent="seasonTicktesDataConfirm" lazy-validation>
                                                                                     <v-card-text>
                                                                                         <div class="w-full max-w-[90%] mx-auto">
-                                                                                            <p class="font-bold font-bebas text-sm lg:text-4xl text-gray-700 text-center">Registra y confirma los abonos</p>
+                                                                                            <p class="font-bold font-bebas text-sm lg:text-4xl text-center mt-5">Registra y confirma los abonos</p>
 
                                                                                             <div v-if="seatsSelected.length > 0 && purchaseType == 'abonado'">
                                                                                                     <div class="" v-for="(seat, index) in seatsSelected" :key="seat.seat_catalogue.code">
                                                                                                         <div>
-                                                                                                            <table class="min-w-full divide-y divide-gray-200 mt-10">
-                                                                                                                <thead class="bg-gray-100 text-center">
+                                                                                                            <table class="min-w-full divide-y divide-gray-200 dark:divide-neutral-600 mt-10">
+                                                                                                                <thead class="text-center">
                                                                                                                     <tr>
                                                                                                                         <th scope="col" class=" p-2 text-center whitespace-nowrap">
-                                                                                                                            <span class="text-xs font-semibold uppercase tracking-wide text-gray-800">
+                                                                                                                            <span class="text-xs font-semibold uppercase tracking-wide ">
                                                                                                                                 zona
                                                                                                                             </span>
                                                                                                                         </th>
 
                                                                                                                         <th scope="col" class=" p-2 text-center whitespace-nowrap">
-                                                                                                                            <span class="text-xs font-semibold uppercase tracking-wide text-gray-800">
+                                                                                                                            <span class="text-xs font-semibold uppercase tracking-wide ">
                                                                                                                                 Fila
                                                                                                                             </span>
                                                                                                                         </th>
 
                                                                                                                         <th scope="col" class=" p-2 text-center whitespace-nowrap">
-                                                                                                                            <span class="text-xs font-semibold uppercase tracking-wide text-gray-800">
+                                                                                                                            <span class="text-xs font-semibold uppercase tracking-wide ">
                                                                                                                                 asiento
                                                                                                                             </span>
                                                                                                                         </th>
 
                                                                                                                         <th scope="col" class=" p-2 text-center whitespace-nowrap">
-                                                                                                                            <span class="text-xs font-semibold uppercase tracking-wide text-gray-800">
+                                                                                                                            <span class="text-xs font-semibold uppercase tracking-wide ">
                                                                                                                             precio
                                                                                                                             </span>
                                                                                                                         </th>
@@ -2335,16 +2347,16 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                                                                                 <tbody class="divide-y divide-gray-200">
                                                                                                                     <tr>
                                                                                                                         <td class="size-px whitespace-nowrap p-2 text-center">
-                                                                                                                            <span class="text-sm text-gray-800">{{ seat.seat_catalogue.zone }}</span>
+                                                                                                                            <span class="text-sm ">{{ seat.seat_catalogue.zone }}</span>
                                                                                                                         </td>
                                                                                                                         <td class="size-px whitespace-nowrap p-2 text-center">
-                                                                                                                            <span class="text-sm text-gray-800">{{ seat.seat_catalogue.row }}</span>
+                                                                                                                            <span class="text-sm ">{{ seat.seat_catalogue.row }}</span>
                                                                                                                         </td>
                                                                                                                         <td class="size-px whitespace-nowrap p-2 text-center">
-                                                                                                                            <span class="text-sm text-gray-800">{{ seat.seat_catalogue.seat }}</span>
+                                                                                                                            <span class="text-sm ">{{ seat.seat_catalogue.seat }}</span>
                                                                                                                         </td>
                                                                                                                         <td class="size-px whitespace-nowrap p-2 text-center">
-                                                                                                                            <span class="text-sm text-green-600">
+                                                                                                                            <span class="text-sm text-green-600 dark:text-green-400">
                                                                                                                                 <div v-for="priceType in seat.price_types" :key="priceType.id">
                                                                                                                                     <div v-if="priceType.name === 'abonado'">
                                                                                                                                             {{ formatPrice(priceType.pivot.price) }}
@@ -2397,7 +2409,8 @@ watch(() => paymentInstallmentSelected.value, () => {
                                                                                                                     append-inner-icon="mdi-file-document-check-outline"
                                                                                                                     color="cyan"
                                                                                                                     label="¿Es titular?"
-                                                                                                                    hint="Titular de la compra"
+                                                                                                                    hint="Para cada compra se necesita un titular"
+                                                                                                                    persistent-hint=""
                                                                                                                     clearable
                                                                                                                     :items="['No', 'Si']"
                                                                                                                     :rules="[rules.required]"

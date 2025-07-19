@@ -142,7 +142,7 @@ window.addEventListener('resize', () => {
                </div>
                 <div class="absolute inset-0 bg-gradient-to-l from-transparent via-black/60 to-black/95"></div>
                 <div class="relative z-10 h-full flex items-center justify-start max-w-7xl mx-auto lg:mt-5">
-                    <div class="max-w-2xl text-white">
+                    <div class="max-w-4xl text-white">
                         <div data-aos="fade-down" data-aos-duration="1300" data-aos-once="true">
                             <div class="flex items-center gap-2 mb-4">
                                 <span class="material-symbols-outlined">arrow_right_alt</span>Proximo evento
